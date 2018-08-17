@@ -1,1 +1,51 @@
 {% extends 'base.html' %}
+{% block content %}
+<div class="row bg-dark text-light">
+    <div class="container">
+        <div class="media p-5">
+            <img class="mr-5 rounded-circle" src="https://via.placeholder.com/200x200" alt="Generic placeholder image">
+            <div class="media-body">
+                <h1 class="my-0 h2">
+                    {% if profile.first_name and profile.last_name %}
+                    {{profile.get_full_name}}
+                    {% endif %}
+                    {% if profile.is_staff %}
+                    <small><i class="fas fa-check-circle fa-fw text-info small"></i></small>
+                    {% endif %}
+                </h1>
+                <h2 class="h4 text-info">@{{profile.username}}</h2>
+                <p>{{profile.userprofile.bio}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-white border-bottom border-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 border-left">
+                <ul class="nav nav-fill">
+                    <li class="nav-item border-right">
+                        <a class="nav-link text-secondary" href="#"><span class="h6 font-weight-bold text-info">17954</span><br> Timeline</a>
+                    </li>
+                    <li class="nav-item border-right">
+                        <a class="nav-link text-secondary" href="#"><span class="h6 font-weight-bold text-info">17954</span><br> Buying/Selling</a>
+                    </li>
+                    <li class="nav-item border-right">
+                        <a class="nav-link text-secondary" href="#"><span class="h6 font-weight-bold text-info">17954</span><br> Reviews</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 border-right">
+                <ul class="nav nav-fill">
+                    <li class="nav-item mx-1">
+                        <a class="nav-link btn btn-sm btn-success my-2" href="#"><i class="fas fa-user-plus fa-fw"></i> Follow</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link btn btn-sm btn-info my-2" href="#"><i class="fas fa-envelope fa-fw"></i> Message</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

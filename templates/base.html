@@ -30,6 +30,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fas fa-store fa-fw"></i> Market</a>
                         </li>
+                        {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.username}} </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -39,12 +40,15 @@
                                 <a class="dropdown-item" href="#">Sign Out</a>
                             </div>
                         </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <main></main>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
     <footer class="bg-dark text-secondary">
         <div class="container">
             <div class="row">
@@ -83,7 +87,7 @@
                             <a class="nav-link text-secondary" href="#"><span class="h5 font-weight-bold text-light">17954</span><br> Buying</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-secondary" href="#"><span class="h5 font-weight-bold text-light">17954</span><br>Registered Users</a>
+                            <a class="nav-link text-secondary" href="#"><span class="h5 font-weight-bold text-light">17954</span><br> Registered Users</a>
                         </li>
                     </ul>
                     <hr>
