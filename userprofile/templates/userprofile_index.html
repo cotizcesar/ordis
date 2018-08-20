@@ -1,20 +1,31 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
+{% block sitename %}{% endblock %}
+{% block title %}
+{% if profile.first_name and profile.last_name %}
+    {{profile.get_full_name}}
+{% endif %}
+{% endblock %}
 {% block content %}
 <div class="bg-dark text-light">
     <div class="container">
-        <div class="media p-5">
-            <img class="mr-5 rounded-circle" src="https://via.placeholder.com/200x200" alt="Generic placeholder image">
+        <div class="media p-4 py-5">
+            <img class="img-fluid mr-5 rounded-circle" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'/media/user/avatar/avatar.png'}}" alt="@{{profile.username}} avatar image.">
             <div class="media-body">
                 <h1 class="my-0 h2">
                     {% if profile.first_name and profile.last_name %}
-                    {{profile.get_full_name}}
+                        {{profile.get_full_name}}
                     {% endif %}
                     {% if profile.is_staff %}
-                    <small><i class="fas fa-check-circle fa-fw text-info small"></i></small>
+                        <small><i class="fas fa-check-circle fa-fw text-info small"></i></small>
+                    {% endif %}
+                    {% if request.user.username == profile.username %}
+                        <a class="btn btn-sm btn-secondary float-right mt-1" href="#" role="button"><i class="fas fa-edit fa-fw"></i> Edit</a>
                     {% endif %}
                 </h1>
                 <h2 class="h4 text-info">@{{profile.username}}</h2>
-                <p>{{profile.userprofile.bio}}</p>
+                <p class="mb-2">{{profile.userprofile.bio}}</p>
+                <p class="small text-secondary">Last Logged: {{profile.last_login}}</p>
             </div>
         </div>
     </div>
@@ -22,20 +33,20 @@
 <div class="bg-white border-bottom border-top">
     <div class="container">
         <div class="row">
-            <div class="col-md-9 border-left">
+            <div class="col-md-8 border-left">
                 <ul class="nav nav-fill">
-                    <li class="nav-item border-right">
+                    <li class="nav-item">
                         <a class="nav-link text-secondary" href="#"><span class="h6 font-weight-bold text-info">17954</span><br> Timeline</a>
                     </li>
-                    <li class="nav-item border-right">
+                    <li class="nav-item">
                         <a class="nav-link text-secondary" href="#"><span class="h6 font-weight-bold text-info">17954</span><br> Buying/Selling</a>
                     </li>
-                    <li class="nav-item border-right">
+                    <li class="nav-item">
                         <a class="nav-link text-secondary" href="#"><span class="h6 font-weight-bold text-info">17954</span><br> Reviews</a>
                     </li>
                 </ul>
             </div>
-            <div class="col-md-3 border-right">
+            <div class="col-md-4 border-left border-right">
                 <ul class="nav nav-fill">
                     <li class="nav-item mx-1">
                         <a class="nav-link btn btn-sm btn-success my-2" href="#"><i class="fas fa-user-plus fa-fw"></i> Follow</a>
@@ -44,6 +55,121 @@
                         <a class="nav-link btn btn-sm btn-info my-2" href="#"><i class="fas fa-envelope fa-fw"></i> Message</a>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="post text-light bg-dark rounded my-3">
+                    <div class="media">
+                        <img class="my-3 ml-3 mr-0 rounded-circle" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
+                        <div class="media-body p-3">
+                            <h6 class="mb-1">Cesar Cotiz</h6>
+                            <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+                            vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
+                            in faucibus.</p>
+                        </div>
+                    </div>
+                    <ul class="nav nav-fill border-top border-black">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#"><i class="fas fa-heart fa-fw text-info"></i> Like</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#"><i class="fas fa-comments fa-fw text-info"></i> Comment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#"><i class="fas fa-envelope fa-fw text-info"></i> Message</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#"><i class="fas fa-edit fa-fw text-info"></i> Edit</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="post text-light bg-dark rounded my-3">
+                    <div class="embed-responsive embed-responsive-16by9 rounded-top">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/rgP0JHn1KnU?rel=0" allowfullscreen></iframe>
+                    </div>
+                    <div class="media">
+                        <img class="my-3 ml-3 mr-0 rounded-circle" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
+                        <div class="media-body p-3">
+                            <h6 class="mb-1">Cesar Cotiz</h6>
+                            <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+                            vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
+                            in faucibus.</p>
+                        </div>
+                    </div>
+                    <ul class="nav nav-fill border-top border-black">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#"><i class="fas fa-heart fa-fw text-info"></i> Like</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#"><i class="fas fa-comments fa-fw text-info"></i> Comment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#"><i class="fas fa-envelope fa-fw text-info"></i> Message</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#"><i class="fas fa-edit fa-fw text-info"></i> Edit</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 bg-dark text-light">
+                <div class="my-3">
+                    <h2 class="h6"><i class="fas fa-dollar-sign fa-fw bg-danger p-1 rounded mr-1"></i> Want to Sell <a class="h6 text-info float-right small mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
+                    <hr>
+                    <div class="media">
+                        <img class="mr-3 rounded-circle" src="https://via.placeholder.com/40x40" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h6 class="my-0 mb-1">Oberon Prime Set</h6>
+                            <p class="mb-0 text-secondary"><span class="text-info font-weight-bold mr-1">70</span> Platinum each</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="media">
+                        <img class="mr-3 rounded-circle" src="https://via.placeholder.com/40x40" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h6 class="my-0 mb-1">Oberon Prime Set</h6>
+                            <p class="mb-0 text-secondary"><span class="text-info font-weight-bold mr-1">70</span> Platinum each</p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="my-3">
+                    <h2 class="h6"><i class="fas fa-dollar-sign fa-fw bg-success p-1 rounded mr-1"></i> Want to Buy <a class="h6 text-info float-right small mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
+                    <hr>
+                    <div class="media">
+                        <img class="mr-3 rounded-circle" src="https://via.placeholder.com/40x40" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h6 class="my-0 mb-1">Oberon Prime Set</h6>
+                            <p class="mb-0 text-secondary"><span class="text-info font-weight-bold mr-1">70</span> Platinum each</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="media">
+                        <img class="mr-3 rounded-circle" src="https://via.placeholder.com/40x40" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h6 class="my-0 mb-1">Oberon Prime Set</h6>
+                            <p class="mb-0 text-secondary"><span class="text-info font-weight-bold mr-1">70</span> Platinum each</p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="my-3">
+                    <h2 class="h6"><i class="fas fa-search fa-fw text-info"></i> Latest Review <a class="h6 text-info float-right small mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
+                    <hr>
+                    <div class="media">
+                        <img class="mr-3 rounded-circle" src="https://via.placeholder.com/40x40" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h6 class="my-0 mb-1">Cesar Cotiz</h6>
+                            <p class="my-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id commodo ante. Integer felis diam, blandit vel mauris id, hendrerit volutpat.</p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
             </div>
         </div>
     </div>

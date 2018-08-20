@@ -32,6 +32,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # easy_thumbnails: Images handle and thumbnails generator.
+    'easy_thumbnails',
+    # WFPY: Core (Index, Pages, etc)
+    'core',
     # WFPY: User Profiles app.
     'userprofile',
     # WFPY: Market app.
@@ -104,6 +108,20 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# easy-thumbnails: Extension when a image its transparent.
+THUMBNAIL_TRANSPARENCY_EXTENSION = 'png'
+
+# easy-thumbnails: Every size for all images.
+THUMBNAIL_ALIASES = {
+    '': {
+        'avatar': {'size': (200, 200), 'crop': 'smart', 'upscale' : True},
+        'avatar_header': {'size': (30, 30), 'crop': 'smart', 'upscale' : True},
+    },
+}
+
+# easy_thumbnails: Renaming the image uploads.
+THUMBNAIL_NAMER = 'easy_thumbnails.namers.hashed'
 
 # Configure Django App for Heroku.
 import django_heroku

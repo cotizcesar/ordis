@@ -4,3 +4,6 @@ body{
 .list-style-none{
     list-style: none;
 }
+.border-black{
+    border-color: #333 !important;
+}
