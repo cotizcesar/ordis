@@ -6,5 +6,5 @@ from django.contrib.auth.models import User
 # Django: Generic CBV
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
-class Index(TemplateView):
+class Home(TemplateView):
     template_name = 'index.html'

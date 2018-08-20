@@ -18,8 +18,8 @@ from django.urls import include, path
 from django.conf.urls import url
 
 # userprofile: Importing Views
-from .views import Index
+from .views import Home
 
 urlpatterns = [
-    path('', Index.as_view(), name='Index')
+    path('', Home.as_view(), name='Home')
 ]

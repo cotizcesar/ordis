@@ -9,23 +9,29 @@
 {% block content %}
 <div class="bg-dark text-light">
     <div class="container">
-        <div class="media p-4 py-5">
-            <img class="img-fluid mr-5 rounded-circle" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'/media/user/avatar/avatar.png'}}" alt="@{{profile.username}} avatar image.">
-            <div class="media-body">
-                <h1 class="my-0 h2">
-                    {% if profile.first_name and profile.last_name %}
-                        {{profile.get_full_name}}
-                    {% endif %}
-                    {% if profile.is_staff %}
-                        <small><i class="fas fa-check-circle fa-fw text-info small"></i></small>
-                    {% endif %}
-                    {% if request.user.username == profile.username %}
-                        <a class="btn btn-sm btn-secondary float-right mt-1" href="#" role="button"><i class="fas fa-edit fa-fw"></i> Edit</a>
-                    {% endif %}
-                </h1>
-                <h2 class="h4 text-info">@{{profile.username}}</h2>
-                <p class="mb-2">{{profile.userprofile.bio}}</p>
-                <p class="small text-secondary">Last Logged: {{profile.last_login}}</p>
+        <div class="row">
+            <div class="media col-md-12">
+                <div class="row py-3">
+                    <div class="col-md-2 my-3">
+                        <img class="img-fluid mr-5 rounded-circle" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'/media/user/avatar/avatar.png'}}" alt="@{{profile.username}} avatar image.">
+                    </div>
+                    <div class="media-body col-md-10 my-3">
+                        <h1 class="my-0 h2">
+                            {% if profile.first_name and profile.last_name %}
+                                {{profile.get_full_name}}
+                            {% endif %}
+                            {% if profile.is_staff %}
+                                <small><i class="fas fa-check-circle fa-fw text-info small"></i></small>
+                            {% endif %}
+                            {% if request.user.username == profile.username %}
+                                <a class="btn btn-sm btn-secondary float-right mt-1" href="#" role="button"><i class="fas fa-edit fa-fw"></i> Edit</a>
+                            {% endif %}
+                        </h1>
+                        <h2 class="h4 text-info">@{{profile.username}}</h2>
+                        <p class="mb-2">{{profile.userprofile.bio}}</p>
+                        <p class="small text-secondary">Last Logged: {{profile.last_login}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
