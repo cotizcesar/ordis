@@ -116,6 +116,7 @@ THUMBNAIL_TRANSPARENCY_EXTENSION = 'png'
 THUMBNAIL_ALIASES = {
     '': {
         'avatar': {'size': (200, 200), 'crop': 'smart', 'upscale' : True},
+        'avatar_aside': {'size': (40, 40), 'crop': 'smart', 'upscale' : True},
         'avatar_header': {'size': (30, 30), 'crop': 'smart', 'upscale' : True},
     },
 }

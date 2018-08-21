@@ -1,0 +1,16 @@
+{% load thumbnail %}
+<div class="media">
+    <img class="rounded-circle mr-3" src="{{user.userprofile.avatar|thumbnail_url:'avatar_aside'|default:'/media/user/avatar/avatar_aside.png'}}" alt="Generic placeholder image">
+    <div class="media-body w-auto">
+        <h6 class="mb-1">
+            <a class="text-light" href="{% url 'userprofile' user.username %}">
+                {% if user.first_name and user.last_name %}
+                    {{user.get_full_name}}
+                {% endif %}
+                <span class="small">@{{user.username}}</span>
+            </a>
+            <a class="btn btn-sm btn-success float-right mt-1" href="#" role="button"><i class="fas fa-user-plus fa-fw"></i> Follow</a>
+        </h6>
+        <p class="mb-0 small text-secondary">Last Login: {{user.last_login}}</p>
+    </div>
+</div>

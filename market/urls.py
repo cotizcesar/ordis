@@ -15,14 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import url
 
-# Django: To serve static files.
-from django.conf import settings
-from django.conf.urls.static import static
+# userprofile: Importing Views
+from .views import Market
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('userprofile.urls')),
-    path('', include('core.urls')),
-    path('', include('market.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('market/', Market.as_view(), name='market')
+]
