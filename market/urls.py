@@ -18,8 +18,9 @@ from django.urls import include, path
 from django.conf.urls import url
 
 # userprofile: Importing Views
-from .views import Market
+from .views import Market, ItemDetail
 
 urlpatterns = [
-    path('market/', Market.as_view(), name='market')
+    path('market/', Market.as_view(), name='market'),
+    url(r'market/items/(?P<slug>[-\w]+)$', ItemDetail.as_view(), name='item_detail'),
 ]

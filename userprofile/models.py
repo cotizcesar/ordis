@@ -9,9 +9,15 @@ from django.db.models.signals import post_save
 
 # WFPY: User Profile Model -Start-
 class UserProfile(models.Model):
+    STATUS_CHOICES = (
+        ('O', 'Online'),
+        ('I', 'In Game',),
+        ('F', 'Offline',),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='user/avatar', default='avatar/default.png', blank=True)
     bio = models.CharField(max_length=280, blank=True)
+    status = models.CharField(default='F', max_length=1, choices=STATUS_CHOICES)
 
     def __str__(self):
         return self.user.username

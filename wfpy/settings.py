@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Django: For numbers, text and anoher things.
+    'django.contrib.humanize',
     # easy_thumbnails: Images handle and thumbnails generator.
     'easy_thumbnails',
     # WFPY: Core (Index, Pages, etc)
@@ -62,6 +64,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Core: Counters and more for footers.
+                # 'core.context_processors.footer_counter',
             ],
         },
     },
@@ -118,6 +122,8 @@ THUMBNAIL_ALIASES = {
         'avatar': {'size': (200, 200), 'crop': 'smart', 'upscale' : True},
         'avatar_aside': {'size': (40, 40), 'crop': 'smart', 'upscale' : True},
         'avatar_header': {'size': (30, 30), 'crop': 'smart', 'upscale' : True},
+        'item': {'size': (200, 200), 'crop': 'smart', 'upscale' : True},
+        'order': {'size': (74, 74), 'crop': 'smart', 'upscale' : True},
     },
 }
 

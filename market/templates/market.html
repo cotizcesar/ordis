@@ -3,103 +3,20 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-6 py-3">
+        <div class="col-md-6 my-3">
             <h2 class="h6"><i class="fas fa-dollar-sign fa-fw bg-danger p-1 rounded text-light mr-1"></i> Want to Sell <a class="h6 text-info float-right small mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
             <hr>
-            <div class="media rounded bg-dark text-light my-1">
-                <img class="img-fluid rounded-left border-info" src="https://via.placeholder.com/81x81" alt="Ash Prime Neuroptics">
-                <div class="media-body px-3 py-2">
-                    <h6 class="mb-1">
-                        Body Count 
-                        <span class="text-secondary small">[6 <i class="fas fa-boxes fa-fw small"></i>]</span>
-                        <div class="float-right mt-1">
-                            <a class="text-light" href="#" role="button"><i class="fas fa-comment fa-fw"></i></a>
-                            <a class="text-light" href="#" role="button"><i class="fas fa-envelope fa-fw"></i></a>
-                        </div>
-                    </h6>
-                    <p class="my-1">Mod Rank - 0</p>
-                    <p class="m-0 text-danger"><span>9</span> Platinum each by <a class="text-info" href="#">@cotizcesar</a> <span class="text-success text-uppercase font-weight-bold float-right"><i class="fas fa-sign-in-alt fa-fw"></i> Online</span></p>
-                </div>
-            </div>
-            <div class="media rounded bg-dark text-light my-1">
-                <img class="img-fluid rounded-left border-info" src="https://via.placeholder.com/81x81" alt="Ash Prime Neuroptics">
-                <div class="media-body px-3 py-2">
-                    <h6 class="mb-1">
-                        Body Count 
-                        <span class="text-secondary small">[6 <i class="fas fa-boxes fa-fw small"></i>]</span>
-                        <div class="float-right mt-1">
-                            <a class="text-light" href="#" role="button"><i class="fas fa-comment fa-fw"></i></a>
-                            <a class="text-light" href="#" role="button"><i class="fas fa-envelope fa-fw"></i></a>
-                        </div>
-                    </h6>
-                    <p class="my-1">Mod Rank - 0</p>
-                    <p class="m-0 text-danger"><span>9</span> Platinum each by <a class="text-info" href="#">@cotizcesar</a> <span class="text-danger text-uppercase font-weight-bold float-right"><i class="fas fa-sign-out-alt fa-fw"></i> Offline</span></p>
-                </div>
-            </div>
-            <div class="media rounded bg-dark text-light my-1">
-                <img class="img-fluid rounded-left border-info" src="https://via.placeholder.com/81x81" alt="Ash Prime Neuroptics">
-                <div class="media-body px-3 py-2">
-                    <h6 class="mb-1">
-                        Body Count 
-                        <span class="text-secondary small">[6 <i class="fas fa-boxes fa-fw small"></i>]</span>
-                        <div class="float-right mt-1">
-                            <a class="text-light" href="#" role="button"><i class="fas fa-comment fa-fw"></i></a>
-                            <a class="text-light" href="#" role="button"><i class="fas fa-envelope fa-fw"></i></a>
-                        </div>
-                    </h6>
-                    <p class="my-1">Mod Rank - 0</p>
-                    <p class="m-0 text-danger"><span>9</span> Platinum each by <a class="text-info" href="#">@cotizcesar</a> <span class="text-info text-uppercase font-weight-bold float-right"><i class="fas fa-gamepad fa-fw"></i> In Game</span></p>
-                </div>
-            </div>
+            {% for order in wts %}
+                {% include 'item_wts.html' %}
+            {% endfor %}
         </div>
-        <div class="col-md-6 py-3">
+        <div class="col-md-6 my-3">
             <h2 class="h6"><i class="fas fa-dollar-sign fa-fw bg-success p-1 rounded text-light mr-1"></i> Want to Buy <a class="h6 text-info float-right small mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
             <hr>
-            <div class="media rounded bg-dark text-light my-1">
-                <img class="img-fluid rounded-left border-info" src="https://via.placeholder.com/81x81" alt="Ash Prime Neuroptics">
-                <div class="media-body px-3 py-2">
-                    <h6 class="mb-1">
-                        Body Count 
-                        <span class="text-secondary small">[6 <i class="fas fa-boxes fa-fw small"></i>]</span>
-                        <div class="float-right mt-1">
-                            <a class="text-light" href="#" role="button"><i class="fas fa-comment fa-fw"></i></a>
-                            <a class="text-light" href="#" role="button"><i class="fas fa-envelope fa-fw"></i></a>
-                        </div>
-                    </h6>
-                    <p class="my-1">Mod Rank - 0</p>
-                    <p class="m-0 text-success"><span>9</span> Platinum each by <a class="text-info" href="#">@cotizcesar</a> <span class="text-success text-uppercase font-weight-bold float-right"><i class="fas fa-sign-in-alt fa-fw"></i> Online</span></p>
-                </div>
-            </div>
-            <div class="media rounded bg-dark text-light my-1">
-                <img class="img-fluid rounded-left border-info" src="https://via.placeholder.com/81x81" alt="Ash Prime Neuroptics">
-                <div class="media-body px-3 py-2">
-                    <h6 class="mb-1">
-                        Body Count 
-                        <span class="text-secondary small">[6 <i class="fas fa-boxes fa-fw small"></i>]</span>
-                        <div class="float-right mt-1">
-                            <a class="text-light" href="#" role="button"><i class="fas fa-comment fa-fw"></i></a>
-                            <a class="text-light" href="#" role="button"><i class="fas fa-envelope fa-fw"></i></a>
-                        </div>
-                    </h6>
-                    <p class="my-1">Mod Rank - 0</p>
-                    <p class="m-0 text-success"><span>9</span> Platinum each by <a class="text-info" href="#">@cotizcesar</a> <span class="text-danger text-uppercase font-weight-bold float-right"><i class="fas fa-sign-out-alt fa-fw"></i> Offline</span></p>
-                </div>
-            </div>
-            <div class="media rounded bg-dark text-light my-1">
-                <img class="img-fluid rounded-left border-info" src="https://via.placeholder.com/81x81" alt="Ash Prime Neuroptics">
-                <div class="media-body px-3 py-2">
-                    <h6 class="mb-1">
-                        Body Count 
-                        <span class="text-secondary small">[6 <i class="fas fa-boxes fa-fw small"></i>]</span>
-                        <div class="float-right mt-1">
-                            <a class="text-light" href="#" role="button"><i class="fas fa-comment fa-fw"></i></a>
-                            <a class="text-light" href="#" role="button"><i class="fas fa-envelope fa-fw"></i></a>
-                        </div>
-                    </h6>
-                    <p class="my-1">Mod Rank - 0</p>
-                    <p class="m-0 text-success"><span>9</span> Platinum each by <a class="text-info" href="#">@cotizcesar</a> <span class="text-info text-uppercase font-weight-bold float-right"><i class="fas fa-gamepad fa-fw"></i> In Game</span></p>
-                </div>
-            </div>
+            {% for order in wtb %}
+            {% include 'item_wtb.html' %}
+            b
+            {% endfor %}
         </div>
     </div>
 </div>

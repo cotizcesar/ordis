@@ -6,5 +6,21 @@ from django.contrib.auth.models import User
 # Django: Generic CBV
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
+# Market: Importing Models
+from .models import Item, Order
+
 class Market(TemplateView):
     template_name = 'market.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(Market, self).get_context_data(**kwargs)
+        context['wts'] = Order.objects.all().filter(want='S').exclude(is_active=False)
+        context['wtb'] = Order.objects.all().filter(want='B')
+        return context
+
+class ItemDetail(DetailView):
+    model = Item
+    template_name = "item_detail.html"
+    pk_url_kwarg = "item_id"
+    slug_url_kwarg = 'slug'
+    query_pk_and_slug = True

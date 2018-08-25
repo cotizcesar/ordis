@@ -1,5 +1,8 @@
 from django.db import models
 
+# Django: Importing User Model
+from django.contrib.auth.models import User
+
 class Item(models.Model):
     RARITY_CHOICES = (
         ('P', 'Peculiar'),
@@ -19,9 +22,27 @@ class Item(models.Model):
     mastery_level = models.PositiveIntegerField()
     rarity = models.CharField(max_length=1, choices=RARITY_CHOICES, blank=True)
     main = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
-    mod_rank = models.PositiveIntegerField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+
+class Order(models.Model):
+    WANT_CHOICES = (
+        ('S', 'Sell'),
+        ('B', 'Buy',),
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.OneToOneField(Item, on_delete=models.CASCADE)
+    want = models.CharField(max_length=1, choices=WANT_CHOICES)
+    price = models.PositiveIntegerField()
+    quantity = models.PositiveIntegerField()
+    mod_rank = models.PositiveIntegerField(null=True, blank=True)
+    is_active = models.BooleanField()
+    is_ended = models.BooleanField(null=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return '(@' +self.user.username + '): ' + self.want + ' > ' + self.item.name

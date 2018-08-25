@@ -1,0 +1,37 @@
+{% load thumbnail %}
+<div class="media bg-dark small text-light my-1">
+    <img class="img-fluid border-info bg-light" src="{{order.item.image|thumbnail_url:'order'|default:'/media/item/item.png'}}" alt="Ash Prime Neuroptics">
+    <div class="media-body px-3 py-2">
+        <h6 class="{% if order.mod_rank %}mb-1{% else %}mb-4{% endif %}">
+            <a class="text-light" href="{% url 'item_detail' order.item.slug %}">{{order.item.name}}</a> 
+            <span class="text-secondary small">[{{order.quantity}} <i class="fas fa-boxes fa-fw small"></i>]</span>
+            <div class="float-right mt-1">
+                <a class="text-light" href="#" role="button"><i class="fas fa-comment fa-fw"></i></a>
+                <a class="text-light" href="#" role="button"><i class="fas fa-envelope fa-fw"></i></a>
+            </div>
+        </h6>
+        {% if order.mod_rank %}
+        <p class="my-1">Mod Rank - {{order.mod_rank}}</p>
+        {% endif %}
+        <p class="m-0 text-danger"><span>{{order.price}}</span> Platinum each by <a class="text-info" href="{% url 'userprofile' order.user.username %}">@{{order.user.username}}</a> 
+            <span class="
+                {% if order.user.userprofile.status == 'O'%}
+                text-success 
+                {% elif order.user.userprofile.status == 'I'%}
+                text-info 
+                {% else %}
+                text-danger 
+                {% endif %}
+                text-uppercase font-weight-bold float-right">
+                {% if order.user.userprofile.status == 'O'%}
+                <i class="fas fa-sign-in-alt fa-fw"></i> 
+                {% elif order.user.userprofile.status == 'I'%}
+                <i class="fas fa-gamepad fa-fw"></i>
+                {% else %}
+                <i class="fas fa-sign-out-alt fa-fw"></i>
+                {% endif %}
+                {{order.user.userprofile.get_status_display}}
+            </span>
+        </p>
+    </div>
+</div>
