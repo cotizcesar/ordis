@@ -15,7 +15,7 @@ class Market(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(Market, self).get_context_data(**kwargs)
         context['wts'] = Order.objects.all().filter(want='S').exclude(is_active=False)
-        context['wtb'] = Order.objects.all().filter(want='B')
+        context['wtb'] = Order.objects.all().filter(want='B').exclude(is_active=False)
         return context
 
 class ItemDetail(DetailView):
