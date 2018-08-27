@@ -7,5 +7,5 @@ def external_data(request):
         'omnisearch': Item.objects.all().values('name', 'slug'),
         'user_count': User.objects.all().count(),
         'selling_count': Order.objects.filter(want='S').exclude(is_active=False).count(),
-        'buying_count': Order.objects.filter(want='S').exclude(is_active=False).count()
+        'buying_count': Order.objects.filter(want='B').exclude(is_active=False).count()
     }
