@@ -19,7 +19,7 @@ class Item(models.Model):
     image = models.ImageField(upload_to='item', default='item/default.png', blank=True)
     ducats = models.PositiveIntegerField(null=True, blank=True)
     trading_tax = models.PositiveIntegerField()
-    mastery_level = models.PositiveIntegerField()
+    mastery_rank = models.PositiveIntegerField()
     rarity = models.CharField(max_length=1, choices=RARITY_CHOICES, blank=True)
     main = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)

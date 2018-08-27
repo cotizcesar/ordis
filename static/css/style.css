@@ -7,3 +7,25 @@ body{
 .border-black{
     border-color: #333 !important;
 }
+
+/* Typeahead */
+.twitter-typeahead{
+    width: 100%;
+}
+.typeahead{
+
+}
+.tt-menu, .tt-open{
+    background: #fff;
+    width: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 1rem;
+}
+.tt-menu .tt-dataset .tt-suggestion{
+    padding: 5px 8px;
+}
+.tt-suggestion:hover{
+    cursor: pointer;
+    background: rgba(0,0,0,0.1);
+}

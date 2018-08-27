@@ -1,6 +1,6 @@
 {% load thumbnail %}
 <div class="media bg-dark small text-light my-1">
-    <img class="img-fluid border-info bg-light" src="{{order.item.image|thumbnail_url:'order'|default:'/media/item/item.png'}}" alt="Ash Prime Neuroptics">
+    <img class="img-fluid border-info bg-light" src="{{order.item.image|thumbnail_url:'order'|default:'/media/item/item.png'}}" alt="{{order.item.name}}">
     <div class="media-body px-3 py-2">
         <h6 class="{% if order.mod_rank %}mb-1{% else %}mb-4{% endif %}">
             <a class="text-light" href="{% url 'item_detail' order.item.slug %}">{{order.item.name}}</a> 

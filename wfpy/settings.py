@@ -64,8 +64,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # Core: Counters and more for footers.
-                'core.context_processors.omnisearch',
+                # Core: Search Input in header, loads all items in database.
+                'core.context_processors.external_data',
+                # Core: User counter
+                #'core.context_processors.user_count',
             ],
         },
     },
