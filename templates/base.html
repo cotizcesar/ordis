@@ -27,13 +27,13 @@
                         </div>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                                <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home fa-fw fa-lg mr-1"></i> Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'market' %}">Market</a>
+                                <a class="nav-link" href="{% url 'market' %}"><i class="fas fa-store fa-fw fa-lg mr-1"></i> Market</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Alerts</a>
+                                <a class="nav-link" href="#"><i class="fas fa-exclamation-triangle fa-fw fa-lg mr-1"></i> Alerts</a>
                             </li>
                             {% if user.is_authenticated %}
                             <li class="nav-item dropdown {% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}">
