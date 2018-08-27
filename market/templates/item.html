@@ -13,7 +13,7 @@
         {% if order.mod_rank %}
         <p class="my-1">Mod Rank - {{order.mod_rank}}</p>
         {% endif %}
-        <p class="m-0 text-danger"><span>{{order.price}}</span> Platinum each by <a class="text-info" href="{% url 'userprofile' order.user.username %}">@{{order.user.username}}</a> 
+        <p class="m-0 {% if order.want == 'S'%}text-danger{% else %}text-success{% endif %}"><span>{{order.price}}</span> Platinum each by <a class="text-info" href="{% url 'userprofile' order.user.username %}">@{{order.user.username}}</a> 
             <span class="
                 {% if order.user.userprofile.status == 'O'%}
                 text-success 

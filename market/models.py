@@ -34,7 +34,7 @@ class Order(models.Model):
         ('B', 'Buy',),
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    item = models.OneToOneField(Item, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
     want = models.CharField(max_length=1, choices=WANT_CHOICES)
     price = models.PositiveIntegerField()
     quantity = models.PositiveIntegerField()

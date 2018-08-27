@@ -24,3 +24,9 @@ class ItemDetail(DetailView):
     pk_url_kwarg = "item_id"
     slug_url_kwarg = 'slug'
     query_pk_and_slug = True
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ItemDetail, self).get_context_data(**kwargs)
+        context['wts'] = Order.objects.all().filter(item=self.get_object(), want='S').exclude(is_active=False)
+        context['wtb'] = Order.objects.all().filter(item=self.get_object(), want='B').exclude(is_active=False)
+        return context

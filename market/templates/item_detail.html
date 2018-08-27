@@ -22,13 +22,13 @@
                     {% endif %}
                     <div class="row">
                         {% if item.trading_tax %}
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-2">
                             <h2 class="h6 text-uppercase text-info">Wikia</h2>
                             <a class="text-light" href="{{item.url}}"><i class="fas fa-link fa-fw"></i> {{item.name}}</a>
                         </div>
                         {% endif %}
                         {% if item.trading_tax %}
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-2">
                             <h2 class="h6 text-uppercase text-info">Trading Tax</h2>
                             <p class="mb-0"><i class="fas fa-coins fa-fw"></i> {{item.trading_tax}}</p>
                         </div>
@@ -37,13 +37,13 @@
                     <hr>
                     <div class="row">
                         {% if item.ducats %}
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-2">
                             <h2 class="h6 text-uppercase text-info">Ducats</h2>
                             <p class="mb-0">{{item.ducats}}</p>
                         </div>
                         {% endif %}
                         {% if item.mastery_level %}
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-2">
                             <h2 class="h6 text-uppercase text-info">Mastery Level</h2>
                             <p class="mb-0"><i class="fas fa-arrow-alt-circle-up fa-fw"></i> {{item.mastery_level}}</p>
                         </div>
@@ -52,13 +52,13 @@
                     <hr>
                     <div class="row">
                         {% if item.rarity %}
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-2">
                             <h2 class="h6 text-uppercase text-info">Rarity</h2>
                             <p class="mb-0">{{item.rarity}}</p>
                         </div>
                         {% endif %}
                         {% if item.mod_rank %}
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-2">
                             <h2 class="h6 text-uppercase text-info">Mod Rank</h2>
                             <p class="mb-0">{{item.mod_rank}}</p>
                         </div>
@@ -71,12 +71,16 @@
                     <div class="col-md-6 my-3">
                         <h2 class="h6"><i class="fas fa-dollar-sign fa-fw bg-danger p-1 rounded text-light mr-1"></i> Want to Sell <a class="h6 text-info float-right small mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
                         <hr>
-
+                        {% for order in wts %}
+                            {% include 'item.html' %}
+                        {% endfor %}
                     </div>
                     <div class="col-md-6 my-3">
                         <h2 class="h6"><i class="fas fa-dollar-sign fa-fw bg-success p-1 rounded text-light mr-1"></i> Want to Buy <a class="h6 text-info float-right small mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
                         <hr>
-
+                        {% for order in wtb %}
+                            {% include 'item.html' %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
