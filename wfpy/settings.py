@@ -123,10 +123,10 @@ THUMBNAIL_TRANSPARENCY_EXTENSION = 'png'
 # easy-thumbnails: Every size for all images.
 THUMBNAIL_ALIASES = {
     '': {
-        'avatar': {'size': (200, 200), 'crop': 'smart', 'upscale' : True},
+        'avatar': {'size': (160, 160), 'crop': 'smart', 'upscale' : True},
         'avatar_aside': {'size': (40, 40), 'crop': 'smart', 'upscale' : True},
         'avatar_header': {'size': (30, 30), 'crop': 'smart', 'upscale' : True},
-        'item': {'size': (200, 200), 'crop': 'smart', 'upscale' : True},
+        'item': {'size': (160, 160), 'crop': 'smart', 'upscale' : True},
         'order': {'size': (74, 74), 'crop': 'smart', 'upscale' : True},
     },
 }
