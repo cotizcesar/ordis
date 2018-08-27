@@ -65,7 +65,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 # Core: Counters and more for footers.
-                # 'core.context_processors.footer_counter',
+                'core.context_processors.omnisearch',
             ],
         },
     },

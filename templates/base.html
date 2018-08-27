@@ -21,8 +21,11 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div id="the-basics" class="form-inline my-2 my-lg-0">
-                            <input class="typeahead form-control form-control-sm mr-sm-2 w-100" type="text" placeholder="Search" aria-label="Search">
+                        <div id="omnisearch" class="input-group">
+                            <input type="text" class="form-control typeahead" placeholder="Search Items to Buy or Sell" aria-label="Search" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="button" id="button-addon2"><i class="fas fa-search fa-fw"></i></button>
+                            </div>
                         </div>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
@@ -89,18 +92,18 @@
                 };
 
                 var data = [
-                    {% for item in items %}
+                    {% for item in omnisearch %}
                         '{{item.name}}',
                     {% endfor %}
                 ];
 
                 var url = [
-                    {% for item in items %}
+                    {% for item in omnisearch %}
                         {name: '{{item.name}}', value:'{{item.slug}}'},
                     {% endfor %}
                 ];
 
-                $('#the-basics .typeahead').typeahead({
+                $('#omnisearch .typeahead').typeahead({
                     hint: true,
                     highlight: true,
                     minLength: 1
