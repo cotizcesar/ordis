@@ -33,7 +33,7 @@
                                 <a class="nav-link" href="{% url 'market' %}"><i class="fas fa-store fa-fw fa-lg mr-1"></i> Market</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fas fa-exclamation-triangle fa-fw fa-lg mr-1"></i> Alerts</a>
+                                <a class="nav-link" href="{% url 'alerts' %}"><i class="fas fa-exclamation-triangle fa-fw fa-lg mr-1"></i> Alerts</a>
                             </li>
                             {% if user.is_authenticated %}
                             <li class="nav-item dropdown {% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}">

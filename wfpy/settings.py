@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'userprofile',
     # WFPY: Market app.
     'market',
+    # WFPY: Alerts app.
+    'alerts',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
