@@ -29,4 +29,5 @@ class ItemDetail(DetailView):
         context = super(ItemDetail, self).get_context_data(**kwargs)
         context['wts'] = Order.objects.all().filter(item=self.get_object(), want='S').exclude(is_active=False)
         context['wtb'] = Order.objects.all().filter(item=self.get_object(), want='B').exclude(is_active=False)
+        context['childs'] = Item.objects.filter(parent=self.get_object())
         return context

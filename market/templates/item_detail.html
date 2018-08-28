@@ -7,62 +7,55 @@
         <div class="row">
             <div class="media col-md-12">
                 <div class="row py-3">
-                    <div class="col-md-2 my-3">
-                        <img class="img-fluid bg-light mr-5 rounded-circle" src="{{item.image|thumbnail_url:'item'|default:'/media/item/item.png'}}" alt="@{{profile.username}} avatar image.">
+                    <div class="col-md-3 my-3">
                         <div class="text-center">
-                            <img class="img-fluid rounded-circle w-auto mt-3 mx-1" src="https://via.placeholder.com/28x28">
-                            <img class="img-fluid rounded-circle w-auto mt-3 mx-1" src="https://via.placeholder.com/28x28">
-                            <img class="img-fluid rounded-circle w-auto mt-3 mx-1" src="https://via.placeholder.com/28x28">
-                            <img class="img-fluid rounded-circle w-auto mt-3 mx-1" src="https://via.placeholder.com/28x28">
+                            <img class="img-fluid bg-light rounded-circle" src="{{item.image|thumbnail_url:'item'|default:'/media/item/item.png'}}" alt="{{item.name}} image.">
                         </div>
+                        {% if childs %}
+                        <div class="text-center">
+                            {% for item in childs %}
+                                <a href="{% url 'item_detail' item.slug %}"><img class="img-fluid bg-light rounded-circle w-auto mt-3 mx-1" src="{{item.image|thumbnail_url:'item_child'|default:'/media/item/item_child.png'}}" alt="{{item.name}} image."></a>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                     </div>
                     <div class="media-body col-md-10 my-3">
-                        <h1 class="mt-0 mb-2 h2">{{item.name}}
-                            {% if profile.first_name and profile.last_name %}
-                                {{profile.get_full_name}}
-                            {% endif %}
-                            {% if profile.is_staff %}
-                                <small><i class="fas fa-check-circle fa-fw text-info small"></i></small>
-                            {% endif %}
-                            {% if request.user.username == profile.username %}
-                                <a class="btn btn-sm btn-secondary float-right mt-1" href="#" role="button"><i class="fas fa-edit fa-fw"></i> Edit</a>
-                            {% endif %}
-                        </h1>
-                        <p class="mb-2">{{item.description|linebreaks}}</p>
+                        <h1 class="mb-2 h2">{{item.name}}</h1>
+                        {{item.description|linebreaks}}
                         <hr>
                         <div class="row">
                             {% if item.url %}
-                            <div class="col-md-2 my-1">
+                            <div class="col-md-3 col-sm-6 my-2">
                                 <h6 class="mb-1 text-uppercase text-info">Wikia</h6>
                                 <a class="text-light" href="{{item.url}}"><i class="fas fa-link fa-fw"></i> {{item.name}}</a>
                             </div>
                             {% endif %}
                             {% if item.trading_tax %}
-                            <div class="col-md-2 my-1">
+                            <div class="col-md-3 col-sm-6 my-2">
                                 <h6 class="mb-1 text-uppercase text-info">Trading Tax</h6>
                                 <p class="mb-0"><i class="fas fa-coins fa-fw"></i> {{item.trading_tax}}</p>
                             </div>
                             {% endif %}
                             {% if item.ducats %}
-                            <div class="col-md-2 my-1">
+                            <div class="col-md-3 col-sm-6 my-2">
                                 <h6 class="mb-1 text-uppercase text-info">Ducats</h6>
                                 <p class="mb-0">{{item.ducats}}</p>
                             </div>
                             {% endif %}
                             {% if item.mastery_rank %}
-                            <div class="col-md-2 my-1">
+                            <div class="col-md-3 col-sm-6 my-2">
                                 <h6 class="mb-1 text-uppercase text-info">Mastery Rank</h6>
                                 <p class="mb-0"><i class="fas fa-arrow-alt-circle-up fa-fw"></i> {{item.mastery_rank}}</p>
                             </div>
                             {% endif %}
                             {% if item.rarity %}
-                            <div class="col-md-2 my-1">
+                            <div class="col-md-3 col-sm-6 my-2">
                                 <h6 class="mb-1 text-uppercase text-info">Rarity</h6>
                                 <p class="mb-0">{{item.rarity}}</p>
                             </div>
                             {% endif %}
                             {% if item.mod_rank %}
-                            <div class="col-md-2 my-1">
+                            <div class="col-md-3 col-sm-6 my-2">
                                 <h6 class="mb-1 text-uppercase text-info">Mod Rank</h6>
                                 <p class="mb-0">{{item.mod_rank}}</p>
                             </div>
