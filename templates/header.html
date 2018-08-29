@@ -30,7 +30,7 @@
                             <a class="dropdown-item" href="{% url 'userprofile' user.username %}"><i class="fas fa-user-circle fa-fw text-info"></i> My Profile</a>
                             <a class="dropdown-item" href="#"><i class="fas fa-envelope fa-fw text-info"></i> Messages</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw text-info"></i> Sign Out</a>
+                            <a class="dropdown-item" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt fa-fw text-info"></i> Sign Out</a>
                         </div>
                     </li>
                     {% endif %}

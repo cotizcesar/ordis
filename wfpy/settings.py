@@ -28,12 +28,18 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    # django-allauth: Required for work
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Django: For numbers, text and anoher things.
     'django.contrib.humanize',
+    # django-allauth : Main apps.
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     # easy_thumbnails: Images handle and thumbnails generator.
     'easy_thumbnails',
     # django-bootstrap4: Handling forms and inputs everywhere.
@@ -47,6 +53,10 @@ INSTALLED_APPS = [
     # WFPY: Alerts app.
     'alerts',
 ]
+
+# django-allauth: Required
+SITE_ID = 1
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -103,6 +113,15 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# django-allauth: Authentication Backends
+# http://django-allauth.readthedocs.io/en/latest/installation.html#django
+AUTHENTICATION_BACKENDS = (
+    # django-allauth: Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # django-allauth: `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
