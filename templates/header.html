@@ -24,9 +24,6 @@
                         <a class="nav-link" href="{% url 'alerts' %}"><i class="fas fa-exclamation-triangle fa-fw fa-lg mr-1"></i> Alerts</a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="btn btn-sm btn-success ml-2 my-1" href="{% url 'account_signup' %}" role="button"><i class="fas fa-sign-in-alt fa-fw"></i> Sign Up</a>
-                    </li>
                     <li class="nav-item dropdown {% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}">
                         <a class="nav-link dropdown-toggle py-1" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid rounded-circle mr-1" src="{{user.userprofile.avatar|thumbnail_url:'avatar_header'|default:'/media/user/avatar/avatar_header.png'}}"> {{user.username}} </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">

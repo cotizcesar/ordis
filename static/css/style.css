@@ -37,11 +37,17 @@ body{
     right: 20px;
     bottom: 20px;
 }
+.btn-float:focus{
+    border: none;
+}
 .btn-float .fa-circle{
     cursor: pointer;
     -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
     -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
     box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+}
+.btn-float .fa-stack:hover{
+    opacity: 0.7;
 }
 /* Modal: Form Fix */
 #id_want label{

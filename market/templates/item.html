@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load humanize %}
 <div class="media bg-light small text-dark my-2 border-bottom border-right">
     <img class="img-fluid bg-light" src="{{order.item.image|thumbnail_url:'order'|default:'/media/item/order.png'}}" alt="{{order.item.name}}">
     <div class="media-body px-3 py-2">
@@ -14,6 +15,8 @@
         <p class="my-1">Mod Rank - {{order.mod_rank}}</p>
         {% endif %}
         <p class="m-0 {% if order.want == 'S'%}text-danger{% else %}text-success{% endif %}"><span>{{order.price}}</span> Platinum each by <a class="text-info" href="{% url 'userprofile' order.user.username %}">@{{order.user.username}}</a> 
+            - 
+            <span class="text-secondary">{{order.date_created|naturaltime}}</span>
             <span class="
                 {% if order.user.userprofile.status == 'O'%}
                 text-success 
