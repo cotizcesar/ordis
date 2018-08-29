@@ -28,11 +28,13 @@
                         <a class="nav-link dropdown-toggle py-1" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid rounded-circle mr-1" src="{{user.userprofile.avatar|thumbnail_url:'avatar_header'|default:'/media/user/avatar/avatar_header.png'}}"> {{user.username}} </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'userprofile' user.username %}"><i class="fas fa-user-circle fa-fw text-info"></i> My Profile</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-envelope fa-fw text-info"></i> Messages</a>
+                            <a class="dropdown-item disabled" href="#"><i class="fas fa-envelope fa-fw text-info"></i> Messages</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt fa-fw text-info"></i> Sign Out</a>
                         </div>
                     </li>
+                    {% else %}
+                        <a class="btn btn-sm btn-info ml-3 px-3" href="{% url 'account_login' %}" role="button"><i class="fas fa-sign-in-alt fa-fw mt-1"></i> Sign In</a>
                     {% endif %}
                 </ul>
             </div>

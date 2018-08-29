@@ -23,7 +23,7 @@
                     </div>
                 </form>
             </div>
-            <div class="bg-light p-3 my-3">
+            <div class="bg-light p-3 mt-3 mb-5">
                 {% get_providers as socialaccount_providers %}
                 {% if socialaccount_providers %}
                     <p>{% blocktrans with site.name as site_name %}Please sign in with one of your existing third party accounts. Or, <a class="text-info" href="{{ signup_url }}">sign up</a> for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
