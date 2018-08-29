@@ -1,5 +1,6 @@
 dj-database-url==0.5.0
 Django==2.1
+django-bootstrap4==0.0.7
 django-heroku==0.3.1
 easy-thumbnails==2.5
 gunicorn==19.9.0
