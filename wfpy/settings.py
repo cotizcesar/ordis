@@ -156,6 +156,32 @@ THUMBNAIL_ALIASES = {
 # easy_thumbnails: Renaming the image uploads.
 THUMBNAIL_NAMER = 'easy_thumbnails.namers.hashed'
 
+# django-allauth: Log In/Log Out redirection
+# http://django-allauth.readthedocs.io/en/latest/configuration.html
+LOGIN_REDIRECT_URL = 'market'
+
+# django-allauth: Email Registration Delivery
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'warframe.social@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = 'warframe.social@gmail.com'
+
+# django-allauth: Sign Up Validation
+ACCOUNT_EMAIL_REQUIRED = True
+#ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_BLACKLIST = ['admin']
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())

@@ -35,7 +35,7 @@ class Order(models.Model):
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    want = models.CharField(max_length=1, choices=WANT_CHOICES)
+    want = models.CharField(default='S', max_length=1, choices=WANT_CHOICES)
     price = models.PositiveIntegerField()
     quantity = models.PositiveIntegerField()
     mod_rank = models.PositiveIntegerField(null=True, blank=True)

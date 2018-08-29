@@ -32,6 +32,32 @@ body{
 
 /* Market */
 .btn-float{
+    cursor: pointer;
+    position: fixed;
     right: 20px;
     bottom: 20px;
+}
+.btn-float .fa-circle{
+    cursor: pointer;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+}
+/* Modal: Form Fix */
+#id_want label{
+    margin-right: 10px;
+    margin-bottom: 0px;
+    background: #343a40;
+    display: inline-block;
+    padding: 5px;
+    width: 20%;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #fff;
+}
+#id_want #id_want_0{
+    background: #c82333;
+}
+#id_want_1{
+    background: #28a745;
 }

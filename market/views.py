@@ -23,12 +23,13 @@ class Market(TemplateView, FormView):
         context['wtb'] = Order.objects.all().filter(want='B').exclude(is_active=False)
         return context
 
-class ItemDetail(DetailView):
+class ItemDetail(DetailView, FormView):
     model = Item
     template_name = "item_detail.html"
     pk_url_kwarg = "item_id"
     slug_url_kwarg = 'slug'
     query_pk_and_slug = True
+    form_class = OrderForm
 
     def get_context_data(self, *args, **kwargs):
         context = super(ItemDetail, self).get_context_data(**kwargs)
