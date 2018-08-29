@@ -1,13 +1,13 @@
 {% load thumbnail %}
-<div class="media bg-dark small text-light my-1">
-    <img class="img-fluid border-info bg-light" src="{{order.item.image|thumbnail_url:'order'|default:'/media/item/order.png'}}" alt="{{order.item.name}}">
+<div class="media bg-light small text-dark my-2 border-bottom border-right">
+    <img class="img-fluid bg-light" src="{{order.item.image|thumbnail_url:'order'|default:'/media/item/order.png'}}" alt="{{order.item.name}}">
     <div class="media-body px-3 py-2">
         <h6 class="{% if order.mod_rank %}mb-1{% else %}mb-4{% endif %}">
-            <a class="text-light" href="{% url 'item_detail' order.item.slug %}">{{order.item.name}}</a> 
+            <a class="text-dark" href="{% url 'item_detail' order.item.slug %}">{{order.item.name}}</a> 
             <span class="text-secondary small">[{{order.quantity}} <i class="fas fa-boxes fa-fw small"></i>]</span>
             <div class="float-right mt-1">
-                <a class="text-light" href="#" role="button"><i class="fas fa-comment fa-fw"></i></a>
-                <a class="text-light" href="#" role="button"><i class="fas fa-envelope fa-fw"></i></a>
+                <a class="text-secondary" href="#" role="button"><i class="fas fa-comment fa-fw"></i></a>
+                <a class="text-secondary" href="#" role="button"><i class="fas fa-envelope fa-fw"></i></a>
             </div>
         </h6>
         {% if order.mod_rank %}

@@ -1,0 +1,41 @@
+{% load thumbnail %}
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-gamepad fa-fw text-info mr-1"></i> Warframe.py</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="mx-2 my-auto d-inline w-50">
+                    <div id="omnisearch" class="input-group input-group-sm">
+                        <input type="text" class="form-control typeahead border" placeholder="Search: Items, Resources to Buy or Sell" aria-label="Search" aria-describedby="basic-addon2">
+                    </div>
+                </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home fa-fw fa-lg mr-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'market' %}"><i class="fas fa-store fa-fw fa-lg mr-1"></i> Market</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'alerts' %}"><i class="fas fa-exclamation-triangle fa-fw fa-lg mr-1"></i> Alerts</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown {% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}">
+                        <a class="nav-link dropdown-toggle py-1" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid rounded-circle mr-1" src="{{user.userprofile.avatar|thumbnail_url:'avatar_header'|default:'/media/user/avatar/avatar_header.png'}}"> {{user.username}} </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'userprofile' user.username %}"><i class="fas fa-user-circle fa-fw text-info"></i> My Profile</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-envelope fa-fw text-info"></i> Messages</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw text-info"></i> Sign Out</a>
+                        </div>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

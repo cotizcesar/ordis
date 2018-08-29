@@ -29,3 +29,9 @@ body{
     cursor: pointer;
     background: rgba(0,0,0,0.1);
 }
+
+/* Market */
+.btn-float{
+    right: 20px;
+    bottom: 20px;
+}

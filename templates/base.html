@@ -11,56 +11,21 @@
         <title>{% block sitename %}Warframe.py - {% endblock %}{% block title %}{% endblock %}</title>
     </head>
     <body>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container">
-                    <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-gamepad fa-fw text-info mr-1"></i> Warframe.py</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div class="mx-2 my-auto d-inline w-50">
-                            <div id="omnisearch" class="input-group input-group-sm">
-                                <input type="text" class="form-control typeahead border" placeholder="Search: Items, Resources to Buy or Sell" aria-label="Search" aria-describedby="basic-addon2">
-                            </div>
-                        </div>
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home fa-fw fa-lg mr-1"></i> Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'market' %}"><i class="fas fa-store fa-fw fa-lg mr-1"></i> Market</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'alerts' %}"><i class="fas fa-exclamation-triangle fa-fw fa-lg mr-1"></i> Alerts</a>
-                            </li>
-                            {% if user.is_authenticated %}
-                            <li class="nav-item dropdown {% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}">
-                                <a class="nav-link dropdown-toggle py-1" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid rounded-circle mr-1" src="{{user.userprofile.avatar|thumbnail_url:'avatar_header'|default:'/media/user/avatar/avatar_header.png'}}"> {{user.username}} </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{% url 'userprofile' user.username %}"><i class="fas fa-user-circle fa-fw text-info"></i> My Profile</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-envelope fa-fw text-info"></i> Messages</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw text-info"></i> Sign Out</a>
-                                </div>
-                            </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+        {% include 'header.html' %}
         <main>
             {% block content %}{% endblock %}
         </main>
         {% include 'footer.html' %}
+        {% block extras %}{% endblock %}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
         <script src="{% static 'js/typeahead.bundle.js' %}"></script>
         <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
             var search = function (nameKey, myArray){
                 for (var i=0; i < myArray.length; i++) {
                     if (myArray[i].name === nameKey) {
@@ -71,13 +36,10 @@
             var substringMatcher = function(strs) {
                 return function findMatches(q, cb) {
                     var matches, substringRegex;
-
                     // an array that will be populated with substring matches
                     matches = [];
-
                     // regex used to determine if a string contains the substring `q`
                     substrRegex = new RegExp(q, 'i');
-
                     // iterate through the pool of strings and for any string that
                     // contains the substring `q`, add it to the `matches` array
                     $.each(strs, function(i, str) {
@@ -88,32 +50,29 @@
 
                     cb(matches);
                 };
-                };
-
-                var data = [
-                    {% for item in omnisearch %}
-                        '{{item.name}}',
-                    {% endfor %}
-                ];
-
-                var url = [
-                    {% for item in omnisearch %}
-                        {name: '{{item.name}}', value:'{{item.slug}}'},
-                    {% endfor %}
-                ];
-
-                $('#omnisearch .typeahead').typeahead({
-                    hint: true,
-                    highlight: true,
-                    minLength: 1
-                },
-                {
-                    name: 'data',
-                    source: substringMatcher(data)
-                }).on('typeahead:selected', function(evt, item) {
-                    var resultObject = search(item, url);
-                    window.location = '{{request.build_absolute_uri}}' + 'market/items/' + resultObject.value;
-                });
+            };
+            var data = [
+                {% for item in omnisearch %}
+                    '{{item.name}}',
+                {% endfor %}
+            ];
+            var url = [
+                {% for item in omnisearch %}
+                    {name: '{{item.name}}', value:'{{item.slug}}'},
+                {% endfor %}
+            ];
+            $('#omnisearch .typeahead').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+            },
+            {
+                name: 'data',
+                source: substringMatcher(data)
+            }).on('typeahead:selected', function(evt, item) {
+                var resultObject = search(item, url);
+                window.location = '{{request.build_absolute_uri}}' + 'market/items/' + resultObject.value;
+            });
         </script>
     </body>
 </html>

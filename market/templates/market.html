@@ -20,3 +20,30 @@
     </div>
 </div>
 {% endblock %}
+{% block extras %}
+<div class="position-absolute btn-float text-center">
+    <button type="button" class="btn btn-danger mb-2 p-2" data-toggle="modal" data-target="#exampleModalCenter">
+        <i class="fas fa-plus fa-fw fa-2x"></i>
+    </button>
+    <p class="text-center text-danger font-weight-bold text-uppercase m-0">Place Order</p>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title text-uppercase" id="exampleModalCenterTitle">Place Order</h6>
+                <button type="button" class="close small" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times fa-sm" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger text-uppercase font-weight-bold btn-block">Place Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
