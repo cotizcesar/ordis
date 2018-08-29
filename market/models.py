@@ -39,7 +39,7 @@ class Order(models.Model):
     price = models.PositiveIntegerField()
     quantity = models.PositiveIntegerField()
     mod_rank = models.PositiveIntegerField(null=True, blank=True)
-    is_active = models.BooleanField()
+    is_active = models.BooleanField(default=True)
     is_ended = models.BooleanField(null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)

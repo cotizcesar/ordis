@@ -1,0 +1,28 @@
+{% load bootstrap4 %}
+<div class="position-absolute btn-float text-center">
+    <button type="button" class="btn btn-danger mb-2 p-2" data-toggle="modal" data-target="#myModal">
+        <i class="fas fa-plus fa-fw fa-2x"></i>
+    </button>
+    <p class="text-center text-danger font-weight-bold text-uppercase m-0">Place Order</p>
+</div>
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="PlaceOrder" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title text-uppercase" id="exampleModalCenterTitle">Place Order</h6>
+                <button type="button" class="close small" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times fa-sm" aria-hidden="true"></i>
+                </button>
+            </div>
+            <form action="{% url 'order_create' %}" method="post" class="form">
+                <div class="modal-body pb-0">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger text-uppercase font-weight-bold btn-block">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

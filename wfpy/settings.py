@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     # easy_thumbnails: Images handle and thumbnails generator.
     'easy_thumbnails',
+    # django-bootstrap4: Handling forms and inputs everywhere.
+    'bootstrap4',
     # WFPY: Core (Index, Pages, etc)
     'core',
     # WFPY: User Profiles app.
