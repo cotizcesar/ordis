@@ -8,20 +8,23 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="mx-2 my-auto d-inline w-25">
+                <div class="mx-2 my-auto d-inline w-50">
                     <div id="omnisearch" class="input-group input-group-sm">
                         <input type="text" class="form-control typeahead border" placeholder="Search: Items, Resources to Buy or Sell" aria-label="Search" aria-describedby="basic-addon2">
                     </div>
                 </div>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home fa-fw fa-lg mr-1"></i> Home</a>
+                        <a class="nav-link disabled {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}"><i class="fas fa-home fa-fw fa-lg mr-1"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'market' %}"><i class="fas fa-store fa-fw fa-lg mr-1"></i> Market</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'market' %}active{% endif %}" href="{% url 'market' %}"><i class="fas fa-store fa-fw fa-lg mr-1"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'alerts' %}"><i class="fas fa-exclamation-triangle fa-fw fa-lg mr-1"></i> Alerts</a>
+                        <a class="nav-link disabled {% if request.resolver_match.url_name == 'alerts' %}active{% endif %}" href="{% url 'alerts' %}"><i class="fas fa-exclamation-triangle fa-fw fa-lg mr-1"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled {% if request.resolver_match.url_name == 'codex' %}active{% endif %}" href="{% url 'codex' %}"><i class="fas fa-book-open fa-fw fa-lg mr-1"></i></a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item dropdown {% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}">

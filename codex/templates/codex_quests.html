@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block title %}Codex{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 bg-dark text-light">                
+            {% include 'codex_menu.html' %}
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                {% for quest in quests %}
+                <div class="col-md-4">
+                    <div class="quest my-3">
+                        <img class="img-fluid" src="{{quest.image|thumbnail_url:'quest_thumb'|default:'/media/codex/quests/quest_thumb.png'}}">
+                        <div class="py-2 px-3 bg-light">
+                            <a href="#" class="text-dark text-uppercase font-weight-bold mb-0">{{quest.name}}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

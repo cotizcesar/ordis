@@ -19,8 +19,8 @@ class Market(TemplateView, FormView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Market, self).get_context_data(**kwargs)
-        context['wts'] = Order.objects.all().filter(want='S').exclude(is_active=False)
-        context['wtb'] = Order.objects.all().filter(want='B').exclude(is_active=False)
+        context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(is_active=False)[:30]
+        context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:30]
         return context
 
 class ItemDetail(DetailView, FormView):

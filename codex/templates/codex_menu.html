@@ -1,0 +1,11 @@
+<div class="my-3">
+    <h1 class="h5"><i class="fas fa-book-open fa-fw fa-lg text-info mr-1"></i> Codex</h1>
+    <p>Here is where you can find everything in the game. Quests, Universe, Training and Missions.</p>
+    <hr>
+    <nav class="nav flex-column">
+        <a class="nav-link text-light text-uppercase {% if request.resolver_match.url_name == 'codex_quests' %}active{% endif %}" href="{% url 'codex_quests' %}"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Quests</a>
+        <a class="nav-link text-light text-uppercase {% if request.resolver_match.url_name == 'codex_universe' %}active{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Universe</a>
+        <a class="nav-link text-light text-uppercase {% if request.resolver_match.url_name == 'codex_training' %}active{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Training</a>
+        <a class="nav-link text-light text-uppercase {% if request.resolver_match.url_name == 'codex_missions' %}active{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Missions</a>
+    </nav>
+</div>
