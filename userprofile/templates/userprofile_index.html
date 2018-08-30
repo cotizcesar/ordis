@@ -11,12 +11,12 @@
 <div class="bg-dark text-light">
     <div class="container">
         <div class="row">
-            <div class="media col-md-12">
+            <div class="col-md-12">
                 <div class="row py-3">
                     <div class="col-md-2 my-3">
                         <img class="img-fluid mr-5 rounded-circle" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'/media/user/avatar/avatar.png'}}" alt="@{{profile.username}} avatar image.">
                     </div>
-                    <div class="media-body col-md-10 my-3">
+                    <div class="col-md-10 my-3">
                         <h1 class="my-0 h2">
                             {% if profile.first_name and profile.last_name %}
                                 {{profile.get_full_name}}
