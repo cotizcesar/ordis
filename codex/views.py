@@ -20,5 +20,5 @@ class Quests(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Quests, self).get_context_data(**kwargs)
-        context['quests'] = Quest.objects.all().values('name', 'image')
+        context['quests'] = Quest.objects.all().values('name', 'image', 'slug')
         return context
