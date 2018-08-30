@@ -3,6 +3,7 @@
     <p>Here is where you can find everything in the game. Quests, Universe, Training and Missions.</p>
     <hr>
     <nav class="nav flex-column">
+        <a class="nav-link text-uppercase {% if request.resolver_match.url_name == 'codex' %}text-light{% endif %}" href="{% url 'codex' %}"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Home</a>
         <a class="nav-link text-uppercase {% if request.resolver_match.url_name == 'codex_quests' %}text-light{% endif %}" href="{% url 'codex_quests' %}"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Quests</a>
         {% if quests %}
             {% for quest in quests %}
