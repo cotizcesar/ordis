@@ -7,7 +7,7 @@
         <a class="nav-link text-uppercase {% if request.resolver_match.url_name == 'codex_quests' %}text-light{% else %}text-secondary{% endif %}" href="{% url 'codex_quests' %}"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Quests</a>
         {% if quests %}
             {% for quest in quests %}
-            <a class="nav-link text-uppercase text-secondary ml-3 small" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> {{quest.name}}</a>
+            <a class="nav-link text-uppercase text-secondary ml-3 small" href="{% url 'codex_quest_detail' quest.slug %}"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> {{quest.name}}</a>
             {% endfor %}
         {% endif %}
         <a class="nav-link disabled text-uppercase {% if request.resolver_match.url_name == 'codex_universe' %}text-light{% else %}text-secondary{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Universe</a>
