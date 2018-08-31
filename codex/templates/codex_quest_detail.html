@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}{{quest.name}}{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 bg-dark text-light">
+            <div class="my-3">
+                <img class="img-fluid mb-3" src="https://via.placeholder.com/350x196">
+                <h1 class="h3"><i class="fas fa-book-open fa-fw text-info mr-1"></i> {{quest.name}}</h1>
+                <hr>
+                <h2 class="h6 text-info text-uppercase">Description</h2>
+                <p class="font-italic mb-0">{{quest.description|linebreaks}}</p>
+                <hr>
+                <div class="row">
+                    {% if quest.tipe %}
+                    <div class="col-md-6 my-2">
+                        <h2 class="h6 text-info text-uppercase">Type</h2>
+                        <p class="mb-0">{{quest.get_tipe_display}}</p>
+                    </div>
+                    {% endif %}
+                    <div class="col-md-6 my-2">
+                        <h2 class="h6 text-info text-uppercase">Requirements</h2>
+                        <p class="mb-0">...</p>
+                    </div>
+                    <div class="col-md-6 my-2">
+                        <h2 class="h6 text-info text-uppercase">Rewards</h2>
+                        <p class="mb-0">...</p>
+                    </div>
+                    <div class="col-md-6 my-2">
+                        <h2 class="h6 text-info text-uppercase">Chronology</h2>
+                        <p class="mb-0">...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <ul class="nav nav-tabs my-3" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-eye fa-fw"></i> Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="walkthrough-tab" data-toggle="tab" href="#walkthrough" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-walking fa-fw"></i> Walkthrough</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-book fa-fw"></i> Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="trivia-tab" data-toggle="tab" href="#trivia" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-lightbulb fa-fw"></i> Trivia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="patchhistory-tab" data-toggle="tab" href="#patchhistory" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-history fa-fw"></i> Patch History</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                    <div class="p-3">
+                        <h2 class="text-info"><i class="fas fa-eye fa-fw"></i> Overview</h2>
+                        <hr>
+                        {{quest.description|linebreaks}}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="walkthrough" role="tabpanel" aria-labelledby="walkthrough-tab">w</div>
+                <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">n</div>
+                <div class="tab-pane fade" id="trivia" role="tabpanel" aria-labelledby="trivia-tab">t</div>
+                <div class="tab-pane fade" id="patchhistory" role="tabpanel" aria-labelledby="patchhistory-tab">p</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

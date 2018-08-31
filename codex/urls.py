@@ -18,9 +18,10 @@ from django.urls import include, path
 from django.conf.urls import url
 
 # userprofile: Importing Views
-from .views import Codex, Quests
+from .views import Codex, Quests, QuestDetail
 
 urlpatterns = [
     path('codex/', Codex.as_view(), name='codex'),
     path('codex/quests', Quests.as_view(), name='codex_quests'),
+    url(r'codex/quests/(?P<slug>[-\w]+)$', QuestDetail.as_view(), name='codex_quest_detail'),
 ]
