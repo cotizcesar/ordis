@@ -33,8 +33,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
-            <ul class="nav nav-tabs my-3" id="myTab" role="tablist">
+        <div class="col-md-8 my-3">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-eye fa-fw"></i> Overview</a>
                 </li>
@@ -51,9 +51,9 @@
                     <a class="nav-link" id="patchhistory-tab" data-toggle="tab" href="#patchhistory" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-history fa-fw"></i> Patch History</a>
                 </li>
             </ul>
-            <div class="tab-content" id="myTabContent">
+            <div class="tab-content border-right border-bottom border-left" id="myTabContent">
                 <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
-                    <div class="p-3">
+                    <div class="px-3 pt-3">
                         <h2 class="text-info"><i class="fas fa-eye fa-fw"></i> Overview</h2>
                         <hr>
                         {{quest.description|linebreaks}}
