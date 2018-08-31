@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 {% block title %}{{quest.name}}{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-4 bg-dark text-light">
             <div class="my-3">
-                <img class="img-fluid mb-3" src="https://via.placeholder.com/350x196">
+                <img class="img-fluid mb-3" src="{{quest.image|thumbnail_url:'quest_thumb'|default:'https://via.placeholder.com/350x196'}}">
                 <h1 class="h3"><i class="fas fa-book-open fa-fw text-info mr-1"></i> {{quest.name}}</h1>
                 <hr>
                 <h2 class="h6 text-info text-uppercase">Description</h2>
@@ -54,7 +55,7 @@
             <div class="tab-content border-right border-bottom border-left" id="myTabContent">
                 <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                     <div class="px-3 pt-3">
-                        <h2 class="text-info"><i class="fas fa-eye fa-fw"></i> Overview</h2>
+                        <h4 class="text-info"><i class="fas fa-eye fa-fw"></i> Overview</h4>
                         <hr>
                         {{quest.description|linebreaks}}
                     </div>

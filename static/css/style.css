@@ -1,6 +1,9 @@
 body{
     font-size: 0.8rem;
 }
+a{
+    color: #17a2b8;
+}
 .list-style-none{
     list-style: none;
 }
