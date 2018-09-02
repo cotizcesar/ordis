@@ -46,7 +46,7 @@
                                 <a class="btn btn-sm btn-info btn-block px-1" href="{% url 'codex_quest_detail' quest.previous_quest.slug %}" role="button"><i class="fas fa-chevron-left fa-fw"></i> Prev: {{quest.previous_quest}}</a>
                             </div>
                             {% endif %}
-                            {% if quest.previous_quest %}
+                            {% if quest.next_quest %}
                             <div class="col-md-6 my-1">
                                 <a class="btn btn-sm btn-info btn-block" href="{% url 'codex_quest_detail' quest.next_quest.slug %}" role="button">Next: {{quest.next_quest}} <i class="fas fa-chevron-right fa-fw"></i></a>
                             </div>
