@@ -30,7 +30,7 @@
                     {% if quest.previous_quest or quest.next_quest %}
                     <div class="col-md-12 my-2">
                         <h2 class="h6 text-info text-uppercase">Chronology</h2>
-                        <ul class="list-style-none p-0">
+                        <ul class="list-style-none p-0 m-0">
                             {% if quest.previous_quest %}
                             <li><p class="mb-0">Previous Quest: <a href="{% url 'codex_quest_detail' quest.previous_quest.slug %}">{{quest.previous_quest}}</a></p></li>
                             {% endif %}
