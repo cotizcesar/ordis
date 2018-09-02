@@ -23,21 +23,35 @@
                         <h2 class="h6 text-info text-uppercase">Requirements</h2>
                         <p class="mb-0">In Progress...</p>
                     </div>
+                    {% if quest.is_replayable %}
+                    <div class="col-md-6 my-2">
+                        <h2 class="h6 text-info text-uppercase">Replayable</h2>
+                        {% if quest.is_replayable == True %}
+                        <p class="mb-0 text-success">Replayable</p>
+                        {% else %}
+                        <p class="mb-0 text-danger">Not Replayable</p>
+                        {% endif %}
+                    </div>
+                    {% endif %}
                     <div class="col-md-6 my-2">
                         <h2 class="h6 text-info text-uppercase">Rewards</h2>
                         <p class="mb-0">In Progress...</p>
                     </div>
                     {% if quest.previous_quest or quest.next_quest %}
                     <div class="col-md-12 my-2">
-                        <h2 class="h6 text-info text-uppercase">Chronology</h2>
-                        <ul class="list-style-none p-0 m-0">
+                        <h2 class="h6 text-info text-uppercase text-center">Chronology</h2>
+                        <div class="row">
                             {% if quest.previous_quest %}
-                            <li><p class="mb-0">Previous Quest: <a href="{% url 'codex_quest_detail' quest.previous_quest.slug %}">{{quest.previous_quest}}</a></p></li>
+                            <div class="col-md-6 my-1">
+                                <a class="btn btn-sm btn-info btn-block px-1" href="{% url 'codex_quest_detail' quest.previous_quest.slug %}" role="button"><i class="fas fa-chevron-left fa-fw"></i> Prev: {{quest.previous_quest}}</a>
+                            </div>
                             {% endif %}
-                            {% if quest.next_quest %}
-                            <li><p class="mb-0">Next Quest: <a href="{% url 'codex_quest_detail' quest.next_quest.slug %}">{{quest.next_quest}}</a></p></li>
+                            {% if quest.previous_quest %}
+                            <div class="col-md-6 my-1">
+                                <a class="btn btn-sm btn-info btn-block" href="{% url 'codex_quest_detail' quest.next_quest.slug %}" role="button">Next: {{quest.next_quest}} <i class="fas fa-chevron-right fa-fw"></i></a>
+                            </div>
                             {% endif %}
-                        </ul>
+                        </div>
                     </div>
                     {% endif %}
                 </div>
