@@ -32,7 +32,7 @@ class Weapon(models.Model):
         ('M', 'Melee'),
     )
     name = models.CharField(max_length=140)
-    slug = models.SlugField(default='slug')
+    slug = models.SlugField()
     image = models.ImageField(upload_to='weapons', default='weapons/default.png', blank=True)
     tipe = models.CharField(default='P', max_length=1, choices=TIPE_CHOICES)
     description = models.TextField(max_length=600)
@@ -73,11 +73,11 @@ class Stat(models.Model):
         ('Ve', 'Vertical Spread'),        
     )
     TRIGGER_CHOICES = (
-        ('', 'Auto'),
-        ('', 'Burst'),
-        ('', 'Charge'),
-        ('', 'Held'),
-        ('', 'Semi'),
+        ('A', 'Auto'),
+        ('B', 'Burst'),
+        ('C', 'Charge'),
+        ('H', 'Held'),
+        ('S', 'Semi'),
     )
     tipe = models.CharField(default='Pr', max_length=2, choices=TIPE_CHOICES)
 

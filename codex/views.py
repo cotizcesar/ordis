@@ -36,3 +36,9 @@ class Weapons(TemplateView):
         context = super(Weapons, self).get_context_data(**kwargs)
         context['weapons'] = Weapon.objects.all().values('name', 'image', 'slug').order_by('name')
         return context
+
+class WeaponDetail(DetailView):
+    model = Weapon
+    template_name = 'codex_universe_weapon_detail.html'
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'

@@ -18,11 +18,12 @@ from django.urls import include, path
 from django.conf.urls import url
 
 # userprofile: Importing Views
-from .views import Codex, Quests, QuestDetail, Weapons
+from .views import Codex, Quests, QuestDetail, Weapons, WeaponDetail
 
 urlpatterns = [
     path('codex/', Codex.as_view(), name='codex'),
     path('codex/quests', Quests.as_view(), name='codex_quests'),
     url(r'codex/quests/(?P<slug>[-\w]+)$', QuestDetail.as_view(), name='codex_quest_detail'),
     path('codex/universe/weapons', Weapons.as_view(), name='codex_universe_weapons'),
+    url(r'codex/universe/weapons/(?P<slug>[-\w]+)$', WeaponDetail.as_view(), name='codex_universe_weapon_detail'),
 ]
