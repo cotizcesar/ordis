@@ -18,12 +18,16 @@ from django.urls import include, path
 from django.conf.urls import url
 
 # userprofile: Importing Views
-from .views import Codex, Quests, QuestDetail, Weapons, WeaponDetail
+from .views import Codex, Quests, QuestDetail, Universe, Weapons, WeaponsPrimary, WeaponsSecondary, WeaponsMelee, WeaponDetail
 
 urlpatterns = [
     path('codex/', Codex.as_view(), name='codex'),
     path('codex/quests', Quests.as_view(), name='codex_quests'),
     url(r'codex/quests/(?P<slug>[-\w]+)$', QuestDetail.as_view(), name='codex_quest_detail'),
+    path('codex/universe', Universe.as_view(), name='codex_universe'),
     path('codex/universe/weapons', Weapons.as_view(), name='codex_universe_weapons'),
-    url(r'codex/universe/weapons/(?P<slug>[-\w]+)$', WeaponDetail.as_view(), name='codex_universe_weapon_detail'),
+    path('codex/universe/weapons/primary', WeaponsPrimary.as_view(), name='codex_universe_weapons_primary'),
+    path('codex/universe/weapons/secondary', WeaponsSecondary.as_view(), name='codex_universe_weapons_secondary'),
+    path('codex/universe/weapons/melee', WeaponsMelee.as_view(), name='codex_universe_weapons_melee'),
+    url(r'codex/universe/weapon/(?P<slug>[-\w]+)$', WeaponDetail.as_view(), name='codex_universe_weapon_detail'),
 ]

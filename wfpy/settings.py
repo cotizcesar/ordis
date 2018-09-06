@@ -154,6 +154,7 @@ THUMBNAIL_ALIASES = {
         'order': {'size': (74, 74), 'crop': 'smart', 'upscale' : True},
         'quest_thumb': {'size': (475, 267), 'crop': 'smart', 'upscale' : True},
         'quest': {'size': (350, 196), 'crop': 'smart', 'upscale' : True},
+        'weapon_thumb': {'size': (512, 288), 'crop': 'smart', 'upscale' : True},
     },
 }
 

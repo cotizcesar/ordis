@@ -1,0 +1,9 @@
+{% load thumbnail %}
+<div class="col-md-4">
+    <div class="quest my-3">
+        <img class="img-fluid" src="{{weapon.image|thumbnail_url:'weapon_thumb'|default:'https://via.placeholder.com/512x288'}}">
+        <div class="py-2 px-3 bg-light">
+            <a href="#" class="text-dark text-uppercase font-weight-bold mb-0">{{weapon.name}}</a>
+        </div>
+    </div>
+</div>

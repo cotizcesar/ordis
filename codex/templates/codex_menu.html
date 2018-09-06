@@ -10,7 +10,15 @@
             <a class="nav-link text-uppercase text-secondary ml-3 small" href="{% url 'codex_quest_detail' quest.slug %}"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> {{quest.name}}</a>
             {% endfor %}
         {% endif %}
-        <a class="nav-link disabled text-uppercase {% if request.resolver_match.url_name == 'codex_universe' %}text-light{% else %}text-secondary{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Universe</a>
+        <a class="nav-link disabled text-uppercase {% if request.resolver_match.url_name == 'codex_universe' %}text-light{% else %}text-secondary{% endif %}" href="{% url 'codex_universe' %}"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Universe</a>
+        {% if request.resolver_match.url_name == 'codex_universe' or 'codex_universe_weapons' %}
+            <a class="nav-link text-uppercase {% if request.resolver_match.url_name == 'codex_universe_weapons' %}text-light{% else %}text-secondary{% endif %} ml-3 small" href="{% url 'codex_universe_weapons' %}"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Weapons</a>
+        {% endif %}
+        {% if request.resolver_match.url_name == 'codex_universe_weapons' or 'codex_universe_weapons_primary' or 'codex_universe_weapons_secondary' or 'codex_universe_weapons_melee' %}
+            <a class="nav-link text-uppercase {% if request.resolver_match.url_name == 'codex_universe_weapons_primary' %}text-light{% else %}text-secondary{% endif %} ml-4 small" href="{% url 'codex_universe_weapons_primary' %}"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Primary</a>
+            <a class="nav-link text-uppercase {% if request.resolver_match.url_name == 'codex_universe_weapons_secondary' %}text-light{% else %}text-secondary{% endif %} ml-4 small" href="{% url 'codex_universe_weapons_secondary' %}"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Secondary</a>
+            <a class="nav-link text-uppercase {% if request.resolver_match.url_name == 'codex_universe_weapons_melee' %}text-light{% else %}text-secondary{% endif %} ml-4 small" href="{% url 'codex_universe_weapons_melee' %}"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Melee</a>
+        {% endif %}
         <a class="nav-link disabled text-uppercase {% if request.resolver_match.url_name == 'codex_training' %}text-light{% else %}text-secondary{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Training</a>
         <a class="nav-link disabled text-uppercase {% if request.resolver_match.url_name == 'codex_missions' %}text-light{% else %}text-secondary{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Missions</a>
     </nav>
