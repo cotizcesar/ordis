@@ -1,13 +1,8 @@
 from django.contrib import admin
 
 # Core: Importing Models
-#from .models import Quest
+from .models import Quest, Weapon, Stat
 
-#admin.site.register(Quest)
-
-from import_export.admin import ImportExportModelAdmin
-from .models import Quest
-
-@admin.register(Quest)
-class QuestAdmin(ImportExportModelAdmin):
-    pass
+admin.site.register(Quest)
+admin.site.register(Weapon)
+admin.site.register(Stat)
