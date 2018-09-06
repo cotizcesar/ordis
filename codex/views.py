@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
 # Codex: Importing Models
-from .models import Quest
+from .models import Quest, Weapon
 
 class Codex(TemplateView):
     template_name = 'codex.html'
@@ -28,3 +28,11 @@ class QuestDetail(DetailView):
     template_name = 'codex_quest_detail.html'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+
+class Weapons(TemplateView):
+    template_name = 'codex_universe_weapons.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(Weapons, self).get_context_data(**kwargs)
+        context['weapons'] = Weapon.objects.all().values('name', 'image', 'slug').order_by('name')
+        return context

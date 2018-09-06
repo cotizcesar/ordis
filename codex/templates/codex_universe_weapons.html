@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block title %}Weapons{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 bg-dark text-light">                
+            {% include 'codex_menu.html' %}
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                {% for weapon in weapons %}
+                <div class="col-md-4">
+                    <div class="quest my-3">
+                        <img class="img-fluid" src="{{weapon.image|thumbnail_url:'quest_thumb'|default:'https://via.placeholder.com/255x143'}}">
+                        <div class="py-2 px-3 bg-light">
+                            <a href="#" class="text-dark text-uppercase font-weight-bold mb-0">{{weapon.name}}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<h1>Weapons soon!</h1>
+{% endblock %}

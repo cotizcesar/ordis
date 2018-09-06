@@ -32,14 +32,13 @@ class Weapon(models.Model):
         ('M', 'Melee'),
     )
     name = models.CharField(max_length=140)
+    slug = models.SlugField(default='slug')
     image = models.ImageField(upload_to='weapons', default='weapons/default.png', blank=True)
     tipe = models.CharField(default='P', max_length=1, choices=TIPE_CHOICES)
     description = models.TextField(max_length=600)
     mastery_rank = models.PositiveIntegerField(null=True, blank=True)
-    is_tradeable = models.BooleanField(default=False)
-
-    class Meta:
-        ordering = ['name',]
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.name
