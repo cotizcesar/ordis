@@ -8,17 +8,34 @@
             {% include 'codex_menu.html' %}
         </div>
         <div class="col-md-9">
+            <h1 class="h3 mt-3 text-info"><i class="fas fa-search fa-fw"></i> Weapons</h1>
+            <p class="mb-0 text-secondary font-italic">Please choose a category</p>
+            <hr>
             <div class="row">
-                {% for weapon in weapons %}
                 <div class="col-md-4">
                     <div class="quest my-3">
-                        <img class="img-fluid" src="{{weapon.image|thumbnail_url:'quest_thumb'|default:'https://via.placeholder.com/512x288'}}">
+                        <img class="img-fluid" src="https://via.placeholder.com/512x288">
                         <div class="py-2 px-3 bg-light">
-                            <a href="#" class="text-dark text-uppercase font-weight-bold mb-0">{{weapon.name}}</a>
+                            <a href="{% url 'codex_universe_weapons_primary' %}" class="text-dark text-uppercase font-weight-bold mb-0">Primary</a>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+                <div class="col-md-4">
+                    <div class="quest my-3">
+                        <img class="img-fluid" src="https://via.placeholder.com/512x288">
+                        <div class="py-2 px-3 bg-light">
+                            <a href="{% url 'codex_universe_weapons_secondary' %}" class="text-dark text-uppercase font-weight-bold mb-0">Secondary</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="quest my-3">
+                        <img class="img-fluid" src="https://via.placeholder.com/512x288">
+                        <div class="py-2 px-3 bg-light">
+                            <a href="{% url 'codex_universe_weapons_melee' %}" class="text-dark text-uppercase font-weight-bold mb-0">Melee</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
