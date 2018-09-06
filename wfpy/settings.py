@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     # django-bootstrap4: Handling forms and inputs everywhere.
     'bootstrap4',
+    # django-import-export: App for database migration.
+    'import_export',
     # WFPY: Core (Index, Pages, etc)
     'core',
     # WFPY: User Profiles app.
@@ -185,6 +187,9 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_BLACKLIST = ['admin']
 ACCOUNT_USERNAME_MIN_LENGTH = 4
+
+# django-import-export:
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 # Configure Django App for Heroku.
 import django_heroku
