@@ -37,6 +37,9 @@ class Weapon(models.Model):
     description = models.TextField(max_length=600)
     mastery_rank = models.PositiveIntegerField(null=True, blank=True)
     is_tradeable = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['name',]
     
     def __str__(self):
         return self.name
@@ -122,8 +125,3 @@ class Stat(models.Model):
     magnetic = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
     radiation = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
     viral = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-
-    
-
-    
-    
