@@ -79,6 +79,7 @@ class Stat(models.Model):
         ('H', 'Held'),
         ('S', 'Semi'),
     )
+    weapon = models.ForeignKey(Weapon, on_delete=models.CASCADE, null=True)
     tipe = models.CharField(default='Pr', max_length=2, choices=TIPE_CHOICES)
 
     # Primary / Secondary
