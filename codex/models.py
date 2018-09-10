@@ -27,9 +27,9 @@ class QuestWalkthrough(models.Model):
 
 class Weapon(models.Model):
     TIPE_CHOICES = (
-        ('P', 'Primary'),
-        ('S', 'Secondary'),
-        ('M', 'Melee'),
+        ('P', 'Primary Weapon'),
+        ('S', 'Secondary Weapon'),
+        ('M', 'Melee Weapon'),
     )
     name = models.CharField(max_length=140)
     slug = models.SlugField()
@@ -74,7 +74,7 @@ class Stat(models.Model):
     )
     TRIGGER_CHOICES = (
         ('A', 'Auto'),
-        ('B', 'Burst'),
+        ('B', 'Burst'), 
         ('C', 'Charge'),
         ('H', 'Held'),
         ('S', 'Semi'),
@@ -83,45 +83,48 @@ class Stat(models.Model):
     tipe = models.CharField(default='Pr', max_length=2, choices=TIPE_CHOICES)
 
     # Primary / Secondary
-    accuracy = models.DecimalField(max_digits=4, decimal_places=1) # decimal 1 digito
-    charge_rate = models.DecimalField(max_digits=3, decimal_places=2) # decimal 2 digitos   
-    fire_rate = models.DecimalField(max_digits=4, decimal_places=2) # decimal 2 digitos
-    magazine = models.PositiveIntegerField() # Entero
+    accuracy = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    charge_rate = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True) # decimal 2 digitos   
+    fire_rate = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True) # decimal 2 digitos
+    magazine = models.PositiveIntegerField(blank=True, null=True) # Entero
     noise = models.BooleanField() # lista por ahora un bool.
-    punch_through = models.DecimalField(max_digits=2, decimal_places=1) # decimal 1 digito
-    rload = models.DecimalField(max_digits=2, decimal_places=1) # decimal 1 digito
-    trigger = models.CharField(default='A', max_length=1, choices=TRIGGER_CHOICES) # lista
+    punch_through = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    rload = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    trigger = models.CharField(max_length=1, choices=TRIGGER_CHOICES, blank=True, null=True) # lista
 
     # Melee Stats
-    attack_speed = models.DecimalField(max_digits=4, decimal_places=3) # decimal 3 digitos
-    channeling_cost = models.PositiveIntegerField() # entero
-    channeling_damage = models.DecimalField(max_digits=2, decimal_places=1) # decimal 1 digito con x
-    damage_block = models.DecimalField(max_digits=4, decimal_places=1) # decimal 1 digito con %
-    leap_attack = models.DecimalField(max_digits=4, decimal_places=1) # decimal 1 digito
-    spin_attack = models.DecimalField(max_digits=4, decimal_places=1) # decimal 1 digito
-    wall_attack = models.DecimalField(max_digits=4, decimal_places=1) # decimal 1 digito
+    attack_speed = models.DecimalField(max_digits=4, decimal_places=3, blank=True, null=True) # decimal 3 digitos
+    channeling_cost = models.PositiveIntegerField(blank=True, null=True) # entero
+    channeling_damage = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True) # decimal 1 digito con x
+    damage_block = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito con %
+    leap_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    spin_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    wall_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
 
     # Primary / Secondary / Melee - Stats     
-    critical_chance = models.DecimalField(max_digits=4, decimal_places=1) # decimal 1 digito con %
-    critical_multiplier = models.DecimalField(max_digits=2, decimal_places=1) # decimal 1 digito con x
-    status = models.DecimalField(max_digits=4, decimal_places=1) # decimal 1 digito con %
+    critical_chance = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito con %
+    critical_multiplier = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True) # decimal 1 digito con x
+    status = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito con %
 
     # Status: Normal
-    impact = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-    puncture = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-    slash = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
+    impact = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    puncture = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    slash = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
 
     # Status: Normal
-    cold = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-    electricity = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-    heat = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-    toxin = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-    void = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
+    cold = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    electricity = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    heat = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    toxin = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    void = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
 
     # Status: Combined, Damage 2.0
-    blast = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-    corrosive = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-    gas = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-    magnetic = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-    radiation = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
-    viral = models.DecimalField(max_digits=5, decimal_places=1) # decimal 1 digito
+    blast = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    corrosive = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    gas = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    magnetic = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    radiation = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    viral = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+
+    def __str__(self):
+        return self.weapon.name + ' > ' + self.tipe

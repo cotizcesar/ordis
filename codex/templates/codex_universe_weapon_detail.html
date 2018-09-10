@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
-{% block title %}{% endblock %}
+{% load thumbnail %}
+{% block title %}{{weapon.name}}{% endblock %}
 {% block content %}
-Hola!
+<div class="container">
+    <div class="col-md-4 bg-dark text-light">
+        <img class="img-fluid my-3 bg-light" src="{{weapon.image|thumbnail_url:'weapon_thumb'|default:'https://via.placeholder.com/480x270'}}">
+        <h1 class="h3">{{weapon.name}}</h1>
+        <p class="h6 mb-0 text-uppercase">
+            {{weapon.get_tipe_display}} 
+            {% if weapon.mastery_rank %}
+             - Mastery Rank <i class="fas fa-arrow-alt-circle-up fa-fw"></i> {{weapon.mastery_rank}}
+            {% endif %}
+        </p>
+        <hr>
+        <h2 class="h6 text-uppercase text-info"><i class="fas fa-info-circle fa-fw"></i> Description</h2>
+        <p class="m-0">{{weapon.description}}</p>
+        <hr>
+        <h2 class="h6 text-uppercase text-info"><i class="fas fa-info-circle fa-fw"></i> Weapon Stats</h2>
+        {% include 'codex_universe_weapon_detail_stat.html'%}
+    </div>
+</div>
 {% endblock %}
