@@ -18,7 +18,7 @@ class Quest(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['date_created']
+        ordering = ['tipe']
 
     def __str__(self):
         return self.name
