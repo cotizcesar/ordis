@@ -14,12 +14,11 @@ class Quest(models.Model):
     previous_quest = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='prv_quest')
     next_quest = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='nxt_quest')
     is_replayable = models.BooleanField(default=True)
-    order_by = models.PositiveIntegerField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['order_by']
+        ordering = ['id']
 
     def __str__(self):
         return self.name
