@@ -19,7 +19,7 @@ class Quest(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['tipe']
+        ordering = ['order_by']
 
     def __str__(self):
         return self.name
