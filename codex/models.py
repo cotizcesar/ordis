@@ -43,6 +43,9 @@ class Weapon(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
@@ -128,6 +131,9 @@ class Stat(models.Model):
     magnetic = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
     radiation = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
     viral = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+
+    class Meta:
+        ordering = ['tipe']
 
     def __str__(self):
         return self.weapon.name + ' > ' + self.tipe
