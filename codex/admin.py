@@ -1,11 +1,11 @@
-#from django.contrib import admin
+from django.contrib import admin
 
 # Core: Importing Models
-#from .models import Quest, Weapon, Stat
+from .models import Quest, Weapon, Stat
 
-#admin.site.register(Quest)
-#admin.site.register(Weapon)
-#admin.site.register(Stat)
+admin.site.register(Quest)
+admin.site.register(Weapon)
+admin.site.register(Stat)
 
 from import_export import resources
 from .models import Quest, Weapon, Stat
