@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
 # Codex: Importing Models
-from .models import Quest, Weapon, Stat
+from .models import Quest, QuestWalkthrough, Weapon, Stat
 
 class Codex(TemplateView):
     template_name = 'codex.html'
