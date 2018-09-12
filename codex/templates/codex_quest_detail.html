@@ -77,7 +77,7 @@
                     {% for walkthrough in walkthroughs %}
                     <h2>{{walkthrough.name}}</h2>
                     <hr>
-                    <p>{{walkthrough.description}}</p>
+                    <p>{{walkthrough.description|safe}}</p>
                     {% endfor %}
                 </div>
                 <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">n</div>
