@@ -21,9 +21,9 @@ class Quest(models.Model):
         return self.name
 
 class QuestWalkthrough(models.Model):
-    quest = models.OneToOneField('Quest', on_delete=models.CASCADE)
+    quest = models.ForeignKey(Quest, on_delete=models.CASCADE)
     name = models.CharField(max_length=140)
-    description = models.CharField(max_length=5000)
+    description = models.TextField()
 
 class Weapon(models.Model):
     TIPE_CHOICES = (

@@ -73,7 +73,10 @@
                 </li>
             </ul>
             <div class="tab-content border-right border-bottom border-left" id="myTabContent">
-                <div class="tab-pane fade show active" id="walkthrough" role="tabpanel" aria-labelledby="walkthrough-tab">w</div>
+                <div class="tab-pane fade show active" id="walkthrough" role="tabpanel" aria-labelledby="walkthrough-tab">
+                    {% for walkthrough in walkthroughs %}
+                    {% endfor %}
+                </div>
                 <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">n</div>
                 <div class="tab-pane fade" id="trivia" role="tabpanel" aria-labelledby="trivia-tab">t</div>
                 <div class="tab-pane fade" id="patchhistory" role="tabpanel" aria-labelledby="patchhistory-tab">p</div>

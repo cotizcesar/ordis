@@ -29,6 +29,11 @@ class QuestDetail(DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(QuestDetail, self).get_context_data(**kwargs)
+        context['walkthroughs'] = QuestWalkthrough.objects.filter(quest=self.get_object()).order_by('pk')
+        return context
+
 class Universe(TemplateView):
     template_name = 'codex_universe.html'
 
