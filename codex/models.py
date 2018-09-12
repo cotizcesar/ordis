@@ -88,29 +88,24 @@ class Stat(models.Model):
     weapon = models.ForeignKey(Weapon, on_delete=models.CASCADE, null=True)
     tipe = models.CharField(default='Pr', max_length=2, choices=TIPE_CHOICES)
 
-    # Primary / Secondary
     accuracy = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
-    charge_rate = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True) # decimal 2 digitos   
+    attack_speed = models.DecimalField(max_digits=4, decimal_places=3, blank=True, null=True) # decimal 3 digitos
+    channeling_cost = models.PositiveIntegerField(blank=True, null=True) # entero
+    channeling_damage = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True) # decimal 1 digito con x
+    charge_rate = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True) # decimal 2 digitos
+    critical_chance = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito con %
+    critical_multiplier = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True) # decimal 1 digito con x
+    damage_block = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito con %
     fire_rate = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True) # decimal 2 digitos
+    leap_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
     magazine = models.PositiveIntegerField(blank=True, null=True) # Entero
     noise = models.BooleanField() # lista por ahora un bool.
     punch_through = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True) # decimal 1 digito
     rload = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True) # decimal 1 digito
-    trigger = models.CharField(max_length=1, choices=TRIGGER_CHOICES, blank=True, null=True) # lista
-
-    # Melee Stats
-    attack_speed = models.DecimalField(max_digits=4, decimal_places=3, blank=True, null=True) # decimal 3 digitos
-    channeling_cost = models.PositiveIntegerField(blank=True, null=True) # entero
-    channeling_damage = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True) # decimal 1 digito con x
-    damage_block = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito con %
-    leap_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
     spin_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
-    wall_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
-
-    # Primary / Secondary / Melee - Stats     
-    critical_chance = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito con %
-    critical_multiplier = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True) # decimal 1 digito con x
     status = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito con %
+    trigger = models.CharField(max_length=1, choices=TRIGGER_CHOICES, blank=True, null=True) # lista
+    wall_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
 
     # Status: Normal
     impact = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
@@ -131,9 +126,6 @@ class Stat(models.Model):
     magnetic = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
     radiation = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
     viral = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
-
-    class Meta:
-        ordering = ['tipe']
 
     def __str__(self):
         return self.weapon.name + ' > ' + self.tipe
