@@ -72,12 +72,12 @@
                     <a class="nav-link" id="patchhistory-tab" data-toggle="tab" href="#patchhistory" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-history fa-fw"></i> Patch History</a>
                 </li>
             </ul>
-            <div class="tab-content border-right border-bottom border-left" id="myTabContent">
+            <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="walkthrough" role="tabpanel" aria-labelledby="walkthrough-tab">
                     {% for walkthrough in walkthroughs %}
-                    <div class="p-3"> 
+                    <div class="px-3 pt-3 bg-dark text-light mb-3 {% if forloop.first %}rounded-bottom{% else %}rounded{% endif %}"> 
                         <h2 class="h4">{{walkthrough.name}}</h2>
-                        <hr>
+                        <hr class="text-secondary">
                         {{walkthrough.description|safe|linebreaks}}
                     </div>
                     {% endfor %}
