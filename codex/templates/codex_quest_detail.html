@@ -75,11 +75,13 @@
             <div class="tab-content border-right border-bottom border-left" id="myTabContent">
                 <div class="tab-pane fade show active" id="walkthrough" role="tabpanel" aria-labelledby="walkthrough-tab">
                     <div class="p-3">
-                        {% for walkthrough in walkthroughs %}
+                    {% for walkthrough in walkthroughs %}
                         <h2 class="h3">{{walkthrough.name}}</h2>
                         <hr>
-                        <p>{{walkthrough.description|linebreaks|safe}}</p>
-                        {% endfor %}
+                        {% with walkthrough.description=walkthrough.description|safe %}
+                            <p>{{walkthrough.description|linebreaks}}</p>
+                        {% endwith %}
+                    {% endfor %}
                     </div>
                 </div>
                 <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">n</div>
