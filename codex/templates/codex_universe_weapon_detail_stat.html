@@ -1,7 +1,7 @@
 <hr>
 <ul class="nav nav-pills" id="pills-tab" role="tablist">
 {% for stat in stats %}
-    <li class="nav-item">
+    <li class="nav-item mx-1">
         <a class="nav-link text-light bg-info small" id="pills-{{stat.tipe}}-tab" data-toggle="pill" href="#pills-{{stat.tipe}}" role="tab" aria-controls="pills-{{stat.tipe}}" aria-selected="true">{{stat.get_tipe_display}}</a>
     </li>
 {% endfor %}
@@ -9,7 +9,7 @@
 <hr>
 <div class="tab-content pb-3" id="pills-tabContent">
     {% for stat in stats %}
-    <div class="tab-pane fade show active" id="pills-{{stat.tipe}}" role="tabpanel" aria-labelledby="pills-home-tab">
+    <div class="tab-pane fade show active" id="pills-{{stat.tipe}}" role="tabpanel" aria-labelledby="pills-{{stat.tipe}}-tab">
         <ul class="list-style-none p-0 m-0 text-uppercase text-info">
             {% if stat.accuracy %}
             <li class="my-1">Accuracy: <span class="float-right mt-1 text-light font-weight-bold">{{stat.accuracy}}</span></li>
