@@ -12,24 +12,24 @@
     <div class="tab-pane fade" id="pills-{{stat.tipe}}" role="tabpanel" aria-labelledby="pills-{{stat.tipe}}-tab">
         <ul class="list-style-none p-0 m-0 text-uppercase text-info">
             {% if stat.accuracy %}
-            <li class="my-1">Accuracy: <span class="float-right mt-1 text-light font-weight-bold">{{stat.accuracy}}</span></li>
+            <li class="my-1">Accuracy: <span class="float-right text-light font-weight-bold">{{stat.accuracy}}</span></li>
             {% endif %}
             
             {% if stat.charge_rate %}
-            <li class="my-1">Charge rate: <span class="float-right mt-1 text-light font-weight-bold">{{stat.charge_rate}}</span></li>
+            <li class="my-1">Charge rate: <span class="float-right text-light font-weight-bold">{{stat.charge_rate}}</span></li>
             {% endif %}
 
             {% if stat.fire_rate %}
-            <li class="my-1">Fire rate: <span class="float-right mt-1 text-light font-weight-bold">{{stat.fire_rate}}</span></li>
+            <li class="my-1">Fire rate: <span class="float-right text-light font-weight-bold">{{stat.fire_rate}}</span></li>
             {% endif %}
 
             {% if stat.magazine %}
-            <li class="my-1">Magazine: <span class="float-right mt-1 text-light font-weight-bold">{{stat.magazine}}</span></li>
+            <li class="my-1">Magazine: <span class="float-right text-light font-weight-bold">{{stat.magazine}}</span></li>
             {% endif %}
 
             {% if stat.noise %}
             <li class="my-1">Noise: 
-                <span class="float-right mt-1 text-light font-weight-bold">
+                <span class="float-right text-light font-weight-bold">
                 {% if stat.noise == True %}
                     Alarming
                 {% endif %}
@@ -38,111 +38,111 @@
             {% endif %}
 
             {% if stat.punch_through %}
-            <li class="my-1">Punch through: <span class="float-right mt-1 text-light font-weight-bold">{{stat.punch_through}}</span></li>
+            <li class="my-1">Punch through: <span class="float-right text-light font-weight-bold">{{stat.punch_through}}</span></li>
             {% endif %}
 
             {% if stat.rload %}
-            <li class="my-1">Reload: <span class="float-right mt-1 text-light font-weight-bold">{{stat.rload}}</span></li>
+            <li class="my-1">Reload: <span class="float-right text-light font-weight-bold">{{stat.rload}}</span></li>
             {% endif %}
 
             {% if stat.trigger %}
-            <li class="my-1">Trigger: <span class="float-right mt-1 text-light font-weight-bold">{{stat.get_trigger_display}}</span></li>
+            <li class="my-1">Trigger: <span class="float-right text-light font-weight-bold">{{stat.get_trigger_display}}</span></li>
             {% endif %}
 
             {% if stat.attack_speed %}
-            <li class="my-1">Attack speed: <span class="float-right mt-1 text-light font-weight-bold">{{stat.attack_speed}}</span></li>
+            <li class="my-1">Attack speed: <span class="float-right text-light font-weight-bold">{{stat.attack_speed}}</span></li>
             {% endif %}
             
             {% if stat.channeling_cost %}
-            <li class="my-1">Channeling cost: <span class="float-right mt-1 text-light font-weight-bold">{{stat.channeling_cost}}</span></li>
+            <li class="my-1">Channeling cost: <span class="float-right text-light font-weight-bold">{{stat.channeling_cost}}</span></li>
             {% endif %}
 
             {% if stat.channeling_damage %}
-            <li class="my-1">Channeling damage: <span class="float-right mt-1 text-light font-weight-bold">{{stat.channeling_damage}}x</span></li>
+            <li class="my-1">Channeling damage: <span class="float-right text-light font-weight-bold">{{stat.channeling_damage}}x</span></li>
             {% endif %}
 
             {% if stat.damage_block %}
-            <li class="my-1">Damage block: <span class="float-right mt-1 text-light font-weight-bold">{{stat.damage_block}}</span></li>
+            <li class="my-1">Damage block: <span class="float-right text-light font-weight-bold">{{stat.damage_block}}</span></li>
             {% endif %}
 
             {% if stat.leap_attack %}
-            <li class="my-1">Leap attack: <span class="float-right mt-1 text-light font-weight-bold">{{stat.leap_attack}}</span></li>
+            <li class="my-1">Leap attack: <span class="float-right text-light font-weight-bold">{{stat.leap_attack}}</span></li>
             {% endif %}
             
             {% if stat.spin_attack %}
-            <li class="my-1">Spin attack: <span class="float-right mt-1 text-light font-weight-bold">{{stat.spin_attack}}</span></li>
+            <li class="my-1">Spin attack: <span class="float-right text-light font-weight-bold">{{stat.spin_attack}}</span></li>
             {% endif %}
 
             {% if stat.wall_attack %}
-            <li class="my-1">Wall attack: <span class="float-right mt-1 text-light font-weight-bold">{{stat.wall_attack}}</span></li>
+            <li class="my-1">Wall attack: <span class="float-right text-light font-weight-bold">{{stat.wall_attack}}</span></li>
             {% endif %}
 
             {% if stat.critical_chance %}
-            <li class="my-1">Critical chance: <span class="float-right mt-1 text-light font-weight-bold">{{stat.critical_chance}}%</span></li>
+            <li class="my-1">Critical chance: <span class="float-right text-light font-weight-bold">{{stat.critical_chance}}%</span></li>
             {% endif %}
 
             {% if stat.critical_multiplier %}
-            <li class="my-1">Critical multiplier: <span class="float-right mt-1 text-light font-weight-bold">{{stat.critical_multiplier}}x</span></li>
+            <li class="my-1">Critical multiplier: <span class="float-right text-light font-weight-bold">{{stat.critical_multiplier}}x</span></li>
             {% endif %}
 
             {% if stat.status %}
-            <li class="my-1">Status: <span class="float-right mt-1 text-light font-weight-bold">{{stat.status}}%</span></li>
+            <li class="my-1">Status: <span class="float-right text-light font-weight-bold">{{stat.status}}%</span></li>
             {% endif %}
 
             {% if stat.impact %}
-            <li class="my-1">Impact: <span class="float-right mt-1 text-light font-weight-bold">{{stat.impact}}</span></li>
+            <li class="my-1">Impact: <span class="float-right text-light font-weight-bold">{{stat.impact}}</span></li>
             {% endif %}
 
             {% if stat.puncture %}
-            <li class="my-1">Puncture: <span class="float-right mt-1 text-light font-weight-bold">{{stat.puncture}}</span></li>
+            <li class="my-1">Puncture: <span class="float-right text-light font-weight-bold">{{stat.puncture}}</span></li>
             {% endif %}
 
             {% if stat.slash %}
-            <li class="my-1">Slash: <span class="float-right mt-1 text-light font-weight-bold">{{stat.slash}}</span></li>
+            <li class="my-1">Slash: <span class="float-right text-light font-weight-bold">{{stat.slash}}</span></li>
             {% endif %}
 
             {% if stat.cold %}
-            <li class="my-1">Cold: <span class="float-right mt-1 text-light font-weight-bold">{{stat.cold}}</span></li>
+            <li class="my-1">Cold: <span class="float-right text-light font-weight-bold">{{stat.cold}}</span></li>
             {% endif %}
 
             {% if stat.electricity %}
-            <li class="my-1"><i class="fas fa-bolt fa-fw"></i> Electricity: <span class="float-right mt-1 text-light font-weight-bold">{{stat.electricity}}</span></li>
+            <li class="my-1"><i class="fas fa-bolt fa-fw"></i> Electricity: <span class="float-right text-light font-weight-bold">{{stat.electricity}}</span></li>
             {% endif %}
 
             {% if stat.heat %}
-            <li class="my-1">Heat: <span class="float-right mt-1 text-light font-weight-bold">{{stat.heat}}</span></li>
+            <li class="my-1">Heat: <span class="float-right text-light font-weight-bold">{{stat.heat}}</span></li>
             {% endif %}
 
             {% if stat.toxin %}
-            <li class="my-1">Toxin: <span class="float-right mt-1 text-light font-weight-bold">{{stat.toxin}}</span></li>
+            <li class="my-1">Toxin: <span class="float-right text-light font-weight-bold">{{stat.toxin}}</span></li>
             {% endif %}
 
             {% if stat.void %}
-            <li class="my-1">Void: <span class="float-right mt-1 text-light font-weight-bold">{{stat.void}}</span></li>
+            <li class="my-1">Void: <span class="float-right text-light font-weight-bold">{{stat.void}}</span></li>
             {% endif %}
 
             {% if stat.blast %}
-            <li class="my-1">Blast: <span class="float-right mt-1 text-light font-weight-bold">{{stat.blast}}</span></li>
+            <li class="my-1">Blast: <span class="float-right text-light font-weight-bold">{{stat.blast}}</span></li>
             {% endif %}
 
             {% if stat.corrosive %}
-            <li class="my-1">Corrosive: <span class="float-right mt-1 text-light font-weight-bold">{{stat.corrosive}}</span></li>
+            <li class="my-1">Corrosive: <span class="float-right text-light font-weight-bold">{{stat.corrosive}}</span></li>
             {% endif %}
 
             {% if stat.gas %}
-            <li class="my-1">Gas: <span class="float-right mt-1 text-light font-weight-bold">{{stat.gas}}</span></li>
+            <li class="my-1">Gas: <span class="float-right text-light font-weight-bold">{{stat.gas}}</span></li>
             {% endif %}
 
             {% if stat.magnetic %}
-            <li class="my-1">Magnetic: <span class="float-right mt-1 text-light font-weight-bold">{{stat.magnetic}}</span></li>
+            <li class="my-1">Magnetic: <span class="float-right text-light font-weight-bold">{{stat.magnetic}}</span></li>
             {% endif %}
 
             {% if stat.radiation %}
-            <li class="my-1">Radiation: <span class="float-right mt-1 text-light font-weight-bold">{{stat.radiation}}</span></li>
+            <li class="my-1">Radiation: <span class="float-right text-light font-weight-bold">{{stat.radiation}}</span></li>
             {% endif %}
 
             {% if stat.viral %}
-            <li class="my-1">Viral: <span class="float-right mt-1 text-light font-weight-bold">{{stat.viral}}</span></li>
+            <li class="my-1">Viral: <span class="float-right text-light font-weight-bold">{{stat.viral}}</span></li>
             {% endif %}    
         </ul>
     </div>
