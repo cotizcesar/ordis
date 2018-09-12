@@ -76,7 +76,7 @@
                 <div class="tab-pane fade show active" id="walkthrough" role="tabpanel" aria-labelledby="walkthrough-tab">
                     <div class="p-3">
                         {% for walkthrough in walkthroughs %}
-                        <h3>{{walkthrough.name}}</h3>
+                        <h2 class="h3">{{walkthrough.name}}</h2>
                         <hr>
                         <p>{{walkthrough.description|safe}}</p>
                         {% endfor %}
