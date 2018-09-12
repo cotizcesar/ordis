@@ -4,6 +4,7 @@ from django.contrib import admin
 from .models import Quest, QuestWalkthrough, Weapon, Stat
 
 admin.site.register(Quest)
+admin.site.register(QuestWalkthrough)
 admin.site.register(Weapon)
 admin.site.register(Stat)
 
