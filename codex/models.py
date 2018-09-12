@@ -36,7 +36,7 @@ class Weapon(models.Model):
     )
     name = models.CharField(max_length=140)
     slug = models.SlugField()
-    image = models.ImageField(upload_to='weapons', default='weapons/default.png', blank=True)
+    image = models.ImageField(upload_to='codex/weapons', default='codex/weapons/default.png', blank=True)
     tipe = models.CharField(default='P', max_length=1, choices=TIPE_CHOICES)
     description = models.TextField(max_length=600)
     mastery_rank = models.PositiveIntegerField(null=True, blank=True)
