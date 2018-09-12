@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'alerts',
     # WFPY: Codex app.
     'codex',
+    'import_export',
 ]
 
 # django-allauth: Required
@@ -187,6 +188,8 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_BLACKLIST = ['admin']
 ACCOUNT_USERNAME_MIN_LENGTH = 4
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 # Configure Django App for Heroku.
 import django_heroku
