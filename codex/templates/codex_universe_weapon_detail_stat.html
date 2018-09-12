@@ -9,7 +9,7 @@
 <hr>
 <div class="tab-content pb-3" id="pills-tabContent">
     {% for stat in stats %}
-    <div class="tab-pane fade" id="pills-{{stat.tipe}}" role="tabpanel" aria-labelledby="pills-{{stat.tipe}}-tab">
+    <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="pills-{{stat.tipe}}" role="tabpanel" aria-labelledby="pills-{{stat.tipe}}-tab">
         <ul class="list-style-none p-0 m-0 text-uppercase text-info">
             {% if stat.accuracy %}
             <li class="my-1">Accuracy: <span class="float-right text-light font-weight-bold">{{stat.accuracy}}</span></li>
