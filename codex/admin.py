@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Core: Importing Models
-from .models import Quest, Weapon, Stat
+from .models import Quest, QuestWalkthrough, Weapon, Stat
 
 admin.site.register(Quest)
 admin.site.register(Weapon)
