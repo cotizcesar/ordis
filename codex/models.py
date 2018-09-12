@@ -8,7 +8,7 @@ class Quest(models.Model):
     )
     name = models.CharField(max_length=140)
     tipe = models.CharField(default='M', max_length=1, choices=TIPE_CHOICES)
-    description = models.TextField(default='Description in progress...')
+    description = models.TextField()
     image = models.ImageField(upload_to='codex/quests', default='codex/quests/default.png', blank=True)
     slug = models.SlugField()
     previous_quest = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='prv_quest')
