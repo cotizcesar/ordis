@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container">
     <div class="col-md-4 bg-dark text-light">
-        <img class="img-fluid my-3 bg-light" src="{{weapon.image|thumbnail_url:'weapon_thumb'|default:'https://via.placeholder.com/480x270'}}">
+        <img class="img-fluid my-3 bg-light" src="{{weapon.image|thumbnail_url:'weapon'|default:'https://via.placeholder.com/510x287'}}">
         <h1 class="h3">{{weapon.name}}</h1>
         <p class="h6 mb-0 text-uppercase">
             {{weapon.get_tipe_display}} 

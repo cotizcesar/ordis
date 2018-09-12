@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-4 bg-dark text-light">
             <div class="my-3">
-                <img class="img-fluid mb-3" src="{{quest.image|thumbnail_url:'quest_thumb'|default:'https://via.placeholder.com/350x196'}}">
+                <img class="img-fluid mb-3" src="{{quest.image|thumbnail_url:'quest'|default:'https://via.placeholder.com/350x196'}}">
                 <h1 class="h3"><i class="fas fa-book-open fa-fw text-info mr-1"></i> {{quest.name}}</h1>
                 <hr>
                 <h2 class="h6 text-info text-uppercase">Description</h2>
@@ -76,7 +76,7 @@
                 <div class="tab-pane fade show active" id="walkthrough" role="tabpanel" aria-labelledby="walkthrough-tab">
                     {% for walkthrough in walkthroughs %}
                     <div class="p-3"> 
-                        <h2 class="h4">{{walkthrough.name}}</h2>
+                        <h2 class="h4">{{walkthrough.name}}:</h2>
                         <hr class="text-secondary">
                         {{walkthrough.description|safe|linebreaks}}
                     </div>
