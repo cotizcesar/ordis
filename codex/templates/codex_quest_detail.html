@@ -79,7 +79,7 @@
                         <h2 class="h3">{{walkthrough.name}}</h2>
                         <hr>
                         {% with description=walkthrough.description|linebreaks %}
-                            {% with walkthrough.description=description|linebreaks %}
+                            {% with walkthrough.description=description|safe %}
                                 {{walkthrough.description}}
                             {% endwith %}
                         {% endwith %}
