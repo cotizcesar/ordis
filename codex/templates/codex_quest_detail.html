@@ -78,9 +78,7 @@
                     {% for walkthrough in walkthroughs %}
                         <h2 class="h3">{{walkthrough.name}}</h2>
                         <hr>
-                        {% with description=walkthrough.description|linebreaks %}
-                            {{description|safe}}
-                        {% endwith %}
+                        {{walkthrough.description|safe|linebreaks}}
                     {% endfor %}
                     </div>
                 </div>
