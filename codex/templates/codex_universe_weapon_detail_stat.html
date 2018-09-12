@@ -46,7 +46,7 @@
             {% endif %}
 
             {% if stat.trigger %}
-            <li class="my-1">Trigger: <span class="float-right mt-1 text-light font-weight-bold">{{stat.trigger}}</span></li>
+            <li class="my-1">Trigger: <span class="float-right mt-1 text-light font-weight-bold">{{stat.get_trigger_display}}</span></li>
             {% endif %}
 
             {% if stat.attack_speed %}
