@@ -3,12 +3,11 @@
         <div class="col-md-12">
             <nav class="navbar navbar-expand-lg navbar-dark bg-secondary my-3 rounded">
                 <a class="navbar-brand" href="{% url 'codex' %}"><i class="fas fa-book-open fa-fw fa-lg text-info mr-1"></i> Codex</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-codex" aria-controls="navbar-codex" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>    
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    {% if request.resolver_match.url_name == 'codex_universe_weapons' or 'codex_universe_weapons_primary' or 'codex_universe_weapons_secondary' or 'codex_universe_weapons_melee' %}
+                <div class="collapse navbar-collapse" id="navbar-codex">
+                    {% if weapons %}
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item mx-1">
                             <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe_weapons' %} active{% endif %}" href="{% url 'codex_universe_weapons' %}">All</a>
