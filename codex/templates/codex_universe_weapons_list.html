@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}Primary Weapons{% endblock %}
 {% block content %}
+{% include 'codex_menu.html' %}
 <div class="container">
     <div class="row">
-        <div class="col-md-3 bg-dark text-light">                
-            {% include 'codex_menu.html' %}
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="row">
                 {% for weapon in weapons %}
                     {% include 'thumbs/weapon.html' %}
