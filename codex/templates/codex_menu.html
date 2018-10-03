@@ -1,55 +1,50 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-secondary my-3 rounded">
-                <a class="navbar-brand" href="{% url 'codex' %}"><i class="fas fa-book-open fa-fw fa-lg text-info mr-1"></i> Codex</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-codex" aria-controls="navbar-codex" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>    
-                <div class="collapse navbar-collapse" id="navbar-codex">
-                    {% if weapons %}
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item mx-1">
-                            <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe_weapons' %} active{% endif %}" href="{% url 'codex_universe_weapons' %}">All</a>
-                        </li>
-                        <li class="nav-item mx-1">
-                            <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe_weapons_primary' %} active{% endif %}" href="{% url 'codex_universe_weapons_primary' %}">Primary</a>
-                        </li>
-                        <li class="nav-item mx-1">
-                            <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe_weapons_secondary' %} active{% endif %}" href="{% url 'codex_universe_weapons_secondary' %}">Secondary</a>
-                        </li>
-                        <li class="nav-item mx-1">
-                            <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe_weapons_melee' %} active{% endif %}" href="{% url 'codex_universe_weapons_melee' %}">Melee</a>
-                        </li>
-                    </ul>
-                    {% endif %}
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-1">
-                            <a class="nav-link{% if request.resolver_match.url_name == 'codex_quests' %} active{% endif %}" href="{% url 'codex_quests' %}">Quests</a>
-                        </li>
-                        <li class="nav-item mx-1 dropdown {% if request.resolver_match.url_name == 'codex_universe' %} active{% endif %}">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Universe </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Art Gallery</a>
-                                <a class="dropdown-item" href="#">Companions</a>
-                                <a class="dropdown-item" href="#">Factions</a>
-                                <a class="dropdown-item" href="#">Fragments</a>
-                                <a class="dropdown-item" href="#">Mods</a>
-                                <a class="dropdown-item" href="#">Objects</a>                                
-                                <a class="dropdown-item" href="#">Relics & Arcanes</a>
-                                <a class="dropdown-item" href="#">Warframes & Archwings</a>
-                                <a class="dropdown-item" href="{% url 'codex_universe_weapons' %}">Weapons</a>
-                            </div>
-                        </li>
-                        <li class="nav-item mx-1">
-                            <a class="nav-link{% if request.resolver_match.url_name == 'codex_training' %} active{% endif %}" href="#">Training</a>
-                        </li>
-                        <li class="nav-item mx-1">
-                            <a class="nav-link{% if request.resolver_match.url_name == 'codex_missions' %} active{% endif %}" href="#">Missions</a>
-                        </li>
-                    </ul>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3 rounded">
+    <a class="navbar-brand" href="{% url 'codex' %}"><i class="fas fa-book-open fa-fw fa-lg text-info mr-1"></i> Codex</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-codex" aria-controls="navbar-codex" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>    
+    <div class="collapse navbar-collapse" id="navbar-codex">
+        {% if weapons %}
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item mx-1">
+                <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe_weapons' %} active{% endif %}" href="{% url 'codex_universe_weapons' %}">All</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe_weapons_primary' %} active{% endif %}" href="{% url 'codex_universe_weapons_primary' %}">Primary</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe_weapons_secondary' %} active{% endif %}" href="{% url 'codex_universe_weapons_secondary' %}">Secondary</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe_weapons_melee' %} active{% endif %}" href="{% url 'codex_universe_weapons_melee' %}">Melee</a>
+            </li>
+        </ul>
+        {% endif %}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-1">
+                <a class="nav-link{% if request.resolver_match.url_name == 'codex_quests' %} active{% endif %}" href="{% url 'codex_quests' %}">Quests</a>
+            </li>
+            <li class="nav-item mx-1 dropdown {% if request.resolver_match.url_name == 'codex_universe' %} active{% endif %}">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Universe </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Art Gallery</a>
+                    <a class="dropdown-item" href="#">Companions</a>
+                    <a class="dropdown-item" href="#">Factions</a>
+                    <a class="dropdown-item" href="#">Fragments</a>
+                    <a class="dropdown-item" href="#">Mods</a>
+                    <a class="dropdown-item" href="#">Objects</a>                                
+                    <a class="dropdown-item" href="#">Relics & Arcanes</a>
+                    <a class="dropdown-item" href="#">Warframes & Archwings</a>
+                    <a class="dropdown-item" href="{% url 'codex_universe_weapons' %}">Weapons</a>
                 </div>
-            </nav>
-        </div>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link{% if request.resolver_match.url_name == 'codex_training' %} active{% endif %}" href="#">Training</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link{% if request.resolver_match.url_name == 'codex_missions' %} active{% endif %}" href="#">Missions</a>
+            </li>
+        </ul>
     </div>
-</div>
+</nav>

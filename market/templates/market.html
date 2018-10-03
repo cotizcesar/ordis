@@ -3,19 +3,24 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-6 my-3">
-            <h2 class="h6"><i class="fas fa-dollar-sign fa-fw fa-lg bg-danger p-1 rounded text-light mr-1"></i> Want to Sell <a class="h6 text-info float-right mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
-            <hr>
-            {% for order in wts %}
-                {% include 'item.html' %}
-            {% endfor %}
-        </div>
-        <div class="col-md-6 my-3">
-            <h2 class="h6"><i class="fas fa-dollar-sign fa-fw fa-lg bg-success p-1 rounded text-light mr-1"></i> Want to Buy <a class="h6 text-info float-right mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
-            <hr>
-            {% for order in wtb %}
-                {% include 'item.html' %}
-            {% endfor %}
+        {% include 'menu.html' %}
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6 my-3">
+                    <h2 class="h6"><i class="fas fa-dollar-sign fa-fw fa-lg bg-danger p-1 rounded text-light mr-1"></i> Want to Sell <a class="h6 text-info float-right mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
+                    <hr>
+                    {% for order in wts %}
+                    {% include 'item.html' %}
+                    {% endfor %}
+                </div>
+                <div class="col-md-6 my-3">
+                    <h2 class="h6"><i class="fas fa-dollar-sign fa-fw fa-lg bg-success p-1 rounded text-light mr-1"></i> Want to Buy <a class="h6 text-info float-right mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
+                    <hr>
+                    {% for order in wtb %}
+                    {% include 'item.html' %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </div>

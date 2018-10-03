@@ -38,7 +38,7 @@ class Universe(TemplateView):
     template_name = 'codex_universe.html'
 
 class Weapons(TemplateView):
-    template_name = 'codex_universe_weapons.html'
+    template_name = 'codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(Weapons, self).get_context_data(**kwargs)
@@ -46,7 +46,7 @@ class Weapons(TemplateView):
         return context
 
 class WeaponsPrimary(TemplateView):
-    template_name = 'codex_universe_weapons_list.html'
+    template_name = 'codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(WeaponsPrimary, self).get_context_data(**kwargs)
@@ -54,7 +54,7 @@ class WeaponsPrimary(TemplateView):
         return context
 
 class WeaponsSecondary(TemplateView):
-    template_name = 'codex_universe_weapons_list.html'
+    template_name = 'codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(WeaponsSecondary, self).get_context_data(**kwargs)
@@ -62,7 +62,7 @@ class WeaponsSecondary(TemplateView):
         return context
 
 class WeaponsMelee(TemplateView):
-    template_name = 'codex_universe_weapons_list.html'
+    template_name = 'codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(WeaponsMelee, self).get_context_data(**kwargs)

@@ -3,18 +3,9 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
-            <h1 class="my-5 text-center"><i class="fas fa-boxes fa-fw fa-lg mb-3"></i><br> Coming soon!</h1>
-        </div>
-        <div class="col-md-4 bg-dark text-light">
-            <div class="my-3">
-                <h2 class="h6"><i class="fas fa-users fa-fw mr-1"></i> Latest Users <a class="h6 text-info float-right small mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
-                <hr>
-                {% for user in users %}
-                {% include 'user/user.html' %}
-                <hr>
-                {% endfor %}
-            </div>
+        {% include 'menu.html' %}
+        <div class="col-md-9 py-3 bg-white text-dark border-right">
+
         </div>
     </div>
 </div>

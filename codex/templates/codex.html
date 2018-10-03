@@ -1,5 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}Codex{% endblock %}
 {% block content %}
-{% include 'codex_menu.html' %}
+<div class="container">
+    <div class="row">
+        {% include 'menu.html' %}
+        <div class="col-md-9">
+            {% include 'codex_menu.html' %}
+            <hr>
+            {% if weapons %}
+            {% for weapon in weapons %}
+                {% include 'thumbs/weapon.html' %}
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
