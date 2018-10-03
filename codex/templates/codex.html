@@ -7,11 +7,13 @@
         <div class="col-md-9">
             {% include 'codex_menu.html' %}
             <hr>
-            {% if weapons %}
-            {% for weapon in weapons %}
-                {% include 'thumbs/weapon.html' %}
-            {% endfor %}
-            {% endif %}
+            <div class="row">
+                {% if weapons %}
+                {% for weapon in weapons %}
+                    {% include 'thumbs/weapon.html' %}
+                {% endfor %}
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
