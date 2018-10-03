@@ -8,9 +8,9 @@
             {% include 'codex_menu.html' %}
             <hr>
             <div class="row">
-                {% if weapons %}
-                {% for weapon in weapons %}
-                    {% include 'thumbs/weapon.html' %}
+                {% if items %}
+                {% for item in items %}
+                    {% include 'thumbs/item.html' %}
                 {% endfor %}
                 {% endif %}
             </div>

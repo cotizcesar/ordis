@@ -16,11 +16,11 @@ class Codex(TemplateView):
     #    return context
 
 class Quests(TemplateView):
-    template_name = 'codex_quests.html'
+    template_name = 'codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(Quests, self).get_context_data(**kwargs)
-        context['quests'] = Quest.objects.all().values('name', 'image', 'slug').order_by('pk')
+        context['items'] = Quest.objects.all().values('name', 'image', 'slug').order_by('pk')
         return context
 
 class QuestDetail(DetailView):
@@ -42,7 +42,7 @@ class Weapons(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Weapons, self).get_context_data(**kwargs)
-        context['weapons'] = Weapon.objects.all().values('name', 'image', 'slug').order_by('name')
+        context['items'] = Weapon.objects.all().values('name', 'image', 'slug').order_by('name')
         return context
 
 class WeaponsPrimary(TemplateView):
@@ -50,7 +50,7 @@ class WeaponsPrimary(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(WeaponsPrimary, self).get_context_data(**kwargs)
-        context['weapons'] = Weapon.objects.filter(tipe='P').values('name', 'image', 'slug').order_by('name')
+        context['items'] = Weapon.objects.filter(tipe='P').values('name', 'image', 'slug').order_by('name')
         return context
 
 class WeaponsSecondary(TemplateView):
@@ -58,7 +58,7 @@ class WeaponsSecondary(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(WeaponsSecondary, self).get_context_data(**kwargs)
-        context['weapons'] = Weapon.objects.filter(tipe='S').values('name', 'image', 'slug').order_by('name')
+        context['items'] = Weapon.objects.filter(tipe='S').values('name', 'image', 'slug').order_by('name')
         return context
 
 class WeaponsMelee(TemplateView):
@@ -66,7 +66,7 @@ class WeaponsMelee(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(WeaponsMelee, self).get_context_data(**kwargs)
-        context['weapons'] = Weapon.objects.filter(tipe='M').values('name', 'image', 'slug').order_by('name')
+        context['items'] = Weapon.objects.filter(tipe='M').values('name', 'image', 'slug').order_by('name')
         return context
 
 class WeaponDetail(DetailView):
