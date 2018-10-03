@@ -26,6 +26,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
+    # django-grappelli: Setup (admin panel)
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     # django-allauth: Required for work
@@ -84,7 +86,9 @@ TEMPLATES = [
                 # Core: Search Input in header, loads all items in database.
                 'core.context_processors.external_data',
                 # Core: User counter
+                # django-grappelli: Setup
                 #'core.context_processors.user_count',
+                'django.template.context_processors.request',
             ],
         },
     },
