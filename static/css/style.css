@@ -1,8 +1,11 @@
 body{
-    font-size: 0.8rem;
+    font-family: 'Open Sans', sans-serif;
 }
 a{
     color: #17a2b8;
+}
+a:hover{
+    text-decoration: none !important;
 }
 .list-style-none{
     list-style: none;

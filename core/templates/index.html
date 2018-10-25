@@ -3,9 +3,69 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        {% include 'menu.html' %}
-        <div class="col-md-9 py-3 bg-white text-dark border-right">
-
+        <div class="col-md-3">
+            <div class="bg-dark text-white rounded my-3">
+                <h6 class="p-3 m-0"><i class="fas fa-bars fa-fw text-info mr-1"></i> Main Menu</h6>
+                <hr class="m-0">
+                <nav class="nav flex-column small py-2">
+                    <a class="nav-link" href="#"><i class="fas fa-caret-right fa-fw text-info mr-1"></i> Dashboard</a>
+                    <a class="nav-link disabled" href="#"><i class="fas fa-caret-right fa-fw text-info mr-1"></i> Messages</a>
+                    <a class="nav-link disabled" href="#"><i class="fas fa-caret-right fa-fw text-info mr-1"></i> Public</a>
+                    <a class="nav-link disabled" href="#"><i class="fas fa-caret-right fa-fw text-info mr-1"></i> Media</a>
+                </nav>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="bg-dark text-white rounded my-3">
+                <img class="img-fluid rounded-top" src="https://via.placeholder.com/1920x1080" alt="Generic placeholder image">
+                <div class="media p-3">
+                    <img class="mr-3 rounded-circle" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h6 class="my-1">
+                            <a class="text-white" href="#">Cesar Cotiz</a> 
+                            <span class="text-info small">@cotizcesar</span>
+                            <div class="dropdown float-right">
+                                <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-h text-secondary"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </h6>
+                        <div class="clearfix"></div>
+                        <p class="small m-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                    </div>
+                </div>
+                <nav class="nav nav-pills nav-fill border-top border-secondary small">
+                    <a class="nav-item nav-link" href="#"><i class="fas fa-heart fa-fw text-info mr-1"></i> Like</a>
+                    <a class="nav-item nav-link" href="#"><i class="fas fa-comment fa-fw text-info mr-1"></i>Comment</a>
+                    <a class="nav-item nav-link" href="#"><i class="fas fa-share fa-fw text-info mr-1"></i> Share</a>
+                </nav>
+            </div>
+        </div>
+        <div class="col-md-3">
+            {% include 'modules/recomended_users.html' %}
+            <div class="bg-secondary text-white rounded my-3">
+                <h6 class="p-3 m-0"><i class="fas fa-store fa-fw text-info mr-1"></i> Marketplace</h6>
+                <hr class="m-0">
+                <div class="media p-3">
+                    <img class="mr-3 rounded-circle" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
+                    <div class="media-body small">
+                        <p class="font-weight-bold my-1"><a class="text-white" href="#">Oberon Prime Set</a></p>
+                        <p class="text-light my-1">1000 Platinum <span class="bg-danger px-1 rounded float-right">WTS</span></p>
+                    </div>
+                </div>
+                <div class="media p-3">
+                    <img class="mr-3 rounded-circle" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
+                    <div class="media-body small">
+                        <p class="font-weight-bold my-1"><a class="text-white" href="#">Oberon Prime Set</a></p>
+                        <p class="text-light my-1">1000 Platinum <span class="bg-success px-1 rounded float-right">WTB</span></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
