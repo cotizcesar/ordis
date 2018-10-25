@@ -1,0 +1,28 @@
+{% load custom_filters %}
+{% load thumbnail %}
+{% load humanize %}
+<div class="post bg-dark text-white rounded my-3" id="post-{{post.id}}">
+    {% if post.image %}
+    <img class="img-fluid rounded-top" src="{{post.image|thumbnail_url:'post'|default:'https://via.placeholder.com/540'}}" alt="{{post.text}}">
+    {% elif post.video %}
+    {{post.video|youtube_embed_url|safe}}
+    {% endif %}
+    <div class="media p-3">
+        <img class="mr-3 rounded-circle" src="{{post.user.userprofile.avatar|thumbnail_url:'avatar_thumb'|default:'https://via.placeholder.com/50x50'}}" alt="{% if post.user.get_full_name %}{{post.user.get_full_name}} {% endif %}@{{post.user.username}} avatar.">
+        <div class="media-body">
+            <p class="mt-1 mb-2">
+                {% if user.get_full_name %}<a class="font-weight-bold text-white" href="{% url 'userprofile' post.user.username %}">{{post.user.get_full_name}}</a> {% endif %}
+                {% if user.is_staff %} <a href="#" data-toggle="tooltip" data-placement="right" title="Administrator"><i class="fas fa-check-circle fa-fw text-white"></i></a>{% endif %}
+                <a class="text-muted" href="{% url 'userprofile' post.user.username %}">@cotizcesar</a>
+                <span class="text-muted float-right">{{post.date_created|naturaltime}}</span>
+            </p>
+            <p class="my-1">{{post.text}}</p>
+        </div>
+    </div>
+    <hr class="m-0">
+    <nav class="nav nav-pills nav-fill">
+        <a class="nav-item nav-link text-white" href="#"><i class="fas fa-heart fa-fw text-info mr-1"></i> Like</a>
+        <a class="nav-item nav-link text-white" href="#"><i class="fas fa-comment fa-fw text-info mr-1"></i>Comment</a>
+        <a class="nav-item nav-link text-white" href="#"><i class="fas fa-share fa-fw text-info mr-1"></i> Share</a>
+    </nav>
+</div>

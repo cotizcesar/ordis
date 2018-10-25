@@ -1,6 +1,5 @@
-<div class="bg-info text-white rounded my-3">
-    <h6 class="p-3 m-0"><i class="fas fa-star fa-fw text-warning mr-1"></i> Recomended Users</h6>
-    <hr class="m-0">
+<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+    <div class="card-header"><i class="fas fa-star fa-fw text-warning mr-1"></i> Recomended Users</div>
     {% for user in users %}
         <div class="user p-3">
             {% include 'user/thumb.html' %}

@@ -22,7 +22,7 @@
                                 {{profile.get_full_name}}
                             {% endif %}
                             {% if profile.is_staff %}
-                                <small><i class="fas fa-check-circle fa-fw text-info small"></i></small>
+                                <small><i class="fas fa-check-circle fa-fw text-info"></i></small>
                             {% endif %}
                             {% if request.user.username == profile.username %}
                                 <a class="btn btn-sm btn-secondary float-right mt-1" href="#" role="button"><i class="fas fa-edit fa-fw"></i> Edit</a>
@@ -30,7 +30,7 @@
                         </h1>
                         <h2 class="h4 text-info">@{{profile.username}}</h2>
                         <p class="mb-2">{{profile.userprofile.bio}}</p>
-                        <p class="small text-secondary">Last Logged: {{profile.last_login|naturaltime}}</p>
+                        <p class="text-secondary">Last Logged: {{profile.last_login|naturaltime}}</p>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
             </div>
             <div class="col-md-4 bg-dark text-light">
                 <div class="my-3">
-                    <h2 class="h6"><i class="fas fa-dollar-sign fa-fw fa-lg bg-danger p-1 rounded mr-1"></i> Want to Sell <a class="h6 text-info float-right small mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
+                    <h2 class="h6"><i class="fas fa-dollar-sign fa-fw fa-lg bg-danger p-1 rounded mr-1"></i> Want to Sell <a class="h6 text-info float-right mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
                     <hr>
                     <div class="media">
                         <img class="mr-3 rounded-circle" src="https://via.placeholder.com/40x40" alt="Generic placeholder image">
@@ -146,7 +146,7 @@
                     <hr>
                 </div>
                 <div class="my-3">
-                    <h2 class="h6"><i class="fas fa-dollar-sign fa-fw fa-lg bg-success p-1 rounded mr-1"></i> Want to Buy <a class="h6 text-info float-right small mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
+                    <h2 class="h6"><i class="fas fa-dollar-sign fa-fw fa-lg bg-success p-1 rounded mr-1"></i> Want to Buy <a class="h6 text-info float-right mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
                     <hr>
                     <div class="media">
                         <img class="mr-3 rounded-circle" src="https://via.placeholder.com/40x40" alt="Generic placeholder image">
@@ -166,7 +166,7 @@
                     <hr>
                 </div>
                 <div class="my-3">
-                    <h2 class="h6"><i class="fas fa-search fa-fw text-info"></i> Latest Review <a class="h6 text-info float-right small mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
+                    <h2 class="h6"><i class="fas fa-search fa-fw text-info"></i> Latest Review <a class="h6 text-info float-right mt-1" href="#">Show all <i class="fas fa-chevron-right fa-fw"></i></a></h2>
                     <hr>
                     <div class="media">
                         <img class="mr-3 rounded-circle" src="https://via.placeholder.com/40x40" alt="Generic placeholder image">

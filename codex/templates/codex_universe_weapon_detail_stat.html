@@ -2,7 +2,7 @@
 <ul class="nav nav-pills" id="pills-tab" role="tablist">
 {% for stat in stats %}
     <li class="nav-item mx-1">
-        <a class="nav-link text-light bg-info small" id="pills-{{stat.tipe}}-tab" data-toggle="pill" href="#pills-{{stat.tipe}}" role="tab" aria-controls="pills-{{stat.tipe}}" aria-selected="true">{{stat.get_tipe_display}}</a>
+        <a class="nav-link text-light bg-info" id="pills-{{stat.tipe}}-tab" data-toggle="pill" href="#pills-{{stat.tipe}}" role="tab" aria-controls="pills-{{stat.tipe}}" aria-selected="true">{{stat.get_tipe_display}}</a>
     </li>
 {% endfor %}
 </ul>

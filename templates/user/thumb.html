@@ -1,10 +1,10 @@
 {% load thumbnail %}
 <div class="media">
     <img class="mr-3 rounded-circle" src="{{user.userprofile.avatar|thumbnail_url:'avatar_thumb'|default:'https://via.placeholder.com/50x50'}}" alt="{% if user.get_full_name %}{{user.get_full_name}} {% endif %}@{{user.username}} avatar.">
-    <div class="media-body small">
+    <div class="media-body">
         {% if user.get_full_name %}
-        <p class="my-1"><a class="font-weight-bold text-white" href="{% url 'userprofile' user.username %}">{{user.get_full_name}}</a></p>
+        <p class="my-1"><a class="font-weight-bold text-white" href="{% url 'userprofile' user.username %}">{{user.get_full_name}}</a> {% if user.is_staff %} <a href="#" data-toggle="tooltip" data-placement="right" title="Administrator"><i class="fas fa-check-circle fa-fw text-white"></i></a>{% endif %}</p>
         {% endif %}
-        <p class="my-1"><a class="text-white" href="{% url 'userprofile' user.username %}">@{{user.username}}</a>{% if user.is_staff %} <i class="fas fa-check-circle fa-fw text-white"></i>{% endif %}</p>
+        <p class="my-1"><a class="text-white" href="{% url 'userprofile' user.username %}">@{{user.username}}</a></p>
     </div>
 </div>
