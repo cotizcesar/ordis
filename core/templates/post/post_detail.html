@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}{{post.text}}{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            {% include 'modules/menu.html' %}
+        </div>
+        <div class="col-md-6">
+            {% include 'post/post.html' %}
+        </div>
+        <div class="col-md-4">
+            {% include 'modules/aside.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

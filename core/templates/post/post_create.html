@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
-{% block title %}New Post!{% endblock %}
+{% block title %}Create a Post{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -28,8 +28,8 @@
             </div>
             {% endif %}
         </div>
-        <div class="col-md-3">
-
+        <div class="col-md-4">
+            {% include 'modules/aside.html' %}
         </div>
     </div>
 </div>

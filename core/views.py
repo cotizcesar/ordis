@@ -48,3 +48,14 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         obj.date_created = timezone.now()
         obj.save()
         return redirect('feed')
+
+class PostDetailView(DetailView):
+    model = Post
+    slug_field = 'post_id'
+    template_name = 'post/post_detail.html'
+    
+    #def get_context_data(self, **kwargs):
+    #    context = super(PostDetailView, self).get_context_data(**kwargs)
+    #    context['comments'] = Comment.objects.filter(post=self.object.id).select_related()
+    #    return context
+    

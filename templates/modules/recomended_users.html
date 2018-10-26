@@ -1,7 +1,7 @@
 {% load thumbnail %}
 <div class="users-recomended">
     <h3 class="h6 title-menu text-uppercase">Recommended Users</h3>
-    {% for user in users %}
+    {% for user in module_recomended_users %}
     <div class="media small my-2 bg-box">
         <img class="mr-3" src="{{user.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{% if user.get_full_name %}{{user.get_full_name}}{% else %}{{user.username}}{% endif %} avatar.">
         <div class="media-body w-75">

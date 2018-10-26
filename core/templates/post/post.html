@@ -18,7 +18,7 @@
                     {{post.user.username}}
                     {% endif %}
                 </a>
-                <span class="text-muted float-right">{{post.date_created|naturaltime}}</span>
+                <a href="{% url 'post_detail' post.id %}" class="text-muted float-right">{{post.date_created|naturaltime}}</a>
             </p>
             <p class="my-1 text-muted">{{post.text}}</p>
         </div>

@@ -18,11 +18,12 @@ from django.urls import include, path
 from django.conf.urls import url
 
 # userprofile: Importing Views
-from .views import Index, Feed, FeedPublic, PostCreateView
+from .views import Index, Feed, FeedPublic, PostCreateView, PostDetailView
 
 urlpatterns = [
     path('', Index.as_view(), name='index'),
     path('feed/', Feed.as_view(), name='feed'),
     path('feed/public/', FeedPublic.as_view(), name='feed_public'),
     path('post/create/', PostCreateView.as_view(), name='post_create'),
+    url(r'^post/(?P<pk>\d+)/$', PostDetailView.as_view(), name='post_detail'),
 ]
