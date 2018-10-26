@@ -2,11 +2,7 @@
 {% load thumbnail %}
 {% load humanize %}
 {% block sitename %}{% endblock %}
-{% block title %}
-{% if profile.first_name and profile.last_name %}
-    {{profile.get_full_name}}
-{% endif %}
-{% endblock %}
+{% block title %}{% if profile.user.get_full_name %}{{profile.user.get_full_name}}{% else %}{{profile.user.username}}{% endif %} profile.{% endblock %}
 {% block content %}
 <div class="bg-box">
     <div class="container">
