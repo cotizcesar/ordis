@@ -3,7 +3,6 @@ from django.db import models
 # Django: Importing User Model
 from django.contrib.auth.models import User
 
-
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(max_length=280)
