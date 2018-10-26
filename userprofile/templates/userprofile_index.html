@@ -11,7 +11,7 @@
             <div class="media-body my-3">
                 <h1 class="h3 mb-2">{% if profile.get_full_name %}{{profile.get_full_name}} {% endif %}<span class="text-muted small">@{{profile.username}}</span></h1>
                 <p class="text-muted font-italic small mt-1 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel felis urna. Aliquam vitae tortor tortor. Praesent ut volutpat nisi metus.</p>
-                <p class=" font-italic small my-1">Last Login: {{profile.last_login|naturaltime}}</p>
+                <p class="text-muted font-italic small my-1">Last Login: <span class="text-white">{{profile.last_login|naturaltime}}</span></p>
             </div>
             <div class="media-body my-3">
                 <ul class="nav flex-column">
