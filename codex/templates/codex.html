@@ -7,17 +7,19 @@
             {% include 'modules/menu.html' %}
         </div>
         <div class="col-md-10">
-            {% include 'codex_menu.html' %}
-            {% if quests %}
-            {% for item in quests %}
-                {% include 'thumbs/quest.html' %}
-            {% endfor %}
-            {% endif %}
-            {% if weapons %}
-            {% for item in weapons %}
-                {% include 'thumbs/weapon.html' %}
-            {% endfor %}
-            {% endif %}
+            <div class="row">
+                {% include 'codex_menu.html' %}
+                {% if quests %}
+                {% for item in quests %}
+                    {% include 'thumbs/quest.html' %}
+                {% endfor %}
+                {% endif %}
+                {% if weapons %}
+                {% for item in weapons %}
+                    {% include 'thumbs/weapon.html' %}
+                {% endfor %}
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
