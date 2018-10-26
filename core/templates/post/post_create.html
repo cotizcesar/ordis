@@ -19,13 +19,12 @@
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
                 {% buttons %}
-                <div class="my-3"></div>
+                <div class="my-3">
                     <a class="btn btn-danger btn-sm px-3" href="{% url 'index' %}" role="button"><i class="fas fa-times fa-fw"></i> Cancel</a>
                     <button type="submit" class="btn btn-success btn-sm float-right px-3"><i class="fas fa-paper-plane fa-fw"></i> Post IT</button>
                 </div>
                 {% endbuttons %}
             </form>
-            </div>
             {% endif %}
         </div>
         <div class="col-md-4">
