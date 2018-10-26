@@ -14,6 +14,15 @@ body{
 .title-menu{
     color: #c6d4df;
 }
+.btn-main{
+    color: #66c0f4;
+    background: #1D2632;
+    font-size: 0.7rem;
+}
+.btn-main:hover{
+    color: #fff;
+    background: #4C88AC;
+}
 /* Theme Ends */
 
 a{
@@ -25,9 +34,6 @@ a:hover{
 }
 .list-style-none{
     list-style: none;
-}
-.border-black{
-    border-color: #333 !important;
 }
 
 /* Typeahead */

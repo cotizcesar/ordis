@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils import timezone
 
 # Django: Importing User Model
 from django.contrib.auth.models import User
@@ -19,7 +20,7 @@ from market.models import Item
 class Index(TemplateView):
     template_name = 'index.html'
 
-class Feed(TemplateView):
+class Feed(LoginRequiredMixin, TemplateView):
     template_name = 'feed.html'
 
     def get_context_data(self, *args, **kwargs):
@@ -46,4 +47,4 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         obj.user = self.request.user
         obj.date_created = timezone.now()
         obj.save()
-        return redirect('timeline_public')
+        return redirect('feed')

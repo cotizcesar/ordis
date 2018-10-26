@@ -2,7 +2,7 @@
     <p class="title-menu m-0 text-uppercase small">Main Menu</p>
     <nav class="nav flex-column small">
         <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'feed' %}text-white{% endif %}" href="{% url 'feed' %}"><i class="far fa-newspaper fa-fw mr-1"></i> Feed</a>
-        <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'feed-public' %}text-white{% endif %}" href="{% url 'feed-public' %}"><i class="fas fa-globe-americas fa-fw mr-1"></i> Public Feed</a>
+        <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'feed_public' %}text-white{% endif %}" href="{% url 'feed_public' %}"><i class="fas fa-globe-americas fa-fw mr-1"></i> Public Feed</a>
     </nav>
 </div>
 <div class="explore-menu my-3">
@@ -27,7 +27,7 @@
         <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-gavel fa-fw mr-1"></i> Customizer</a>
     </nav>
 </div>
-<div class="alerts-menu my-3">
+<div class="builder-menu my-3">
     <p class="title-menu m-0 text-uppercase small">Builder</p>
     <nav class="nav flex-column small">
         <a class="nav-link px-0 py-1 disabled" href="#">Warframes</a>

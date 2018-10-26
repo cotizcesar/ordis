@@ -1,8 +1,18 @@
-<div class="card text-white bg-primary my-3">
-    <div class="card-header"><i class="fas fa-star fa-fw text-warning mr-1"></i> Recomended Users</div>
+{% load thumbnail %}
+<div class="users-recomended">
+    <h3 class="h6 title-menu text-uppercase">Recommended Users</h3>
     {% for user in users %}
-        <div class="user p-3">
-            {% include 'user/thumb.html' %}
+    <div class="media small my-2 bg-box">
+        <img class="mr-3" src="{{user.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{% if user.get_full_name %}{{user.get_full_name}}{% else %}{{user.username}}{% endif %} avatar.">
+        <div class="media-body w-75">
+            {% if user.get_full_name %}
+            <p class="my-1"><a href="{% url 'userprofile' user.username %}">{{user.get_full_name}}</a></p>
+            {% endif %}
+            <p class="my-1">@{{user.username}}</p>
         </div>
+        <div class="media-body">
+            <a class="btn btn-main btn-sm rounded-0 rounded-right float-right" href="#" role="button">View Profile</a>
+        </div>
+    </div>
     {% endfor %}
 </div>

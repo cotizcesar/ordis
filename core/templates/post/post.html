@@ -8,7 +8,7 @@
     {{post.video|youtube_embed_url|safe}}
     {% endif %}
     <div class="media p-3">
-        <img class="mr-3 rounded-circle" src="{{post.user.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="Generic placeholder image">
+        <img class="mr-3 rounded-circle" src="{{post.user.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{% if post.user.get_full_name %}{{post.user.get_full_name}}{% else %}{{post.user.username}}{% endif %} avatar.">
         <div class="media-body">
             <p class="my-1">
                 <a href="{% url 'userprofile' post.user.username %}">
