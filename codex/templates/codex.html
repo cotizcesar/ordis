@@ -3,22 +3,21 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        {% include 'menu.html' %}
-        <div class="col-md-9">
+        <div class="col-md-2">
+            {% include 'modules/menu.html' %}
+        </div>
+        <div class="col-md-10">
             {% include 'codex_menu.html' %}
-            <hr>
-            <div class="row">
-                {% if quests %}
-                {% for item in quests %}
-                    {% include 'thumbs/quest.html' %}
-                {% endfor %}
-                {% endif %}
-                {% if weapons %}
-                {% for item in weapons %}
-                    {% include 'thumbs/weapon.html' %}
-                {% endfor %}
-                {% endif %}
-            </div>
+            {% if quests %}
+            {% for item in quests %}
+                {% include 'thumbs/quest.html' %}
+            {% endfor %}
+            {% endif %}
+            {% if weapons %}
+            {% for item in weapons %}
+                {% include 'thumbs/weapon.html' %}
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
 </div>
