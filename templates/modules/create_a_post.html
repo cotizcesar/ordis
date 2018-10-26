@@ -1,0 +1,3 @@
+{% if not request.resolver_match.url_name == 'post_create' %}
+<a class="btn btn-main btn-lg btn-block my-3" href="{% url 'post_create' %}" role="button"><i class="fas fa-paper-plane fa-fw mr-1"></i> Create a Post</a>
+{% endif %}

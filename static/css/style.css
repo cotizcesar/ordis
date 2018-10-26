@@ -17,6 +17,8 @@ body{
 .btn-main{
     color: #66c0f4;
     background: #1D2632;
+}
+.btn-small{
     font-size: 0.7rem;
 }
 .btn-main:hover{
