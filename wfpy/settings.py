@@ -152,6 +152,8 @@ THUMBNAIL_TRANSPARENCY_EXTENSION = 'png'
 THUMBNAIL_ALIASES = {
     '': {
         'avatar': {'size': (160, 160), 'crop': 'smart', 'upscale' : True},
+        'avatar_32x32': {'size': (32, 32), 'crop': 'smart', 'upscale' : True},
+        'avatar_50x50': {'size': (50, 50), 'crop': 'smart', 'upscale' : True},
         'avatar_thumb': {'size': (50, 50), 'crop': 'smart', 'upscale' : True},
         'post': {'size': (540, 0), 'crop': 'smart', 'upscale' : True},        
         'avatar_aside': {'size': (40, 40), 'crop': 'smart', 'upscale' : True},
@@ -168,7 +170,7 @@ THUMBNAIL_NAMER = 'easy_thumbnails.namers.hashed'
 
 # django-allauth: Log In/Log Out redirection
 # http://django-allauth.readthedocs.io/en/latest/configuration.html
-LOGIN_REDIRECT_URL = 'market'
+LOGIN_REDIRECT_URL = 'feed'
 
 # django-allauth: Email Registration Delivery
 EMAIL_USE_TLS = True

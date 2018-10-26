@@ -18,8 +18,10 @@ from django.urls import include, path
 from django.conf.urls import url
 
 # userprofile: Importing Views
-from .views import Home
+from .views import Index, Feed, FeedPublic
 
 urlpatterns = [
-    path('', Home.as_view(), name='home')
+    path('', Index.as_view(), name='index'),
+    path('feed/', Feed.as_view(), name='feed'),
+    path('feed/public/', FeedPublic.as_view(), name='feed-public')
 ]

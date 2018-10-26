@@ -1,0 +1,49 @@
+<div class="main-menu my-3">
+    <p class="title-menu m-0 text-uppercase small">Main Menu</p>
+    <nav class="nav flex-column small">
+        <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'feed' %}text-white{% endif %}" href="{% url 'feed' %}"><i class="far fa-newspaper fa-fw mr-1"></i> Feed</a>
+        <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'feed-public' %}text-white{% endif %}" href="{% url 'feed-public' %}"><i class="fas fa-globe-americas fa-fw mr-1"></i> Public Feed</a>
+    </nav>
+</div>
+<div class="explore-menu my-3">
+    <p class="title-menu m-0 text-uppercase small">Explore</p>
+    <nav class="nav flex-column small">
+        <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-user-friends fa-fw mr-1"></i> Users</a>
+        <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-users fa-fw mr-1"></i> Clans</a>
+    </nav>
+</div>
+<div class="market-menu my-3">
+    <p class="title-menu m-0 text-uppercase small">Market</p>
+    <nav class="nav flex-column small">
+        <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-boxes fa-fw mr-1"></i> Items</a>
+        <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-bolt fa-fw mr-1"></i> Rivens</a>
+        <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-paw fa-fw mr-1"></i> Companions</a>
+    </nav>
+</div>
+<div class="alerts-menu my-3">
+    <p class="title-menu m-0 text-uppercase small">Alerts</p>
+    <nav class="nav flex-column small">
+        <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-exclamation-triangle fa-fw mr-1"></i> All Alerts</a>
+        <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-gavel fa-fw mr-1"></i> Customizer</a>
+    </nav>
+</div>
+<div class="alerts-menu my-3">
+    <p class="title-menu m-0 text-uppercase small">Builder</p>
+    <nav class="nav flex-column small">
+        <a class="nav-link px-0 py-1 disabled" href="#">Warframes</a>
+        <a class="nav-link px-0 py-1 disabled" href="#">Primary</a>
+        <a class="nav-link px-0 py-1 disabled" href="#">Secondary</a>
+        <a class="nav-link px-0 py-1 disabled" href="#">Companions</a>
+        <a class="nav-link px-0 py-1 disabled" href="#">Companion Weapons</a>
+        <a class="nav-link px-0 py-1 disabled" href="#">Build Searcher</a>
+    </nav>
+</div>
+<div class="codex-menu my-3">
+    <p class="title-menu m-0 text-uppercase small">Codex</p>
+    <nav class="nav flex-column small">
+        <a class="nav-link px-0 py-1 disabled" href="#"><i class="far fa-map fa-fw mr-1"></i> Quests</a>
+        <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-globe fa-fw mr-1"></i> Universe</a>
+        <a class="nav-link px-0 py-1 disabled" href="#"><i class="fab fa-accessible-icon fa-fw mr-1"></i> Training</a>
+        <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-thumbtack fa-fw mr-1"></i> Missions</a>
+    </nav>
+</div>

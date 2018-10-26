@@ -1,0 +1,16 @@
+{% if user.is_authenticated %}
+{% if user.get_full_name|length < 1 or user.userprofile.avatar|length < 1 or user.userprofile.bio|length < 1 %}
+<div class="card text-white bg-warning my-3">
+    <div class="card-header"><i class="fas fa-info-circle fa-fw text-white mr-1"></i> Complete your Profile!</div>                    
+    <ul class="list-style-none p-3 m-0">
+        <li class="mb-2">Hello @{{user.username}}!, we need to know more about you, also your followers. Please fill in all your information.</li>
+        <li class="mb-1">What we need to help you?</li>
+        <ul class="pl-3 pt-0">
+            {% if not user.get_full_name %}<li><i class="fas fa-font fa-fw"></i> Complete your Name.</li>{% endif %}
+            {% if not user.userprofile.avatar %}<li><i class="far fa-user-circle fa-fw"></i> Upload an avatar image.</li>{% endif %}
+            {% if not user.userprofile.bio %}<li><i class="far fa-meh fa-fw"></i> Complete your bio.</li>{% endif %}
+        </ul>
+    </ul>
+</div>
+{% endif %}
+{% endif %}

@@ -1,11 +1,26 @@
 body{
     font-family: 'Open Sans', sans-serif;
-    font-size: 0.8rem;
 }
+/* Theme: Warframe */
+.bg-page{
+    background: #202C3A;
+}
+.bg-navbar{
+    background: #1D2025;
+}
+.bg-box{
+    background: #131A23;
+}
+.title-menu{
+    color: #c6d4df;
+}
+/* Theme Ends */
+
 a{
-    color: #17a2b8;
+    color: #66c0f4;
 }
 a:hover{
+    color: #fff;
     text-decoration: none !important;
 }
 .list-style-none{
