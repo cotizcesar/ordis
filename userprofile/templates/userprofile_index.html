@@ -11,7 +11,7 @@
 <div class="bg-box">
     <div class="container">
         <div class="media w-100 p-4">
-            <img class="mr-4 rounded-circle" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/200x200'}}" alt="Generic placeholder image">
+            <img class="mr-4 rounded-circle" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/160x160'}}" alt="{% if profile.user.get_full_name %}{{profile.user.get_full_name}}{% else %}{{profile.user.username}}{% endif %} avatar.">
             <div class="media-body my-3">
                 <h1 class="h3 mb-2">{% if profile.get_full_name %}{{profile.get_full_name}} {% endif %}<span class="text-muted small">@{{profile.username}}</span></h1>
                 <p class="text-muted font-italic small mt-1 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel felis urna. Aliquam vitae tortor tortor. Praesent ut volutpat nisi metus.</p>
