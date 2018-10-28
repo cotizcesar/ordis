@@ -153,6 +153,7 @@ THUMBNAIL_ALIASES = {
     '': {
         'avatar': {'size': (160, 160), 'crop': 'smart', 'upscale' : True},
         'avatar_32x32': {'size': (32, 32), 'crop': 'smart', 'upscale' : True},
+        'avatar_44x44': {'size': (44, 44), 'crop': 'smart', 'upscale' : True},
         'avatar_50x50': {'size': (50, 50), 'crop': 'smart', 'upscale' : True},
         'avatar_thumb': {'size': (50, 50), 'crop': 'smart', 'upscale' : True},
         'post': {'size': (540, 0), 'crop': 'smart', 'upscale' : True},        

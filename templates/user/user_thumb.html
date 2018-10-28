@@ -3,7 +3,7 @@
     <img class="mr-3" src="{{user.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{% if user.get_full_name %}{{user.get_full_name}}{% else %}{{user.username}}{% endif %} avatar.">
     <div class="media-body w-75">
         {% if user.get_full_name %}
-        <p class="my-1"><a href="{% url 'userprofile' user.username %}">{{user.get_full_name}}</a></p>
+        <p class="my-1"><a href="{% url 'userprofile' user.username %}">{{user.get_full_name}}</a>{% if user.is_staff %} <i class="fas fa-check-circle fa-fw text-info small"></i>{% endif %}</p>
         {% endif %}
         <p class="my-1">{{user.username}}</p>
     </div>

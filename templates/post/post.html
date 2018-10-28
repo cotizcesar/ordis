@@ -13,7 +13,7 @@
             <p class="my-1">
                 <a href="{% url 'userprofile' post.user.username %}">
                     {% if post.user.get_full_name %}
-                    {{post.user.get_full_name}}
+                    {{post.user.get_full_name}}{% if post.user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i>{% endif %}
                     {% else %}
                     {{post.user.username}}
                     {% endif %}
@@ -29,4 +29,25 @@
         <a class="nav-item nav-link" href="#"><i class="fas fa-comment fa-fw text-info mr-1"></i> Comment</a>
         <a class="nav-item nav-link" href="#"><i class="fas fa-share fa-fw text-info mr-1"></i> Share</a>
     </nav>
+    {% if comments %}
+    <hr class="m-0">
+    {% for comment in comments %}
+    <div class="media mb-3 rounded bg-black-t p-3">
+        <img class="mr-3 rounded-circle" src="{{comment.user.userprofile.avatar|thumbnail_url:'avatar_44x44'|default:'https://via.placeholder.com/44x44'}}" alt="{% if comment.user.get_full_name %}{{comment.user.get_full_name}}{% else %}{{comment.user.username}}{% endif %} avatar.">
+        <div class="media-body">
+            <p class="my-1">
+                <a href="{% url 'userprofile' comment.user.username %}">
+                    {% if comment.user.get_full_name %}
+                    {{comment.user.get_full_name}}{% if comment.user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i>{% endif %}
+                    {% else %}
+                    {{comment.user.username}}
+                    {% endif %}
+                </a>
+                <a href="{% url 'post_detail' post.id %}" class="text-muted float-right">{{comment.date_created|naturaltime}}</a>
+            </p>
+            <p class="my-1 text-muted">{{comment.text}}</p>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
 </div>

@@ -9,7 +9,7 @@
         <div class="media w-100 p-4">
             <img class="mr-4 rounded-circle" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/160x160'}}" alt="{% if profile.get_full_name %}{{profile.get_full_name}}{% else %}{{profile.username}}{% endif %} avatar.">
             <div class="media-body my-3">
-                <h1 class="h3 mb-2">{% if profile.get_full_name %}{{profile.get_full_name}} {% endif %}<span class="text-muted small">@{{profile.username}}</span></h1>
+                <h1 class="h3 text-info mb-2">{% if profile.get_full_name %}{{profile.get_full_name}}{% if user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}{% endif %}<span class="text-white small">@{{profile.username}}</span></h1>
                 <p class="text-muted font-italic small mt-1 mb-2">{{profile.userprofile.bio}}</p>
                 <p class="text-muted font-italic small my-1">Last Login: <span class="text-white">{{profile.last_login|naturaltime}}</span></p>
             </div>

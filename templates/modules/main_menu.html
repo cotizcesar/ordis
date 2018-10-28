@@ -1,8 +1,0 @@
-<nav class="nav flex-column">
-    {% if user.is_authenticated %}
-    <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active text-white{% endif %}" href="{% url 'home' %}"><i class="fas fa-home fa-fw fa-lg mr-1"></i> Dashboard</a>
-    {% endif %}
-    <a class="nav-link {% if request.resolver_match.url_name == 'market' %}active text-white{% endif %}" href="{% url 'market' %}"><i class="fas fa-store fa-fw fa-lg mr-1"></i> Market</a>
-    <a class="nav-link {% if request.resolver_match.url_name == 'alerts' %}active text-white{% endif %}" href="{% url 'alerts' %}"><i class="fas fa-exclamation-triangle fa-fw fa-lg mr-1"></i> Alerts</a>
-    <a class="nav-link {% if request.resolver_match.url_name == 'codex' %}active text-white{% endif %}" href="{% url 'codex' %}"><i class="fas fa-book-open fa-fw fa-lg mr-1"></i> Codex</a>
-</nav>
