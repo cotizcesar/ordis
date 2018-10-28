@@ -21,6 +21,18 @@
                 <a href="{% url 'post_detail' post.id %}" class="text-muted float-right">{{post.date_created|naturaltime}}</a>
             </p>
             <p class="my-1 text-muted">{{post.text}}</p>
+            {% if comments %}
+            <nav class="nav justify-content-end small">
+                <a class="nav-link text-muted px-0 py-0" href="#">
+                    {{comments.count}} 
+                    {% if comments.count <= 1 %}
+                    Comment
+                    {% else %}
+                    Comments
+                    {% endif %}
+                </a>
+            </nav>
+            {% endif %}
         </div>
     </div>
     <hr class="m-0">
@@ -32,7 +44,7 @@
     {% if comments %}
     <hr class="m-0">
     {% for comment in comments %}
-    <div class="media mb-3 rounded bg-black-t p-3">
+    <div class="media rounded bg-black-t px-3 py-2">
         <img class="mr-3 rounded-circle" src="{{comment.user.userprofile.avatar|thumbnail_url:'avatar_44x44'|default:'https://via.placeholder.com/44x44'}}" alt="{% if comment.user.get_full_name %}{{comment.user.get_full_name}}{% else %}{{comment.user.username}}{% endif %} avatar.">
         <div class="media-body">
             <p class="my-1">
