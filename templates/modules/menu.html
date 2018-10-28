@@ -30,7 +30,7 @@
 <div class="explore-menu my-3">
     <p class="title-menu m-0 text-uppercase small">Explore</p>
     <nav class="nav flex-column small">
-        <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-user-friends fa-fw mr-1"></i> Users</a>
+        <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'explore_users' %}text-white{% endif %}" href="{% url 'explore_users' %}"><i class="fas fa-user-friends fa-fw mr-1"></i> Users</a>
         <a class="nav-link px-0 py-1 disabled" href="#"><i class="fas fa-users fa-fw mr-1"></i> Clans</a>
     </nav>
 </div>

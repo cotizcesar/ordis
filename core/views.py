@@ -58,4 +58,12 @@ class PostDetailView(DetailView):
     #    context = super(PostDetailView, self).get_context_data(**kwargs)
     #    context['comments'] = Comment.objects.filter(post=self.object.id).select_related()
     #    return context
-    
+
+class ExploreUsers(TemplateView):
+    template_name = 'explore/users.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ExploreUsers, self).get_context_data(**kwargs)
+        context['users'] = User.objects.all().order_by('?')
+        #context['mode'] = 'explore_users'
+        return context
