@@ -5,7 +5,7 @@
         {% if user.get_full_name %}
         <p class="my-1"><a href="{% url 'userprofile' user.username %}">{{user.get_full_name}}</a></p>
         {% endif %}
-        <p class="my-1">@{{user.username}}</p>
+        <p class="my-1">{{user.username}}</p>
     </div>
     <div class="media-body">
         <a class="btn btn-main btn-sm btn-small rounded-0 rounded-right float-right" href="{% url 'userprofile' user.username %}" role="button"><i class="fas fa-angle-right fa-fw"></i></a>
