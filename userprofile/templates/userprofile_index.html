@@ -5,26 +5,55 @@
 {% block title %}{% if profile.get_full_name %}{{profile.get_full_name}}{% else %}{{profile.username}}{% endif %} profile.{% endblock %}
 {% block content %}
 <div class="bg-box">
-    <div class="container">
-        <div class="media w-100 p-4">
-            <img class="mr-4 rounded-circle" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/160x160'}}" alt="{% if profile.get_full_name %}{{profile.get_full_name}}{% else %}{{profile.username}}{% endif %} avatar.">
-            <div class="media-body my-3">
-                <h1 class="h3 text-info mb-2">{% if profile.get_full_name %}{{profile.get_full_name}}{% if user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}{% endif %}<span class="text-white small">@{{profile.username}}</span></h1>
-                <p class="text-muted font-italic small mt-1 mb-2">{{profile.userprofile.bio}}</p>
-                <p class="text-muted font-italic small my-1">Last Login: <span class="text-white">{{profile.last_login|naturaltime}}</span></p>
-            </div>
-            <div class="media-body my-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item my-1">
-                        <a class="nav-link float-right" href="#"><i class="fas fa-user-plus fa-fw mr-1"></i> Follow</a>
-                    </li>
-                    <li class="nav-item my-1">
-                        <a class="nav-link float-right" href="#"><i class="fas fa-envelope fa-fw mr-1"></i> Message</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <div class="container text-center py-3">
+        <img class="mx-auto my-2 d-block rounded-circle" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/160x160'}}" alt="{% if profile.get_full_name %}{{profile.get_full_name}}{% else %}{{profile.username}}{% endif %} avatar.">
+        {% if profile.get_full_name %}
+        <h1 class="h3 text-info my-2">
+        {{profile.get_full_name}}
+        {% if user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}
+        </h1>
+        <p class="h4 text-white">@{{profile.username}}</p>
+        {% else %}
+        <h1 class="h3 text-info my-2">
+            @{{profile.username}}
+            {% if user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}
+        </h1>
+        {% endif %}
+        <p class="text-muted font-italic small my-2 mx-auto w-50">{{profile.userprofile.bio}}</p>
     </div>
+</div>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-bottom">
+        <a class="navbar-brand" href="#"><i class="fas fa-bars fa-fw text-info"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#UserProfileNavbar" aria-controls="UserProfileNavbar"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="UserProfileNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'userprofile' profile.username %}">Feed</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Trading</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Builds</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Trading</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-success font-weight-bold" href="#"><i class="fas fa-user-plus fa-fw mr-1"></i> Follow</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-info font-weight-bold" href="#"><i class="fas fa-envelope fa-fw mr-1"></i> Message</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>
 <div class="container">
     <div class="row">
