@@ -10,21 +10,14 @@
             <div class="col-md-2 text-center">
                 <img class="img-fluid rounded-circle mb-3" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/160x160'}}" alt="{% if profile.get_full_name %}{{profile.get_full_name}}{% else %}{{profile.username}}{% endif %} avatar.">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 my-auto">
                 {% if profile.get_full_name %}
-                <h1 class="h3 text-info mb-2">
-                    {{profile.get_full_name}}
-                    {% if user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}
-                    <span class="h5 text-white">@{{profile.username}}</span>
-                </h1>
+                <h1 class="h3 text-info mb-2">{{profile.get_full_name}}{% if user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}<span class="h5 text-white">@{{profile.username}}</span></h1>
                 {% else %}
-                <h1 class="h3 text-info mb-2">
-                    @{{profile.username}}
-                    {% if user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}
-                </h1>
+                <h1 class="h3 text-info mb-2">@{{profile.username}}{% if user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}</h1>
                 {% endif %}
                 <p class="text-muted font-italic small mb-2">{{profile.userprofile.bio}}</p>
-                <p class="text-muted font-italic small my-2">Last seen: <span class="text-white">{{profile.last_login|naturaltime}}</span></p>
+                <p class="text-muted font-italic small">Last seen: <span class="text-white">{{profile.last_login|naturaltime}}</span></p>
             </div>
         </div>
     </div>
