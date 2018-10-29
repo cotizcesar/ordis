@@ -16,7 +16,7 @@ class UserProfile(models.Model):
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='user/avatar', default='avatar/default.png', blank=True)
-    bio = models.CharField(max_length=140, blank=True)
+    bio = models.CharField(max_length=280, blank=True)
     status = models.CharField(default='F', max_length=1, choices=STATUS_CHOICES)
 
     def __str__(self):
