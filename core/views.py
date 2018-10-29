@@ -12,7 +12,7 @@ from django.views.generic import TemplateView, ListView, CreateView, DetailView,
 from .models import Post, Comment
 
 # Core: Importing forms
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 
 # Market: Importing Models
 from market.models import Item
@@ -58,6 +58,19 @@ class PostDetailView(DetailView):
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(post=self.object.id).select_related()
         return context
+
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    model = Comment
+    slug_field = 'post_id'
+    form_class = CommentForm
+    template_name = 'post/post_comment_create.html'
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.post = Post.objects.get(id=self.kwargs['pk'])
+        obj.user = self.request.user
+        obj.save()        
+        return redirect('post_detail', pk=obj.post.id)
 
 class ExploreUsers(TemplateView):
     template_name = 'explore/explore_users.html'

@@ -38,7 +38,7 @@
     <hr class="m-0">
     <nav class="nav nav-pills nav-fill">
         <a class="nav-item nav-link" href="#"><i class="fas fa-heart fa-fw text-info mr-1"></i> Like</a>
-        <a class="nav-item nav-link" href="#"><i class="fas fa-comment fa-fw text-info mr-1"></i> Comment</a>
+        <a class="nav-item nav-link" href="{% url 'post_comment_create' post.id %}"><i class="fas fa-comment fa-fw text-info mr-1"></i> Comment</a>
         <a class="nav-item nav-link" href="#"><i class="fas fa-share fa-fw text-info mr-1"></i> Share</a>
     </nav>
     {% if comments %}
