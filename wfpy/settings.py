@@ -26,8 +26,6 @@ ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
-    # django-grappelli: Setup (admin panel)
-    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     # django-allauth: Required for work
