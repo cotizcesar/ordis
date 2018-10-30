@@ -40,6 +40,30 @@ class FeedPublic(TemplateView):
         context = super(FeedPublic, self).get_context_data(**kwargs)
         context['posts'] = Post.objects.all()
         return context
+        
+class UserProfileDetailView(DetailView):
+    model = User
+    template_name = 'userprofile/userprofile.html'
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
+    context_object_name = 'profile'
+
+    def get_context_data(self, **kwargs):
+        context = super(UserProfileDetailView, self).get_context_data(**kwargs)
+        context['posts'] = Post.objects.filter(user=self.get_object())
+
+        # Validation to show the Follow / Unfollow button.
+        username = self.kwargs['username']
+        context['username'] = username
+        context['user'] = self.request.user
+        # Following / Followers counters
+        context['following'] = Connection.objects.filter(follower__username=username).count()
+        context['followers'] = Connection.objects.filter(following__username=username).count()
+
+        if username is not context['user'].username:
+            result = Connection.objects.filter(follower__username=context['user'].username).filter(following__username=username)
+            context['connected'] = True if result else False            
+        return context    
 
 # Follow: hand-made system, its a better and modified copy
 # https://github.com/benigls/instagram
@@ -65,6 +89,36 @@ def follow_view(request, *args, **kwargs):
         else:
             messages.warning(request, 'You\'ve already followed {}.'.format(following.username))
     return HttpResponseRedirect(reverse_lazy('userprofile', kwargs={'username': following.username}))
+
+# Connection: Followers List
+class FollowersListView(LoginRequiredMixin, ListView):
+    model = Connection
+    template_name = 'userprofile/userprofile_connection_list.html'
+    context_object_name = 'users'
+
+    def get_queryset(self):
+        username = self.kwargs['username']
+        return Connection.objects.all().filter(following__username=username)
+
+    def get_context_data(self):
+        context = super(FollowersListView, self).get_context_data()
+        context['mode'] = 'Followers'
+        return context
+
+# Connection: Following List
+class FollowingListView(LoginRequiredMixin, ListView):
+    model = Connection
+    template_name = 'userprofile/userprofile_connection_list.html'
+    context_object_name = 'users'
+
+    def get_queryset(self):
+        username = self.kwargs['username']
+        return Connection.objects.all().filter(follower__username=username)
+
+    def get_context_data(self):
+        context = super(FollowingListView, self).get_context_data()
+        context['mode'] = 'Following'
+        return context
 
 # Unfollow: hand-made system, its a better and modified copy
 # https://github.com/benigls/instagram

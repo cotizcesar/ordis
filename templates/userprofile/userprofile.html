@@ -48,7 +48,7 @@
             <ul class="navbar-nav ml-auto">
                 {% if user.username == profile.username %}
                 <li class="nav-item">
-                    <a class="nav-link text-muted font-weight-bold" href="#"><i class="far fa-edit fa-fw mr-1"></i> Edit Profile</a>
+                    <a class="nav-link" href="#"><i class="far fa-edit fa-fw text-info mr-1"></i> Edit Profile</a>
                 </li>
                 {% elif connected %}
                 <li class="nav-item">
@@ -61,7 +61,7 @@
                 {% endif %}
                 {% if user.username != profile.username %}
                 <li class="nav-item">
-                    <a class="nav-link text-info font-weight-bold" href="#"><i class="fas fa-envelope fa-fw mr-1"></i> Message</a>
+                    <a class="nav-link" href="#"><i class="fas fa-envelope fa-fw text-info mr-1"></i> Message</a>
                 </li>
                 {% endif %}
             </ul>

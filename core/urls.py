@@ -17,8 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import url
 
-# userprofile: Importing Views
-from .views import Index, Feed, FeedPublic, ExploreUsers, PostCreateView, PostDetailView, CommentCreateView, follow_view, unfollow_view
+from .views import Index, UserProfileDetailView, follow_view, unfollow_view, Feed, FeedPublic, ExploreUsers, PostCreateView, PostDetailView, CommentCreateView
 
 urlpatterns = [
     path('', Index.as_view(), name='index'),
@@ -28,6 +27,7 @@ urlpatterns = [
     path('post/create/', PostCreateView.as_view(), name='post_create'),
     url(r'^post/(?P<pk>\d+)/$', PostDetailView.as_view(), name='post_detail'),
     url(r'^post/(?P<pk>\d+)/comment/$', CommentCreateView.as_view(), name='post_comment_create'),
+    url(r'^u/(?P<username>[-\w]{5,30})/$', UserProfileDetailView.as_view(), name='userprofile'),
     url(r'^u/(?P<username>[-\w]{5,30})/follow/$', follow_view, name='follow'),
     url(r'^u/(?P<username>[-\w]{5,30})/unfollow/$', unfollow_view, name='unfollow'),
 ]

@@ -27,5 +27,4 @@ urlpatterns = [
     path('', include('market.urls')),
     path('', include('alerts.urls')),
     path('', include('codex.urls')),
-    path('', include('userprofile.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
