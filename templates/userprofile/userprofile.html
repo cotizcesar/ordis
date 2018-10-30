@@ -12,12 +12,16 @@
             </div>
             <div class="col-md-6 my-auto">
                 {% if profile.get_full_name %}
-                <h1 class="h3 text-info mt-3 mb-2">{{profile.get_full_name}}{% if profile.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}<span class="h5 text-white">@{{profile.username}}</span></h1>
+                <h1 class="h3 text-info my-2">{{profile.get_full_name}}{% if profile.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}<span class="h5 text-white">@{{profile.username}}</span></h1>
                 {% else %}
-                <h1 class="h3 text-info mb-2">@{{profile.username}}{% if profile.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}</h1>
+                <h1 class="h3 text-info my-2">@{{profile.username}}{% if profile.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}</h1>
                 {% endif %}
-                <p class="text-muted font-italic small mb-2">{{profile.userprofile.bio}}</p>
-                <p class="text-muted font-italic small">Last seen: <span class="text-white">{{profile.last_login|naturaltime}}</span></p>
+                <p class="text-muted font-italic small my-2">{{profile.userprofile.bio}}</p>
+                <nav class="nav my-2 small">
+                    <a class="nav-link p-0 pr-2 disabled" href="#"><span class="text-white mr-1">1</span> Posts</a>
+                    <a class="nav-link p-0 pr-2" href="#"><span class="text-white mr-1">{{followers}}</span> Followers</a>
+                    <a class="nav-link p-0" href="#"><span class="text-white mr-1">{{following}}</span> Following</a>
+                </nav>
             </div>
         </div>
     </div>
@@ -40,9 +44,6 @@
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Builds</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Trading</a>
-                </li>
             </ul>
             {% if user.is_authenticated %}
             <ul class="navbar-nav ml-auto">
@@ -64,6 +65,9 @@
                     <a class="nav-link" href="#"><i class="fas fa-envelope fa-fw text-info mr-1"></i> Message</a>
                 </li>
                 {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link font-italic" href="#">Last seen: <span class="text-white">{{profile.last_login|naturaltime}}</span></a>
+                </li>
             </ul>
             {% endif %}
         </div>
