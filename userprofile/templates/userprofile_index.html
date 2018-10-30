@@ -8,11 +8,11 @@
     <div class="container">
         <div class="row py-3">
             <div class="col-md-2 text-center">
-                <img class="img-fluid rounded-circle mb-3" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/160x160'}}" alt="{% if profile.get_full_name %}{{profile.get_full_name}}{% else %}{{profile.username}}{% endif %} avatar.">
+                <img class="img-fluid rounded-circle" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/160x160'}}" alt="{% if profile.get_full_name %}{{profile.get_full_name}}{% else %}{{profile.username}}{% endif %} avatar.">
             </div>
             <div class="col-md-6 my-auto">
                 {% if profile.get_full_name %}
-                <h1 class="h3 text-info mb-2">{{profile.get_full_name}}{% if profile.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}<span class="h5 text-white">@{{profile.username}}</span></h1>
+                <h1 class="h3 text-info mt-3 mb-2">{{profile.get_full_name}}{% if profile.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}<span class="h5 text-white">@{{profile.username}}</span></h1>
                 {% else %}
                 <h1 class="h3 text-info mb-2">@{{profile.username}}{% if profile.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}</h1>
                 {% endif %}
@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-bottom">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-bottom small">
         <a class="navbar-brand" href="#"><i class="fas fa-bars fa-fw text-info"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#UserProfileNavbar" aria-controls="UserProfileNavbar"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -44,14 +44,28 @@
                     <a class="nav-link disabled" href="#">Trading</a>
                 </li>
             </ul>
+            {% if user.is_authenticated %}
             <ul class="navbar-nav ml-auto">
+                {% if user.username == profile.username %}
                 <li class="nav-item">
-                    <a class="nav-link text-success font-weight-bold" href="#"><i class="fas fa-user-plus fa-fw mr-1"></i> Follow</a>
+                    <a class="nav-link text-muted font-weight-bold" href="#"><i class="far fa-edit fa-fw mr-1"></i> Edit Profile</a>
                 </li>
+                {% elif connected %}
+                <li class="nav-item">
+                    <a class="nav-link text-danger font-weight-bold" href="{% url 'unfollow' profile.username %}"><i class="fas fa-user-plus fa-fw mr-1"></i> Unfollow</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-success font-weight-bold" href="{% url 'follow' profile.username %}"><i class="fas fa-user-plus fa-fw mr-1"></i> Follow</a>
+                </li>
+                {% endif %}
+                {% if user.username != profile.username %}
                 <li class="nav-item">
                     <a class="nav-link text-info font-weight-bold" href="#"><i class="fas fa-envelope fa-fw mr-1"></i> Message</a>
                 </li>
+                {% endif %}
             </ul>
+            {% endif %}
         </div>
     </nav>
 </div>

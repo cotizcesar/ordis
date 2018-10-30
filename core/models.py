@@ -3,6 +3,13 @@ from django.db import models
 # Django: Importing User Model
 from django.contrib.auth.models import User
 
+class Connection(models.Model):
+    follower = models.ForeignKey(User, related_name='follower', on_delete=models.PROTECT)
+    following = models.ForeignKey(User, related_name='following', on_delete=models.PROTECT)
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.follower.username, self.following.username)
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(max_length=280)

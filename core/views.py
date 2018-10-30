@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from django.utils import timezone
+from django.contrib import messages
+from django.http import HttpResponseRedirect, Http404
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 # Django: Importing User Model
 from django.contrib.auth.models import User
@@ -9,7 +14,7 @@ from django.contrib.auth.models import User
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
 # Core: Importing Models
-from .models import Post, Comment
+from .models import Connection, Post, Comment
 
 # Core: Importing forms
 from .forms import PostForm, CommentForm
@@ -25,8 +30,7 @@ class Feed(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Feed, self).get_context_data(**kwargs)
-        context['posts'] = Post.objects.all()
-        context['users'] = User.objects.all().order_by('-date_joined')[:3]
+        context['posts'] = Post.objects.filter(Q(user__in=self.request.user.follower.values('following')) | Q(user=self.request.user))
         return context
 
 class FeedPublic(TemplateView):
@@ -35,8 +39,55 @@ class FeedPublic(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(FeedPublic, self).get_context_data(**kwargs)
         context['posts'] = Post.objects.all()
-        context['users'] = User.objects.all().order_by('-date_joined')[:3]
         return context
+
+# Follow: hand-made system, its a better and modified copy
+# https://github.com/benigls/instagram
+@login_required
+def follow_view(request, *args, **kwargs):
+    try:
+        follower = User.objects.get(username=request.user)
+        following = User.objects.get(username=kwargs['username'])
+
+    except User.DoesNotExist:
+        messages.warning(request, '{} is not a registered user.'.format(kwargs['username']))
+        return HttpResponseRedirect(reverse_lazy('feed'))
+
+    if follower == following:
+        messages.warning(request, 'You cannot follow yourself.')
+
+    else:
+        _, created = Connection.objects.get_or_create(follower=follower, following=following)
+        
+        if (created):
+            messages.success(request, 'You\'ve successfully followed {}.'.format(following.username))
+        
+        else:
+            messages.warning(request, 'You\'ve already followed {}.'.format(following.username))
+    return HttpResponseRedirect(reverse_lazy('userprofile', kwargs={'username': following.username}))
+
+# Unfollow: hand-made system, its a better and modified copy
+# https://github.com/benigls/instagram
+@login_required
+def unfollow_view(request, *args, **kwargs):
+    try:
+        follower = User.objects.get(username=request.user)
+        following = User.objects.get(username=kwargs['username'])
+
+        if follower == following:
+            messages.warning(request, 'You cannot unfollow yourself.')
+
+        else:
+            unfollow = Connection.objects.get(follower=follower, following=following)
+            unfollow.delete()
+            messages.success(request, 'You\'ve just unfollowed {}.'.format(following.username))
+    except User.DoesNotExist:
+        messages.warning(request, '{} is not a registered user.'.format(kwargs['username']))
+        return HttpResponseRedirect(reverse_lazy('feed'))
+
+    except Connection.DoesNotExist:
+        messages.warning(request, 'You didn\'t follow {0}.'.format(following.username))
+    return HttpResponseRedirect(reverse_lazy('userprofile', kwargs={'username': following.username}))
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     form_class = PostForm
