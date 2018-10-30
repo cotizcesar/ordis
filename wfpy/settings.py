@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     'bootstrap4',
     # WFPY: Core (Index, Pages, etc)
     'core',
-    # WFPY: User Profiles app.
-    'userprofile',
     # WFPY: Market app.
     'market',
     # WFPY: Alerts app.
