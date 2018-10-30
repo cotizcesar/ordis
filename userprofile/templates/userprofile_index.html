@@ -52,11 +52,11 @@
                 </li>
                 {% elif connected %}
                 <li class="nav-item">
-                    <a class="nav-link text-danger font-weight-bold" href="{% url 'unfollow' profile.username %}"><i class="fas fa-user-plus fa-fw mr-1"></i> Unfollow</a>
+                    <a class="nav-link" href="{% url 'unfollow' profile.username %}"><i class="fas fa-user-times fa-fw text-danger mr-1"></i> Unfollow</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link text-success font-weight-bold" href="{% url 'follow' profile.username %}"><i class="fas fa-user-plus fa-fw mr-1"></i> Follow</a>
+                    <a class="nav-link" href="{% url 'follow' profile.username %}"><i class="fas fa-user-plus fa-fw text-success mr-1"></i> Follow</a>
                 </li>
                 {% endif %}
                 {% if user.username != profile.username %}
