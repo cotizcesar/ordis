@@ -7,6 +7,7 @@
             {% include 'modules/menu.html' %}
         </div>
         <div class="col-md-6">
+            {% include 'post/post_create_modal.html' %}
             {% for post in posts %}
             {% include 'post/post.html' %}
             {% endfor %}

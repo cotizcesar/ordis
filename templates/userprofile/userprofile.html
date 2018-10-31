@@ -79,6 +79,7 @@
             {% include 'modules/menu.html' %}
         </div>
         <div class="col-md-6">
+            {% include 'post/post_create_modal.html' %}
             {% if posts %}
             {% for post in posts %}
             {% include 'post/post.html' %}

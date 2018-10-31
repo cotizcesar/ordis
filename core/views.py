@@ -33,6 +33,13 @@ class Feed(LoginRequiredMixin, TemplateView, FormView):
         context = super(Feed, self).get_context_data(**kwargs)
         context['posts'] = Post.objects.filter(Q(user__in=self.request.user.follower.values('following')) | Q(user=self.request.user))
         return context
+    
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.user = self.request.user
+        obj.date_created = timezone.now()
+        obj.save()
+        return redirect('feed')
 
 class FeedPublic(TemplateView, FormView):
     template_name = 'feed/feed.html'
@@ -42,6 +49,13 @@ class FeedPublic(TemplateView, FormView):
         context = super(FeedPublic, self).get_context_data(**kwargs)
         context['posts'] = Post.objects.all()
         return context
+    
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.user = self.request.user
+        obj.date_created = timezone.now()
+        obj.save()
+        return redirect('feed')
         
 class UserProfileDetailView(DetailView, FormView):
     model = User
@@ -66,7 +80,14 @@ class UserProfileDetailView(DetailView, FormView):
         if username is not context['user'].username:
             result = Connection.objects.filter(follower__username=context['user'].username).filter(following__username=username)
             context['connected'] = True if result else False            
-        return context    
+        return context
+    
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.user = self.request.user
+        obj.date_created = timezone.now()
+        obj.save()
+        return redirect('feed')
 
 # Follow: hand-made system, its a better and modified copy
 # https://github.com/benigls/instagram
