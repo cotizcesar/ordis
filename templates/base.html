@@ -16,6 +16,7 @@
         {% include 'header.html' %}
         <main>
             {% block content %}{% endblock %}
+            {% include 'post/post_create_modal.html' %}
         </main>
         {% include 'footer.html' %}
         {% block extras %}{% endblock %}
@@ -26,6 +27,9 @@
         <script>
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
+            })
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
             })
         </script>
         <script>

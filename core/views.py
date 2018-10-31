@@ -11,7 +11,7 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 
 # Django: Generic CBV
-from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import TemplateView, ListView, FormView, CreateView, DetailView, UpdateView, DeleteView
 
 # Core: Importing Models
 from .models import Connection, Post, Comment
@@ -25,28 +25,31 @@ from market.models import Item
 class Index(TemplateView):
     template_name = 'index.html'
 
-class Feed(LoginRequiredMixin, TemplateView):
+class Feed(LoginRequiredMixin, TemplateView, FormView):
     template_name = 'feed/feed.html'
+    form_class = PostForm
 
     def get_context_data(self, *args, **kwargs):
         context = super(Feed, self).get_context_data(**kwargs)
         context['posts'] = Post.objects.filter(Q(user__in=self.request.user.follower.values('following')) | Q(user=self.request.user))
         return context
 
-class FeedPublic(TemplateView):
+class FeedPublic(TemplateView, FormView):
     template_name = 'feed/feed.html'
+    form_class = PostForm
 
     def get_context_data(self, *args, **kwargs):
         context = super(FeedPublic, self).get_context_data(**kwargs)
         context['posts'] = Post.objects.all()
         return context
         
-class UserProfileDetailView(DetailView):
+class UserProfileDetailView(DetailView, FormView):
     model = User
     template_name = 'userprofile/userprofile.html'
     slug_field = 'username'
     slug_url_kwarg = 'username'
     context_object_name = 'profile'
+    form_class = PostForm
 
     def get_context_data(self, **kwargs):
         context = super(UserProfileDetailView, self).get_context_data(**kwargs)
