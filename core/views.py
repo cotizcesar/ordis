@@ -14,10 +14,10 @@ from django.contrib.auth.models import User
 from django.views.generic import TemplateView, ListView, FormView, CreateView, DetailView, UpdateView, DeleteView
 
 # Core: Importing Models
-from .models import Connection, Post, Comment
+from .models import UserProfile, Connection, Post, Comment
 
 # Core: Importing forms
-from .forms import PostForm, CommentForm
+from .forms import UserForm, UserProfileForm, PostForm, CommentForm
 
 # Market: Importing Models
 from market.models import Item
@@ -88,6 +88,28 @@ class UserProfileDetailView(DetailView, FormView):
         obj.date_created = timezone.now()
         obj.save()
         return redirect('feed')
+
+class UserUpdateView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UserForm
+    template_name = 'userprofile/userprofile_update.html'
+    success_url = reverse_lazy('feed')
+
+    def get_object(self):
+        return self.request.user
+
+class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = UserProfile
+    form_class = UserProfileForm
+    template_name = 'userprofile/userprofile_update.html'
+    success_url = reverse_lazy('feed')
+
+    def form_valid(self, form):
+        form.save(self.request.user)
+        return super(UserProfileUpdateView, self).form_valid(form)
+
+    def get_object(self):
+        return self.request.user.userprofile
 
 # Follow: hand-made system, its a better and modified copy
 # https://github.com/benigls/instagram

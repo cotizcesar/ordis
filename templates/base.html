@@ -16,6 +16,9 @@
         {% include 'header.html' %}
         <main>
             {% block content %}{% endblock %}
+            <div class="bg-box">
+                {% bootstrap_messages %}
+            </div>
         </main>
         {% include 'footer.html' %}
         {% block extras %}{% endblock %}
