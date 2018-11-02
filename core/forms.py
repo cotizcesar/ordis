@@ -40,3 +40,6 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('text',)
+        help_texts = {
+            'text': 'Use this space for text, you have a limit of 280 characters.',
+        }

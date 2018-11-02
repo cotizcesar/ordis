@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('messages/', include("pinax.messages.urls", namespace="pinax_messages")),
     path('', include('core.urls')),
     path('', include('market.urls')),
     path('', include('alerts.urls')),

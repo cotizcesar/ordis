@@ -62,7 +62,7 @@
                 {% endif %}
                 {% if user.username != profile.username %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-envelope fa-fw text-info mr-1"></i> Message</a>
+                    <a class="nav-link" href="{% url 'pinax_messages:message_user_create' user_id=profile.id %}"><i class="fas fa-envelope fa-fw text-info mr-1"></i> Message</a>
                 </li>
                 {% endif %}
                 <li class="nav-item">

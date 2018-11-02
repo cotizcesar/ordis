@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load pinax_messages_tags %}
+{% block title %}Inbox{% endblock %}
+{% block body_class %}{{ block.super }} pinax-messages-inbox{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            {% include 'modules/menu.html' %}
+        </div>
+        <div class="col-md-6">
+            <h1 class="h3 mt-3 mb-2"><i class="fas fa-envelope fa-fw text-info mr-1"></i> Inbox</h1>
+            <p class="text-muted small">Here you can see all the conversations you have with other users. It is essential that you do not share sensitive data with users.</p>
+            <hr>
+            <a class="btn btn-main btn-lg btn-block my-3" href="{% url 'pinax_messages:message_create' %}" role="button"><i class="fas fa-envelope fa-fw mr-1"></i> Create a Message</a>
+            {% for thread in threads %}
+            <div class="media bg-box p-3 rounded my-3 small">
+                <i class="fas fa-envelope fa-fw {% if thread|unread:user %}text-white{% else %}text-info{% endif %} fa-5x mr-3"></i>
+                <div class="media-body">
+                    <a class="{% if thread|unread:user %}text-white{% endif %}" href="{{thread.get_absolute_url}}">
+                        <p class="mt-0 my-1">Subject: {{thread.subject}}</p>
+                        <p class="mt-0 mb-1">Users: {{thread.users.all|join:", "}}</p>
+                        <p class="mt-1 mb-0">{{thread.latest_message.content}}</p>
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="bg-box small p-3 rounded my-3">
+                <i class="fas fa-info-circle fa-fw fa-3x float-left mr-3"></i> You have no messages at the moment. Do you want to talk to someone privately? Just explore the users and with whom you want to trade or just talk, click on the message button and start chatting.
+                <div class="clearfix"></div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock %}

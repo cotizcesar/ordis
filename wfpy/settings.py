@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'alerts',
     # WFPY: Codex app.
     'codex',
+    # pinax.messages: s an app for providing private user-to-user threaded messaging.
+    # https://github.com/pinax/pinax-messages
+    'pinax.messages',
     'import_export',
 ]
 

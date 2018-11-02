@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load thumbnail %}
+{% load humanize %}
+{% block title %}Messages{% endblock %}
+{% block body_class %}{{ block.super }} pinax-messages-thread{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            {% include 'modules/menu.html' %}
+        </div>
+        <div class="col-md-6">
+            <h1 class="h3 mt-3 mb-2"><i class="fas fa-envelope fa-fw text-info mr-1"></i> Message Detail</h1>
+            <p class="text-muted small">Here you can see in detail the conversion you have with the user. Try not to share sensitive information such as credit card numbers.</p>
+            <hr>
+            <h2 class="h4 mt-3 mb-2"><i class="fas fa-envelope fa-fw text-info mr-1"></i> {{thread.subject}} <a href="{% url "pinax_messages:thread_delete" thread.pk %}"><i class="fas fa-times fa-fw text-muted float-right small mt-1"></i></a></h2>
+            {% for message in thread.messages.all %}
+            <div class="media bg-box pt-3 px-3 rounded my-3 small">
+                <img class="mr-3 mb-3 rounded-circle" src="{{message.sender.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{% if message.sender.get_full_name %}{{message.sender.get_full_name}}{% else %}{{message.sender.username}}{% endif %} avatar.">
+                <div class="media-body">
+                    <p class="mt-0 mb-1">
+                        {% if message.sender.get_full_name %}
+                            <a href="{% url 'userprofile' message.sender.username %}">
+                                {{message.sender.get_full_name}} 
+                                {% if message.sender.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}
+                            </a>
+                            <span class="text-muted">@{{message.sender.username}}</span>
+                        {% else %}
+                            <a href="{% url 'userprofile' message.sender.username %}">@{{message.sender.username}}{% if message.sender.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}</a>
+                        {% endif %}                 
+                        <span class="text-muted float-right">{{message.sent_at|naturaltime}}</span>
+                    </p>
+                    {{message.content|urlize|linebreaks}}
+                </div>
+            </div>
+            {% endfor %}
+            <hr>
+            <form class="comment-form small" action="{% url "pinax_messages:thread_detail" thread.pk %}" method="post">
+                {% csrf_token %}
+                {% bootstrap_form_errors form %}
+                {% bootstrap_form form %}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <div class="my-3">
+                    <a class="btn btn-danger btn-sm px-3" href="{% url "pinax_messages:inbox" %}" role="button"><i class="fas fa-times fa-fw"></i> Cancel</a>
+                    <button type="submit" class="btn btn-success btn-sm float-right px-3">Done</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock %}
