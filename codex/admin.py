@@ -8,20 +8,18 @@ admin.site.register(QuestWalkthrough)
 admin.site.register(Weapon)
 admin.site.register(Stat)
 
-from import_export import resources
-from .models import Quest, Weapon, Stat
+class QuestAdmin(admin.ModelAdmin):
+    model = Quest
+    list_per_page = 22
 
-class QuestResource(resources.ModelResource):
+class QuestWalkthroughAdmin(admin.ModelAdmin):
+    model = QuestWalkthrough
+    list_per_page = 22
 
-    class Meta:
-        model = Quest
-        
-class WeaponResource(resources.ModelResource):
+class WeaponAdmin(admin.ModelAdmin):
+    model = Weapon
+    list_per_page = 22
 
-    class Meta:
-        model = Weapon
-
-class StatResource(resources.ModelResource):
-
-    class Meta:
-        model = Stat
+class StatAdmin(admin.ModelAdmin):
+    model = Stat
+    list_per_page = 22
