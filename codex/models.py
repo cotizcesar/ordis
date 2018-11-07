@@ -50,6 +50,7 @@ class Stat(models.Model):
     # TODO:
     # falloff (field): (Tratando de ver que hacer) / fuck 2 numeros decimal 1 digito
     TIPE_CHOICES = (
+        ('Ac', 'Active'),
         ('Au', 'Auto'),
         ('Ai', 'Air Burst'),
         ('Ba', 'Barrage'),
