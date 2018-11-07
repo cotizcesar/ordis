@@ -106,8 +106,8 @@ class Stat(models.Model):
     wall_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
 
     # Status: Normal
-    impact = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
     puncture = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    impact = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
     slash = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
 
     # Status: Normal
