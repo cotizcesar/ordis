@@ -62,6 +62,7 @@ class Stat(models.Model):
         ('Ch', 'Charge'),
         ('Cr', 'Charged Throw'),
         ('Di', 'Disc'),
+        ('Du', 'Duplex'),
         ('El', 'Electric Quill'),
         ('Fi', 'Fire Quill'),
         ('Ha', 'Harpoon'),
