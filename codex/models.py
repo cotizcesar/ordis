@@ -77,6 +77,7 @@ class Stat(models.Model):
         ('Ve', 'Vertical Spread'),        
     )
     TRIGGER_CHOICES = (
+        ('T', 'Active'),
         ('A', 'Auto'),
         ('B', 'Burst'), 
         ('C', 'Charge'),
