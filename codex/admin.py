@@ -23,3 +23,4 @@ class WeaponAdmin(admin.ModelAdmin):
 class StatAdmin(admin.ModelAdmin):
     model = Stat
     list_per_page = 22
+    ordering = ('weapon',)
