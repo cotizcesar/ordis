@@ -11,6 +11,7 @@ admin.site.register(Stat)
 class QuestAdmin(admin.ModelAdmin):
     model = Quest
     list_per_page = 22
+    ordering = ('-name',)
 
 class QuestWalkthroughAdmin(admin.ModelAdmin):
     model = QuestWalkthrough
@@ -19,8 +20,9 @@ class QuestWalkthroughAdmin(admin.ModelAdmin):
 class WeaponAdmin(admin.ModelAdmin):
     model = Weapon
     list_per_page = 22
+    ordering = ('-name',)
 
 class StatAdmin(admin.ModelAdmin):
     model = Stat
     list_per_page = 22
-    ordering = ('weapon',)
+    ordering = ('-weapon',)
