@@ -30,8 +30,5 @@ class WeaponAdmin(admin.ModelAdmin):
     list_per_page = 22
     ordering = ('-name',)
 
-class StatAdmin(admin.ModelAdmin, ImportExportModelAdmin):
-    model = Stat
-    list_per_page = 22
-    ordering = ('-weapon',)
+class StatAdmin(ImportExportModelAdmin):
     resource_class = StatResource
