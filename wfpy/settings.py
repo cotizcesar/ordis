@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     # pinax.messages: s an app for providing private user-to-user threaded messaging.
     # https://github.com/pinax/pinax-messages
     'pinax.messages',
+    'import_export',
 ]
 
 # django-allauth: Required
