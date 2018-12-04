@@ -1,7 +1,15 @@
 from django.contrib import admin
 
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
+
 # Core: Importing Models
 from .models import Quest, QuestWalkthrough, Weapon, Stat
+
+class StatResource(resources.ModelResource):
+
+    class Meta:
+        model = Stat
 
 admin.site.register(Quest)
 admin.site.register(QuestWalkthrough)
@@ -22,7 +30,8 @@ class WeaponAdmin(admin.ModelAdmin):
     list_per_page = 22
     ordering = ('-name',)
 
-class StatAdmin(admin.ModelAdmin):
+class StatAdmin(admin.ModelAdmin, ImportExportModelAdmin):
     model = Stat
     list_per_page = 22
     ordering = ('-weapon',)
+    resource_class = StatResource
