@@ -26,15 +26,3 @@ class StatAdmin(admin.ModelAdmin):
     model = Stat
     list_per_page = 22
     ordering = ('-weapon',)
-
-from import_export import resources
-
-class WeaponResource(resources.ModelResource):
-
-    class Meta:
-        model = Weapon
-
-from import_export.admin import ImportExportModelAdmin
-
-class WeaponAdmin(ImportExportModelAdmin):
-    resource_class = WeaponResource
