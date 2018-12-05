@@ -5,16 +5,21 @@ from import_export.admin import ImportExportModelAdmin
 # Core: Importing Models
 from .models import Quest, QuestWalkthrough, Weapon, Stat
 
-admin.site.register(Quest)
-admin.site.register(QuestWalkthrough)
+class QuestResource(resources.ModelResource):
+    class Meta:
+        model = Quest
 
-class QuestAdmin(admin.ModelAdmin):
-    model = Quest
-    list_per_page = 22
+@admin.register(Quest)
+class QuestAdmin(ImportExportModelAdmin):
+    pass    
 
-class QuestWalkthroughAdmin(admin.ModelAdmin):
-    model = QuestWalkthrough
-    list_per_page = 22
+class QuestWalkthroughResource(resources.ModelResource):
+    class Meta:
+        model = QuestWalkthrough
+
+@admin.register(QuestWalkthrough)
+class QuestWalkthroughAdmin(ImportExportModelAdmin):
+    pass
 
 class WeaponResource(resources.ModelResource):
     class Meta:
