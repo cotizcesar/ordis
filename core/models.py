@@ -18,6 +18,8 @@ class UserProfile(models.Model):
     bio = models.TextField(max_length=140, blank=True)
     status = models.CharField(default='F', max_length=1, choices=STATUS_CHOICES)
 
+    is_alpha_tester = models.BooleanField(default=False)
+    
     def __str__(self):
         return self.user.username
 
