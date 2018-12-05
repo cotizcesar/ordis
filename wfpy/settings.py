@@ -194,6 +194,8 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_BLACKLIST = ['admin']
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 
+REGISTRATION_OPEN = False
+
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
