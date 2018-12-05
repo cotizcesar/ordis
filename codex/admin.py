@@ -24,5 +24,10 @@ class WeaponAdmin(admin.ModelAdmin):
     list_per_page = 22
     ordering = ('-name',)
 
+class StatResource(resources.ModelResource):
+
+    class Meta:
+        model = Stat
+        
 class StatAdmin(ImportExportActionModelAdmin):
     pass
