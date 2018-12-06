@@ -37,6 +37,7 @@ class Weapon(models.Model):
     tipe = models.CharField(default='P', max_length=1, choices=TIPE_CHOICES)
     description = models.TextField(max_length=600)
     mastery_rank = models.PositiveIntegerField(null=True, blank=True)
+    is_tradeable = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     
@@ -95,6 +96,8 @@ class Stat(models.Model):
     charge_rate = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True) # decimal 2 digitos
     critical_chance = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito con %
     critical_multiplier = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True) # decimal 1 digito con x
+    fall_off_start = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
+    fall_off_end = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # decimal 1 digito
     damage_block = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito con %
     fire_rate = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True) # decimal 2 digitos
     leap_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
@@ -105,6 +108,8 @@ class Stat(models.Model):
     spin_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
     status = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito con %
     trigger = models.CharField(max_length=1, choices=TRIGGER_CHOICES, blank=True, null=True) # lista
+    per_stack_start = models.PositiveIntegerField(blank=True, null=True) # Entero
+    per_stack_end = models.PositiveIntegerField(blank=True, null=True) # Entero
     wall_attack = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True) # decimal 1 digito
 
     # Status: Normal
