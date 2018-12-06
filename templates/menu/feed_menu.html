@@ -11,13 +11,13 @@
     {% endif %}
     {% if user.is_authenticated %}
     <li class="nav-item">
-        <a class="nav-link{% if request.resolver_match.url_name == 'feed' %} bg-dark text-white{% endif %}" href="{% url 'feed' %}"><i class="far fa-map fa-fw mr-1"></i> Feed</a>
+        <a class="nav-link{% if request.resolver_match.url_name == 'feed' %} bg-black-t text-white{% endif %}" href="{% url 'feed' %}"><i class="far fa-map fa-fw mr-1"></i> Feed</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if request.resolver_match.url_name == 'pinax_messages:inbox' %} bg-dark text-white{% endif %}" href="{% url 'pinax_messages:inbox' %}"><i class="fas fa-envelope fa-fw mr-1"></i> Messages</a>
+        <a class="nav-link{% if request.resolver_match.url_name == 'pinax_messages:inbox' %} bg-black-t text-white{% endif %}" href="{% url 'pinax_messages:inbox' %}"><i class="fas fa-envelope fa-fw mr-1"></i> Messages</a>
     </li>
     {% endif %}
     <li class="nav-item">
-        <a class="nav-link{% if request.resolver_match.url_name == 'feed_public' %} bg-dark text-white{% endif %}" href="{% url 'feed_public' %}"><i class="fas fa-globe-americas fa-fw mr-1"></i> Public Feed</a>
+        <a class="nav-link{% if request.resolver_match.url_name == 'feed_public' %} bg-black-t text-white{% endif %}" href="{% url 'feed_public' %}"><i class="fas fa-globe-americas fa-fw mr-1"></i> Public Feed</a>
     </li>
 </ul>

@@ -6,13 +6,13 @@
         <div class="col-md-3">
             {% include 'menu/feed_menu.html' %}
         </div>
-        <div class="col-md-6 bg-dark">
+        <div class="col-md-6 bg-black-t">
             {% include 'post/post_create_modal.html' %}
             {% for post in posts %}
             {% include 'post/post.html' %}
             {% endfor %}
         </div>
-        <div class="col-md-3 bg-dark">
+        <div class="col-md-3 bg-black-t">
             {% include 'modules/aside.html'%}
         </div>
     </div>
