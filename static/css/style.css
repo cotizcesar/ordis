@@ -38,6 +38,11 @@ a:hover{
     list-style: none;
 }
 
+/* Theme: Warframe - Login */
+.bg-black-t{
+    background: rgba(0,0,0,0.2);
+    color: #c6d4df;
+}
 /* Typeahead */
 .twitter-typeahead{
     width: 100%;

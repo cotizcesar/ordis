@@ -6,38 +6,55 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <div class="mt-5 mb-3">
-                <h1 class="h3"><i class="fas fa-sign-in-alt fa-fw text-info"></i> {% trans "Sign In" %}</h1>
-                <hr>
-                <form class="login bg-light rounded p-3 px-3" method="POST" action="{% url 'account_login' %}">
-                    {% csrf_token %}
-                    {% bootstrap_form form %}
-                    {% if redirect_field_value %}
-                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                    {% endif %}
-                    <div>
-                        <a class="secondaryAction btn text-info mt-1 pl-0" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-                        <button type="submit" class="primaryAction btn btn-info float-right mt-1"><i class="fas fa-sign-in-alt fa-fw"></i> {% trans "Sign In" %}</button>
-                    </div>
-                </form>
-            </div>
-            <div class="bg-light p-3 mt-3 mb-5">
-                {% get_providers as socialaccount_providers %}
-                {% if socialaccount_providers %}
-                    <p>{% blocktrans with site.name as site_name %}Please sign in with one of your existing third party accounts. Or, <a class="text-info" href="{{ signup_url }}">sign up</a> for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-                    <hr>
-                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-                    <div class="login-or">{% trans 'or' %}</div>
-                {% include "socialaccount/snippets/login_extra.html" %}
-                {% else %}
-                    <p class="mb-0">{% blocktrans %}If you have not created an account yet, then please
-                    <a class="text-info" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+        <div class="col-md-4 small bg-black-t py-3 my-3">
+            <h2 class="h6 text-uppercase"><i class="fas fa-sign-in-alt fa-fw text-info mr-1"></i> Sign In</h2>
+            <hr>
+            <form class="login" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
+                <a class="secondaryAction btn btn-sm mt-1 pl-0" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                <button type="submit" class="primaryAction btn btn-main btn-sm float-right mt-1"><i class="fas fa-sign-in-alt fa-fw"></i> {% trans "Sign In" %}</button>
+            </form>
+        </div>
+        <div class="col-md-4 small bg-black-t py-3 my-3">
+            <h2 class="h6 text-uppercase"><i class="fas fa-user-plus fa-fw text-success mr-1"></i> Sign Up</h2>
+            <hr>
+            <p>Create a free account.</p>
+            <p>With this account you can publish, buy, sell and do many other things. It's easy and fast.</p>
+            {% get_providers as socialaccount_providers %}
+            {% if socialaccount_providers %}
+                <p>{% blocktrans with site.name as site_name %}Please sign in with one of your existing third party accounts. Or, <a class="text-info" href="{{ signup_url }}">sign up</a> for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+                <hr>
+            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                <div class="login-or">{% trans 'or' %}</div>
+            {% include "socialaccount/snippets/login_extra.html" %}
+            {% else %}
+                <p class="mb-0">{% blocktrans %}If you have not created an account yet, then please <a class="text-info" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-4 small my-3">
+            <div class="bg-black-t py-3">
+                <h2 class="h6 text-uppercase mx-3"><i class="fas fa-info-circle fa-fw text-info mr-1"></i> Why join?</h2>
+                <hr>
+                <dl class="m-0 px-3">
+                    <dt><i class="far fa-newspaper fa-fw text-info mr-1"></i> Social Feed</dt>
+                    <dd>Make friends while you share your #FashionFrame.</dd>
+                    <dt><i class="far fa-compass fa-fw text-info mr-1"></i> Explore</dt>
+                    <dd>Get players to play, recruit or watch.</dd>
+                    <dt><i class="fas fa-store fa-fw text-info mr-1"></i> Marketplace</dt>
+                    <dd>Buy and sell all tradeable items in the game.</dd>
+                    <dt><i class="fas fa-exclamation-triangle fa-fw text-info mr-1"></i> Alerts</dt>
+                    <dd>Get the most important alerts on time.</dd>
+                    <dt><i class="fas fa-hammer fa-fw text-info mr-1"></i> Builder</dt>
+                    <dd>Build the Warframe, Arma or Companion easily.</dd>
+                    <dt><i class="fas fa-book-open fa-fw text-info mr-1"></i> Codex</dt>
+                    <dd>You can see all the game information in this section.</dd>
+                </dl>
             </div>
         </div>
-        <div class="col-md-3"></div>
     </div>
 </div>
 {% endblock %}
