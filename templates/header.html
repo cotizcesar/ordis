@@ -17,7 +17,7 @@
                         <a class="nav-link mx-1" href="{% url 'feed' %}">Home</a>
                     </li>
                     <li class="nav-item{% if request.resolver_match.url_name == 'explore' or request.resolver_match.url_name == 'explore_users' %} active{% endif %}">
-                        <a class="nav-link mx-1 disabled" href="{% url 'explore' %}">Explore</a>
+                        <a class="nav-link mx-1" href="{% url 'explore' %}">Explore</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-1 disabled" href="#">Market</a>
