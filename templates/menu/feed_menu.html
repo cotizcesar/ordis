@@ -1,5 +1,7 @@
 
-{% include 'user/user_menu.html' %}
+{% if user.is_authenticated %}
+{% include 'user/user_thumb.html' %}
+{% endif %}
 <p class="title-menu my-1 mx-3 text-uppercase small">Main Menu</p>
 <ul class="nav flex-column mb-3 small">
     {% if not request.resolver_match.url_name == 'feed' %}

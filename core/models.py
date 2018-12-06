@@ -17,7 +17,7 @@ class UserProfile(models.Model):
     avatar = models.ImageField(upload_to='user/avatar', default='avatar/default.png', blank=True)
     bio = models.TextField(max_length=140, blank=True)
     status = models.CharField(default='F', max_length=1, choices=STATUS_CHOICES)
-
+    is_verified = models.BooleanField(default=False)
     is_alpha_tester = models.BooleanField(default=False)
     
     def __str__(self):
