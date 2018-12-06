@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import url
 
-from .views import Index, UserProfileDetailView, UserUpdateView, UserProfileUpdateView, follow_view, unfollow_view, Feed, FeedPublic, ExploreUsers, PostCreateView, PostDetailView, CommentCreateView
+from .views import Index, UserProfileDetailView, UserUpdateView, UserProfileUpdateView, follow_view, unfollow_view, Feed, FeedPublic, Explore, ExploreUsers, PostCreateView, PostDetailView, CommentCreateView
 
 urlpatterns = [
     path('', Index.as_view(), name='index'),
     path('feed/', Feed.as_view(), name='feed'),
     path('feed/public/', FeedPublic.as_view(), name='feed_public'),
+    path('explore/', Explore.as_view(), name='explore'),
     path('explore/users/', ExploreUsers.as_view(), name='explore_users'),
     path('post/create/', PostCreateView.as_view(), name='post_create'),
     url(r'^post/(?P<pk>\d+)/$', PostDetailView.as_view(), name='post_detail'),

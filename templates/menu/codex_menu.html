@@ -1,14 +1,8 @@
-
 {% if user.is_authenticated %}
 {% include 'user/user_thumb.html' %}
 {% endif %}
-<p class="title-menu my-1 mx-3 text-uppercase small">Codex</p>
+<a class="title-menu my-1 mx-3 text-uppercase small d-block" href="{% url 'codex' %}">Codex</a>
 <ul class="nav flex-column mb-3 small">
-    {% if not request.resolver_match.url_name == 'codex' %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'codex' %}"><i class="fas fa-chevron-left fa-fw mr-1"></i> Back to Codex</a>
-    </li>
-    {% endif %}
     <li class="nav-item">
         <a class="nav-link{% if request.resolver_match.url_name == 'codex_quests' %} bg-black-t text-white{% endif %}" href="{% url 'codex_quests' %}"><i class="far fa-map fa-fw mr-1"></i> Quests</a>
     </li>

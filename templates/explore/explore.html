@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Feed{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 my-3">
+            {% include 'explore/explore_menu.html' %}
+        </div>
+        <div class="col-md-9 bg-black-t">
+            {% if mode == 'explore' %}
+            <h1 class="h3 mt-3 mb-2"><i class="far fa-compass fa-fw text-info mr-1"></i> Explore</h1>
+            <p class="text-muted small m-0">From here you can see a mixed exploration, since you can explore Players, Posts and Clans at the same time.</p>
+            <hr>
+            {% endif %}
+            {% if mode == 'explore_users' %}
+            <h1 class="h3 mt-3 mb-2"><i class="fas fa-users fa-fw text-info mr-1"></i> Explore: Players</h1>
+            <p class="text-muted small m-0">This is a part of the exploration where you can only view players. Excellent to follow new people.</p>
+            <hr>
+            {% endif %}
+            <div class="row">
+            {% for user in users %}
+            <div class="col-md-4">
+                {% include 'user/user_thumb.html' %}
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -223,11 +223,21 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         obj.save()        
         return redirect('post_detail', pk=obj.post.id)
 
+class Explore(TemplateView):
+    template_name = 'explore/explore.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(Explore, self).get_context_data(**kwargs)
+        context['users'] = User.objects.all().order_by('?')[:9]
+        context['posts'] = Post.objects.all().order_by('?')[:30]
+        context['mode'] = 'explore'
+        return context
+
 class ExploreUsers(TemplateView):
-    template_name = 'explore/explore_users.html'
+    template_name = 'explore/explore.html'
 
     def get_context_data(self, **kwargs):
         context = super(ExploreUsers, self).get_context_data(**kwargs)
         context['users'] = User.objects.all().order_by('?')
-        #context['mode'] = 'explore_users'
+        context['mode'] = 'explore_users'
         return context
