@@ -21,6 +21,7 @@ from django.conf.urls import url
 from .views import Quests, QuestDetail, Universe, Weapons, WeaponsPrimary, WeaponsSecondary, WeaponsMelee, WeaponDetail
 
 urlpatterns = [
+    path('codex/', Quests.as_view(), name='codex'),
     path('codex/quests', Quests.as_view(), name='codex_quests'),
     url(r'codex/quests/(?P<slug>[-\w]+)$', QuestDetail.as_view(), name='codex_quest_detail'),
     path('codex/universe', Universe.as_view(), name='codex_universe'),

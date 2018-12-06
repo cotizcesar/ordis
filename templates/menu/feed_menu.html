@@ -1,0 +1,19 @@
+
+{% include 'user/user_menu.html' %}
+<p class="title-menu my-1 mx-3 text-uppercase small">Main Menu</p>
+<ul class="nav flex-column mb-3 small">
+    {% if not request.resolver_match.url_name == 'feed' %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'feed' %}"><i class="fas fa-chevron-left fa-fw mr-1"></i> Back to Feed</a>
+    </li>
+    {% endif %}
+    <li class="nav-item">
+        <a class="nav-link{% if request.resolver_match.url_name == 'feed' %} bg-dark text-white{% endif %}" href="{% url 'feed' %}"><i class="far fa-map fa-fw mr-1"></i> Feed</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link{% if request.resolver_match.url_name == 'pinax_messages:inbox' %} bg-dark text-white{% endif %}" href="{% url 'pinax_messages:inbox' %}"><i class="fas fa-envelope fa-fw mr-1"></i> Messages</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link{% if request.resolver_match.url_name == 'feed_public' %} bg-dark text-white{% endif %}" href="{% url 'feed_public' %}"><i class="fas fa-globe-americas fa-fw mr-1"></i> Public Feed</a>
+    </li>
+</ul>

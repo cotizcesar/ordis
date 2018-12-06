@@ -6,10 +6,10 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-2">
-            {% include 'modules/menu.html' %}
+        <div class="col-md-3">
+            {% include 'menu/feed_menu.html' %}
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 bg-dark">
             <h1 class="h3 mt-3 mb-2"><i class="fas fa-envelope fa-fw text-info mr-1"></i> Inbox</h1>
             <p class="text-muted small">Here you can see all the conversations you have with other users. It is essential that you do not share sensitive data with users.</p>
             <hr>
@@ -32,7 +32,7 @@
             </div>
             {% endfor %}
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-3 bg-dark"></div>
     </div>
 </div>
 {% endblock %}
