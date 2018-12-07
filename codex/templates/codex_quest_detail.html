@@ -2,89 +2,81 @@
 {% load thumbnail %}
 {% block title %}{{quest.name}}{% endblock %}
 {% block content %}
-<div class="container">
+<div class="container bg-black-t my-3 small">
     <div class="row">
-        <div class="col-md-4 bg-black-t text-light">
-            <div class="my-3">
-                <img class="img-fluid mb-3" src="{{quest.image|thumbnail_url:'quest'|default:'https://via.placeholder.com/350x196'}}">
-                <h1 class="h3"><i class="fas fa-book-open fa-fw text-info mr-1"></i> {{quest.name}}</h1>
-                <hr>
-                <h2 class="h6 text-info text-uppercase">Description</h2>
-                <p class="font-italic mb-0">{{quest.description|linebreaks}}</p>
-                <hr>
-                <div class="row">
-                    {% if quest.tipe %}
-                    <div class="col-md-6 my-2">
-                        <h2 class="h6 text-info text-uppercase">Type</h2>
-                        <p class="mb-0">{{quest.get_tipe_display}}</p>
-                    </div>
+        <div class="col-md-3 py-3">
+            <img class="img-fluid" src="{{quest.image|thumbnail_url:'quest'|default:'https://via.placeholder.com/510x287'}}">
+        </div>
+        <div class="col-md-9 pt-3">
+            <h1 class="h3 mb-3"><i class="fas fa-book-open fa-fw text-info mr-1"></i> {{quest.name}}</h1>
+            <h2 class="h6 text-info text-uppercase my-1">Description</h2>
+            <p class="mb-3">{{quest.description}}</p>
+            <hr class="m-0">
+            <div class="row">
+                {% if quest.tipe %}
+                <div class="col-md-3 my-3">
+                    <h2 class="h6 text-info text-uppercase mb-1">Quest Type</h2>
+                    <p class="mb-0">{{quest.get_tipe_display}}</p>
+                </div>
+                {% endif %}
+                <div class="col-md-3 my-3">
+                    <h2 class="h6 text-info text-uppercase mb-1">Requirements</h2>
+                    <p class="mb-0">Work-in-Progress</p>
+                </div>
+                <div class="col-md-3 my-3">
+                    <h2 class="h6 text-info text-uppercase mb-1">Replayable</h2>
+                    {% if quest.is_replayable == True %}
+                    <p class="mb-0 text-success">Replayable</p>
+                    {% else %}
+                    <p class="mb-0 text-danger">Not Replayable</p>
                     {% endif %}
-                    <div class="col-md-6 my-2">
-                        <h2 class="h6 text-info text-uppercase">Requirements</h2>
-                        <p class="mb-0">In Progress...</p>
-                    </div>
-                    {% if quest.is_replayable %}
-                    <div class="col-md-6 my-2">
-                        <h2 class="h6 text-info text-uppercase">Replayable</h2>
-                        {% if quest.is_replayable == True %}
-                        <p class="mb-0 text-success">Replayable</p>
-                        {% else %}
-                        <p class="mb-0 text-danger">Not Replayable</p>
-                        {% endif %}
-                    </div>
-                    {% endif %}
-                    <div class="col-md-6 my-2">
-                        <h2 class="h6 text-info text-uppercase">Rewards</h2>
-                        <p class="mb-0">In Progress...</p>
-                    </div>
-                    {% if quest.previous_quest or quest.next_quest %}
-                    <div class="col-md-12 my-2">
-                        <h2 class="h6 text-info text-uppercase text-center">Chronology</h2>
-                        <div class="row">
-                            {% if quest.previous_quest %}
-                            <div class="col-md-6 my-1">
-                                <a class="btn btn-sm btn-info btn-block" href="{% url 'codex_quest_detail' quest.previous_quest.slug %}" role="button"><i class="fas fa-chevron-left fa-fw"></i> {{quest.previous_quest}}</a>
-                            </div>
-                            {% endif %}
-                            {% if quest.next_quest %}
-                            <div class="col-md-6 my-1">
-                                <a class="btn btn-sm btn-info btn-block" href="{% url 'codex_quest_detail' quest.next_quest.slug %}" role="button">{{quest.next_quest}} <i class="fas fa-chevron-right fa-fw"></i></a>
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    {% endif %}
+                </div>
+                <div class="col-md-3 mt-3">
+                    <h2 class="h6 text-info text-uppercase mb-1">Rewards</h2>
+                    <p class="mb-0">Work-in-Progress</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-8 my-3">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+    </div>
+</div>
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-3">
+            {% include 'menu/codex_menu.html' %}
+        </div>
+        <div class="col-md-9 bg-black-t py-3 small">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="walkthrough-tab" data-toggle="tab" href="#walkthrough" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-walking fa-fw"></i> Walkthrough</a>
+                    <a class="nav-link btn-main mr-1" id="pills-walkthrough-tab" data-toggle="pill" href="#pills-walkthrough" role="tab" aria-controls="pills-walkthrough" aria-selected="true"><i class="fas fa-walking fa-fw mr-1"></i> Walkthrough</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-book fa-fw"></i> Notes</a>
+                    <a class="nav-link btn-main mx-1" id="pills-notes-tab" data-toggle="pill" href="#pills-notes" role="tab" aria-controls="pills-notes" aria-selected="false"><i class="far fa-sticky-note fa-fw mr-1"></i> Notes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="trivia-tab" data-toggle="tab" href="#trivia" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-lightbulb fa-fw"></i> Trivia</a>
+                    <a class="nav-link btn-main mx-1" id="pills-trivia-tab" data-toggle="pill" href="#pills-trivia" role="tab" aria-controls="pills-trivia" aria-selected="false"><i class="fas fa-lightbulb fa-fw"></i> Trivia</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="patchhistory-tab" data-toggle="tab" href="#patchhistory" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-history fa-fw"></i> Patch History</a>
+                    <a class="nav-link btn-main ml-1" id="pills-patch-tab" data-toggle="pill" href="#pills-patch" role="tab" aria-controls="pills-patch" aria-selected="false"><i class="fas fa-history fa-fw"></i> Patch History</a>
                 </li>
             </ul>
-            <div class="tab-content border-left border-right border-bottom" id="myTabContent">
-                <div class="tab-pane fade show active" id="walkthrough" role="tabpanel" aria-labelledby="walkthrough-tab">
-                    {% for walkthrough in walkthroughs %}
-                    <div class="p-3"> 
-                        <h2 class="h4">{{walkthrough.name}}:</h2>
-                        <hr class="text-secondary">
-                        {{walkthrough.description|safe|linebreaks}}
+            <hr>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-walkthrough" role="tabpanel" aria-labelledby="pills-walkthrough-tab">
+                    <div class="container">
+                        <div class="row">
+                            {% for walkthrough in walkthroughs %}                    
+                            <div class="col-md-12 bg-black-t py-3 mb-3">
+                                <p class="text-uppercase"><span class="text-info">Step {{walkthrough.id}}:</span> {{walkthrough.name}}</h2>
+                                <hr>
+                                {{walkthrough.description|safe|linebreaks}}
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                    {% endfor %}
                 </div>
-                <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">n</div>
-                <div class="tab-pane fade" id="trivia" role="tabpanel" aria-labelledby="trivia-tab">t</div>
-                <div class="tab-pane fade" id="patchhistory" role="tabpanel" aria-labelledby="patchhistory-tab">p</div>
+                <div class="tab-pane fade" id="pills-notes" role="tabpanel" aria-labelledby="pills-notes-tab">Work-in-Progress</div>
+                <div class="tab-pane fade" id="pills-trivia" role="tabpanel" aria-labelledby="pills-trivia-tab">Work-in-Progress</div>
+                <div class="tab-pane fade" id="pills-patch" role="tabpanel" aria-labelledby="pills-patch-tab">Work-in-Progress</div>
             </div>
         </div>
     </div>

@@ -162,6 +162,7 @@ THUMBNAIL_ALIASES = {
         'item_child': {'size': (50, 50), 'crop': 'smart', 'upscale' : True},
         'order': {'size': (74, 74), 'crop': 'smart', 'upscale' : True},
         'item': {'size': (510, 287), 'crop': 'smart', 'upscale' : True},
+        'quest': {'size': (510, 287), 'crop': 'smart', 'upscale' : True},
     },
 }
 

@@ -3,7 +3,12 @@
     <div class="item">
         <img class="img-fluid" src="{{item.image|thumbnail_url:'item'|default:'https://via.placeholder.com/510x287'}}">
         <div class="py-2 px-3 bg-light">
+            {% if quests %}
+            <a href="{% url 'codex_quest_detail' item.slug %}" class="text-dark text-uppercase font-weight-bold mb-0">{{item.name}}</a>
+            {% endif %}
+            {% if weapons %}
             <a href="{% url 'codex_universe_weapon_detail' item.slug %}" class="text-dark text-uppercase font-weight-bold mb-0">{{item.name}}</a>
+            {% endif %}
         </div>
     </div>
 </div>
