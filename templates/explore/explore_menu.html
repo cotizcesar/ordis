@@ -4,7 +4,7 @@
 <a class="title-menu my-1 mx-3 text-uppercase small d-block" href="{% url 'explore' %}">Explore</a>
 <ul class="nav flex-column mb-3 small">
     <li class="nav-item">
-        <a class="nav-link{% if request.resolver_match.url_name == 'explore' %} bg-black-t text-white{% endif %}" href="{% url 'explore' %}"><i class="far fa-compass fa-fw mr-1"></i> Explore</a>
+        <a class="nav-link{% if request.resolver_match.url_name == 'explore' %} bg-black-t text-white{% endif %}" href="{% url 'explore' %}"><i class="fas fa-columns fa-fw mr-1"></i> Dashboard</a>
     </li>
     <li class="nav-item">
         <a class="nav-link{% if request.resolver_match.url_name == 'explore_users' %} bg-black-t text-white{% endif %}" href="{% url 'explore_users' %}"><i class="fas fa-users fa-fw mr-1"></i> Players</a>
@@ -13,6 +13,6 @@
         <a class="nav-link disabled" href="#"><i class="fas fa-globe-americas fa-fw mr-1"></i> Posts</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link disabled" href="#"><i class="fas fa-globe-americas fa-fw mr-1"></i> Clans</a>
+        <a class="nav-link disabled" href="#"><i class="fas fa-flag fa-fw mr-1"></i> Clans</a>
     </li>
 </ul>
