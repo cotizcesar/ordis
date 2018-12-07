@@ -21,10 +21,11 @@ body{
 .btn-small{
     font-size: 0.7rem;
 }
-.btn-main:hover{
+.btn-main:hover, .btn-main:active{
     color: #fff;
     background: #4C88AC;
 }
+
 /* Theme Ends */
 
 a{

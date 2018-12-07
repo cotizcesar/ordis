@@ -1,7 +1,7 @@
 {% load custom_filters %}
 {% load thumbnail %}
 {% load humanize %}
-<div class="post small bg-box rounded my-3">
+<div class="post small bg-box rounded mb-3">
     {% if post.image %}
     <img class="img-fluid rounded-top" src="{{post.image|thumbnail_url:'post'|default:'https://via.placeholder.com/540'}}" alt="{{post.text}}">
     {% elif post.video %}

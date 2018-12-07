@@ -229,7 +229,7 @@ class Explore(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(Explore, self).get_context_data(**kwargs)
         context['users'] = User.objects.all().order_by('?')[:9]
-        context['posts'] = Post.objects.all().order_by('?')[:30]
+        context['posts'] = Post.objects.all().order_by('?')
         context['mode'] = 'explore'
         return context
 

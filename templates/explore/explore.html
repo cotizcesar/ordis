@@ -11,17 +11,18 @@
             <h1 class="h3 mt-3 mb-2"><i class="far fa-compass fa-fw text-info mr-1"></i> Explore</h1>
             <p class="text-muted small m-0">From here you can see a mixed exploration, since you can explore Players, Posts and Clans at the same time.</p>
             <hr>
-            <div class="row">                
-                <div class="col-md-12 my-3">
-                    <a class="title-menu text-uppercase d-block" href="{% url 'explore_users' %}"><i class="fas fa-users fa-fw text-info mr-1"></i> Players</a>
-                </div>
-                {% for user in users %}
-                <div class="col-md-4">
+            <div class="row">           
+                <div class="col-md-8 mb-3">
+                    <h2 class="h6 mb-3"><i class="fas fa-globe-americas fa-fw text-info mr-1"></i> Public Posts <a class="d-block float-right small mt-1" href="">More <i class="fas fa-chevron-right fa-fw ml-1"></i></a></h2>
+                    {% for post in posts %}
+                    {% include 'post/post.html' %}
+                    {% endfor %}
+                </div>  
+                <div class="col-md-4 mb-3">
+                    <h2 class="h6 mb-3"><i class="fas fa-users fa-fw text-info mr-1"></i> Players <a class="d-block float-right small mt-1" href="{% url 'explore_users' %}">More <i class="fas fa-chevron-right fa-fw ml-1"></i></a></h2>
+                    {% for user in users %}
                     {% include 'user/user_thumb.html' %}
-                </div>
-                {% endfor %}
-                <div class="col-md-12">
-                    <a class="title-menu mb-3 text-uppercase d-block" href="#"><i class="fas fa-users fa-fw text-info mr-1"></i> Public Posts</a>
+                    {% endfor %}
                 </div>
             </div>
             {% endif %}
@@ -29,6 +30,14 @@
             <h1 class="h3 mt-3 mb-2"><i class="fas fa-users fa-fw text-info mr-1"></i> Explore: Players</h1>
             <p class="text-muted small m-0">This is a part of the exploration where you can only view players. Excellent to follow new people.</p>
             <hr>
+            <h2 class="h6 mb-3"><i class="fas fa-users fa-fw text-info mr-1"></i> Players</h2>
+            <div class="row">
+                {% for user in users %}
+                <div class="col-md-4">
+                    {% include 'user/user_thumb.html' %}
+                </div>
+                {% endfor %}
+            </div>
             {% endif %}
         </div>
     </div>
