@@ -137,3 +137,23 @@ class Stat(models.Model):
 
     def __str__(self):
         return self.weapon.name + ' > ' + self.tipe
+
+class Warframe(models.Model):
+    name = models.CharField(max_length=32)
+    slug = models.SlugField()
+    description = models.TextField(max_length=280)
+    image = models.ImageField(upload_to='codex/warframe', default='codex/warframe/default.png', blank=True)
+    pasive = models.TextField(max_length=140)
+    armor = models.PositiveIntegerField()
+    energy = models.PositiveIntegerField()
+    health = models.PositiveIntegerField()
+    shield = models.PositiveIntegerField()
+    sprint_speed = models.DecimalField(max_digits=3, decimal_places=2)
+
+class WarframeAbility(models.Model):
+    warframe = models.ForeignKey(Warframe, on_delete=models.CASCADE)
+    name = models.CharField(max_length=32)
+    slug = models.SlugField()
+    description = models.TextField(max_length=140)
+    image = models.ImageField(upload_to='codex/warframe/ability', default='codex/warframe/ability/default.png', blank=True)
+    pasive = models.TextField(max_length=140)
