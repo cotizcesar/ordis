@@ -3,7 +3,7 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 # Core: Importing Models
-from .models import Quest, QuestWalkthrough, Weapon, Stat
+from .models import Quest, QuestWalkthrough, Weapon, Stat, Warframe, WarframeAbility
 
 class QuestResource(resources.ModelResource):
     class Meta:
@@ -35,4 +35,20 @@ class StatResource(resources.ModelResource):
 
 @admin.register(Stat)
 class StatAdmin(ImportExportModelAdmin):
+    pass
+
+class WarframeResource(resources.ModelResource):
+    class Meta:
+        model = Warframe
+
+@admin.register(Warframe)
+class WarframeAdmin(ImportExportModelAdmin):
+    pass
+
+class WarframeAbilityResource(resources.ModelResource):
+    class Meta:
+        model = WarframeAbility
+
+@admin.register(WarframeAbility)
+class WarframeAbilityAdmin(ImportExportModelAdmin):
     pass
