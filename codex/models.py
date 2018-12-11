@@ -25,6 +25,9 @@ class QuestWalkthrough(models.Model):
     name = models.CharField(max_length=140)
     description = models.TextField()
 
+    def __str__(self):
+        return self.quest.name + ' > ' + self.name
+
 class Weapon(models.Model):
     TIPE_CHOICES = (
         ('P', 'Primary Weapon'),
@@ -163,4 +166,4 @@ class WarframeAbility(models.Model):
     pasive = models.TextField(max_length=140)
 
     def __str__(self):
-        return self.warframe.name + ' + ' + self.name
+        return self.warframe.name + ' > ' + self.name
