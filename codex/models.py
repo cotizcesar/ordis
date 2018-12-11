@@ -151,6 +151,9 @@ class Warframe(models.Model):
     shield = models.PositiveIntegerField()
     sprint_speed = models.DecimalField(max_digits=3, decimal_places=2)
 
+    def __str__(self):
+        return self.warframe.name
+
 class WarframeAbility(models.Model):
     warframe = models.ForeignKey(Warframe, on_delete=models.CASCADE)
     name = models.CharField(max_length=32)
