@@ -142,6 +142,7 @@ class Warframe(models.Model):
     name = models.CharField(max_length=32)
     slug = models.SlugField()
     description = models.TextField(max_length=280)
+    is_prime = models.BooleanField(default=False)
     image = models.ImageField(upload_to='codex/warframe', default='codex/warframe/default.png', blank=True)
     pasive = models.TextField(max_length=140)
     armor = models.PositiveIntegerField()
