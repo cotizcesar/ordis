@@ -16,7 +16,7 @@ class Quest(models.Model):
     is_replayable = models.BooleanField(default=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-
+    
     def __str__(self):
         return self.name
 
@@ -24,6 +24,9 @@ class QuestWalkthrough(models.Model):
     quest = models.ForeignKey(Quest, on_delete=models.CASCADE)
     name = models.CharField(max_length=140)
     description = models.TextField()
+
+    class Meta:
+        ordering = ['quest']
 
     def __str__(self):
         return self.quest.name + ' > ' + self.name
@@ -154,6 +157,9 @@ class Warframe(models.Model):
     shield = models.PositiveIntegerField()
     sprint_speed = models.DecimalField(max_digits=3, decimal_places=2)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
@@ -164,6 +170,9 @@ class WarframeAbility(models.Model):
     description = models.TextField(max_length=140)
     image = models.ImageField(upload_to='codex/warframe/ability', default='codex/warframe/ability/default.png', blank=True)
     pasive = models.TextField(max_length=140)
+
+    class Meta:
+        ordering = ['warframe']
 
     def __str__(self):
         return self.warframe.name + ' > ' + self.name
