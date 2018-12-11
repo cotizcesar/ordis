@@ -152,7 +152,7 @@ class Warframe(models.Model):
     sprint_speed = models.DecimalField(max_digits=3, decimal_places=2)
 
     def __str__(self):
-        return self.name 
+        return self.name
 
 class WarframeAbility(models.Model):
     warframe = models.ForeignKey(Warframe, on_delete=models.CASCADE)
@@ -161,3 +161,6 @@ class WarframeAbility(models.Model):
     description = models.TextField(max_length=140)
     image = models.ImageField(upload_to='codex/warframe/ability', default='codex/warframe/ability/default.png', blank=True)
     pasive = models.TextField(max_length=140)
+
+    def __str__(self):
+        return self.warframe.name + ' + ' + self.name
