@@ -9,6 +9,9 @@
             {% if weapons %}
             <a href="{% url 'codex_universe_weapon_detail' item.slug %}" class="text-dark text-uppercase font-weight-bold mb-0">{{item.name}}</a>
             {% endif %}
+            {% if warframes %}
+            <a href="#" class="text-dark text-uppercase font-weight-bold mb-0">{{item.name}}</a>
+            {% endif %}
         </div>
     </div>
 </div>
