@@ -13,10 +13,17 @@ class UserProfile(models.Model):
         ('I', 'In Game',),
         ('F', 'Offline',),
     )
+    PLATFORM_CHOICES = (
+        ('PC', 'PC'),
+        ('PS4', 'Playstation 4',),
+        ('XB1', 'Xbox One',),
+        ('NSW', 'Nintendo Switch',),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='user/avatar', default='avatar/default.png', blank=True)
     bio = models.TextField(max_length=140, blank=True)
     status = models.CharField(default='F', max_length=1, choices=STATUS_CHOICES)
+    platform = models.CharField(default='PC', max_length=3, choices=PLATFORM_CHOICES)
     is_verified = models.BooleanField(default=False)
     is_alpha_tester = models.BooleanField(default=False)
     
