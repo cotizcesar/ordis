@@ -16,7 +16,7 @@ class Quest(models.Model):
     is_replayable = models.BooleanField(default=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    
+
     def __str__(self):
         return self.name
 
@@ -150,7 +150,7 @@ class Warframe(models.Model):
     description = models.TextField(max_length=280)
     is_prime = models.BooleanField(default=False)
     image = models.ImageField(upload_to='codex/warframe', default='codex/warframe/default.png', blank=True)
-    pasive = models.TextField(max_length=140)
+    pasive = models.TextField(max_length=280)
     armor = models.PositiveIntegerField()
     energy = models.PositiveIntegerField()
     health = models.PositiveIntegerField()
