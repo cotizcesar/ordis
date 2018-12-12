@@ -172,7 +172,6 @@ class WarframeAbility(models.Model):
     slug = models.SlugField()
     description = models.TextField(max_length=140)
     image = models.ImageField(upload_to='codex/warframe/ability', default='codex/warframe/ability/default.png', blank=True)
-    pasive = models.TextField(max_length=140)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     
