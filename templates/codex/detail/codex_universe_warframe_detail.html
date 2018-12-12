@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block title %}{{warframe.name}}{% endblock %}
+{% block content %}
+<div class="container bg-black-t my-3 small">
+    <div class="row">
+        <div class="col-md-3 py-3">
+            <img class="img-fluid bg-black-t rounded" src="{{warframe.image|thumbnail_url:'item'|default:'https://via.placeholder.com/510x910'}}">
+        </div>
+        <div class="col-md-9 pt-3">
+            <h1 class="h3 mb-3"><i class="fas fa-book-open fa-fw text-info mr-1"></i> {{warframe.name}} <span class="h6 float-right small">Release Date: {{warframe.release_date}}</span></h1>
+            <h2 class="h6 text-info text-uppercase my-1">Description</h2>
+            <p class="mb-3">{{warframe.description}}</p>
+            <h2 class="h6 text-info text-uppercase my-1">Pasive</h2>
+            <p class="mb-3">{{warframe.pasive}}</p>
+            <hr class="m-0">
+            <div class="row">
+                <div class="col-md-2 my-3">
+                    <h2 class="h6 text-info text-uppercase mb-1">Armor</h2>
+                    <p class="mb-0">{{warframe.armor}}</p>
+                </div>
+                <div class="col-md-2 my-3">
+                    <h2 class="h6 text-info text-uppercase mb-1">Energy</h2>
+                    <p class="mb-0">{{warframe.energy}}</p>
+                </div>
+                <div class="col-md-2 my-3">
+                    <h2 class="h6 text-info text-uppercase mb-1">Health</h2>
+                    <p class="mb-0">{{warframe.health}}</p>
+                </div>
+                <div class="col-md-2 my-3">
+                    <h2 class="h6 text-info text-uppercase mb-1">Shield</h2>
+                    <p class="mb-0">{{warframe.shield}}</p>
+                </div>
+                <div class="col-md-4 my-3">
+                    <h2 class="h6 text-info text-uppercase mb-1">Sprint Speed</h2>
+                    <p class="mb-0">{{warframe.sprint_speed}}</p>
+                </div>
+            </div>
+            <hr class="mt-0">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="media bg-black-t p-3 small">
+                        <img class="mr-3" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h3 class="h6 mt-0">Media heading</h3>
+                            <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
+                            vestibulum in vulputate at.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="media bg-black-t p-3 small">
+                        <img class="mr-3" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h3 class="h6 mt-0">Media heading</h3>
+                            <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
+                            vestibulum in vulputate at.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="media bg-black-t p-3 small">
+                        <img class="mr-3" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h3 class="h6 mt-0">Media heading</h3>
+                            <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
+                            vestibulum in vulputate at.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="media bg-black-t p-3 small">
+                        <img class="mr-3" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h3 class="h6 mt-0">Media heading</h3>
+                            <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
+                            vestibulum in vulputate at.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-3">
+            {% include 'codex/menu/codex_menu.html' %}
+        </div>
+        <div class="col-md-9 bg-black-t py-3 small">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link btn-main mr-1" id="pills-acquisition-tab" data-toggle="pill" href="#pills-acquisition" role="tab" aria-controls="pills-acquisition" aria-selected="true"><i class="fas fa-walking fa-fw mr-1"></i> Acquisition</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-main mx-1" id="pills-trivia-tab" data-toggle="pill" href="#pills-trivia" role="tab" aria-controls="pills-trivia" aria-selected="false"><i class="fas fa-lightbulb fa-fw"></i> Trivia</a>
+                </li>
+            </ul>
+            <hr>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-acquisition" role="tabpanel" aria-labelledby="pills-acquisition-tab">
+                    <div class="container">
+                        <div class="row">
+                            {% for walkthrough in acquisition %}                    
+                            <div class="col-md-12 bg-black-t py-3 mb-3">
+                                <p class="text-uppercase"><span class="text-info">Step {{walkthrough.id}}:</span> {{walkthrough.name}}</h2>
+                                <hr>
+                                {{walkthrough.description|safe|linebreaks}}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-trivia" role="tabpanel" aria-labelledby="pills-trivia-tab">Work-in-Progress</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

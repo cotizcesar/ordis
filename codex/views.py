@@ -7,10 +7,10 @@ from django.views.generic import TemplateView, ListView, CreateView, DetailView,
 from .models import Quest, QuestWalkthrough, Weapon, Stat, Warframe, WarframeAbility
 
 class Codex(TemplateView):
-    template_name = 'codex.html'
+    template_name = 'codex/codex.html'
 
 class Quests(TemplateView):
-    template_name = 'codex.html'
+    template_name = 'codex/codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(Quests, self).get_context_data(**kwargs)
@@ -19,7 +19,7 @@ class Quests(TemplateView):
 
 class QuestDetail(DetailView):
     model = Quest
-    template_name = 'codex_quest_detail.html'
+    template_name = 'codex/codex_quest_detail.html'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
@@ -29,7 +29,7 @@ class QuestDetail(DetailView):
         return context
 
 class Universe(TemplateView):
-    template_name = 'codex.html'
+    template_name = 'codex/codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(Universe, self).get_context_data(**kwargs)
@@ -38,7 +38,7 @@ class Universe(TemplateView):
         return context
 
 class Weapons(TemplateView):
-    template_name = 'codex.html'
+    template_name = 'codex/codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(Weapons, self).get_context_data(**kwargs)
@@ -46,7 +46,7 @@ class Weapons(TemplateView):
         return context
 
 class WeaponsPrimary(TemplateView):
-    template_name = 'codex.html'
+    template_name = 'codex/codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(WeaponsPrimary, self).get_context_data(**kwargs)
@@ -54,7 +54,7 @@ class WeaponsPrimary(TemplateView):
         return context
 
 class WeaponsSecondary(TemplateView):
-    template_name = 'codex.html'
+    template_name = 'codex/codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(WeaponsSecondary, self).get_context_data(**kwargs)
@@ -62,7 +62,7 @@ class WeaponsSecondary(TemplateView):
         return context
 
 class WeaponsMelee(TemplateView):
-    template_name = 'codex.html'
+    template_name = 'codex/codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(WeaponsMelee, self).get_context_data(**kwargs)
@@ -71,7 +71,7 @@ class WeaponsMelee(TemplateView):
 
 class WeaponDetail(DetailView):
     model = Weapon
-    template_name = 'codex_universe_weapon_detail.html'
+    template_name = 'codex/codex_universe_weapon_detail.html'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
@@ -81,9 +81,20 @@ class WeaponDetail(DetailView):
         return context
 
 class Warframes(TemplateView):
-    template_name = 'codex.html'
+    template_name = 'codex/codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(Warframes, self).get_context_data(**kwargs)
         context['warframes'] = Warframe.objects.all().values('name', 'image', 'slug').order_by('name')
+        return context
+
+class WarframeDetail(DetailView):
+    model = Warframe
+    template_name = 'codex/detail/codex_universe_warframe_detail.html'
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(WarframeDetail, self).get_context_data(**kwargs)
+        context['abilities'] = WarframeAbility.objects.filter(warframe=self.get_object())
         return context

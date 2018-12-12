@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3 my-3">
-            {% include 'menu/codex_menu.html' %}
+            {% include 'codex/menu/codex_menu.html' %}
         </div>
         <div class="col-md-9 bg-black-t">
             {% if request.resolver_match.url_name == 'codex_quests' %}
@@ -31,17 +31,17 @@
                 {% if quests or warframes or weapons %}
                     {% if quests %}
                         {% for item in quests %}
-                            {% include 'thumbs/codex_item_thumb.html' %}
+                            {% include 'codex/thumbs/codex_item_thumb.html' %}
                         {% endfor %}
                     {% endif %}
                     {% if warframes %}
                         {% for item in warframes %}
-                            {% include 'thumbs/codex_item_thumb.html' %}
+                            {% include 'codex/thumbs/codex_item_thumb.html' %}
                         {% endfor %}
                     {% endif %}
                     {% if weapons %}
                         {% for item in weapons %}
-                            {% include 'thumbs/codex_item_thumb.html' %}
+                            {% include 'codex/thumbs/codex_item_thumb.html' %}
                         {% endfor %}
                     {% endif %}
                 {% endif %}
@@ -51,7 +51,7 @@
                         <h2 class="h6 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Latest Warframes <a class="d-block float-right small mt-1" href="{% url 'codex_universe_warframes' %}">More <i class="fas fa-chevron-right fa-fw ml-1 small"></i></a></h2>
                         <hr>
                         {% for item in latest_warframes %}
-                            {% include 'thumbs/codex_universe_item_thumb.html' %}
+                            {% include 'codex/thumbs/codex_universe_item_thumb.html' %}
                         {% endfor %}
                     </div>
                     {% endif %}
@@ -60,7 +60,7 @@
                         <h2 class="h6 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Latest Weapons <a class="d-block float-right small mt-1" href="{% url 'codex_universe_weapons' %}">More <i class="fas fa-chevron-right fa-fw ml-1 small"></i></a></h2>
                         <hr>
                         {% for item in latest_weapons %}
-                            {% include 'thumbs/codex_universe_item_thumb.html' %}
+                            {% include 'codex/thumbs/codex_universe_item_thumb.html' %}
                         {% endfor %}
                     </div>
                     {% endif %}
