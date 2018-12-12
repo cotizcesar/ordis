@@ -6,6 +6,9 @@ from django.views.generic import TemplateView, ListView, CreateView, DetailView,
 # Codex: Importing Models
 from .models import Quest, QuestWalkthrough, Weapon, Stat, Warframe, WarframeAbility
 
+class Codex(TemplateView):
+    template_name = 'codex.html'
+
 class Quests(TemplateView):
     template_name = 'codex.html'
 

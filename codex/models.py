@@ -149,7 +149,6 @@ class Warframe(models.Model):
     slug = models.SlugField()
     description = models.TextField(max_length=280)
     mastery_rank = models.PositiveIntegerField(null=True, blank=True)
-    is_prime = models.BooleanField(default=False)
     image = models.ImageField(upload_to='codex/warframe', default='codex/warframe/default.png', blank=True)
     pasive = models.TextField(max_length=280)
     armor = models.PositiveIntegerField()
@@ -158,6 +157,8 @@ class Warframe(models.Model):
     shield = models.PositiveIntegerField()
     sprint_speed = models.DecimalField(max_digits=3, decimal_places=2)
     release_date = models.DateField(null=True, blank=True)
+    is_prime = models.BooleanField(default=False)
+    is_tradeable = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
