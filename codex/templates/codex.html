@@ -12,9 +12,9 @@
             <p class="text-muted small m-0">Many things happen in the world of Warframe, impossible missions and really rewarding prizes. With this section we help you finish the quest necessary to keep moving forward.</p>
             <hr>
             {% endif %}
-            {% if weapons %}
-            <h1 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Weapons</h1>
-            <p class="text-muted small m-0">Here you can see all the weapons of the game. Elementary, Secondary, Melee and Archwing.</p>
+            {% if request.resolver_match.url_name == 'codex_universe' %}
+            <h1 class="h3 mt-3 mb-2"><i class="fas fa-globe fa-fw text-info mr-1"></i> Universe</h1>
+            <p class="text-muted small m-0">This is the Warframe universe. Here you can get information about Companions, Warframes, Factions, Mods and many other things.</p>
             <hr>
             {% endif %}
             {% if warframes %}
@@ -22,21 +22,49 @@
             <p class="text-muted small m-0">There are many Warframes to choose from, from the ninja that teleports to the one that looks like a monkey!</p>
             <hr>
             {% endif %}
+            {% if weapons %}
+            <h1 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Weapons</h1>
+            <p class="text-muted small m-0">Here you can see all the weapons of the game. Primary, Secondary, Melee and Archwing.</p>
+            <hr>
+            {% endif %}
             <div class="row">
-                {% if quests %}
-                {% for item in quests %}
-                    {% include 'thumbs/codex_item_thumb.html' %}
-                {% endfor %}
+                {% if quests or warframes or weapons %}
+                    {% if quests %}
+                        {% for item in quests %}
+                            {% include 'thumbs/codex_item_thumb.html' %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if warframes %}
+                        {% for item in warframes %}
+                            {% include 'thumbs/codex_item_thumb.html' %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if weapons %}
+                        {% for item in weapons %}
+                            {% include 'thumbs/codex_item_thumb.html' %}
+                        {% endfor %}
+                    {% endif %}
                 {% endif %}
-                {% if weapons %}
-                {% for item in weapons %}
-                    {% include 'thumbs/codex_item_thumb.html' %}
-                {% endfor %}
-                {% endif %}
-                {% if warframes %}
-                {% for item in warframes %}
-                    {% include 'thumbs/codex_item_thumb.html' %}
-                {% endfor %}
+                {% if request.resolver_match.url_name == 'codex_universe' %}
+                    {% if latest_warframes %}
+                    <div class="col-md-4">
+                        <h2 class="h6 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Latest Warframes</h2>
+                        <hr>
+                        {% for item in latest_warframes %}
+                            {% load thumbnail %}
+                            <div class="media small bg-black-t mb-3">
+                                <img class="img-fluid mr-3" src="{{item.image|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{{item.description}}">
+                                <div class="media-body py-1">
+                                    <a href="#" class="d-block">
+                                        <p class="m-0">{{item.name}}</p>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
                 {% endif %}
             </div>
         </div>

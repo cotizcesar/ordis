@@ -26,7 +26,13 @@ class QuestDetail(DetailView):
         return context
 
 class Universe(TemplateView):
-    template_name = 'codex_universe.html'
+    template_name = 'codex.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(Universe, self).get_context_data(**kwargs)
+        context['latest_warframes'] = Warframe.objects.all().values('name', 'image', 'slug')[:3]
+        context['latest_weapons'] = Weapon.objects.all().values('name', 'image', 'slug')[:3]
+        return context
 
 class Weapons(TemplateView):
     template_name = 'codex.html'
