@@ -8,5 +8,12 @@
         {% if item.release_date %}
         <p class="my-1 small">Released: {{item.release_date}}</p>
         {% endif %}
+        {% if item.tipe == 'P'%}
+        <p class="my-1 small">Type: Primary</p>
+        {% elif item.tipe == 'S' %}
+        <p class="my-1 small">Type: Secondary</p>
+        {% elif item.tipe == 'M' %}
+        <p class="my-1 small">Type: Melee</p>
+        {% endif %}
     </div>
 </div>

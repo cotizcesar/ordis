@@ -34,7 +34,7 @@ class Universe(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(Universe, self).get_context_data(**kwargs)
         context['latest_warframes'] = Warframe.objects.all().values('name', 'image', 'slug', 'description', 'release_date').order_by('-release_date')[:3]
-        context['latest_weapons'] = Weapon.objects.all().values('name', 'image', 'slug', 'description').order_by('-date_created')[:3]
+        context['latest_weapons'] = Weapon.objects.all().values('name', 'slug', 'image', 'tipe', 'description').order_by('-date_created')[:3]
         return context
 
 class Weapons(TemplateView):
