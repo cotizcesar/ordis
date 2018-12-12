@@ -163,6 +163,7 @@ THUMBNAIL_ALIASES = {
         'order': {'size': (74, 74), 'crop': 'smart', 'upscale' : True},
         'item': {'size': (510, 287), 'crop': 'smart', 'upscale' : True},
         'quest': {'size': (510, 287), 'crop': 'smart', 'upscale' : True},
+        'warframe': {'size': (510, 910), 'crop': 'smart', 'upscale' : True},
     },
 }
 
