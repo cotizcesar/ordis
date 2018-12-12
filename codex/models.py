@@ -157,7 +157,7 @@ class Warframe(models.Model):
     health = models.PositiveIntegerField()
     shield = models.PositiveIntegerField()
     sprint_speed = models.DecimalField(max_digits=3, decimal_places=2)
-    release_date = models.DateTimeField(null=True, blank=True)
+    release_date = models.DateField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
