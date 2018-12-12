@@ -13,13 +13,13 @@
             <hr>
             <div class="row">           
                 <div class="col-md-8 mb-3">
-                    <h2 class="h6 mb-3"><i class="fas fa-globe-americas fa-fw text-info mr-1"></i> Public Posts <a class="d-block float-right small mt-1" href="">More <i class="fas fa-chevron-right fa-fw ml-1"></i></a></h2>
+                    <h2 class="h6 mb-3"><i class="fas fa-globe-americas fa-fw text-info mr-1"></i> Public Posts <a class="d-block float-right small mt-1" href="">More <i class="fas fa-chevron-right fa-fw ml-1 small"></i></a></h2>
                     {% for post in posts %}
                     {% include 'post/post.html' %}
                     {% endfor %}
                 </div>  
                 <div class="col-md-4 mb-3">
-                    <h2 class="h6 mb-3"><i class="fas fa-users fa-fw text-info mr-1"></i> Players <a class="d-block float-right small mt-1" href="{% url 'explore_users' %}">More <i class="fas fa-chevron-right fa-fw ml-1"></i></a></h2>
+                    <h2 class="h6 mb-3"><i class="fas fa-users fa-fw text-info mr-1"></i> Players <a class="d-block float-right small mt-1" href="{% url 'explore_users' %}">More <i class="fas fa-chevron-right fa-fw ml-1 small"></i></a></h2>
                     {% for user in users %}
                     {% include 'user/user_thumb.html' %}
                     {% endfor %}
