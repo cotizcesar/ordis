@@ -8,11 +8,19 @@
             <img class="img-fluid bg-black-t rounded" src="{{warframe.image|thumbnail_url:'item'|default:'https://via.placeholder.com/510x910'}}">
         </div>
         <div class="col-md-9 pt-3">
-            <h1 class="h3 mb-3"><i class="fas fa-book-open fa-fw text-info mr-1"></i> {{warframe.name}} <span class="h6 float-right small">Release Date: {{warframe.release_date}}</span></h1>
+            <h1 class="h3 mb-3"><i class="fas fa-book-open fa-fw text-info mr-1"></i> {{warframe.name}}</h1>
             <h2 class="h6 text-info text-uppercase my-1">Description</h2>
-            <p class="mb-3">{{warframe.description}}</p>
-            <h2 class="h6 text-info text-uppercase my-1">Pasive</h2>
-            <p class="mb-3">{{warframe.pasive}}</p>
+            <p class="mb-0">{{warframe.description}}</p>
+            <div class="row">
+                <div class="col-md-6 my-3">
+                    <h2 class="h6 text-info text-uppercase my-1">Pasive</h2>
+                    <p class="mb-0">{{warframe.pasive}}</p>
+                </div>
+                <div class="col-md-6 my-3">
+                    <h2 class="h6 text-info text-uppercase my-1">Release Date</h2>
+                    <p class="mb-0">{{warframe.release_date}}</p>
+                </div>
+            </div>
             <hr class="m-0">
             <div class="row">
                 <div class="col-md-2 my-3">
