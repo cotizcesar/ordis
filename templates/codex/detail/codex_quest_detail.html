@@ -4,7 +4,7 @@
         <meta property="og:type"               content="website" />
         <meta property="og:title"              content="Warframe.py - {{quest.name}}" />
         <meta property="og:description"        content="{{quest.description}}" />
-        <meta property="og:image"              content="{{quest.image.url}}" />{% endblock %}
+        <meta property="og:image"              content="{{quest.image|thumbnail_url:'quest'|default:'https://via.placeholder.com/510x287'}}" />{% endblock %}
 {% block title %}{{quest.name}}{% endblock %}
 {% block content %}
 <div class="container bg-black-t my-3 small">
