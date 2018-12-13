@@ -10,7 +10,7 @@
                 <h1 class="h3"><i class="fas fa-sign-in-alt fa-fw text-info"></i> {% trans "Sign Out" %}</h1>
                 <p class="font-italic">{% trans 'Are you sure you want to sign out?' %}</p>
                 <hr>
-                <form method="post" action="{% url 'account_logout' %}" class="bg-light rounded p-3 px-3">
+                <form method="post" action="{% url 'account_logout' %}" class="bg-light p-3 px-3">
                     {% csrf_token %}
                     {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>

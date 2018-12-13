@@ -1,7 +1,7 @@
 {% load custom_filters %}
 {% load thumbnail %}
 {% load humanize %}
-<div class="post small bg-box rounded mb-3">
+<div class="post small bg-box mb-3">
     {% if post.image %}
     <img class="img-fluid rounded-top" src="{{post.image|thumbnail_url:'post'|default:'https://via.placeholder.com/540'}}" alt="{{post.text}}">
     {% elif post.video %}
@@ -43,7 +43,7 @@
     {% if comments %}
     <hr class="m-0">
     {% for comment in comments %}
-    <div class="media rounded bg-black-t px-3 py-2">
+    <div class="media bg-black-t px-3 py-2">
         <img class="mr-3 rounded-circle" src="{{comment.user.userprofile.avatar|thumbnail_url:'avatar_44x44'|default:'https://via.placeholder.com/44x44'}}" alt="{% if comment.user.get_full_name %}{{comment.user.get_full_name}}{% else %}{{comment.user.username}}{% endif %} avatar.">
         <div class="media-body">
             <p class="my-1">
