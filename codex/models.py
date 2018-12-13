@@ -15,7 +15,6 @@ class Quest(models.Model):
     next_quest = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='nxt_quest')
     quest_order = models.PositiveIntegerField(null=True, blank=True)
     is_replayable = models.BooleanField(default=True)
-    release_date = models.DateField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
