@@ -66,7 +66,7 @@
                         <div class="row">
                             {% for walkthrough in walkthroughs %}                    
                             <div class="col-md-12 bg-black-t py-3 mb-3">
-                                <h2 class="h6 text-uppercase"><span class="text-info">Step {{walkthrough.id}}:</span> {{walkthrough.name}}</h2>
+                                <h2 class="h6 text-uppercase"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> {{walkthrough.name}}</h2>
                                 <hr>
                                 {{walkthrough.description|safe|linebreaks}}
                             </div>
