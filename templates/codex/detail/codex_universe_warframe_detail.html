@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load custom_filters %}
 {% load thumbnail %}
 {% block title %}{{warframe.name}}{% endblock %}
 {% block content %}
@@ -96,6 +97,11 @@
             {% include 'codex/menu/codex_menu.html' %}
         </div>
         <div class="col-md-9 bg-black-t py-3 small">
+            {% if warframe.video %}
+            <div class="mb-3 rounded">
+                {{warframe.video|youtube_embed_url|safe}}
+            </div>
+            {% endif %}
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link btn-main mr-1" id="pills-acquisition-tab" data-toggle="pill" href="#pills-acquisition" role="tab" aria-controls="pills-acquisition" aria-selected="true"><i class="fas fa-walking fa-fw mr-1"></i> Acquisition</a>
