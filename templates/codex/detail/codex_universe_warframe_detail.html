@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load custom_filters %}
 {% load thumbnail %}
+{% block meta_extra %}<meta property="og:url"                content="{{request.build_absolute_uri}}" />
+        <meta property="og:type"               content="website" />
+        <meta property="og:title"              content="Warframe.py - {{warframe.name}}" />
+        <meta property="og:description"        content="{{warframe.description}}" />
+        <meta property="og:image"              content="{{warframe.image.url}}" />{% endblock %}
 {% block title %}{{warframe.name}}{% endblock %}
 {% block content %}
 <div class="container bg-black-t my-3 small">
