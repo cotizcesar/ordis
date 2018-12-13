@@ -155,6 +155,7 @@ class Warframe(models.Model):
     description = models.TextField(max_length=280)
     mastery_rank = models.PositiveIntegerField(null=True, blank=True)
     image = models.ImageField(upload_to='codex/warframe', default='codex/warframe/default.png', blank=True)
+    video = models.URLField(blank=True)
     pasive = models.TextField(max_length=280)
     armor = models.PositiveIntegerField()
     energy = models.PositiveIntegerField()
