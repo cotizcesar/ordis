@@ -3,6 +3,9 @@ from django.db import models
 # Django: Importing User Model
 from django.contrib.auth.models import User
 
+# Codex: Importing Models
+from codex.models import Warframe, Weapon
+
 class Item(models.Model):
     RARITY_CHOICES = (
         ('P', 'Peculiar'),
