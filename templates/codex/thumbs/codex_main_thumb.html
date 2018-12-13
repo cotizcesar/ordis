@@ -1,0 +1,9 @@
+{% load thumbnail %}
+<div class="item">
+    <a href="{% url 'codex'%}">
+        <img class="img-fluid" src="{{item.image|thumbnail_url:'item'|default:'https://via.placeholder.com/510x287'}}">
+        <div class="py-2 px-3 bg-light">
+            <p class="text-dark text-uppercase font-weight-bold mb-0">{{item.name}}</p>
+        </div>
+    </a>
+</div>

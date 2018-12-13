@@ -7,27 +7,70 @@
             {% include 'codex/menu/codex_menu.html' %}
         </div>
         <div class="col-md-9 bg-black-t">
-            {% if request.resolver_match.url_name == 'codex_quests' %}
+            {% if request.resolver_match.url_name == 'codex' %}
+            <h1 class="h3 mt-3 mb-2"><i class="fas fa-book-open fa-fw text-info mr-1"></i> Codex</h1>
+            <p class="text-muted small m-0">Many times it is impossible to know everything about Warframe, between quests, resources, weapons and more, it is necessary to have a guide either inside the game as well as outside it and at hand.</p>
+            <hr>
+            {% elif request.resolver_match.url_name == 'codex_quests' %}
             <h1 class="h3 mt-3 mb-2"><i class="far fa-map fa-fw text-info mr-1"></i> Quests</h1>
             <p class="text-muted small m-0">Many things happen in the world of Warframe, impossible missions and really rewarding prizes. With this section we help you finish the quest necessary to keep moving forward.</p>
             <hr>
-            {% endif %}
-            {% if request.resolver_match.url_name == 'codex_universe' %}
+            {% elif request.resolver_match.url_name == 'codex_universe' %}
             <h1 class="h3 mt-3 mb-2"><i class="fas fa-globe fa-fw text-info mr-1"></i> Universe</h1>
             <p class="text-muted small m-0">This is the Warframe universe. Here you can get information about Companions, Warframes, Factions, Mods and many other things.</p>
             <hr>
-            {% endif %}
-            {% if warframes %}
+            {% elif warframes %}
             <h1 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Warframes</h1>
             <p class="text-muted small m-0">There are many Warframes to choose from, from the ninja that teleports to the one that looks like a monkey!</p>
             <hr>
-            {% endif %}
-            {% if weapons %}
+            {% elif weapons %}
             <h1 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Weapons</h1>
             <p class="text-muted small m-0">Here you can see all the weapons of the game. Primary, Secondary, Melee and Archwing.</p>
             <hr>
             {% endif %}
             <div class="row">
+                {% if request.resolver_match.url_name == 'codex' %}
+                <div class="col-md-6 mb-3">
+                    <div class="item small">
+                        <a href="{% url 'codex_quests' %}">
+                            <img class="img-fluid" src="https://via.placeholder.com/510x287">
+                            <div class="py-2 px-3 bg-light">
+                                <p class="text-dark text-uppercase font-weight-bold mb-0">Quests</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="item small">
+                        <a href="{% url 'codex_universe' %}">
+                            <img class="img-fluid" src="https://via.placeholder.com/510x287">
+                            <div class="py-2 px-3 bg-light">
+                                <p class="text-dark text-uppercase font-weight-bold mb-0">Universe</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="item small">
+                        <a href="#">
+                            <img class="img-fluid" src="https://via.placeholder.com/510x287">
+                            <div class="py-2 px-3 bg-light">
+                                <p class="text-dark text-uppercase font-weight-bold mb-0">Training</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="item small">
+                        <a href="{% url 'codex_quests' %}">
+                            <img class="img-fluid" src="https://via.placeholder.com/510x287">
+                            <div class="py-2 px-3 bg-light">
+                                <p class="text-dark text-uppercase font-weight-bold mb-0">Missions</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
                 {% if quests or warframes or weapons %}
                     {% if quests %}
                         {% for item in quests %}
