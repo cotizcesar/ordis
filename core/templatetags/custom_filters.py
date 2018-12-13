@@ -7,7 +7,7 @@ import re
 @register.filter(name='youtube_embed_url')
 def youtube_embed_url(value):
     # Starting a Div Bootstrap 4 responsive.
-    div_responsive_start = '<div class="embed-responsive embed-responsive-16by9 rounded-top">'
+    div_responsive_start = '<div class="embed-responsive embed-responsive-16by9">'
     div_responsive_end = '</div>'
     iframe1 = '<iframe class="embed-responsive-item" src="'
     iframe2 = '" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>'
@@ -36,7 +36,7 @@ def youtube_embed_url(value):
         return res
     elif match5:        
         embed_url = 'https://media.giphy.com/media/%s/giphy.mp4' %(match5.group(5))
-        res = div_responsive_start + '<video class="embed-responsive-item rounded-top" autoplay loop><source src="' + embed_url + '" type="video/mp4"></video>' + div_responsive_end
+        res = div_responsive_start + '<video class="embed-responsive-item" autoplay loop><source src="' + embed_url + '" type="video/mp4"></video>' + div_responsive_end
         return res
     else:
         embed_url = '<h2 class="lead text-center">Link format not supported.</h2> <p class="text-center text-info">The developers have been notified of this error.</p>'
