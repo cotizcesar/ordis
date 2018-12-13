@@ -19,7 +19,7 @@ class Quests(TemplateView):
 
 class QuestDetail(DetailView):
     model = Quest
-    template_name = 'codex/codex_quest_detail.html'
+    template_name = 'codex/detail/codex_quest_detail.html'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
@@ -71,7 +71,7 @@ class WeaponsMelee(TemplateView):
 
 class WeaponDetail(DetailView):
     model = Weapon
-    template_name = 'codex/codex_universe_weapon_detail.html'
+    template_name = 'codex/detail/codex_universe_weapon_detail.html'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
