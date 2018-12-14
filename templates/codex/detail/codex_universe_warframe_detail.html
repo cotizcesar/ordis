@@ -5,7 +5,10 @@
         <meta property="og:type"               content="website" />
         <meta property="og:title"              content="Warframe.py - {{warframe.name}}" />
         <meta property="og:description"        content="{{warframe.description}}" />
-        <meta property="og:image"              content="{{warframe.image|thumbnail_url:'warframe'|default:'https://via.placeholder.com/510x910'}}" />{% endblock %}
+        <meta property="og:image"              content="{{warframe.image|thumbnail_url:'warframe'|default:'https://via.placeholder.com/510x910'}}" />
+        <meta name="twitter:card" content="app" />
+        <meta name="twitter:site" content="@cotizcesar" />
+        <meta name="twitter:creator" content="@cotizcesar" />{% endblock %}
 {% block title %}{{warframe.name}}{% endblock %}
 {% block content %}
 <div class="container bg-black-t my-3 small">
