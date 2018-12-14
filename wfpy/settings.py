@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     # https://github.com/pinax/pinax-messages
     'pinax.messages',
     'import_export',
+    'ckeditor',
 ]
 
 # django-allauth: Required
@@ -197,6 +198,16 @@ ACCOUNT_USERNAME_BLACKLIST = ['admin']
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 
 REGISTRATION_OPEN = False
+
+# django-ckeditor: Do not check CSS class.
+# https://django-ckeditor.readthedocs.io/en/latest/#if-you-want-to-use-allowedcontent
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        "removePlugins": "stylesheetparser",
+        'allowedContent': True,
+    }
+}
 
 # Configure Django App for Heroku.
 import django_heroku

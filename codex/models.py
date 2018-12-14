@@ -1,5 +1,8 @@
 from django.db import models
 
+# django-ckeditor: Usage for WYSIWYG fields.
+from ckeditor.fields import RichTextField
+
 class Quest(models.Model):
     TIPE_CHOICES = (
         ('M', 'Main Quest'),
@@ -27,10 +30,10 @@ class Quest(models.Model):
 class QuestWalkthrough(models.Model):
     quest = models.ForeignKey(Quest, on_delete=models.CASCADE)
     name = models.CharField(max_length=140)
-    description = models.TextField()
+    description = RichTextField()
 
     class Meta:
-        ordering = ['quest']
+        ordering = ['-quest']
 
     def __str__(self):
         return self.quest.name + ' > ' + self.name
