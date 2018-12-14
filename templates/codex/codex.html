@@ -74,17 +74,23 @@
                 {% if quests or warframes or weapons %}
                     {% if quests %}
                         {% for item in quests %}
+                        <div class="col-md-4 mb-3 small">
                             {% include 'codex/thumbs/codex_item_thumb.html' %}
+                        </div>
                         {% endfor %}
                     {% endif %}
                     {% if warframes %}
                         {% for item in warframes %}
+                        <div class="col-md-4 mb-3 small">
                             {% include 'codex/thumbs/codex_item_thumb.html' %}
+                        </div>
                         {% endfor %}
                     {% endif %}
                     {% if weapons %}
                         {% for item in weapons %}
+                        <div class="col-md-4 mb-3 small">
                             {% include 'codex/thumbs/codex_item_thumb.html' %}
+                        </div>
                         {% endfor %}
                     {% endif %}
                 {% endif %}

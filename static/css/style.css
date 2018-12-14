@@ -4,6 +4,8 @@ body{
 /* Theme: Warframe */
 .bg-page{
     background: #202C3A;
+    /* background: url(https://hdqwalls.com/download/warframe-plains-of-eidolon-1080p-x6-2560x1080.jpg) 0% 0% no-repeat #202C3A;
+    background-attachment: fixed; */
 }
 .bg-navbar{
     background: #1D2025;
@@ -27,7 +29,9 @@ body{
 }
 
 /* Theme Ends */
-
+.social *{
+    vertical-align: top !important;
+}
 a{
     color: #66c0f4;
 }

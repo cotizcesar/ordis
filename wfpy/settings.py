@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     # Django: For numbers, text and anoher things.
     'django.contrib.humanize',
     # django-allauth : Main apps.

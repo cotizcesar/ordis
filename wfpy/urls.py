@@ -20,6 +20,9 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
+# Django: Creates Sitemaps.
+from django.contrib.sitemaps.views import sitemap
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
@@ -28,4 +31,5 @@ urlpatterns = [
     path('', include('market.urls')),
     path('', include('alerts.urls')),
     path('', include('codex.urls')),
+    #path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
