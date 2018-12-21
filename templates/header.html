@@ -22,8 +22,8 @@
                     <li class="nav-item">
                         <a class="nav-link mx-1 disabled" href="#">Market</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-1 disabled" href="#">Alerts</a>
+                    <li class="nav-item{% if request.resolver_match.url_name == 'alerts' %} active{% endif %}">
+                        <a class="nav-link mx-1" href="{% url 'alerts' %}">Alerts</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-1 disabled" href="#">Builder</a>

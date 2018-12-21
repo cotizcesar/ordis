@@ -2,7 +2,7 @@
 {% block title %}Alerts{% endblock %}
 {% block content %}
 <div class="container">
-    <div class="row bg-black-t py-3">
+    <!--<div class="row bg-black-t py-3">
         <div class="col-md-12">
             <ul class="list-style-none">
                 <li>WorldSeed: {{alerts.WorldSeed}}</li>
@@ -13,7 +13,39 @@
                 <li>Date: {{alerts.Date}}</li>
             </ul>                
         </div>
-        <div class="col-md-12">
+    </div>-->
+    <div class="row bg-black-t pb-3">
+        <div class="col-md-6">
+            <h2 class="h3 mt-3 mb-2"><i class="far fa-calendar-check fa-fw text-info mr-1"></i> Events</h2>
+            <p class="text-muted small m-0">Here you can see all the events that are taking place in Warframe.</p>
+            <hr>
+            {% for event in alerts.Events reversed %}
+                {% if event.Messages.0.LanguageCode == 'en' %}
+                <div id="{{event.id.oid}}" class="event bg-black-t mb-3">
+                    {% if event.ImageUrl %}
+                    <a href="{{event.Prop}}" target="_blank">
+                        <img class="img-fluid" src="{{event.ImageUrl}}">
+                    </a>
+                    {% endif %}
+                    <div class="media bg-black-t small">                
+                        <div class="media-body p-3">
+                            <p class="mb-0"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> 
+                                <a href="{{event.Prop}}" target="_blank">
+                                    {% for message in event.Messages %}
+                                        {% if forloop.first %}
+                                            {{message.Message}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </a>
+                                <span class="float-right text-secondary small mt-1">{{event.Date.date.numberLong}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-md-6">
             <h2 class="h3 mt-3 mb-2"><i class="far fa-surprise fa-fw text-info mr-1"></i> Invasions</h2>
             <p class="text-muted small m-0">Many times it is impossible to know everything about Warframe, between quests, resources, weapons and more, it is necessary to have a guide either inside the game as well as outside it and at hand.</p>
             <hr>
@@ -24,7 +56,6 @@
                         <th scope="col">Node</th>
                         <th scope="col">Count</th>
                         <th scope="col">Goal</th>
-                        <th scope="col">LocTag</th>
                         <th scope="col">Activation</th>
                     </tr>
                 </thead>
@@ -34,7 +65,7 @@
                     <tr>
                         <th scope="row">
                             {% if invasion.Faction == 'FC_GRINEER' %}
-                            <img class="img-fluid bg-black-t" src="https://via.placeholder.com/50x50" alt="Grineer Invasion.">
+                            Grineer
                             {% elif invasion.Faction == 'FC_INFESTATION' %}
                             Infested
                             {% elif invasion.Faction == 'FC_CORPUS' %}
@@ -44,7 +75,6 @@
                         <td>{{invasion.Node}}</td>
                         <td>{{invasion.Count}}</td>
                         <td>{{invasion.Goal}}</td>
-                        <td>{{invasion.LocTag}}</td>
                         <td>{{invasion.Activation.date.numberLong}}</td>
                     </tr>
                     {% endif %}

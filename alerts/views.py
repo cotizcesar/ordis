@@ -12,6 +12,7 @@ class Alerts(TemplateView):
         r = requests.get('http://content.warframe.com/dynamic/worldState.php').json()
         r = json.dumps(r)
         r = r.replace('$', '')
+        r = r.replace('_id', 'id')
         r = json.loads(r)
         context['alerts'] = r
         return context
