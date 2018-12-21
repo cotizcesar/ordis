@@ -10,7 +10,7 @@
         <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe' or request.resolver_match.url_name == 'codex_universe_companions' or request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons_primary' or request.resolver_match.url_name == 'codex_universe_weapons_secondary' or request.resolver_match.url_name == 'codex_universe_weapons_melee' or request.resolver_match.url_name == 'codex_universe_warframes' %} bg-black-t text-white{% endif %}" href="{% url 'codex_universe' %}"><i class="fas fa-globe fa-fw mr-1"></i> Universe</a>
     </li>
     {% if request.resolver_match.url_name == 'codex_universe' or request.resolver_match.url_name == 'codex_universe_companions' or request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons_primary' or request.resolver_match.url_name == 'codex_universe_weapons_secondary' or request.resolver_match.url_name == 'codex_universe_weapons_melee' or request.resolver_match.url_name == 'codex_universe_warframes' %}
-    <ul class="nav flex-column">
+    <ul class="nav flex-column ml-3">
         <li class="nav-item">
             <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Art Gallery</a>
         </li>
