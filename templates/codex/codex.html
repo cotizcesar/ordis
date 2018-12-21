@@ -11,6 +11,10 @@
             <h1 class="h3 mt-3 mb-2"><i class="fas fa-book-open fa-fw text-info mr-1"></i> Codex</h1>
             <p class="text-muted small m-0">Many times it is impossible to know everything about Warframe, between quests, resources, weapons and more, it is necessary to have a guide either inside the game as well as outside it and at hand.</p>
             <hr>
+            {% elif companions %}
+            <h1 class="h3 mt-3 mb-2"><i class="fas fa-cat fa-fw text-info mr-1"></i> Companions</h1>
+            <p class="text-muted small m-0">From sentinels, through Kubrows and Kavats. Here you can see all the information of the companions.</p>
+            <hr>
             {% elif request.resolver_match.url_name == 'codex_quests' %}
             <h1 class="h3 mt-3 mb-2"><i class="far fa-map fa-fw text-info mr-1"></i> Quests</h1>
             <p class="text-muted small m-0">Many things happen in the world of Warframe, impossible missions and really rewarding prizes. With this section we help you finish the quest necessary to keep moving forward.</p>
@@ -71,9 +75,16 @@
                     </div>
                 </div>
                 {% endif %}
-                {% if quests or warframes or weapons %}
+                {% if quests or companions or warframes or weapons %}
                     {% if quests %}
                         {% for item in quests %}
+                        <div class="col-md-4 mb-3 small">
+                            {% include 'codex/thumbs/codex_item_thumb.html' %}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if companions %}
+                        {% for item in companions %}
                         <div class="col-md-4 mb-3 small">
                             {% include 'codex/thumbs/codex_item_thumb.html' %}
                         </div>
@@ -95,6 +106,15 @@
                     {% endif %}
                 {% endif %}
                 {% if request.resolver_match.url_name == 'codex_universe' %}
+                    {% if latest_warframes %}
+                        <div class="col-md-6">
+                            <h2 class="h6 mt-3 mb-2"><i class="fas fa-cat fa-fw text-info mr-1"></i> Latest Companions <a class="d-block float-right small mt-1" href="{% url 'codex_universe_companions' %}">More <i class="fas fa-chevron-right fa-fw ml-1 small"></i></a></h2>
+                            <hr>
+                            {% for item in latest_companions %}
+                                {% include 'codex/thumbs/codex_universe_companion_thumb_xs.html' %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                     {% if latest_warframes %}
                     <div class="col-md-6">
                         <h2 class="h6 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Latest Warframes <a class="d-block float-right small mt-1" href="{% url 'codex_universe_warframes' %}">More <i class="fas fa-chevron-right fa-fw ml-1 small"></i></a></h2>

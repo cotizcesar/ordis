@@ -44,11 +44,11 @@ class Weapon(models.Model):
         ('S', 'Secondary Weapon'),
         ('M', 'Melee Weapon'),
     )
+    tipe = models.CharField(default='P', max_length=1, choices=TIPE_CHOICES)
     name = models.CharField(max_length=140)
     slug = models.SlugField()
-    image = models.ImageField(upload_to='codex/weapons', default='codex/weapons/default.png', blank=True)
-    tipe = models.CharField(default='P', max_length=1, choices=TIPE_CHOICES)
     description = models.TextField(max_length=600)
+    image = models.ImageField(upload_to='codex/weapons', default='codex/weapons/default.png', blank=True)
     mastery_rank = models.PositiveIntegerField(null=True, blank=True)
     release_date = models.DateField(null=True, blank=True)
     is_tradeable = models.BooleanField(default=False)
@@ -191,3 +191,30 @@ class WarframeAbility(models.Model):
 
     def __str__(self):
         return self.warframe.name + ' > ' + self.name
+
+class Companion(models.Model):
+    TIPE_CHOICES = (
+        ('K', 'Kavat'),
+        ('U', 'Kubrow'),
+        ('S', 'Sentinel'), 
+    )
+    tipe = models.CharField(default='S', max_length=1, choices=TIPE_CHOICES)
+    name = models.CharField(max_length=32)
+    slug = models.SlugField()
+    description = models.TextField(max_length=300)
+    mastery_rank = models.PositiveIntegerField(null=True, blank=True)
+    image = models.ImageField(upload_to='codex/companion', default='codex/companion/default.png', blank=True)
+    armor = models.PositiveIntegerField(blank=True, null=True)
+    health = models.PositiveIntegerField(blank=True, null=True)
+    shield = models.PositiveIntegerField(blank=True, null=True)
+    release_date = models.DateField(null=True, blank=True)
+    is_prime = models.BooleanField(default=False)
+    is_tradeable = models.BooleanField(default=False)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name

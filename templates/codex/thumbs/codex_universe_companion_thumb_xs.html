@@ -1,0 +1,12 @@
+{% load thumbnail %}
+<div class="media small bg-black-t mb-3">
+    <img class="img-fluid mr-3" src="{{item.image|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{{item.name}}: {{item.description}}">
+    <div class="media-body py-1">
+        <a href="#" class="d-block">
+            <p class="m-0">{{item.name}}</p>
+        </a>
+        {% if item.release_date %}
+        <p class="my-1 small">Released: {{item.release_date}}</p>
+        {% endif %}
+    </div>
+</div>

@@ -3,6 +3,9 @@
     {% if quests %}
     <a href="{% url 'codex_quest_detail' item.slug %}">
     {% endif %}
+    {% if companions %}
+    <a href="#">
+    {% endif %}
     {% if weapons %}
     <a href="{% url 'codex_universe_weapon_detail' item.slug %}">
     {% endif %}
@@ -11,15 +14,7 @@
     {% endif %}
         <img class="img-fluid" src="{{item.image|thumbnail_url:'item'|default:'https://via.placeholder.com/510x287'}}">
         <div class="py-2 px-3 bg-light">
-            {% if quests %}
             <p class="text-dark text-uppercase font-weight-bold mb-0">{{item.name}}</p>
-            {% endif %}
-            {% if weapons %}
-            <p class="text-dark text-uppercase font-weight-bold mb-0">{{item.name}}</p>
-            {% endif %}
-            {% if warframes %}
-            <p class="text-dark text-uppercase font-weight-bold mb-0">{{item.name}}</p>
-            {% endif %}
         </div>
     </a>
 </div>

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
 # Codex: Importing Models
-from .models import Quest, QuestWalkthrough, Weapon, Stat, Warframe, WarframeAbility
+from .models import Quest, QuestWalkthrough, Companion, Weapon, Stat, Warframe, WarframeAbility
 
 class Codex(TemplateView):
     template_name = 'codex/codex.html'
@@ -33,8 +33,17 @@ class Universe(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Universe, self).get_context_data(**kwargs)
+        context['latest_companions'] = Companion.objects.all().values('name', 'image', 'slug', 'description', 'release_date').order_by('-release_date')[:3]
         context['latest_warframes'] = Warframe.objects.all().values('name', 'image', 'slug', 'description', 'release_date').order_by('-release_date')[:3]
         context['latest_weapons'] = Weapon.objects.all().values('name', 'slug', 'image', 'tipe', 'description').order_by('-date_created')[:3]
+        return context
+
+class Companions(TemplateView):
+    template_name = 'codex/codex.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(Companions, self).get_context_data(**kwargs)
+        context['companions'] = Companion.objects.all().values('name', 'image', 'slug').order_by('name')
         return context
 
 class Weapons(TemplateView):
