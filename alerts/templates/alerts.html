@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load custom_filters %}
 {% block title %}Alerts{% endblock %}
 {% block content %}
 <div class="container">
@@ -16,6 +17,98 @@
     </div>-->
     <div class="row bg-black-t pb-3">
         <div class="col-md-6">
+            <div class="alerts mb-3">
+                <h2 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Alerts</h2>
+                <p class="text-muted small m-0">A fight that never ends between the Grineer, Corpus and Infested. Here you can see all the Invasions.</p>
+                <hr>
+                {% for alert in alerts.Alerts %}
+                <div id="{{alert.id.oid}}" class="alrt bg-black-t mb-1 small">
+                    <div class="media p-3">
+                        <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+                        <div class="media-body">
+                            <p class="mb-1"><span class="font-weight-bold">{{alert.MissionInfo.location|solnode_name}}</span> {% if alert.MissionInfo.maxWaveNum %}(Waves: {{alert.MissionInfo.maxWaveNum}}){% endif %}  <span class="float-right mt-1 small">Level: {{alert.MissionInfo.minEnemyLevel}} - {{alert.MissionInfo.maxEnemyLevel}}</span></p>
+                            <p class="my-1 text-uppercase">{{alert.MissionInfo.missionType|mission_name}} - {{alert.MissionInfo.faction|factions_name}}</p>
+                            <p class="my-1">
+                                Reward: Credits {{alert.MissionInfo.missionReward.credits}}
+                                {% for item in alert.MissionInfo.missionReward.items %}
+                                     + {{item}}
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="py-1 border-top border-dark">
+                        <p class="m-0 text-center small">Starts: {{alert.Activation.date.numberLong|human_time}} - Ends: {{alert.Expiry.date.numberLong|human_time}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                <hr>
+            </div>
+            <div class="invasions mb-3">
+                <h2 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Invasions</h2>
+                <p class="text-muted small m-0">A fight that never ends between the Grineer, Corpus and Infested. Here you can see all the Invasions.</p>
+                <hr>
+                <table class="table table-dark small">
+                    <thead>
+                        <tr>
+                            <th scope="col">Faction</th>
+                            <th scope="col">Node</th>
+                            <th scope="col">Count</th>
+                            <th scope="col">Goal</th>
+                            <th scope="col">Started</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for invasion in alerts.Invasions %}
+                        {% if invasion.Completed == True %}
+                        <tr>
+                            <th scope="row">
+                                {% if invasion.Faction == 'FC_GRINEER' %}
+                                Grineer
+                                {% elif invasion.Faction == 'FC_INFESTATION' %}
+                                Infested
+                                {% elif invasion.Faction == 'FC_CORPUS' %}
+                                Corpus
+                                {% endif %}
+                            </th>
+                            <td>{{invasion.Node}}</td>
+                            <td>{{invasion.Count}}</td>
+                            <td>{{invasion.Goal}}</td>
+                            <td>{{invasion.Activation.date.numberLong|human_time}}</td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+            <div class="void-traders mb-5">
+                <h2 class="h3 mt-3 mt-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Void Traders</h2>
+                <p class="text-muted small m-0">When do you want to know when the trader comes, you questions in the chat 'when baro'. Here you do not have to do it!</p>
+                <hr>
+                <table class="table table-dark small">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Relay</th>
+                            <th scope="col">Arrives</th>
+                            <th scope="col">Left</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for trader in alerts.VoidTraders %}
+                        <tr>
+                            <th scope="row">{{trader.Character}}</th>
+                            <td>{{trader.Node|hubs_name}}</td>
+                            <td>{{trader.Activation.date.numberLong|human_time}}</td>
+                            <td>{{trader.Expiry.date.numberLong|human_time}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+        </div>
+        <div class="col-md-6">
             <h2 class="h3 mt-3 mb-2"><i class="far fa-calendar-check fa-fw text-info mr-1"></i> Events</h2>
             <p class="text-muted small m-0">Here you can see all the events that are taking place in Warframe.</p>
             <hr>
@@ -27,7 +120,7 @@
                         <img class="img-fluid" src="{{event.ImageUrl}}">
                     </a>
                     {% endif %}
-                    <div class="media bg-black-t small">                
+                    <div class="media small">                
                         <div class="media-body p-3">
                             <p class="mb-0"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> 
                                 <a href="{{event.Prop}}" target="_blank">
@@ -37,50 +130,13 @@
                                         {% endif %}
                                     {% endfor %}
                                 </a>
-                                <span class="float-right text-secondary small mt-1">{{event.Date.date.numberLong}}</span>
+                                <span class="float-right text-secondary small mt-1">{{event.Date.date.numberLong|human_time}}</span>
                             </p>
                         </div>
                     </div>
                 </div>
                 {% endif %}
             {% endfor %}
-        </div>
-        <div class="col-md-6">
-            <h2 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Invasions</h2>
-            <p class="text-muted small m-0">A fight that never ends between the Grineer, Corpus and Infested. Here you can see all the Invasions.</p>
-            <hr>
-            <table class="table table-dark small">
-                <thead>
-                    <tr>
-                        <th scope="col">Faction</th>
-                        <th scope="col">Node</th>
-                        <th scope="col">Count</th>
-                        <th scope="col">Goal</th>
-                        <th scope="col">Activation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for invasion in alerts.Invasions %}
-                    {% if invasion.Completed == True %}
-                    <tr>
-                        <th scope="row">
-                            {% if invasion.Faction == 'FC_GRINEER' %}
-                            Grineer
-                            {% elif invasion.Faction == 'FC_INFESTATION' %}
-                            Infested
-                            {% elif invasion.Faction == 'FC_CORPUS' %}
-                            Corpus
-                            {% endif %}
-                        </th>
-                        <td>{{invasion.Node}}</td>
-                        <td>{{invasion.Count}}</td>
-                        <td>{{invasion.Goal}}</td>
-                        <td>{{invasion.Activation.date.numberLong}}</td>
-                    </tr>
-                    {% endif %}
-                {% endfor %}
-                </tbody>
-            </table>
         </div>
         <div class="col-md-12">
             <h2 class="h3 mt-3 mb-2"><i class="far fa-surprise fa-fw text-info mr-1"></i> Daily Deals</h2>

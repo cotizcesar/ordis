@@ -1,4 +1,5 @@
 import os.path
+from datetime import datetime
 from django import template
 from django.conf import settings
 register = template.Library()
@@ -45,3 +46,61 @@ def youtube_embed_url(value):
     return ''
 
 youtube_embed_url.is_safe = True
+
+@register.filter(name='human_time')
+def human_time(value):
+    value = value[:-3]
+    value = int(value)
+    return datetime.fromtimestamp(value)
+
+@register.filter(name='hubs_name')
+def human_time(value):
+    if value == 'MercuryHUB':
+        return 'Larunda Relay'
+    else:
+        return '???'
+
+@register.filter(name='factions_name')
+def human_time(value):
+    if value == 'FC_INFESTATION':
+        return 'Infestation'
+    elif value == 'FC_CORPUS':
+        return 'Corpus'
+    elif value == 'FC_GRINEER':
+        return 'Grineer'
+    else:
+        return '???'
+
+@register.filter(name='mission_name')
+def human_time(value):
+    if value == 'MT_DEFENSE':
+        return 'Defense'
+    elif value == 'MT_HIVE':
+        return 'Hive'
+    elif value == 'MT_EXTERMINATION':
+        return 'Exterminate'
+    elif value == 'MT_RESCUE':
+        return 'Rescue'
+    elif value == 'MT_TERRITORY':
+        return 'Interception'
+    elif value == 'MT_INTEL':
+        return 'Spy'
+    else:
+        return '???'
+
+@register.filter(name='solnode_name')
+def human_time(value):
+    if value == 'SolNode56':
+        return 'Cypress (Pluto)'
+    elif value == 'SolNode43':
+        return 'Cerberus (Pluto)'
+    elif value == 'SolNode189':
+        return 'Naga (Sedna)'
+    elif value == 'SolNode130':
+        return 'Lares (Mercury)'
+    elif value == 'SolNode31':
+        return 'Anthe (Saturn)'
+    elif value == 'SettlementNode2':
+        return 'Skyresh (Phobos)'
+    else:
+        return '???'
