@@ -11,6 +11,12 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        {% bootstrap_javascript jquery='full' %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <script src="//cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+        <script src="{% static 'js/typeahead.bundle.js' %}"></script>
         <title>{% block sitename %}Warframe.py - {% endblock %}{% block title %}{% endblock %}</title>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130957387-1"></script>
@@ -43,10 +49,6 @@
         </main>
         {% include 'footer.html' %}
         {% block extras %}{% endblock %}
-        {% bootstrap_javascript jquery='full' %}
-        <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-        <script src="{% static 'js/typeahead.bundle.js' %}"></script>
         <!-- Twitter: Share Js -->
         <script>window.twttr = (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0],

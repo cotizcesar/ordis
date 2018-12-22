@@ -1,5 +1,7 @@
 import os.path
-from datetime import datetime
+from datetime import datetime, date
+import time
+
 from django import template
 from django.conf import settings
 register = template.Library()
@@ -47,11 +49,19 @@ def youtube_embed_url(value):
 
 youtube_embed_url.is_safe = True
 
+@register.filter(name='unix_to_readeable')
+def human_time(value):
+    value = value[:-3]
+    value = int(value)
+    value = datetime.fromtimestamp(value)
+    return value
+
 @register.filter(name='human_time')
 def human_time(value):
     value = value[:-3]
     value = int(value)
-    return datetime.fromtimestamp(value)
+    value = datetime.fromtimestamp(value)
+    return value.strftime('%m/%d/%Y %I:%M:%S') # %I:%M:%S MM/DD/YYYY hh:mm:ss
 
 @register.filter(name='hubs_name')
 def human_time(value):
