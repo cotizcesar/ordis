@@ -204,11 +204,10 @@
     </div>
 </div>
 <script>
-    $("[data-countdown]").each(function() {
-        var $this = $(this), finalDate = $(this).data("countdown");
-        finalDate = moment.tz(finalDate, "America/Caracas"); // <-- ***THIS IS NOT WORKING***
-        $this.countdown(finalDate.toDate(), function(event) {
-            $this.html(event.strftime("%D days %H:%M:%S"));           
+    $('[data-countdown]').each(function() {
+        var $this = $(this), finalDate = $(this).data('countdown');
+        $this.countdown(finalDate, function(event) {
+            $this.html(event.strftime('%Dd - %H:%M:%S'));
         });
     });
 </script>
