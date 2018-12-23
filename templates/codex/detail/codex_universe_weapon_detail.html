@@ -2,9 +2,12 @@
 {% load thumbnail %}
 {% block meta_extra %}<meta property="og:url"                content="{{request.build_absolute_uri}}" />
         <meta property="og:type"               content="website" />
-        <meta property="og:title"              content="Warframe.py - {{weapon.name}}" />
+        <meta property="og:title"              content="Ordis.app - {{weapon.name}}" />
         <meta property="og:description"        content="{{weapon.description}}" />
-        <meta property="og:image"              content="{{weapon.image|thumbnail_url:'weapon'|default:'https://via.placeholder.com/510x287'}}" />{% endblock %}
+        <meta property="og:image"              content="{{weapon.image|thumbnail_url:'weapon'|default:'https://via.placeholder.com/510x287'}}" />
+        <meta name="twitter:card" content="app" />
+        <meta name="twitter:site" content="@cotizcesar" />
+        <meta name="twitter:creator" content="@cotizcesar" />{% endblock %}
 {% block title %}{{weapon.name}}{% endblock %}
 {% block content %}
 <div class="container">

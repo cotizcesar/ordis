@@ -6,7 +6,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        {% block meta_extra %}{% endblock %}
+        {% block meta_extra %}
+        <meta property="og:url"                content="{{request.build_absolute_uri}}" />
+        <meta property="og:type"               content="website" />
+        <meta property="og:title"              content="Ordis.app - {{weapon.name}}" />
+        <meta property="og:description"        content="Open-Source social network, alerts, market and codex for a game called Warframe." />
+        <meta property="og:image"              content="https://via.placeholder.com/510x287" />
+        <meta name="twitter:card" content="app" />
+        <meta name="twitter:site" content="@cotizcesar" />
+        <meta name="twitter:creator" content="@cotizcesar" />{% endblock %}
         {% bootstrap_css %}
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
