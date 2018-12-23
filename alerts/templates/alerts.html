@@ -60,15 +60,9 @@
                         {% if invasion.Completed == True %}
                         <tr>
                             <th scope="row">
-                                {% if invasion.Faction == 'FC_GRINEER' %}
-                                Grineer
-                                {% elif invasion.Faction == 'FC_INFESTATION' %}
-                                Infested
-                                {% elif invasion.Faction == 'FC_CORPUS' %}
-                                Corpus
-                                {% endif %}
+                                {{invasion.Faction|factions_name}}
                             </th>
-                            <td>{{invasion.Node}}</td>
+                            <td>{{invasion.Node|solnode_name}}</td>
                             <td>{{invasion.Count}}</td>
                             <td>{{invasion.Goal}}</td>
                             <td>{{invasion.Activation.date.numberLong|human_time}}</td>
@@ -83,26 +77,18 @@
                 <h2 class="h3 mt-3 mt-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Void Traders</h2>
                 <p class="text-muted small m-0">When do you want to know when the trader comes, you questions in the chat 'when baro'. Here you do not have to do it!</p>
                 <hr>
-                <table class="table table-dark small">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Relay</th>
-                            <th scope="col">Arrives</th>
-                            <th scope="col">Left</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for trader in alerts.VoidTraders %}
-                        <tr>
-                            <th scope="row">{{trader.Character}}</th>
-                            <td>{{trader.Node|hubs_name}}</td>
-                            <td>{{trader.Activation.date.numberLong|human_time}}</td>
-                            <td>{{trader.Expiry.date.numberLong|human_time}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                {% for trader in alerts.VoidTraders %}
+                <div id="void-traders" class="void bg-black-t small border-top border-bottom border-dark">
+                    <div class="media p-3">
+                        <img src="https://via.placeholder.com/57x57" class="mr-3" alt="...">
+                        <div class="media-body">
+                            <p class="m-0 font-weight-bold text-info">{{trader.Character}}</p>
+                            <p class="m-0">{{trader.Node|hubs_name}}</p>
+                            <p class="m-0"><span class="font-weight-bold">Arrives:</span> [<span data-countdown="{{trader.Activation.date.numberLong|human_time}}"></span>] - <span class="font-weight-bold">Left:</span> [<span data-countdown="{{trader.Expiry.date.numberLong|human_time}}"></span>]</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
                 <hr>
             </div>
         </div>
@@ -166,40 +152,32 @@
             </table>
         </div>
         <div class="col-md-12">
-            <h2 class="h3 mt-3 mb-2"><i class="far fa-surprise fa-fw text-info mr-1"></i> Flash Sales</h2>
+            <h2 class="h3"><i class="far fa-surprise fa-fw text-info mr-1"></i> Flash Sales</h2>
             <p class="text-muted small m-0">Many times it is impossible to know everything about Warframe, between quests, resources, weapons and more, it is necessary to have a guide either inside the game as well as outside it and at hand.</p>
             <hr>
-            <table class="table table-dark small">
-                <thead>
-                    <tr>
-                        <th scope="col">Item</th>
-                        <th scope="col">StartDate / EndDate</th>
-                        <th scope="col">ProductExpiryOverride</th>
-                        <th scope="col">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for sale in alerts.FlashSales %}
-                    {% if sale.ShowInMarket == True %}
-                    {% if sale.RegularOverride == 0 %}
-                    <tr class="{% if sale.Featured == True %}bg-black-t{% endif %}">
-                        <th scope="row">
-                            {% if sale.Popular == True %}<i class="fas fa-star fa-fw text-warning mr-1"></i> {% endif %}{{sale.TypeName}}
-                        </th>
-                        <td>{{sale.StartDate.date.numberLong}} / {{sale.EndDate.date.numberLong}}</td>
-                        <td>{{sale.ProductExpiryOverride.date.numberLong}}</td>
-                        <td>
-                            {{sale.PremiumOverride}} Platinum
-                            {% if sale.Discount >= 1 %}
-                                ({{sale.Discount}}% Off)
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% endif %}
-                    {% endif %}
-                {% endfor %}
-                </tbody>
-            </table>
+            {% for sale in alerts.FlashSales %}
+                {% if sale.ShowInMarket == True %}
+                {% if sale.RegularOverride == 0 %}
+                <div class="flash-sales bg-black-t small border-top border-bottom border-dark {% if sale.Featured == True %}bg-black-t{% endif %}">
+                    <div class="media p-3">
+                        <div class="media-body">
+                            <p class="m-0">{{sale.TypeName}} ()
+                                {% if sale.ProductExpiryOverride.date.numberLong > sale.EndDate.date.numberLong %}
+                                    <span class="float-right bg-info rounded py-1 px-2 small text-white" data-countdown="{{sale.ProductExpiryOverride.date.numberLong|human_time}}">{{sale.ProductExpiryOverride.date.numberLong|human_time}}</span>
+                                {% else %}
+                                    <span class="float-right bg-info rounded py-1 px-2 small text-white" data-countdown="{{sale.EndDate.date.numberLong|human_time}}">{{sale.EndDate.date.numberLong|human_time}}</span>
+                                {% endif %}
+                                {% if sale.Discount >= 1 %}
+                                    <span class="float-right bg-danger rounded py-1 px-2 small text-white mr-1">({{sale.Discount}}% Off)</span>
+                                {% endif %}
+                                <span class="float-right bg-success rounded py-1 px-2 small text-white mr-1">{{sale.PremiumOverride}} Platinum</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 </div>
