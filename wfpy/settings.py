@@ -64,7 +64,7 @@ INSTALLED_APPS = [
 ]
 
 # django-allauth: Required
-SITE_ID = 1
+SITE_ID = 2
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
