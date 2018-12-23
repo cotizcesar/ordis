@@ -38,7 +38,7 @@ body{
 .btn-twitch{
     background: #6441a5;
 }
-.btn-facebook:hover, .btn-twitch:hover{
+.btn-discord:hover, .btn-facebook:hover, .btn-twitch:hover{
     opacity: 0.9;
 }
 
