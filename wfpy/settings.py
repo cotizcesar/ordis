@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # django-allauth : Social Logins
     # https://django-allauth.readthedocs.io/en/latest/installation.html
     'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
     # easy_thumbnails: Images handle and thumbnails generator.
     'easy_thumbnails',
     # django-bootstrap4: Handling forms and inputs everywhere.
@@ -174,6 +175,34 @@ THUMBNAIL_ALIASES = {
 
 # easy_thumbnails: Renaming the image uploads.
 THUMBNAIL_NAMER = 'easy_thumbnails.namers.hashed'
+
+# django-allauth: Social providers.
+# https://django-allauth.readthedocs.io/en/latest/providers.html
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.12',
+    }
+}
 
 # django-allauth: Log In/Log Out redirection
 # http://django-allauth.readthedocs.io/en/latest/configuration.html
