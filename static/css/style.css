@@ -29,6 +29,9 @@ body{
 }
 
 /* Login: Buttons */
+.btn-discord{
+    background: #7289da;
+}
 .btn-facebook{
     background: #3b5998;
 }
