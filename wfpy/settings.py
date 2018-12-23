@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    # django-allauth : Social Logins
+    # https://django-allauth.readthedocs.io/en/latest/installation.html
+    'allauth.socialaccount.providers.facebook',
     # easy_thumbnails: Images handle and thumbnails generator.
     'easy_thumbnails',
     # django-bootstrap4: Handling forms and inputs everywhere.
