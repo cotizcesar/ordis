@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # django-allauth : Social Logins
     # https://django-allauth.readthedocs.io/en/latest/installation.html
+    'allauth.socialaccount.providers.discord',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.twitch',
     # easy_thumbnails: Images handle and thumbnails generator.
