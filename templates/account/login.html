@@ -21,11 +21,13 @@
                     <a class="btn btn-main btn-small" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
                     <button class="btn btn-main btn-small float-right" type="submit">{% trans "Sign In" %}</button>
                 </form>
-                <div class="text-center my-2">{% trans 'or' %}</div>
+                <div class="text-center mt-2 mb-1">{% trans 'or' %}</div>
                 {% get_providers as socialaccount_providers %}
                 {% if socialaccount_providers %}
-                    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-                    {% include "socialaccount/snippets/login_extra.html" %}
+                    <div class="row">
+                        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                        {% include "socialaccount/snippets/login_extra.html" %}
+                    </div>
                 {% else %}
                 <p>{% blocktrans %}If you have not created an account yet, then please <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
                 {% endif %}

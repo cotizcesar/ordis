@@ -3,8 +3,12 @@
 {% for provider in socialaccount_providers %}
     {% if provider.id == "openid" %}
         {% for brand in provider.get_brands %}
-            <a class="btn btn-small btn-block text-white socialaccount_provider btn-{{brand.id}}" href="{% provider_login_url provider.id openid=brand.openid_url process=process %}" role="button">{{provider.name}}</a>
+            <div class="col-md-6">
+                <a class="btn btn-small btn-block text-white socialaccount_provider btn-{{brand.id}} mt-1" href="{% provider_login_url provider.id openid=brand.openid_url process=process %}" role="button">{{provider.name}}</a>
+            </div>
         {% endfor %}
     {% endif %}
-    <a class="btn btn-small btn-block text-white socialaccount_provider btn-{{provider.id}}" href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}" role="button"><i class="fab fa-{{provider.id}} fa-fw mr-1"></i> {{provider.name}}</a>
+    <div class="col-md-6">
+        <a class="btn btn-small btn-block text-white socialaccount_provider btn-{{provider.id}} mt-1" href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}" role="button"><i class="fab fa-{{provider.id}} fa-fw mr-1"></i> {{provider.name}}</a>
+    </div>
 {% endfor %}
