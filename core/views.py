@@ -21,14 +21,13 @@ from .forms import UserForm, UserProfileForm, PostForm, CommentForm
 
 # django-allauth: Forms
 # https://django-allauth.readthedocs.io/en/latest/forms.html
-from allauth.account.forms import SignupForm
+#from allauth.account.forms import SignupForm
 
 # Market: Importing Models
 from market.models import Item
 
-class Index(TemplateView, FormView):
+class Index(TemplateView):
     template_name = 'index.html'
-    form_class = SignupForm
 
 class Feed(LoginRequiredMixin, TemplateView, FormView):
     template_name = 'feed/feed.html'
