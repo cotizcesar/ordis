@@ -1,15 +1,21 @@
-{% if user.is_authenticated %}
-{% include 'user/user_thumb.html' %}
-{% endif %}
-<p class="title-menu my-1 mx-3 text-uppercase d-block">Explore</p>
-<ul class="nav flex-column mb-3">
-    <li class="nav-item">
-        <a class="nav-link{% if request.resolver_match.url_name == 'explore' %} bg-black-t text-white{% endif %}" href="{% url 'explore' %}"><i class="fas fa-columns fa-fw mr-1"></i> Dashboard</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link{% if request.resolver_match.url_name == 'explore_users' %} bg-black-t text-white{% endif %}" href="{% url 'explore_users' %}"><i class="fas fa-users fa-fw mr-1"></i> Players</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link disabled" href="#"><i class="fas fa-flag fa-fw mr-1"></i> Clans</a>
-    </li>
-</ul>
+<div class="mb-3">
+    {% if user.is_authenticated %}
+        {% include 'user/user_thumb.html' %}
+    {% endif %}
+</div>
+<div class="mb-3">
+    <p class="text-uppercase bg-title px-3 py-2 m-0">Explore</p>
+    <div class="bg-box mb-3">
+        <ul class="nav flex-column mb-3">
+            <li class="nav-item">
+                <a class="nav-link{% if request.resolver_match.url_name == 'explore' %} bg-black-t text-white{% endif %}" href="{% url 'explore' %}"><i class="fas fa-columns fa-fw mr-1"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if request.resolver_match.url_name == 'explore_users' %} bg-black-t text-white{% endif %}" href="{% url 'explore_users' %}"><i class="fas fa-users fa-fw mr-1"></i> Players</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#"><i class="fas fa-flag fa-fw mr-1"></i> Clans</a>
+            </li>
+        </ul>
+    </div>
+</div>

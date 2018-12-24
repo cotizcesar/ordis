@@ -1,62 +1,68 @@
-{% if user.is_authenticated %}
-{% include 'user/user_thumb.html' %}
-{% endif %}
-<p class="title-menu my-1 mx-3 text-uppercase d-block">Codex</p>
-<ul class="nav flex-column mb-3">
-    <li class="nav-item">
-        <a class="nav-link{% if request.resolver_match.url_name == 'codex_quests' %} bg-black-t text-white{% endif %}" href="{% url 'codex_quests' %}"><i class="far fa-map fa-fw mr-1"></i> Quests</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe' or request.resolver_match.url_name == 'codex_universe_companions' or request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons_primary' or request.resolver_match.url_name == 'codex_universe_weapons_secondary' or request.resolver_match.url_name == 'codex_universe_weapons_melee' or request.resolver_match.url_name == 'codex_universe_warframes' %} bg-black-t text-white{% endif %}" href="{% url 'codex_universe' %}"><i class="fas fa-globe fa-fw mr-1"></i> Universe</a>
-    </li>
-    {% if request.resolver_match.url_name == 'codex_universe' or request.resolver_match.url_name == 'codex_universe_companions' or request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons_primary' or request.resolver_match.url_name == 'codex_universe_weapons_secondary' or request.resolver_match.url_name == 'codex_universe_weapons_melee' or request.resolver_match.url_name == 'codex_universe_warframes' %}
-    <ul class="nav flex-column ml-3">
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Art Gallery</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.url_name == 'codex_universe_companions' %} bg-black-t text-white{% endif %}" href="{% url 'codex_universe_companions' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Companions</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Factions</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Fragments</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Mods</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Objects</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Relics & Arcanes</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.url_name == 'codex_universe_warframes' %} bg-black-t text-white{% endif %}" href="{% url 'codex_universe_warframes' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Warframes & Archwings</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons_primary' or request.resolver_match.url_name == 'codex_universe_weapons_secondary' or request.resolver_match.url_name == 'codex_universe_weapons_melee' %} bg-black-t text-white{% endif %}" href="{% url 'codex_universe_weapons' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Weapons</a>
-        </li>
-        {% if request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons_primary' or request.resolver_match.url_name == 'codex_universe_weapons_secondary' or request.resolver_match.url_name == 'codex_universe_weapons_melee' %}
-        <ul class="nav flex-column">
+<div class="mb-3">
+    {% if user.is_authenticated %}
+        {% include 'user/user_thumb.html' %}
+    {% endif %}
+</div>
+<div class="mb-3">
+    <p class="text-uppercase bg-title px-3 py-2 m-0">Codex</p>
+    <div class="bg-box mb-3">
+        <ul class="nav flex-column mb-3">
             <li class="nav-item">
-                <a class="nav-link ml-3{% if request.resolver_match.url_name == 'codex_universe_weapons_primary' %} text-white{% endif %}" href="{% url 'codex_universe_weapons_primary' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Primary</a>
+                <a class="nav-link{% if request.resolver_match.url_name == 'codex_quests' %} bg-black-t text-white{% endif %}" href="{% url 'codex_quests' %}"><i class="far fa-map fa-fw mr-1"></i> Quests</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ml-3{% if request.resolver_match.url_name == 'codex_universe_weapons_secondary' %} text-white{% endif %}" href="{% url 'codex_universe_weapons_secondary' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Secondary</a>
+                <a class="nav-link{% if request.resolver_match.url_name == 'codex_universe' or request.resolver_match.url_name == 'codex_universe_companions' or request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons_primary' or request.resolver_match.url_name == 'codex_universe_weapons_secondary' or request.resolver_match.url_name == 'codex_universe_weapons_melee' or request.resolver_match.url_name == 'codex_universe_warframes' %} bg-black-t text-white{% endif %}" href="{% url 'codex_universe' %}"><i class="fas fa-globe fa-fw mr-1"></i> Universe</a>
+            </li>
+            {% if request.resolver_match.url_name == 'codex_universe' or request.resolver_match.url_name == 'codex_universe_companions' or request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons_primary' or request.resolver_match.url_name == 'codex_universe_weapons_secondary' or request.resolver_match.url_name == 'codex_universe_weapons_melee' or request.resolver_match.url_name == 'codex_universe_warframes' %}
+            <ul class="nav flex-column ml-3">
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Art Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'codex_universe_companions' %} bg-black-t text-white{% endif %}" href="{% url 'codex_universe_companions' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Companions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Factions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Fragments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Mods</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Objects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Relics & Arcanes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'codex_universe_warframes' %} bg-black-t text-white{% endif %}" href="{% url 'codex_universe_warframes' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Warframes & Archwings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons_primary' or request.resolver_match.url_name == 'codex_universe_weapons_secondary' or request.resolver_match.url_name == 'codex_universe_weapons_melee' %} bg-black-t text-white{% endif %}" href="{% url 'codex_universe_weapons' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Weapons</a>
+                </li>
+                {% if request.resolver_match.url_name == 'codex_universe_weapons' or request.resolver_match.url_name == 'codex_universe_weapons_primary' or request.resolver_match.url_name == 'codex_universe_weapons_secondary' or request.resolver_match.url_name == 'codex_universe_weapons_melee' %}
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link ml-3{% if request.resolver_match.url_name == 'codex_universe_weapons_primary' %} text-white{% endif %}" href="{% url 'codex_universe_weapons_primary' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Primary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-3{% if request.resolver_match.url_name == 'codex_universe_weapons_secondary' %} text-white{% endif %}" href="{% url 'codex_universe_weapons_secondary' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Secondary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-3{% if request.resolver_match.url_name == 'codex_universe_weapons_melee' %} text-white{% endif %}" href="{% url 'codex_universe_weapons_melee' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Melee</a>
+                    </li>
+                </ul>
+                {% endif %}
+            </ul>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#"><i class="fab fa-accessible-icon fa-fw mr-1"></i> Training</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ml-3{% if request.resolver_match.url_name == 'codex_universe_weapons_melee' %} text-white{% endif %}" href="{% url 'codex_universe_weapons_melee' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Melee</a>
+                <a class="nav-link disabled" href="#"><i class="fas fa-thumbtack fa-fw mr-1"></i> Missions</a>
             </li>
         </ul>
-        {% endif %}
-    </ul>
-    {% endif %}
-    <li class="nav-item">
-        <a class="nav-link disabled" href="#"><i class="fab fa-accessible-icon fa-fw mr-1"></i> Training</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link disabled" href="#"><i class="fas fa-thumbtack fa-fw mr-1"></i> Missions</a>
-    </li>
-</ul>
+    </div>
+</div>

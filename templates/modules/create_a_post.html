@@ -1,9 +1,9 @@
 {% if user.is_authenticated %}
     {% if request.resolver_match.url_name == 'feed' or request.resolver_match.url_name == 'feed_public' or request.resolver_match.url_name == 'userprofile' %}
-    <button type="button" class="btn btn-main btn-lg btn-block my-3" data-toggle="modal" data-target="#PostCreate">
+    <button type="button" class="btn btn-main btn-lg btn-block mb-3" data-toggle="modal" data-target="#PostCreate">
         <i class="fas fa-paper-plane fa-fw mr-1"></i> Create a Post
     </button>
     {% else %}
-    <a class="btn btn-main btn-lg btn-block my-3" href="{% url 'post_create' %}" role="button"><i class="fas fa-paper-plane fa-fw mr-1"></i> Create a Post</a>
+    <a class="btn btn-main btn-lg btn-block mb-3" href="{% url 'post_create' %}" role="button"><i class="fas fa-paper-plane fa-fw mr-1"></i> Create a Post</a>
     {% endif %}
 {% endif %} 

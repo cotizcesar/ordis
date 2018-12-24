@@ -7,7 +7,7 @@
     {% elif post.video %}
     {{post.video|youtube_embed_url|safe}}
     {% endif %}
-    <div class="media p-3">
+    <div class="media pt-3 px-3">
         <img class="mr-3 rounded-circle" src="{{post.user.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{% if post.user.get_full_name %}{{post.user.get_full_name}}{% else %}{{post.user.username}}{% endif %} avatar.">
         <div class="media-body">
             <p class="my-1">
@@ -20,7 +20,7 @@
                 </a>
                 <a href="{% url 'post_detail' post.id %}" class="date-created float-right mt-1 small">{{post.date_created|naturaltime}}</a>
             </p>
-            <p class="my-1 text">{{post.text}}</p>
+            <div class="text">{{post.text|linebreaks}}</div>
             {% if post.comment_set.count >= 1 %}
             <nav class="nav justify-content-end">
                 <a class="nav-link px-0 py-0" href="{% url 'post_detail' post.id %}"> 

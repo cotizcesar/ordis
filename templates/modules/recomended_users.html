@@ -1,7 +1,8 @@
 {% load thumbnail %}
-<div class="users-recomended">
-    <h3 class="h6 title-menu text-uppercase">Recommended Users</h3>
+<p class="text-uppercase bg-title px-3 py-2 m-0">Recommended Users</p>
+<div class="bg-box">
     {% for user in module_recomended_users %}
-    {% include 'user/user_thumb.html' %}
+        {% include 'user/user_thumb.html' %}
+        {% include 'user/user_thumb.html' %}
     {% endfor %}
 </div>
