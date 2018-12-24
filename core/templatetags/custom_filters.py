@@ -97,9 +97,9 @@ def human_time(value):
         return 'Spy'
     elif value == 'MT_MOBILE_DEFENSE':
         return 'Mobile Defense'
-    elif value == 'MT_SURVIVAL'
+    elif value == 'MT_SURVIVAL':
         return 'Survival'
-    elif value == 'MT_EVACUATION'
+    elif value == 'MT_EVACUATION':
         return 'Defection'
     else:
         return '???'
