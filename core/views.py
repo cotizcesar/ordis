@@ -63,7 +63,7 @@ class FeedPublic(TemplateView, FormView):
         
 class UserProfileDetailView(DetailView, FormView):
     model = User
-    template_name = 'userprofile/userprofile.html'
+    template_name = 'core/userprofile/userprofile.html'
     slug_field = 'username'
     slug_url_kwarg = 'username'
     context_object_name = 'profile'
