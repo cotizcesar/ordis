@@ -1,0 +1,27 @@
+<div class="mb-3">
+    {% if user.is_authenticated %}
+        {% include 'user/user_thumb.html' %}
+    {% endif %}
+</div>
+<div class="mb-3">
+    <p class="text-uppercase bg-title px-3 py-2 m-0">Market</p>
+    <div class="bg-box mb-3">
+        <ul class="nav flex-column mb-3">
+            <li class="nav-item">
+                <a class="nav-link{% if request.resolver_match.url_name == 'explore' %} bg-black-t text-white{% endif %}" href="#"><i class="fas fa-columns fa-fw mr-1"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if request.resolver_match.url_name == 'explore_users' %} bg-black-t text-white{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Warframes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if request.resolver_match.url_name == 'explore_users' %} bg-black-t text-white{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Weapons</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if request.resolver_match.url_name == 'explore_users' %} bg-black-t text-white{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Companions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if request.resolver_match.url_name == 'explore_users' %} bg-black-t text-white{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Relics & Arcanes</a>
+            </li>
+        </ul>
+    </div>
+</div>

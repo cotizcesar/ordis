@@ -14,7 +14,7 @@ from .models import Item, Order
 from .forms import OrderForm
 
 class Market(TemplateView, FormView):
-    template_name = 'market.html'
+    template_name = 'market/market.html'
     form_class = OrderForm
 
     def get_context_data(self, *args, **kwargs):

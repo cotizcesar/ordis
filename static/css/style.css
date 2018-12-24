@@ -14,6 +14,7 @@ a:hover{
     color: #ffffff;
     text-decoration: none;
 }
+/* Theme: Warframe - Background */
 .bg-title{
     background-color: #121B25;
 }
@@ -33,6 +34,31 @@ a:hover{
     background: rgba(0,0,0,0.2);
     color: #c6d4df;
 }
+/* Theme: Warframe - Buttons */
+.btn-main{
+    background-color: #202D3D;
+    color: #66C0F4;
+}
+.btn-signup{
+    background-color: #5c7e10;
+    color: #fff;
+}
+.btn-main:hover, .btn-main:active{
+    color: #fff;
+}
+/* Theme: Warframe - Login Buttons */
+.btn-discord{
+    background: #7289da;
+}
+.btn-facebook{
+    background: #3b5998;
+}
+.btn-twitch{
+    background: #6441a5;
+}
+.btn-discord:hover, .btn-facebook:hover, .btn-twitch:hover{
+    opacity: 0.9;
+}
 /* Theme: Warframe - Post */
 .post{
     background-color: #0E141C;
@@ -51,35 +77,6 @@ a:hover{
 }
 /* Theme: Warframe - End */
 
-.title-menu{
-    color: #c6d4df;
-}
-.btn-main{
-    color: #66c0f4;
-    background: #1D2632;
-}
-.btn-small{
-    font-size: 0.7rem;
-}
-.btn-main:hover, .btn-main:active{
-    color: #fff;
-    background: #4C88AC;
-}
-
-/* Home */
-/* Login: Buttons */
-.btn-discord{
-    background: #7289da;
-}
-.btn-facebook{
-    background: #3b5998;
-}
-.btn-twitch{
-    background: #6441a5;
-}
-.btn-discord:hover, .btn-facebook:hover, .btn-twitch:hover{
-    opacity: 0.9;
-}
 
 /* Theme Ends */
 .social *{
