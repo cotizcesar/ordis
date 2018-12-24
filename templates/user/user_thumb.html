@@ -1,5 +1,5 @@
 {% load thumbnail %}
-<div class="media bg-black-t border-bottom border-dark">
+<div class="media bg-black-t">
     <img class="img-fluid mr-3" src="{{user.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="Generic placeholder image">
     <div class="media-body py-1">
         <a href="{% url 'userprofile' user.username %}" class="d-block">
