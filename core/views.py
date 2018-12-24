@@ -29,7 +29,9 @@ from market.models import Item
 class Index(TemplateView):
     template_name = 'index.html'
 
-class Feed(LoginRequiredMixin, TemplateView, FormView):
+class Feed(LoginRequiredMixin, ListView, FormView):
+    model = Post
+    paginate_by = 5
     template_name = 'feed/feed.html'
     form_class = PostForm
 

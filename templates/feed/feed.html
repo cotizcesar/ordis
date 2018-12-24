@@ -11,10 +11,29 @@
             {% for post in posts %}
                 {% include 'post/post.html' %}
             {% endfor %}
+
+            <div class="loading" style="display: none;">
+                Loading...
+            </div>
+
+            {% if page_obj.has_next %}
+                <a class="infinite-more-link" href="?page={{ articles.next_page_number }}">More</a>
+            {% endif %}
         </div>
         <div class="col-md-3 bg-black-t py-3">
             {% include 'modules/aside.html'%}
         </div>
     </div>
 </div>
+<script>
+        var infinite = new Waypoint.Infinite({
+          element: $('.infinite-container')[0],
+          onBeforePageLoad: function () {
+            $('.loading').show();
+          },
+          onAfterPageLoad: function ($items) {
+            $('.loading').hide();
+          }
+        });
+      </script>
 {% endblock %}
