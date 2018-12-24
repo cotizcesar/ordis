@@ -21,23 +21,18 @@
                 <a href="{% url 'post_detail' post.id %}" class="date-created float-right mt-1 small">{{post.date_created|naturaltime}}</a>
             </p>
             <div class="text">{{post.text|linebreaks}}</div>
-            {% if post.comment_set.count >= 1 %}
-            <nav class="nav justify-content-end">
-                <a class="nav-link px-0 py-0" href="{% url 'post_detail' post.id %}"> 
-                    {% if post.comment_set.count == 1 %}
-                    <i class="fas fa-comments fa-fw mr-1"></i> {{post.comment_set.count}} Comment
-                    {% else %}
-                    <i class="fas fa-comments fa-fw mr-1"></i> {{post.comment_set.count}} Comments
-                    {% endif %}
-                </a>
-            </nav>
-            {% endif %}
         </div>
     </div>
     <hr class="m-0">
     <nav class="nav nav-pills nav-fill">
         <!--<a class="nav-item nav-link" href="#"><i class="fas fa-heart fa-fw text-info mr-1"></i> Like</a>-->
+        {% if post.comment_set.count == 0 %}
         <a class="nav-item nav-link" href="{% url 'post_comment_create' post.id %}"><i class="fas fa-comment fa-fw text-info mr-1"></i> Comment</a>
+        {% elif post.comment_set.count == 1 %}
+        <a class="nav-item nav-link" href="{% url 'post_comment_create' post.id %}"><i class="fas fa-comment fa-fw text-info mr-1"></i> {{post.comment_set.count}} Comment</a>
+        {% elif post.comment_set.count >= 1 %}
+        <a class="nav-item nav-link" href="{% url 'post_comment_create' post.id %}"><i class="fas fa-comment fa-fw text-info mr-1"></i> {{post.comment_set.count}} Comments</a>
+        {% endif %}
         <a class="nav-item nav-link" href="#"><i class="fas fa-share fa-fw text-info mr-1"></i> Share</a>
     </nav>
     {% if comments %}
