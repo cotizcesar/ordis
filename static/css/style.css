@@ -12,15 +12,16 @@ a{
 }
 a:hover{
     color: #ffffff;
+    text-decoration: none;
 }
 .bg-title{
-    background-color: #0C1219;
+    background-color: #121B25;
 }
 .bg-box{
-    background-color: #0E141C;
+    background-color: #16202D;
 }
 .bg-footer{
-    background-color: #111923;
+    background-color: #121B26;
 }
 .bg-post{
     background-color: #16202D;
@@ -46,7 +47,7 @@ a:hover{
     color: #c1dbf4;
 }
 .post .name:hover{
-    color: #67c1f5;
+    color: #42B9F5;
 }
 /* Theme: Warframe - End */
 

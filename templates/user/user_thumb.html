@@ -1,13 +1,13 @@
 {% load thumbnail %}
 <div class="media bg-black-t">
     <img class="img-fluid mr-3" src="{{user.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="Generic placeholder image">
-    <div class="media-body py-1">
+    <div class="media-body">
         <a href="{% url 'userprofile' user.username %}" class="d-block">
             {% if user.get_full_name %}
-            <p class="m-0">{{user.get_full_name}}{% if user.is_staff %} <i class="fas fa-star fa-fw text-warning small"></i>{% endif %}</p>
-            <p class="m-0 text-white">@{{user.username}}</p>
+                <p class="my-1">{{user.get_full_name}}{% if user.is_staff %} <i class="fas fa-star fa-fw text-warning small"></i>{% endif %}</p>
+                <p class="my-1 text-white">@{{user.username}}</p>
             {% else %}
-            <p class="my-1 text-white">{{user.username}}{% if user.is_staff %} <i class="fas fa-star fa-fw text-warning small"></i>{% endif %}</p>
+                <p class="my-1 text-white">{{user.username}}{% if user.is_staff %} <i class="fas fa-star fa-fw text-warning small"></i>{% endif %}</p>
             {% endif %}
         </a>
     </div>
