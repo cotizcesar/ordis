@@ -20,8 +20,7 @@ from django.conf.urls import url
 from .views import Index, UserProfileDetailView, UserUpdateView, UserProfileUpdateView, follow_view, unfollow_view, Feed, FeedPublic, Explore, ExploreUsers, PostCreateView, PostDetailView, CommentCreateView
 
 urlpatterns = [
-    path('', Index.as_view(), name='index'),
-    path('feed/', Feed.as_view(), name='feed'),
+    path('', Feed.as_view(), name='home'),
     path('feed/public/', FeedPublic.as_view(), name='feed_public'),
     path('explore/', Explore.as_view(), name='explore'),
     path('explore/users/', ExploreUsers.as_view(), name='explore_users'),

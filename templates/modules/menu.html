@@ -22,7 +22,7 @@
     <p class="title-menu m-0 text-uppercase">Main Menu</p>
     <nav class="nav flex-column">
         {% if user.is_authenticated %}
-        <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'feed' %}text-white{% endif %}" href="{% url 'feed' %}"><i class="far fa-newspaper fa-fw mr-1"></i> Feed</a>
+        <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'home' %}text-white{% endif %}" href="{% url 'home' %}"><i class="far fa-newspaper fa-fw mr-1"></i> Feed</a>
         <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'pinax_messages:inbox' %}text-white{% endif %}" href="{% url 'pinax_messages:inbox' %}"><i class="fas fa-envelope fa-fw mr-1"></i> Messages</a>
         {% endif %}
         <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'feed_public' %}text-white{% endif %}" href="{% url 'feed_public' %}"><i class="fas fa-globe-americas fa-fw mr-1"></i> Public Feed</a>

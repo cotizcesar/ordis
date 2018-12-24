@@ -43,7 +43,7 @@ class Feed(LoginRequiredMixin, TemplateView, FormView):
         obj.user = self.request.user
         obj.date_created = timezone.now()
         obj.save()
-        return redirect('feed')
+        return redirect('home')
 
 class FeedPublic(TemplateView, FormView):
     template_name = 'feed/feed.html'
@@ -59,7 +59,7 @@ class FeedPublic(TemplateView, FormView):
         obj.user = self.request.user
         obj.date_created = timezone.now()
         obj.save()
-        return redirect('feed')
+        return redirect('home')
         
 class UserProfileDetailView(DetailView, FormView):
     model = User
@@ -91,13 +91,13 @@ class UserProfileDetailView(DetailView, FormView):
         obj.user = self.request.user
         obj.date_created = timezone.now()
         obj.save()
-        return redirect('feed')
+        return redirect('home')
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserForm
     template_name = 'userprofile/userprofile_update.html'
-    success_url = reverse_lazy('feed')
+    success_url = reverse_lazy('home')
 
     def get_object(self):
         return self.request.user
@@ -106,7 +106,7 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = UserProfile
     form_class = UserProfileForm
     template_name = 'userprofile/userprofile_update.html'
-    success_url = reverse_lazy('feed')
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
         form.save(self.request.user)
@@ -125,7 +125,7 @@ def follow_view(request, *args, **kwargs):
 
     except User.DoesNotExist:
         messages.warning(request, '{} is not a registered user.'.format(kwargs['username']))
-        return HttpResponseRedirect(reverse_lazy('feed'))
+        return HttpResponseRedirect(reverse_lazy('home'))
 
     if follower == following:
         messages.warning(request, 'You cannot follow yourself.')
@@ -187,7 +187,7 @@ def unfollow_view(request, *args, **kwargs):
             messages.success(request, 'You\'ve just unfollowed {}.'.format(following.username))
     except User.DoesNotExist:
         messages.warning(request, '{} is not a registered user.'.format(kwargs['username']))
-        return HttpResponseRedirect(reverse_lazy('feed'))
+        return HttpResponseRedirect(reverse_lazy('home'))
 
     except Connection.DoesNotExist:
         messages.warning(request, 'You didn\'t follow {0}.'.format(following.username))
@@ -202,7 +202,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         obj.user = self.request.user
         obj.date_created = timezone.now()
         obj.save()
-        return redirect('feed')
+        return redirect('home')
 
 class PostDetailView(DetailView):
     model = Post

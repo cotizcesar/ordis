@@ -2,7 +2,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-navbar">
         <div class="container">
-            <a class="navbar-brand" href="{% if user.is_authenticated %}{% url 'feed' %}{% else %}{% url 'index' %}{% endif %}"><i class="fas fa-gamepad fa-fw text-info mr-1"></i> Ordis</a>
+            <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-gamepad fa-fw text-info mr-1"></i> Ordis</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -13,13 +13,13 @@
                     </div>
                 </div>-->
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item{% if request.resolver_match.url_name == 'feed' or request.resolver_match.url_name == 'feed_public' %} active{% endif %}">
-                        <a class="nav-link mx-1" href="{% url 'feed' %}">Home</a>
+                    <li class="nav-item{% if request.resolver_match.url_name == 'home' or request.resolver_match.url_name == 'feed_public' %} active{% endif %}">
+                        <a class="nav-link mx-1" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item{% if request.resolver_match.url_name == 'explore' or request.resolver_match.url_name == 'explore_users' %} active{% endif %}">
                         <a class="nav-link mx-1" href="{% url 'explore' %}">Explore</a>
                     </li>
-                    <li class="nav-item{% if request.resolver_match.url_name == 'explore' or request.resolver_match.url_name == 'market' %} active{% endif %}">
+                    <li class="nav-item{% if request.resolver_match.url_name == 'market' %} active{% endif %}">
                         <a class="nav-link mx-1" href="{% url 'market' %}">Market</a>
                     </li>
                     <li class="nav-item{% if request.resolver_match.url_name == 'alerts' %} active{% endif %}">

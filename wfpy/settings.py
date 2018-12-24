@@ -207,7 +207,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 # django-allauth: Log In/Log Out redirection
 # http://django-allauth.readthedocs.io/en/latest/configuration.html
-LOGIN_REDIRECT_URL = 'feed'
+LOGIN_REDIRECT_URL = 'home'
 
 # django-allauth: Email Registration Delivery
 EMAIL_USE_TLS = True
