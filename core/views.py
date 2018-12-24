@@ -31,7 +31,7 @@ class Index(TemplateView):
 
 class Feed(LoginRequiredMixin, ListView, FormView):
     model = Post
-    paginate_by = 5
+    paginate_by = 10
     template_name = 'feed/feed.html'
     form_class = PostForm
 
@@ -49,7 +49,7 @@ class Feed(LoginRequiredMixin, ListView, FormView):
 
 class FeedPublic(ListView):
     model = Post
-    paginate_by = 5
+    paginate_by = 10
     template_name = 'feed/feed.html'
 
     def get_context_data(self, *args, **kwargs):
