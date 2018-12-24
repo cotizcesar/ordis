@@ -215,11 +215,11 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'warframe.social@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'warframe.social@gmail.com'
+DEFAULT_FROM_EMAIL = 'ordis.app@gmail.com'
 
 # django-allauth: Sign Up Validation
 ACCOUNT_EMAIL_REQUIRED = True
-#ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
@@ -231,7 +231,7 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_BLACKLIST = ['admin']
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 
-REGISTRATION_OPEN = False
+REGISTRATION_OPEN = True
 
 # django-ckeditor: Do not check CSS class.
 # https://django-ckeditor.readthedocs.io/en/latest/#if-you-want-to-use-allowedcontent
