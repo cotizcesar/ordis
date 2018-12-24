@@ -3,15 +3,13 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-2">
-            {% include 'modules/menu.html' %}
+        <div class="col-md-3 py-3">
+            {% include 'menu/feed_menu.html' %}
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 bg-black-t pt-3">
             {% include 'post/post.html' %}
         </div>
-        <div class="col-md-4">
-            {% include 'modules/aside.html' %}
-        </div>
+        <div class="col-md-3 bg-black-t py-3"></div>
     </div>
 </div>
 {% endblock %}

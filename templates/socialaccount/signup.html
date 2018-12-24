@@ -8,9 +8,9 @@
         <div class="col-md-4"></div>
         <div class="col-md-4 py-5">
             <h1 class="h3"><i class="fas fa-sign-in-alt fa-fw text-info mr-1"></i> {% trans "Sign Up" %}</h1>
-            <p class="text-muted small m-0">{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
+            <p class="text-muted m-0">{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
             <hr>
-            <div class="p-3 bg-black-t small">
+            <div class="p-3 bg-black-t">
                 <form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
                     {% csrf_token %}
                     {% bootstrap_form form %}

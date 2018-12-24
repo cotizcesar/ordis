@@ -12,12 +12,12 @@
             </div>
             <div class="col-md-6 my-auto">
                 {% if profile.get_full_name %}
-                <h1 class="h3 text-info my-2">{{profile.get_full_name}}{% if profile.is_staff %} <i class="fas fa-check-circle fa-fw small"></i>{% endif %} <span class="h5 text-white">@{{profile.username}}</span>{% if profile.userprofile.is_alpha_tester %} <span class="badge badge-secondary">Alpha Tester</span>{% endif %}</h1>
+                <h1 class="h3 text-info my-2">{{profile.get_full_name}}{% if profile.is_staff %} <i class="fas fa-check-circle fa-fw"></i>{% endif %} <span class="h5 text-white">@{{profile.username}}</span>{% if profile.userprofile.is_alpha_tester %} <span class="badge badge-secondary">Alpha Tester</span>{% endif %}</h1>
                 {% else %}
-                <h1 class="h3 text-info my-2">@{{profile.username}}{% if profile.is_staff %} <i class="fas fa-check-circle fa-fw small"></i> {% endif %}{% if profile.userprofile.is_alpha_tester %} <span class="badge badge-secondary">Alpha Tester</span>{% endif %}</h1>
+                <h1 class="h3 text-info my-2">@{{profile.username}}{% if profile.is_staff %} <i class="fas fa-check-circle fa-fw"></i> {% endif %}{% if profile.userprofile.is_alpha_tester %} <span class="badge badge-secondary">Alpha Tester</span>{% endif %}</h1>
                 {% endif %}
-                <p class="text-muted font-italic small my-2">{{profile.userprofile.bio}}</p>
-                <nav class="nav my-2 small">
+                <p class="text-muted font-italic my-2">{{profile.userprofile.bio}}</p>
+                <nav class="nav my-2">
                     <a class="nav-link p-0 pr-2 disabled" href="#"><span class="text-white mr-1">1</span> Posts</a>
                     <a class="nav-link p-0 pr-2" href="#"><span class="text-white mr-1">{{followers}}</span> Followers</a>
                     <a class="nav-link p-0" href="#"><span class="text-white mr-1">{{following}}</span> Following</a>
@@ -27,7 +27,7 @@
     </div>
 </div>
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black-t rounded-bottom small">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black-t rounded-bottom">
         <a class="navbar-brand" href="#"><i class="fas fa-bars fa-fw text-info"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#UserProfileNavbar" aria-controls="UserProfileNavbar"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -85,7 +85,7 @@
             {% include 'post/post.html' %}
             {% endfor %}
             {% else %}
-            <div class="bg-box small p-3 my-3">
+            <div class="bg-box p-3 my-3">
                 <i class="fas fa-info-circle fa-fw fa-3x float-left mr-3"></i> This user does not have any posts at the moment. If you wish you can follow another user in the <a href="{% url 'explore_users' %}">list of users</a> or viewing the <a href="{% url 'feed_public' %}">Public Feed.</a>
             </div>
             {% endif %}

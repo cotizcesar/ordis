@@ -20,14 +20,14 @@
         <div class="col-md-8">
             <div class="alerts mb-3">
                 <h2 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Alerts</h2>
-                <p class="text-muted small m-0">A fight that never ends between the Grineer, Corpus and Infested. Here you can see all the Invasions.</p>
+                <p class="text-muted m-0">A fight that never ends between the Grineer, Corpus and Infested. Here you can see all the Invasions.</p>
                 <hr>
                 {% for alert in alerts.Alerts %}
-                <div id="{{alert.id.oid}}" class="alrt bg-black-t small border-top border-bottom border-dark">
+                <div id="{{alert.id.oid}}" class="alrt bg-black-t border-top border-bottom border-dark">
                     <div class="media p-3">
                         <img src="https://via.placeholder.com/57x57" class="mr-3" alt="...">
                         <div class="media-body">
-                            <p id="{{alert.MissionInfo.location}}" class="m-0"><span class="text-info font-weight-bold">{{alert.MissionInfo.location|solnode_name}}</span> - Level: {{alert.MissionInfo.minEnemyLevel}} - {{alert.MissionInfo.maxEnemyLevel}} {% if alert.MissionInfo.maxWaveNum >= 2 %}/ (Waves: {{alert.MissionInfo.maxWaveNum}}){% endif %}  <span class="float-right bg-info rounded py-1 px-2 small text-white" data-countdown="{{alert.Expiry.date.numberLong|human_time}}"></span></p>
+                            <p id="{{alert.MissionInfo.location}}" class="m-0"><span class="text-info font-weight-bold">{{alert.MissionInfo.location|solnode_name}}</span> - Level: {{alert.MissionInfo.minEnemyLevel}} - {{alert.MissionInfo.maxEnemyLevel}} {% if alert.MissionInfo.maxWaveNum >= 2 %}/ (Waves: {{alert.MissionInfo.maxWaveNum}}){% endif %}  <span class="float-right bg-info rounded py-1 px-2 text-white" data-countdown="{{alert.Expiry.date.numberLong|human_time}}"></span></p>
                             <p id="{{alert.MissionInfo.missionType}}" class="m-0 text-uppercase font-weight-bold">{{alert.MissionInfo.missionType|mission_name}} - {{alert.MissionInfo.faction|factions_name}}</p>
                             <p class="m-0">
                                 Reward: Credits {{alert.MissionInfo.missionReward.credits}}
@@ -43,9 +43,9 @@
             </div>
             <div class="invasions mb-3">
                 <h2 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Invasions</h2>
-                <p class="text-muted small m-0">A fight that never ends between the Grineer, Corpus and Infested. Here you can see all the Invasions.</p>
+                <p class="text-muted m-0">A fight that never ends between the Grineer, Corpus and Infested. Here you can see all the Invasions.</p>
                 <hr>
-                <table class="table table-dark small">
+                <table class="table table-dark">
                     <thead>
                         <tr>
                             <th scope="col">Faction</th>
@@ -75,10 +75,10 @@
             </div>
             <div class="void-traders mb-5">
                 <h2 class="h3 mt-3 mt-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Void Traders</h2>
-                <p class="text-muted small m-0">When do you want to know when the trader comes, you questions in the chat 'when baro'. Here you do not have to do it!</p>
+                <p class="text-muted m-0">When do you want to know when the trader comes, you questions in the chat 'when baro'. Here you do not have to do it!</p>
                 <hr>
                 {% for trader in alerts.VoidTraders %}
-                <div id="void-traders" class="void bg-black-t small border-top border-bottom border-dark">
+                <div id="void-traders" class="void bg-black-t border-top border-bottom border-dark">
                     <div class="media p-3">
                         <img src="https://via.placeholder.com/57x57" class="mr-3" alt="...">
                         <div class="media-body">
@@ -94,7 +94,7 @@
         </div>
         <div class="col-md-4 bg-black-t">
             <h2 class="h3 mt-3 mb-2"><i class="far fa-calendar-check fa-fw text-info mr-1"></i> Events</h2>
-            <p class="text-muted small m-0">Here you can see all the events that are taking place in Warframe.</p>
+            <p class="text-muted m-0">Here you can see all the events that are taking place in Warframe.</p>
             <hr>
             {% for event in alerts.Events reversed %}
                 {% if event.Messages.0.LanguageCode == 'en' %}
@@ -104,7 +104,7 @@
                         <img class="img-fluid" src="{{event.ImageUrl}}">
                     </a>
                     {% endif %}
-                    <div class="media small">                
+                    <div class="media">                
                         <div class="media-body p-3">
                             <p class="mb-0"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> 
                                 <a href="{{event.Prop}}" target="_blank">
@@ -115,7 +115,7 @@
                                     {% endfor %}
                                 </a>
                             </p>
-                            <p><span id="clock" class="float-right text-secondary small mt-1">{{event.Date.date.numberLong|unix_to_readeable|naturalday}}</span></p>
+                            <p><span id="clock" class="float-right text-secondary mt-1">{{event.Date.date.numberLong|unix_to_readeable|naturalday}}</span></p>
                         </div>
                     </div>
                 </div>
@@ -124,9 +124,9 @@
         </div>
         <div class="col-md-12">
             <h2 class="h3 mt-3 mb-2"><i class="far fa-surprise fa-fw text-info mr-1"></i> Daily Deals</h2>
-            <p class="text-muted small m-0">Many times it is impossible to know everything about Warframe, between quests, resources, weapons and more, it is necessary to have a guide either inside the game as well as outside it and at hand.</p>
+            <p class="text-muted m-0">Many times it is impossible to know everything about Warframe, between quests, resources, weapons and more, it is necessary to have a guide either inside the game as well as outside it and at hand.</p>
             <hr>
-            <table class="table table-dark small">
+            <table class="table table-dark">
                 <thead>
                     <tr>
                         <th scope="col">Item</th>
@@ -153,24 +153,24 @@
         </div>
         <div class="col-md-12">
             <h2 class="h3"><i class="far fa-surprise fa-fw text-info mr-1"></i> Flash Sales</h2>
-            <p class="text-muted small m-0">Many times it is impossible to know everything about Warframe, between quests, resources, weapons and more, it is necessary to have a guide either inside the game as well as outside it and at hand.</p>
+            <p class="text-muted m-0">Many times it is impossible to know everything about Warframe, between quests, resources, weapons and more, it is necessary to have a guide either inside the game as well as outside it and at hand.</p>
             <hr>
             {% for sale in alerts.FlashSales %}
                 {% if sale.ShowInMarket == True %}
                 {% if sale.RegularOverride == 0 %}
-                <div class="flash-sales bg-black-t small border-top border-bottom border-dark {% if sale.Featured == True %}bg-black-t{% endif %}">
+                <div class="flash-sales bg-black-t border-top border-bottom border-dark {% if sale.Featured == True %}bg-black-t{% endif %}">
                     <div class="media p-3">
                         <div class="media-body">
                             <p class="m-0">{{sale.TypeName}} ()
                                 {% if sale.ProductExpiryOverride.date.numberLong > sale.EndDate.date.numberLong %}
-                                    <span class="float-right bg-info rounded py-1 px-2 small text-white" data-countdown="{{sale.ProductExpiryOverride.date.numberLong|human_time}}">{{sale.ProductExpiryOverride.date.numberLong|human_time}}</span>
+                                    <span class="float-right bg-info rounded py-1 px-2 text-white" data-countdown="{{sale.ProductExpiryOverride.date.numberLong|human_time}}">{{sale.ProductExpiryOverride.date.numberLong|human_time}}</span>
                                 {% else %}
-                                    <span class="float-right bg-info rounded py-1 px-2 small text-white" data-countdown="{{sale.EndDate.date.numberLong|human_time}}">{{sale.EndDate.date.numberLong|human_time}}</span>
+                                    <span class="float-right bg-info rounded py-1 px-2 text-white" data-countdown="{{sale.EndDate.date.numberLong|human_time}}">{{sale.EndDate.date.numberLong|human_time}}</span>
                                 {% endif %}
                                 {% if sale.Discount >= 1 %}
-                                    <span class="float-right bg-danger rounded py-1 px-2 small text-white mr-1">({{sale.Discount}}% Off)</span>
+                                    <span class="float-right bg-danger rounded py-1 px-2 text-white mr-1">({{sale.Discount}}% Off)</span>
                                 {% endif %}
-                                <span class="float-right bg-success rounded py-1 px-2 small text-white mr-1">{{sale.PremiumOverride}} Platinum</span>
+                                <span class="float-right bg-success rounded py-1 px-2 text-white mr-1">{{sale.PremiumOverride}} Platinum</span>
                             </p>
                         </div>
                     </div>

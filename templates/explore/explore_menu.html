@@ -1,8 +1,8 @@
 {% if user.is_authenticated %}
 {% include 'user/user_thumb.html' %}
 {% endif %}
-<a class="title-menu my-1 mx-3 text-uppercase small d-block" href="{% url 'explore' %}">Explore</a>
-<ul class="nav flex-column mb-3 small">
+<p class="title-menu my-1 mx-3 text-uppercase d-block">Explore</p>
+<ul class="nav flex-column mb-3">
     <li class="nav-item">
         <a class="nav-link{% if request.resolver_match.url_name == 'explore' %} bg-black-t text-white{% endif %}" href="{% url 'explore' %}"><i class="fas fa-columns fa-fw mr-1"></i> Dashboard</a>
     </li>

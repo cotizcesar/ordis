@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-2">
             <div class="main-menu my-3">
-                <p class="title-menu m-0 text-uppercase small">Account Settings</p>
-                <nav class="nav flex-column small">
+                <p class="title-menu m-0 text-uppercase">Account Settings</p>
+                <nav class="nav flex-column">
                     <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'userprofile_basic' %}text-white{% endif %}" href="{% url 'userprofile_basic' %}"><i class="fas fa-cogs fa-fw mr-1"></i> Basic Settings</a>
                     <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'userprofile_advanced' %}text-white{% endif %}" href="{% url 'userprofile_advanced' %}"><i class="fas fa-user-circle fa-fw mr-1"></i> Advanced Settings</a>
                     <a class="nav-link px-0 py-1 {% if request.resolver_match.url_name == 'feed_public' %}text-white{% endif %} disabled" href="#"><i class="fas fa-share-alt fa-fw mr-1"></i> Social Connections</a>
@@ -16,10 +16,10 @@
         <div class="col-md-6">
             {% if request.resolver_match.url_name == 'userprofile_basic' %}
             <h1 class="h3 mt-3 mb-2"><i class="fas fa-cogs fa-fw text-info mr-1"></i> Basic Settings</h1>
-            <p class="text-muted small">Feel free to change what you want here. It's your account, it's your data. <strong>Remember, the data entered here will be public, the only private data will be your password and email.</strong></p>
+            <p class="text-muted">Feel free to change what you want here. It's your account, it's your data. <strong>Remember, the data entered here will be public, the only private data will be your password and email.</strong></p>
             {% elif request.resolver_match.url_name == 'userprofile_advanced' %}
             <h1 class="h3 mt-3 mb-2"><i class="fas fa-user-circle text-info fa-fw mr-1"></i> Advanced Settings</h1>
-            <p class="text-muted small">Here you can change the extra data of your profile, such as avatar, biography and more. Please try not to break the rules of the site. <strong>Remember, the data entered here will be public, the only private data will be your password and email.</strong></p>
+            <p class="text-muted">Here you can change the extra data of your profile, such as avatar, biography and more. Please try not to break the rules of the site. <strong>Remember, the data entered here will be public, the only private data will be your password and email.</strong></p>
             {% endif %}
             <hr>
             {% include 'form/form.html'%}

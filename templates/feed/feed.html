@@ -3,16 +3,16 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-3 my-3">
+        <div class="col-md-3 py-3">
             {% include 'menu/feed_menu.html' %}
         </div>
-        <div class="col-md-6 bg-black-t py-3">
+        <div class="col-md-6 pt-3">
             {% include 'post/post_create_modal.html' %}
             {% for post in posts %}
-            {% include 'post/post.html' %}
+                {% include 'post/post.html' %}
             {% endfor %}
         </div>
-        <div class="col-md-3 bg-black-t">
+        <div class="col-md-3 bg-black-t py-3">
             {% include 'modules/aside.html'%}
         </div>
     </div>

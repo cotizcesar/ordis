@@ -2709,7 +2709,7 @@
         for (var i = 0; i < ordering.length; ++i) {
             if (m[ordering[i]]) {
                 if (unitHasDecimal) {
-                    return false; // only allow non-integers for smallest unit
+                    return false; // only allow non-integers forest unit
                 }
                 if (parseFloat(m[ordering[i]]) !== toInt(m[ordering[i]])) {
                     unitHasDecimal = true;

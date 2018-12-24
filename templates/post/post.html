@@ -1,7 +1,7 @@
 {% load custom_filters %}
 {% load thumbnail %}
 {% load humanize %}
-<div class="post small bg-box mb-3">
+<div class="post mb-3">
     {% if post.image %}
     <img class="img-fluid" src="{{post.image|thumbnail_url:'post'|default:'https://via.placeholder.com/540'}}" alt="{{post.text}}">
     {% elif post.video %}
@@ -11,18 +11,18 @@
         <img class="mr-3 rounded-circle" src="{{post.user.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{% if post.user.get_full_name %}{{post.user.get_full_name}}{% else %}{{post.user.username}}{% endif %} avatar.">
         <div class="media-body">
             <p class="my-1">
-                <a href="{% url 'userprofile' post.user.username %}">
+                <a class="name" href="{% url 'userprofile' post.user.username %}">
                     {% if post.user.get_full_name %}
-                    {{post.user.get_full_name}}{% if post.user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i>{% endif %}
+                    {{post.user.get_full_name}}{% if post.user.is_staff %} <i class="fas fa-star fa-fw text-warning small"></i>{% endif %}
                     {% else %}
-                    {{post.user.username}}
+                    {{post.user.username}}{% if post.user.is_staff %} <i class="fas fa-star fa-fw text-warning small"></i>{% endif %}
                     {% endif %}
                 </a>
-                <a href="{% url 'post_detail' post.id %}" class="text-muted float-right">{{post.date_created|naturaltime}}</a>
+                <a href="{% url 'post_detail' post.id %}" class="date-created float-right mt-1 small">{{post.date_created|naturaltime}}</a>
             </p>
-            <p class="my-1 text-muted">{{post.text}}</p>
+            <p class="my-1 text">{{post.text}}</p>
             {% if post.comment_set.count >= 1 %}
-            <nav class="nav justify-content-end small">
+            <nav class="nav justify-content-end">
                 <a class="nav-link px-0 py-0" href="{% url 'post_detail' post.id %}"> 
                     {% if post.comment_set.count == 1 %}
                     <i class="fas fa-comments fa-fw mr-1"></i> {{post.comment_set.count}} Comment
@@ -36,7 +36,7 @@
     </div>
     <hr class="m-0">
     <nav class="nav nav-pills nav-fill">
-        <a class="nav-item nav-link" href="#"><i class="fas fa-heart fa-fw text-info mr-1"></i> Like</a>
+        <!--<a class="nav-item nav-link" href="#"><i class="fas fa-heart fa-fw text-info mr-1"></i> Like</a>-->
         <a class="nav-item nav-link" href="{% url 'post_comment_create' post.id %}"><i class="fas fa-comment fa-fw text-info mr-1"></i> Comment</a>
         <a class="nav-item nav-link" href="#"><i class="fas fa-share fa-fw text-info mr-1"></i> Share</a>
     </nav>
@@ -49,7 +49,7 @@
             <p class="my-1">
                 <a href="{% url 'userprofile' comment.user.username %}">
                     {% if comment.user.get_full_name %}
-                    {{comment.user.get_full_name}}{% if comment.user.is_staff %} <i class="fas fa-check-circle fa-fw small"></i>{% endif %}
+                    {{comment.user.get_full_name}}{% if comment.user.is_staff %} <i class="fas fa-check-circle fa-fw"></i>{% endif %}
                     {% else %}
                     {{comment.user.username}}
                     {% endif %}

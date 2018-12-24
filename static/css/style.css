@@ -1,18 +1,55 @@
 body{
+    background-color: #202D3D;
+    /* background-image: url('/static/img/bg.png') 0% 0% no-repeat;
+    background-attachment: fixed;
+    background-size: cover; */
+    color: #fff;
     font-family: 'Open Sans', sans-serif;
 }
 /* Theme: Warframe */
-.bg-page{
-    background: #202C3A;
-    /* background: url(https://hdqwalls.com/download/warframe-plains-of-eidolon-1080p-x6-2560x1080.jpg) 0% 0% no-repeat #202C3A;
-    background-attachment: fixed; */
+a{
+    color: #66C0F4;
 }
-.bg-navbar{
-    background: #1D2025;
+a:hover{
+    color: #ffffff;
+}
+.bg-title{
+    background-color: #0C1219;
 }
 .bg-box{
-    background: #131A23;
+    background-color: #0E141C;
 }
+.bg-footer{
+    background-color: #111923;
+}
+.bg-post{
+    background-color: #16202D;
+}
+.bg-navbar{
+    background-color: #171A21;
+}
+.bg-black-t{
+    background: rgba(0,0,0,0.2);
+    color: #c6d4df;
+}
+/* Theme: Warframe - Post */
+.post{
+    background-color: #0E141C;
+}
+.post .date-created{
+    color: #8091a2;
+}
+.post .text{
+    color: #acb2b8;
+}
+.post .name{
+    color: #c1dbf4;
+}
+.post .name:hover{
+    color: #67c1f5;
+}
+/* Theme: Warframe - End */
+
 .title-menu{
     color: #c6d4df;
 }
@@ -28,6 +65,7 @@ body{
     background: #4C88AC;
 }
 
+/* Home */
 /* Login: Buttons */
 .btn-discord{
     background: #7289da;
@@ -46,21 +84,9 @@ body{
 .social *{
     vertical-align: top !important;
 }
-a{
-    color: #66c0f4;
-}
-a:hover{
-    color: #fff;
-    text-decoration: none !important;
-}
+
 .list-style-none{
     list-style: none;
-}
-
-/* Theme: Warframe - Login */
-.bg-black-t{
-    background: rgba(0,0,0,0.2);
-    color: #c6d4df;
 }
 /* Typeahead */
 .twitter-typeahead{
