@@ -12,7 +12,13 @@
     {% if warframes %}
     <a href="{% url 'codex_universe_warframe_detail' item.slug %}">
     {% endif %}
-        <img class="img-fluid" src="{{item.image|thumbnail_url:'item'|default:'https://via.placeholder.com/510x287'}}">
+        <img class="img-fluid bg-black-t" src="
+        {% if warframes %}
+        {{item.image|thumbnail_url:'warframe_item'|default:'https://via.placeholder.com/510x287'}}
+        {% else %}
+        {{item.image|thumbnail_url:'item'|default:'https://via.placeholder.com/510x287'}}
+        {% endif %}
+        ">
         <div class="py-2 px-3 bg-light">
             <p class="text-dark text-uppercase font-weight-bold mb-0">{{item.name}}</p>
         </div>
