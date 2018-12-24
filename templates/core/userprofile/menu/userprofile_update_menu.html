@@ -1,0 +1,21 @@
+{% if user.is_authenticated %}
+<div class="mb-3">
+    {% include 'user/user_thumb.html' %}
+</div>
+{% endif %}
+<div class="mb-3">
+    <p class="text-uppercase bg-title px-3 py-2 m-0"><i class="fas fa-compass fa-fw text-info mr-1"></i> Explore</p>
+    <div class="bg-box mb-3">
+        <ul class="nav flex-column mb-3">
+            <li class="nav-item">
+                <a class="nav-link{% if request.resolver_match.url_name == 'userprofile_basic' %} bg-black-t text-white{% endif %}" href="{% url 'userprofile_basic' %}"><i class="fas fa-cogs fa-fw mr-1"></i> Basic Settings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if request.resolver_match.url_name == 'userprofile_advanced' %} bg-black-t text-white{% endif %}" href="{% url 'userprofile_advanced' %}"><i class="fas fa-user-circle fa-fw mr-1"></i> Advanced Settings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#"><i class="fas fa-share-alt fa-fw mr-1"></i> Social Accounts</a>
+            </li>
+        </ul>
+    </div>
+</div>
