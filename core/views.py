@@ -37,7 +37,7 @@ class Feed(LoginRequiredMixin, ListView, FormView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Feed, self).get_context_data(**kwargs)
-        context['posts'] = Post.objects.filter(Q(user__in=self.request.user.follower.values('following')) | Q(user=self.request.user))[:5]
+        context['posts'] = Post.objects.filter(Q(user__in=self.request.user.follower.values('following')) | Q(user=self.request.user))
         return context
     
     def form_valid(self, form):
@@ -47,9 +47,10 @@ class Feed(LoginRequiredMixin, ListView, FormView):
         obj.save()
         return redirect('home')
 
-class FeedPublic(TemplateView, FormView):
+class FeedPublic(ListView):
+    model = Post
+    paginate_by = 5
     template_name = 'feed/feed.html'
-    form_class = PostForm
 
     def get_context_data(self, *args, **kwargs):
         context = super(FeedPublic, self).get_context_data(**kwargs)

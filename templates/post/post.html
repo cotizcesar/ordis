@@ -1,7 +1,7 @@
 {% load custom_filters %}
 {% load thumbnail %}
 {% load humanize %}
-<div class="post mb-3">
+<div class="post infinite-item mb-3">
     {% if post.image %}
     <img class="img-fluid" src="{{post.image|thumbnail_url:'post'|default:'https://via.placeholder.com/540'}}" alt="{{post.text}}">
     {% elif post.video %}
