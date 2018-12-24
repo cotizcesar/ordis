@@ -20,7 +20,7 @@ class UserProfile(models.Model):
         ('NSW', 'Nintendo Switch',),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to='user/avatar', default='avatar/default.png', blank=True)
+    avatar = models.ImageField(upload_to='user/avatar', default='user/avatar/default.png', blank=True)
     bio = models.TextField(max_length=140, blank=True)
     status = models.CharField(default='F', max_length=1, choices=STATUS_CHOICES)
     platform = models.CharField(default='PC', max_length=3, choices=PLATFORM_CHOICES)

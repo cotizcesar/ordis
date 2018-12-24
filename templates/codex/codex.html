@@ -3,32 +3,32 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-3 my-3">
+        <div class="col-md-3 py-3">
             {% include 'codex/menu/codex_menu.html' %}
         </div>
-        <div class="col-md-9 bg-black-t">
+        <div class="col-md-9 bg-black-t py-3">
             {% if request.resolver_match.url_name == 'codex' %}
-            <h1 class="h3 mt-3 mb-2"><i class="fas fa-book-open fa-fw text-info mr-1"></i> Codex</h1>
+            <h1 class="h3"><i class="fas fa-book-open fa-fw text-info mr-1"></i> Codex</h1>
             <p class="text-muted m-0">Many times it is impossible to know everything about Warframe, between quests, resources, weapons and more, it is necessary to have a guide either inside the game as well as outside it and at hand.</p>
             <hr>
             {% elif companions %}
-            <h1 class="h3 mt-3 mb-2"><i class="fas fa-cat fa-fw text-info mr-1"></i> Companions</h1>
+            <h1 class="h3"><i class="fas fa-cat fa-fw text-info mr-1"></i> Companions</h1>
             <p class="text-muted m-0">From sentinels, through Kubrows and Kavats. Here you can see all the information of the companions.</p>
             <hr>
             {% elif request.resolver_match.url_name == 'codex_quests' %}
-            <h1 class="h3 mt-3 mb-2"><i class="far fa-map fa-fw text-info mr-1"></i> Quests</h1>
+            <h1 class="h3"><i class="far fa-map fa-fw text-info mr-1"></i> Quests</h1>
             <p class="text-muted m-0">Many things happen in the world of Warframe, impossible missions and really rewarding prizes. With this section we help you finish the quest necessary to keep moving forward.</p>
             <hr>
             {% elif request.resolver_match.url_name == 'codex_universe' %}
-            <h1 class="h3 mt-3 mb-2"><i class="fas fa-globe fa-fw text-info mr-1"></i> Universe</h1>
+            <h1 class="h3"><i class="fas fa-globe fa-fw text-info mr-1"></i> Universe</h1>
             <p class="text-muted m-0">This is the Warframe universe. Here you can get information about Companions, Warframes, Factions, Mods and many other things.</p>
             <hr>
             {% elif warframes %}
-            <h1 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Warframes</h1>
+            <h1 class="h3"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Warframes</h1>
             <p class="text-muted m-0">There are many Warframes to choose from, from the ninja that teleports to the one that looks like a monkey!</p>
             <hr>
             {% elif weapons %}
-            <h1 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Weapons</h1>
+            <h1 class="h3"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Weapons</h1>
             <p class="text-muted m-0">Here you can see all the weapons of the game. Primary, Secondary, Melee and Archwing.</p>
             <hr>
             {% endif %}
