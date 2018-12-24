@@ -112,5 +112,11 @@ def human_time(value):
         return 'Anthe (Saturn)'
     elif value == 'SettlementNode2':
         return 'Skyresh (Phobos)'
+    elif value == 'SolNode209':
+        return 'Morax (Europa)'
+    elif value == 'SolNode75':
+        return 'Cervantes (Earth)'
+    elif value == 'SolNode20':
+        return 'Telesto (Saturn)'
     else:
         return '???'
