@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 # Models
 from .models import UserProfile, Post, Comment
 
+class SignupForm(forms.ModelForm):
+    model = User
+
 class UserForm(forms.ModelForm):
     class Meta:
         model = User

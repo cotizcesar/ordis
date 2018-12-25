@@ -27,9 +27,9 @@ urlpatterns = [
     path('post/create/', PostCreateView.as_view(), name='post_create'),
     url(r'^post/(?P<pk>\d+)/$', PostDetailView.as_view(), name='post_detail'),
     url(r'^post/(?P<pk>\d+)/comment/$', CommentCreateView.as_view(), name='post_comment_create'),
-    url(r'^u/(?P<username>[-\w]{5,30})/$', UserProfileDetailView.as_view(), name='userprofile'),
+    url(r'^u/(?P<username>[\w.@+-]+)/$', UserProfileDetailView.as_view(), name='userprofile'),
     url(r'^accounts/basic/$', UserUpdateView.as_view(), name='userprofile_basic'),
     url(r'^accounts/advanced/$', UserProfileUpdateView.as_view(), name='userprofile_advanced'),
-    url(r'^u/(?P<username>[-\w]{5,30})/follow/$', follow_view, name='follow'),
-    url(r'^u/(?P<username>[-\w]{5,30})/unfollow/$', unfollow_view, name='unfollow'),
+    url(r'^u/(?P<username>[\w.@+-]+)/follow/$', follow_view, name='follow'),
+    url(r'^u/(?P<username>[\w.@+-]+)/unfollow/$', unfollow_view, name='unfollow'),
 ]

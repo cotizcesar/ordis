@@ -211,12 +211,12 @@ SOCIALACCOUNT_PROVIDERS = {
 LOGIN_REDIRECT_URL = 'home'
 
 # django-allauth: Email Registration Delivery
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'warframe.social@gmail.com'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'ordis.app@gmail.com'
+#EMAIL_USE_TLS = True
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_HOST_USER = 'warframe.social@gmail.com'
+#EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+#EMAIL_PORT = 587
+#DEFAULT_FROM_EMAIL = 'ordis.app@gmail.com'
 
 # django-allauth: Sign Up Validation
 #ACCOUNT_EMAIL_REQUIRED = True
