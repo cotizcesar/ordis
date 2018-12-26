@@ -4,20 +4,20 @@
 {% block sitename %}{% endblock %}
 {% block head_title %}{% if profile.get_full_name %}{{profile.get_full_name}}{% else %}{{profile.username}}{% endif %} profile.{% endblock %}
 {% block meta_extra %}
-        <meta property="og:url"                content="{{request.build_absolute_uri}}" />
-        <meta property="og:type"               content="website" />
-        <meta property="og:title"              content="{% if profile.get_full_name %}{{profile.get_full_name}} - @{{profile.username}}{% else %}@{{profile.username}}" />
-        <meta property="og:description"        content="{% if profile.userprofile.bio %}{{profile.userprofile.bio}}{% else %}Open-Source social network, alerts, market and codex for a game called Warframe.{% endif %}" />
-        <meta property="og:image"              content="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/223x223'}}" />
-        <meta name="twitter:card" content="app" />
-        <meta name="twitter:site" content="@cotizcesar" />
-        <meta name="twitter:creator" content="@cotizcesar" />{% endblock %}
+    <meta property="og:url"                content="{{request.build_absolute_uri}}" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="{% if profile.get_full_name %}{{profile.get_full_name}} - @{{profile.username}}{% else %}@{{profile.username}}{% endif %}." />
+    <meta property="og:description"        content="{% if profile.userprofile.bio %}{{profile.userprofile.bio}}{% else %}Open-Source social network, alerts, market and codex for a game called Warframe.{% endif %}" />
+    <meta property="og:image"              content="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/223x223'}}" />
+    <meta name="twitter:card" content="app" />
+    <meta name="twitter:site" content="@cotizcesar" />
+    <meta name="twitter:creator" content="@cotizcesar" />{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-3 py-3">
             <div class="bg-black-t p-3">
-                <img class="img-fluid mb-3" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/223x223'}}" alt="{% if profile.get_full_name %}{{profile.get_full_name}} - @{{profile.username}}{% else %}@{{profile.username}} avatar.">
+                <img class="img-fluid mb-3" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/223x223'}}" alt="{% if profile.get_full_name %}{{profile.get_full_name}} - @{{profile.username}}{% else %}@{{profile.username}} avatar.{% endif %}">
                 {% if profile.get_full_name %}
                 <h1 class="h5 my-1{% if profile.is_staff %} text-warning{% endif %}">{{profile.get_full_name}}</h1>
                 <p class="h6 my-1">@{{profile.username}}</p>
@@ -47,13 +47,13 @@
         </div>
         <div class="col-md-6 bg-black-t pt-3">
             {% if posts %}
-            {% for post in posts %}
-            {% include 'post/post.html' %}
-            {% endfor %}
+                {% for post in posts %}
+                    {% include 'post/post.html' %}
+                {% endfor %}
             {% else %}
-            <div class="bg-black-t p-3">
-                <i class="fas fa-info-circle fa-fw fa-3x float-left mr-3"></i> This user does not have any posts at the moment. If you wish you can follow another user in the <a href="{% url 'explore_users' %}">list of users</a> or viewing the <a href="{% url 'feed_public' %}">Public Feed.</a>
-            </div>
+                <div class="bg-black-t p-3">
+                    <i class="fas fa-info-circle fa-fw fa-3x float-left mr-3"></i> This user does not have any posts at the moment. If you wish you can follow another user in the <a href="{% url 'explore_users' %}">list of users</a> or viewing the <a href="{% url 'feed_public' %}">Public Feed.</a>
+                </div>
             {% endif %}
         </div>
         <div class="col-md-3 bg-black-t py-3">
