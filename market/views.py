@@ -19,8 +19,8 @@ class Market(TemplateView, FormView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Market, self).get_context_data(**kwargs)
-        context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(is_active=False)[:30]
-        context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:30]
+        context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(is_active=False)[:25]
+        context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:25]
         return context
 
 class ItemDetail(DetailView, FormView):
@@ -35,7 +35,7 @@ class ItemDetail(DetailView, FormView):
         context = super(ItemDetail, self).get_context_data(**kwargs)
         context['wts'] = Order.objects.all().filter(item=self.get_object(), want='S').exclude(is_active=False)
         context['wtb'] = Order.objects.all().filter(item=self.get_object(), want='B').exclude(is_active=False)
-        context['childs'] = Item.objects.filter(parent=self.get_object())
+        #context['childs'] = Item.objects.filter(parent=self.get_object())
         return context
 
 # Order: Create View

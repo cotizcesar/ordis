@@ -1,0 +1,33 @@
+<div class="media bg-black-t">
+    <img src="https://via.placeholder.com/74x74" class="img-fluid" alt="...">
+    <div class="media-body p-3">
+        <p class="mb-1">
+            {% if order.item.tipe == 'C' %}
+                {{order.item.companion.name}}
+            {% elif order.item.tipe == 'M' %}
+                {{order.item.mod.name}}
+            {% elif order.item.tipe == 'W' %}
+                {{order.item.warframe.name}}
+            {% elif order.item.tipe == 'E' %}
+                {{order.item.weapon.name}}
+            {% else %}
+            {% endif %}
+            <span class="badge badge-info float-right mt-1 rounded-0">Message</span>
+            <span class="badge badge-info float-right mr-1 mt-1 rounded-0">/w</span>
+        </p>
+        <p class="mt-1 mb-0">
+            <a class="text-info{% if order.user.is_staff %} text-warning{% endif %}" href="{% url 'userprofile' order.user.username %}">
+                {{order.user}}
+            </a>
+            {% if order.user.userprofile.status == 'O' %} 
+            <span class="badge badge-success mt-1 rounded-0">Online</span> 
+            {% elif order.user.userprofile.status == 'I' %}
+            <span class="badge badge-info mt-1 rounded-0">In-Game</span> 
+            {% elif order.user.userprofile.status == 'F' %}
+            <span class="badge badge-danger mt-1 rounded-0">Offline</span> 
+            {% else %}
+            {% endif %}
+            <span class="float-right">{{order.price}} Platinum</span>
+        </p>
+    </div>
+</div>
