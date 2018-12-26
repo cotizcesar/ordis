@@ -42,7 +42,7 @@
             {% include 'post/post.html' %}
             {% endfor %}
             {% else %}
-            <div class="bg-box p-3 my-3">
+            <div class="bg-black-t p-3">
                 <i class="fas fa-info-circle fa-fw fa-3x float-left mr-3"></i> This user does not have any posts at the moment. If you wish you can follow another user in the <a href="{% url 'explore_users' %}">list of users</a> or viewing the <a href="{% url 'feed_public' %}">Public Feed.</a>
             </div>
             {% endif %}
