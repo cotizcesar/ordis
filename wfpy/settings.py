@@ -217,7 +217,7 @@ EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'ordis.app@gmail.com'
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
 # django-allauth: Sign Up Validation
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
