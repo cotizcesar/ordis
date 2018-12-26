@@ -22,7 +22,7 @@
                 <h2 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Alerts</h2>
                 <p class="text-muted m-0">A fight that never ends between the Grineer, Corpus and Infested. Here you can see all the Invasions.</p>
                 <hr>
-                {% for alert in alerts.Alerts %}
+                {% for alert in alerts.Alerts reversed %}
                 <div id="{{alert.id.oid}}" class="alrt bg-black-t border-top border-bottom border-dark">
                     <div class="media p-3">
                         <img src="https://via.placeholder.com/57x57" class="mr-3" alt="...">
