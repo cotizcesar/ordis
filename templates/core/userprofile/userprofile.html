@@ -24,7 +24,7 @@
                 <p class=" mt-0">{{profile.userprofile.bio}}</p>
                 {% if user.is_authenticated %}
                     {% if user.username == profile.username %}
-                        <a class="btn btn-secondary btn-block btn-sm" href="#" role="button"><i class="fas fa-user-edit fa-fw mr-1"></i> Edit Profile</a>
+                        <a class="btn btn-secondary btn-block btn-sm" href="{% url 'userprofile_basic' %}" role="button"><i class="fas fa-user-edit fa-fw mr-1"></i> Edit Profile</a>
                     {% elif connected %}
                         <a class="btn btn-danger btn-block btn-sm" href="{% url 'unfollow' profile.username %}" role="button"><i class="fas fa-user-minus fa-fw mr-1"></i> Unfollow</a>
                     {% elif user.username != profile.username %}
