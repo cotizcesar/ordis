@@ -158,13 +158,9 @@ THUMBNAIL_TRANSPARENCY_EXTENSION = 'png'
 THUMBNAIL_ALIASES = {
     '': {
         'avatar': {'size': (510, 510), 'crop': 'smart', 'upscale' : True},
-        'avatar_32x32': {'size': (32, 32), 'crop': 'smart', 'upscale' : True},
         'avatar_44x44': {'size': (44, 44), 'crop': 'smart', 'upscale' : True},
         'avatar_50x50': {'size': (50, 50), 'crop': 'smart', 'upscale' : True},
-        'avatar_thumb': {'size': (50, 50), 'crop': 'smart', 'upscale' : True},
         'post': {'size': (540, 0), 'crop': 'smart', 'upscale' : True},        
-        'avatar_aside': {'size': (40, 40), 'crop': 'smart', 'upscale' : True},
-        'avatar_header': {'size': (30, 30), 'crop': 'smart', 'upscale' : True},
         'item_child': {'size': (50, 50), 'crop': 'smart', 'upscale' : True},
         'order': {'size': (74, 74), 'crop': 'smart', 'upscale' : True},
         # Codex: Quest, Weapon, Companions Models
