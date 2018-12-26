@@ -6,8 +6,12 @@ from django.contrib.auth.models import User
 # Models
 from .models import UserProfile, Post, Comment
 
-class SignupForm(forms.ModelForm):
-    model = User
+# Django: Validator
+from django.core.validators import RegexValidator
+
+#class SignupForm(forms.ModelForm):
+#    username_validation = RegexValidator('^[\w.@+-]+$', 'Only alphabetic')
+#    username = forms.CharField(max_length=30, validators=[username_validation])
 
 class UserForm(forms.ModelForm):
     class Meta:

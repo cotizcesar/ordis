@@ -13,6 +13,7 @@
             <div class="p-3 bg-black-t">
                 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
                     {% csrf_token %}
+                    {% bootstrap_form_errors form %}
                     {% bootstrap_form form %}
                     {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
