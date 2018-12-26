@@ -165,13 +165,16 @@ THUMBNAIL_ALIASES = {
         'post': {'size': (540, 0), 'crop': 'smart', 'upscale' : True},        
         'avatar_aside': {'size': (40, 40), 'crop': 'smart', 'upscale' : True},
         'avatar_header': {'size': (30, 30), 'crop': 'smart', 'upscale' : True},
-        'item': {'size': (200, 200), 'crop': 'smart', 'upscale' : True},
         'item_child': {'size': (50, 50), 'crop': 'smart', 'upscale' : True},
         'order': {'size': (74, 74), 'crop': 'smart', 'upscale' : True},
+        # Codex: Quest, Weapon, Companions Models
+        # easy-thumbnails: Different sizes for Warframes image thumbs.
         'item': {'size': (510, 287), 'crop': 'smart', 'upscale' : True},
-        'quest': {'size': (510, 287), 'crop': 'smart', 'upscale' : True},
+        # Codex: Warframe Model
+        # easy-thumbnails: Different sizes for Warframes image thumbs.
         'warframe': {'size': (510, 910), 'crop': 'smart', 'upscale' : True},
-        'warframe_item': {'size': (510, 287), 'crop': '0,0', 'upscale' : True},
+        'warframe_list': {'size': (510, 287), 'crop': '0,0', 'upscale' : True},
+        'warframe_market_list': {'size': (510, 287), 'crop': '0,0', 'upscale' : True},
     },
 }
 

@@ -31,7 +31,7 @@
                             <p id="{{alert.MissionInfo.missionType}}" class="m-0 text-uppercase font-weight-bold">{{alert.MissionInfo.missionType|mission_name}} - {{alert.MissionInfo.faction|factions_name}}</p>
                             <p class="m-0">Reward: {{alert.MissionInfo.missionReward.credits}}
                                 {% for item in alert.MissionInfo.missionReward.countedItems %}
-                                     + {{item.ItemCount}} {{item.ItemType|item_name}}
+                                     + {{item.ItemCount}} <span id="{{item.ItemType}}">{{item.ItemType|item_name}}</span>
                                 {% endfor %}
                             </p>
                         </div>
@@ -51,20 +51,18 @@
                             <th scope="col">Node</th>
                             <th scope="col">Count</th>
                             <th scope="col">Goal</th>
-                            <th scope="col">Started</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for invasion in alerts.Invasions %}
-                        {% if invasion.Completed == True %}
+                        {% if invasion.Completed == False %}
                         <tr>
                             <th scope="row">
                                 {{invasion.Faction|factions_name}}
                             </th>
-                            <td>{{invasion.Node|solnode_name}}</td>
+                            <td class="{{invasion.Node}}">{{invasion.Node|solnode_name}}</td>
                             <td>{{invasion.Count}}</td>
                             <td>{{invasion.Goal}}</td>
-                            <td>{{invasion.Activation.date.numberLong|human_time}}</td>
                         </tr>
                         {% endif %}
                     {% endfor %}

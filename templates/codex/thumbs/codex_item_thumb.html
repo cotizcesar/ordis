@@ -1,5 +1,5 @@
 {% load thumbnail %}
-<div class="item">
+<div class="media bg-black-t">
     {% if quests %}
     <a href="{% url 'codex_quest_detail' item.slug %}">
     {% endif %}
@@ -12,15 +12,15 @@
     {% if warframes %}
     <a href="{% url 'codex_universe_warframe_detail' item.slug %}">
     {% endif %}
-        <img class="img-fluid bg-black-t" src="
-        {% if warframes %}
-        {{item.image|thumbnail_url:'warframe_item'|default:'https://via.placeholder.com/510x287'}}
-        {% else %}
+    <img class="img-fluid" src="
+    {% if warframes %}
+        {{item.image|thumbnail_url:'warframe_list'|default:'https://via.placeholder.com/510x287'}}
+    {% else %}
         {{item.image|thumbnail_url:'item'|default:'https://via.placeholder.com/510x287'}}
-        {% endif %}
-        ">
-        <div class="py-2 px-3 bg-light">
-            <p class="text-dark text-uppercase font-weight-bold mb-0">{{item.name}}</p>
-        </div>
-    </a>
+    {% endif %}
+    ">
+    <div class="media-body">
+        <p class="text-dark text-uppercase font-weight-bold m-0 py-2 px-3 bg-light">{{item.name}}</p>
+    </div>
+</a>
 </div>

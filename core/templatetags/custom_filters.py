@@ -139,7 +139,11 @@ def solnode_name(value):
     elif value == 'SolNode10':
         return 'Thebe (Jupiter)'
     elif value == 'SolNode412':
-        return 'Thebe (Jupiter)'
+        return 'Mithra (Void)'
+    elif value == 'SolNode138':
+        return 'Ludi (Ceres)'
+    elif value == 'SolNode140':
+        return 'Kiste (Ceres)'        
     else:
         return '???'
 
@@ -149,5 +153,7 @@ def item_name(value):
         return 'Nitain Extract'
     elif value == '/Lotus/Types/Items/MiscItems/Gallium':
         return 'Gallium'
+    elif value == '/Lotus/Types/Items/MiscItems/VoidTearDrop':
+        return 'Void Traces'
     else:
         return '???'

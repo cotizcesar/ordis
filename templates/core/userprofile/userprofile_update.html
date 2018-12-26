@@ -9,7 +9,7 @@
         <div class="col-md-6 py-3 bg-black-t">
             {% if request.resolver_match.url_name == 'userprofile_basic' %}
             <h1 class="h3"><i class="fas fa-cogs fa-fw text-info mr-1"></i> Basic Settings</h1>
-            <p class="text-muted m-0">Feel free to change what you want here. It's your account, it's your data. <strong>Remember, the data entered here will be public, the only private data will be your password and email.</p>
+            <p class="text-muted m-0">Feel free to change what you want here. It's your account, it's your data. <strong>Remember, the data entered here will be public, the only private data will be your password and email.</strong></p>
             <hr>
             {% elif request.resolver_match.url_name == 'userprofile_advanced' %}
             <h1 class="h3"><i class="fas fa-user-circle text-info fa-fw mr-1"></i> Advanced Settings</h1>

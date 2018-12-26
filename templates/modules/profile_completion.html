@@ -1,0 +1,21 @@
+{% if user.is_authenticated %}
+<p class="text-uppercase bg-title px-3 py-2 m-0"><i class="fas fa-user-circle fa-fw text-info mr-1"></i> Fill your profile</p>
+<div class="bg-box p-3 mb-3">
+    <p>So that the players know more about you when it comes to follow you, we recommend that you fill in the following information.</p>
+    <ul>
+        {% if not user.first_name %}
+        <li>First Name</li>
+        {% endif %}
+        {% if not user.last_name %}
+        <li>Last Name</li>
+        {% endif %}
+        {% if not user.userprofile.bio %}
+        <li>Biography</li>
+        {% endif %}
+        {% if user.userprofile.avatar == '/user/avatar/default.png' %}
+        <li>Avatar</li>
+        {% endif %}
+    </ul>
+    <a class="btn btn-main btn-sm btn-block" href="{% url 'userprofile_basic' %}" role="button"><i class="fas fa-user-edit fa-fw mr-1"></i> Edit Profile</a>
+</div>
+{% endif %}
