@@ -231,7 +231,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         obj.save()        
         return redirect('post_detail', pk=obj.post.id)
 
-class Explore(TemplateView):
+class Explore(LoginRequiredMixin, TemplateView):
     template_name = 'explore/explore.html'
 
     def get_context_data(self, **kwargs):
@@ -241,7 +241,7 @@ class Explore(TemplateView):
         context['mode'] = 'explore'
         return context
 
-class ExploreUsers(TemplateView):
+class ExploreUsers(LoginRequiredMixin, TemplateView):
     template_name = 'explore/explore.html'
 
     def get_context_data(self, **kwargs):
