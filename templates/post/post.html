@@ -13,9 +13,9 @@
             <p class="my-1">
                 <a class="name{% if post.user.is_staff %} text-warning{% endif %}" href="{% url 'userprofile' post.user.username %}">
                     {% if post.user.get_full_name %}
-                        {{post.user.get_full_name}} <span class="text-muted">@{{post.user.username}}</span>
+                        {{post.user.get_full_name}} <span class="text-muted">{{post.user.username}}</span>
                     {% else %}
-                        <span class="text-muted">@{{post.user.username}}</span>
+                        <span class="text-muted">{{post.user.username}}</span>
                     {% endif %}
                 </a>
                 <a href="{% url 'post_detail' post.id %}" class="date-created float-right mt-1 small">{{post.date_created|naturaltime}}</a>
