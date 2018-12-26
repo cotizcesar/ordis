@@ -26,7 +26,7 @@
                 {% endif %}
                 <nav class="nav my-2 small">
                     {% if posts_count %}
-                    <span class="text-white mr-1">
+                    <span class="text-white mr-2">
                         {% if posts_count == 0 %}
                         {% elif posts_count == 1 %}
                             {{posts_count}} <span class="text-info"> Post</span>
@@ -35,8 +35,8 @@
                         {% endif %}
                     </span>
                     {% endif %}
-                    <a class="nav-link p-0 text-info mr-1" href="#"><span class="text-white">{{followers}}</span> Followers</a>
-                    <a class="nav-link p-0 text-info ml-1" href="#"><span class="text-white">{{following}}</span> Following</a>
+                    <a class="nav-link p-0 text-info mr-2" href="#"><span class="text-white">{{followers}}</span> Followers</a>
+                    <a class="nav-link p-0 text-info" href="#"><span class="text-white">{{following}}</span> Following</a>
                 </nav>
                 <hr>
                 <p class=" mt-0">{{profile.userprofile.bio}}</p>
