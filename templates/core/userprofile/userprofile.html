@@ -25,9 +25,18 @@
                     <h1 class="h5 mt-0 text-info{% if profile.is_staff %} text-warning{% endif %}">@{{profile.username}}</h1>
                 {% endif %}
                 <nav class="nav my-2 small">
-                    <a class="nav-link p-0 pr-2 disabled" href="#"><span class="text-white mr-1">1</span> Posts</a>
-                    <a class="nav-link p-0 pr-2" href="#"><span class="text-white mr-1">{{followers}}</span> Followers</a>
-                    <a class="nav-link p-0" href="#"><span class="text-white mr-1">{{following}}</span> Following</a>
+                    {% if posts_count %}
+                    <span class="text-white mr-1">
+                        {% if posts_count == 0 %}
+                        {% elif posts_count == 1 %}
+                            {{posts_count}} <span class="text-info"> Post</span>
+                        {% elif posts_count > 1 %}
+                            {{posts_count}} <span class="text-info"> Posts</span>
+                        {% endif %}
+                    </span>
+                    {% endif %}
+                    <a class="nav-link p-0 text-info mx-1" href="#"><span class="text-white">{{followers}}</span> Followers</a>
+                    <a class="nav-link p-0 text-info ml-1" href="#"><span class="text-white">{{following}}</span> Following</a>
                 </nav>
                 <hr>
                 <p class=" mt-0">{{profile.userprofile.bio}}</p>
