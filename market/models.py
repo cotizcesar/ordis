@@ -15,6 +15,8 @@ class Item(models.Model):
         ('L', 'Legendary',),
         ('I', 'Riven',),
     )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
     name = models.CharField(max_length=140)
     slug = models.SlugField()
     description = models.TextField()

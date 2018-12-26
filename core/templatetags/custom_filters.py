@@ -64,14 +64,14 @@ def human_time(value):
     return value.strftime('%m/%d/%Y %I:%M:%S') # %I:%M:%S MM/DD/YYYY hh:mm:ss
 
 @register.filter(name='hubs_name')
-def human_time(value):
+def hubs_name(value):
     if value == 'MercuryHUB':
         return 'Larunda Relay'
     else:
         return '???'
 
 @register.filter(name='factions_name')
-def human_time(value):
+def factions_name(value):
     if value == 'FC_INFESTATION':
         return 'Infestation'
     elif value == 'FC_CORPUS':
@@ -82,7 +82,7 @@ def human_time(value):
         return '???'
 
 @register.filter(name='mission_name')
-def human_time(value):
+def mission_name(value):
     if value == 'MT_DEFENSE':
         return 'Defense'
     elif value == 'MT_HIVE':
@@ -101,11 +101,13 @@ def human_time(value):
         return 'Survival'
     elif value == 'MT_EVACUATION':
         return 'Defection'
+    elif value == 'MT_SABOTAGE':
+        return 'Sabotage'
     else:
         return '???'
 
 @register.filter(name='solnode_name')
-def human_time(value):
+def solnode_name(value):
     if value == 'SolNode56':
         return 'Cypress (Pluto)'
     elif value == 'SolNode43':
@@ -126,11 +128,26 @@ def human_time(value):
         return 'Telesto (Saturn)'
     elif value == 'SolNode149':
         return 'Casta (Ceres)'
-    elif value == 'SolNode149':
-        return 'Casta (Ceres)'
     elif value == 'SolNode223':
         return 'Boethius (Mercury)'
-    elif value == 'SolNode149':
-        return 'Stickney (Phobos)'        
+    elif value == 'SettlementNode3':
+        return 'Stickney (Phobos)'
+    elif value == 'SolNode107':
+        return 'Venera (Venus)'
+    elif value == 'SolNode57':
+        return 'Sao (Neptune)'
+    elif value == 'SolNode10':
+        return 'Thebe (Jupiter)'
+    elif value == 'SolNode412':
+        return 'Thebe (Jupiter)'
+    else:
+        return '???'
+
+@register.filter(name='item_name')
+def item_name(value):
+    if value == '/Lotus/Types/Items/MiscItems/Alertium':
+        return 'Nitain Extract'
+    elif value == '/Lotus/Types/Items/MiscItems/Gallium':
+        return 'Gallium'
     else:
         return '???'

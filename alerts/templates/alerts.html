@@ -29,10 +29,9 @@
                         <div class="media-body">
                             <p id="{{alert.MissionInfo.location}}" class="m-0"><span class="text-info font-weight-bold">{{alert.MissionInfo.location|solnode_name}}</span> - Level: {{alert.MissionInfo.minEnemyLevel}} - {{alert.MissionInfo.maxEnemyLevel}} {% if alert.MissionInfo.maxWaveNum >= 2 %}/ (Waves: {{alert.MissionInfo.maxWaveNum}}){% endif %}  <span class="float-right bg-info rounded py-1 px-2 text-white" data-countdown="{{alert.Expiry.date.numberLong|human_time}}"></span></p>
                             <p id="{{alert.MissionInfo.missionType}}" class="m-0 text-uppercase font-weight-bold">{{alert.MissionInfo.missionType|mission_name}} - {{alert.MissionInfo.faction|factions_name}}</p>
-                            <p class="m-0">
-                                Reward: Credits {{alert.MissionInfo.missionReward.credits}}
-                                {% for item in alert.MissionInfo.missionReward.items %}
-                                     + {{item}}
+                            <p class="m-0">Reward: {{alert.MissionInfo.missionReward.credits}}
+                                {% for item in alert.MissionInfo.missionReward.countedItems %}
+                                     + {{item.ItemCount}} {{item.ItemType|item_name}}
                                 {% endfor %}
                             </p>
                         </div>
