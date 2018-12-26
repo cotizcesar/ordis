@@ -13,21 +13,25 @@
                     </div>
                 </div>-->
                 <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
                     <li class="nav-item{% if request.resolver_match.url_name == 'home' or request.resolver_match.url_name == 'feed_public' %} active{% endif %}">
                         <a class="nav-link mx-1" href="{% url 'home' %}"><i class="fas fa-home fa-fw text-info mr-1"></i> Home</a>
                     </li>
                     <li class="nav-item{% if request.resolver_match.url_name == 'explore' or request.resolver_match.url_name == 'explore_users' %} active{% endif %}">
                         <a class="nav-link mx-1" href="{% url 'explore' %}"><i class="fas fa-compass fa-fw text-info mr-1"></i> Explore</a>
                     </li>
+                    {% endif %}
                     <li class="nav-item{% if request.resolver_match.url_name == 'market' %} active{% endif %}">
                         <a class="nav-link mx-1" href="{% url 'market' %}"><i class="fas fa-store fa-fw text-info mr-1"></i> Market</a>
                     </li>
                     <li class="nav-item{% if request.resolver_match.url_name == 'alerts' %} active{% endif %}">
                         <a class="nav-link mx-1" href="{% url 'alerts' %}"><i class="fas fa-exclamation-triangle fa-fw text-warning mr-1"></i> Alerts</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link mx-1 disabled" href="#"><i class="fas fa-hammer fa-fw text-info mr-1"></i> Builder</a>
                     </li>
+                    {% endif %}
                     <li class="nav-item{% if request.resolver_match.url_name == 'codex' %} active{% endif %}">
                         <a class="nav-link mx-1" href="{% url 'codex' %}"><i class="fas fa-book-open fa-fw text-info mr-1"></i> Codex</a>
                     </li>
@@ -44,7 +48,13 @@
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt fa-fw text-success mr-1"></i> Sign In</a>
+                        <a class="nav-link active" href="{% url 'account_signup' %}"><i class="fas fa-sign-in-alt fa-fw text-success mr-1"></i> Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="text-muted py-2 mx-1 d-block">or</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt fa-fw text-info mr-1"></i> Sign In</a>
                     </li>
                     {% endif %}
                 </ul>

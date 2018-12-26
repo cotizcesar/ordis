@@ -18,8 +18,8 @@
                     {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                     {% endif %}
-                    <a class="btn btn-main btn-sm" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-                    <button class="btn btn-main btn-sm float-right" type="submit">{% trans "Sign In" %}</button>
+                    <a class="btn btn-sm" href="{% url 'account_reset_password' %}"><i class="fas fa-question-circle fa-fw mr-1"></i> {% trans "Forgot Password?" %}</a>
+                    <button class="btn btn-success btn-sm float-right" type="submit"><i class="fas fa-sign-in-alt fa-fw mr-1"></i> {% trans "Sign In" %}</button>
                 </form>
                 <div class="text-center mt-2 mb-1">{% trans 'or' %}</div>
                 {% get_providers as socialaccount_providers %}
