@@ -124,5 +124,13 @@ def human_time(value):
         return 'Cervantes (Earth)'
     elif value == 'SolNode20':
         return 'Telesto (Saturn)'
+    elif value == 'SolNode149':
+        return 'Casta (Ceres)'
+    elif value == 'SolNode149':
+        return 'Casta (Ceres)'
+    elif value == 'SolNode223':
+        return 'Boethius (Mercury)'
+    elif value == 'SolNode149':
+        return 'Stickney (Phobos)'        
     else:
         return '???'
