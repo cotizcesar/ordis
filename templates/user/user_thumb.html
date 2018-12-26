@@ -4,10 +4,10 @@
     <div class="media-body">
         <a href="{% url 'userprofile' user.username %}" class="d-block">
             {% if user.get_full_name %}
-                <p class="my-1">{{user.get_full_name}}{% if user.is_staff %} <i class="fas fa-star fa-fw text-warning small"></i>{% endif %}</p>
-                <p class="my-1 text-white">@{{user.username}}</p>
+                <p class="my-1{% if user.is_staff %} text-warning{% endif %}">{{user.get_full_name}}</p>
+                <p class="my-1 text-muted">@{{user.username}}</p>
             {% else %}
-                <p class="my-1 text-white">{{user.username}}{% if user.is_staff %} <i class="fas fa-star fa-fw text-warning small"></i>{% endif %}</p>
+                <p class="my-1 text-white{% if user.is_staff %} text-warning{% endif %}">{{user.username}}</p>
             {% endif %}
         </a>
     </div>

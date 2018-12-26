@@ -11,11 +11,11 @@
         <img class="mr-3 rounded-circle" src="{{post.user.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{% if post.user.get_full_name %}{{post.user.get_full_name}}{% else %}{{post.user.username}}{% endif %} avatar.">
         <div class="media-body">
             <p class="my-1">
-                <a class="name" href="{% url 'userprofile' post.user.username %}">
+                <a class="name{% if post.user.is_staff %} text-warning{% endif %}" href="{% url 'userprofile' post.user.username %}">
                     {% if post.user.get_full_name %}
-                    {{post.user.get_full_name}}{% if post.user.is_staff %} <i class="fas fa-star fa-fw text-warning small"></i>{% endif %}
+                        {{post.user.get_full_name}} <span class="text-muted">@{{post.user.username}}</span>
                     {% else %}
-                    {{post.user.username}}{% if post.user.is_staff %} <i class="fas fa-star fa-fw text-warning small"></i>{% endif %}
+                        <span class="text-muted">@{{post.user.username}}</span>
                     {% endif %}
                 </a>
                 <a href="{% url 'post_detail' post.id %}" class="date-created float-right mt-1 small">{{post.date_created|naturaltime}}</a>
