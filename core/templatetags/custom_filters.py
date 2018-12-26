@@ -161,6 +161,10 @@ def item_name(value):
         return 'Nitain Extract'
     elif value == '/Lotus/Types/Items/MiscItems/Gallium':
         return 'Gallium'
+    elif value == '/Lotus/Types/Items/MiscItems/NeuralSensor':
+        return 'Neural Sensors'
+    elif value == '/Lotus/Types/Items/MiscItems/Morphic':
+        return 'Morphics'
     elif value == '/Lotus/Types/Items/MiscItems/VoidTearDrop':
         return 'Void Traces'
     else:
