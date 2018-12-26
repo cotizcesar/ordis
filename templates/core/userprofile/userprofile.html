@@ -10,10 +10,10 @@
             <div class="bg-black-t p-3">
                 <img class="img-fluid mb-3" src="{{profile.userprofile.avatar|thumbnail_url:'avatar'|default:'https://via.placeholder.com/223x223'}}" alt="">
                 {% if profile.get_full_name %}
-                <h1 class="h4 my-1{% if profile.is_staff %} text-warning{% endif %}">{{profile.get_full_name}}</h1>
+                <h1 class="h5 my-1{% if profile.is_staff %} text-warning{% endif %}">{{profile.get_full_name}}</h1>
                 <p class="h6 my-1">@{{profile.username}}</p>
                 {% else %}
-                    <h1 class="h3 mt-0{% if profile.is_staff %} text-warning{% endif %}">@{{profile.username}}</h1>
+                    <h1 class="h5 mt-0{% if profile.is_staff %} text-warning{% endif %}">@{{profile.username}}</h1>
                 {% endif %}
                 <nav class="nav my-2 small">
                     <a class="nav-link p-0 pr-2 disabled" href="#"><span class="text-white mr-1">1</span> Posts</a>
