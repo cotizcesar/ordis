@@ -9,7 +9,7 @@
         <ul class="nav flex-column mb-3">
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link{% if request.resolver_match.url_name == 'home' %} bg-black-t text-white{% endif %}" href="{% url 'home' %}"><i class="far fa-map fa-fw mr-1"></i> Feed</a>
+                <a class="nav-link{% if request.resolver_match.url_name == 'home' %} bg-black-t text-white{% endif %}" href="{% url 'home' %}"><i class="fas fa-columns fa-fw mr-1"></i> Feed</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link{% if request.resolver_match.url_name == 'pinax_messages:inbox' %} bg-black-t text-white{% endif %}" href="{% url 'pinax_messages:inbox' %}"><i class="fas fa-envelope fa-fw mr-1"></i> Messages</a>
