@@ -103,6 +103,10 @@ def mission_name(value):
         return 'Defection'
     elif value == 'MT_SABOTAGE':
         return 'Sabotage'
+    elif value == 'MT_CAPTURE':
+        return 'Capture'
+    elif value == 'MT_RETRIEVAL':
+        return 'Hijack'
     else:
         return '???'
 
@@ -143,7 +147,11 @@ def solnode_name(value):
     elif value == 'SolNode138':
         return 'Ludi (Ceres)'
     elif value == 'SolNode140':
-        return 'Kiste (Ceres)'        
+        return 'Kiste (Ceres)'
+    elif value == 'SolNode166':
+        return 'Nimus (Eris)'
+    elif value == 'SolNode220':
+        return 'Kokabiel (Europa)'
     else:
         return '???'
 
