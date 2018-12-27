@@ -43,7 +43,7 @@ class ItemDetail(DetailView, FormView):
 class OrderCreateView(LoginRequiredMixin, CreateView):
     form_class = OrderForm
     success_url = reverse_lazy('market')
-    template_name = 'order_create.html'
+    template_name = 'market/forms/order_create.html'
 
     def form_valid(self, form):
         obj = form.save(commit=False)
