@@ -27,7 +27,7 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('avatar', 'bio')
+        fields = ('avatar', 'bio', 'platform')
         help_texts = {
             'avatar': 'Only images in JPG and PNG are allowed.',
             'bio': 'Use this space for text, you have a limit of 140 characters.',

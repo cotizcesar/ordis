@@ -2,16 +2,17 @@
     <img src="https://via.placeholder.com/74x74" class="img-fluid" alt="...">
     <div class="media-body p-3">
         <p class="mb-1">
-            {% if order.item.tipe == 'C' %}
-                {{order.item.companion.name}}
-            {% elif order.item.tipe == 'M' %}
-                {{order.item.mod.name}}
-            {% elif order.item.tipe == 'W' %}
-                {{order.item.warframe.name}}
-            {% elif order.item.tipe == 'E' %}
-                {{order.item.weapon.name}}
-            {% else %}
-            {% endif %}
+            <a href="{% url 'item_detail' order.item.slug %}">
+                {% if order.item.tipe == 'C' %}
+                    {{order.item.companion.name}}
+                {% elif order.item.tipe == 'M' %}
+                    {{order.item.mod.name}}
+                {% elif order.item.tipe == 'W' %}
+                    {{order.item.warframe.name}}
+                {% elif order.item.tipe == 'E' %}
+                    {{order.item.weapon.name}}
+                {% endif %}
+            </a> [{{order.quantity}} <i class="fas fa-boxes fa-fw small"></i>]
             <span class="badge badge-info float-right mt-1 rounded-0">Message</span>
             <span class="badge badge-info float-right mr-1 mt-1 rounded-0">/w</span>
         </p>
@@ -27,7 +28,24 @@
             <span class="badge badge-danger mt-1 rounded-0">Offline</span> 
             {% else %}
             {% endif %}
-            <span class="float-right">{{order.price}} Platinum</span>
+            {% if order.user.userprofile.platform == 'PC' %}
+            <span class="badge badge-dark mt-1 rounded-0">
+                {{order.user.userprofile.platform}}
+            </span>
+            {% elif order.user.userprofile.platform == 'PS4' %}
+                <span class="badge badge-primary mt-1 rounded-0">
+                    {{order.user.userprofile.platform}}
+                </span>
+            {% elif order.user.userprofile.platform == 'XB1' %}
+                <span class="badge badge-success mt-1 rounded-0">
+                    {{order.user.userprofile.platform}}
+                </span>
+            {% elif order.user.userprofile.platform == 'NSW' %}
+                <span class="badge badge-danger mt-1 rounded-0">
+                    {{order.user.userprofile.platform}}
+                </span>
+            {% endif %}
+            <span class="float-right">{{order.price}} Plat</span>
         </p>
     </div>
 </div>
