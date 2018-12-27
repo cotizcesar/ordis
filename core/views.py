@@ -236,7 +236,7 @@ class Explore(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(Explore, self).get_context_data(**kwargs)
-        context['users'] = User.objects.all().order_by('?')[:10]
+        context['users'] = User.objects.all().exclude(last_login=None).order_by('-last_login')[:10]
         context['posts'] = Post.objects.all().order_by('?')
         context['mode'] = 'explore'
         return context
@@ -246,6 +246,6 @@ class ExploreUsers(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ExploreUsers, self).get_context_data(**kwargs)
-        context['users'] = User.objects.all().order_by('?')
+        context['users'] = User.objects.all().exclude(last_login=None).order_by('-last_login')
         context['mode'] = 'explore_users'
         return context

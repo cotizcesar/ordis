@@ -5,8 +5,8 @@ def external_data(request):
     from market.models import Item, Order
     return {
         #'omnisearch': Item.objects.all().values('name', 'slug'),
-        'user_count': User.objects.all().count(),
+        'user_count': User.objects.all().exclude(last_login=None).count(),
         #'selling_count': Order.objects.filter(want='S').exclude(is_active=False).count(),
         #'buying_count': Order.objects.filter(want='B').exclude(is_active=False).count(),
-        'module_recomended_users': User.objects.all().order_by('?')[:5]
+        'module_recomended_users':  User.objects.all().exclude(last_login=None).order_by('-last_login')[:5]
     }
