@@ -6,12 +6,19 @@ from django.contrib.auth.models import User
 # Models
 from .models import UserProfile, Post, Comment
 
-# Django: Validator
-from django.core.validators import RegexValidator
+from allauth.account.forms import SignupForm
 
-#class SignupForm(forms.ModelForm):
-#    username_validation = RegexValidator('^[\w.@+-]+$', 'Only alphabetic')
-#    username = forms.CharField(max_length=30, validators=[username_validation])
+from .validators import username_validator
+class SignUpForm(forms.ModelForm):
+    username = forms.CharField(max_length=30, validators=[username_validator])
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name')
+        help_texts = {
+            'username': 'Use your IGN',
+            'first_name': 'If you want to use your first name you can place it here.',
+            'last_name': 'If you use your first name, you should also put your last name, so its easier to know what your name really is.',
+        }
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -20,8 +27,6 @@ class UserForm(forms.ModelForm):
         help_texts = {
             'first_name': 'If you want to use your first name you can place it here.',
             'last_name': 'If you use your first name, you should also put your last name, so its easier to know what your name really is.',
-            'username': 'Use the IGN to validate your registration.',
-            'email': 'Use your personal email, preferably one that is not associated with Warframe.',
         }
 
 class UserProfileForm(forms.ModelForm):

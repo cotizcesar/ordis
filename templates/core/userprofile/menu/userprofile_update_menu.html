@@ -20,7 +20,7 @@
                 <a class="nav-link{% if request.resolver_match.url_name == 'account_change_password' %} bg-black-t text-white{% endif %}" href="{% url 'account_change_password' %}"><i class="fas fa-key fa-fw mr-1"></i> Change Password</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#"><i class="fas fa-share-alt fa-fw mr-1"></i> Social Accounts</a>
+                <a class="nav-link{% if request.resolver_match.url_name == 'socialaccount_connections' %} bg-black-t text-white{% endif %}" href="{% url 'socialaccount_connections' %}"><i class="fas fa-share-alt fa-fw mr-1"></i> Account Connections</a>
             </li>
         </ul>
     </div>
