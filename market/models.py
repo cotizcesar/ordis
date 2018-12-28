@@ -14,7 +14,6 @@ class Item(models.Model):
         ('E', 'Weapon'),
     )
     tipe = models.CharField(default='E', max_length=1, choices=TIPE_CHOICES)
-    slug = models.SlugField()
     companion = models.ForeignKey(Companion, on_delete=models.CASCADE, null=True, blank=True)
     warframe = models.ForeignKey(Warframe, on_delete=models.CASCADE, null=True, blank=True)
     weapon = models.ForeignKey(Weapon, on_delete=models.CASCADE, null=True, blank=True)

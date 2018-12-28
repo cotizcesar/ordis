@@ -51,6 +51,7 @@ class Weapon(models.Model):
     image = models.ImageField(upload_to='codex/weapons', default='codex/weapons/default.png', blank=True)
     mastery_rank = models.PositiveIntegerField(null=True, blank=True)
     release_date = models.DateField(null=True, blank=True)
+    is_prime = models.BooleanField(default=False)
     is_tradeable = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)

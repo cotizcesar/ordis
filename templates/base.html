@@ -102,7 +102,7 @@
                 $('#myInput').trigger('focus')
             })
         </script>
-        <script>
+        <!--<script>
             // Select2: Init
             $(document).ready(function() {
                 $('#id_item').select2({
@@ -115,55 +115,6 @@
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
             })
-        </script>
-        <script>
-            var search = function (nameKey, myArray){
-                for (var i=0; i < myArray.length; i++) {
-                    if (myArray[i].name === nameKey) {
-                        return myArray[i];
-                    }
-                }
-            }
-            var substringMatcher = function(strs) {
-                return function findMatches(q, cb) {
-                    var matches, substringRegex;
-                    // an array that will be populated with substring matches
-                    matches = [];
-                    // regex used to determine if a string contains the substring `q`
-                    substrRegex = new RegExp(q, 'i');
-                    // iterate through the pool of strings and for any string that
-                    // contains the substring `q`, add it to the `matches` array
-                    $.each(strs, function(i, str) {
-                    if (substrRegex.test(str)) {
-                        matches.push(str);
-                    }
-                    });
-
-                    cb(matches);
-                };
-            };
-            var data = [
-                {% for item in omnisearch %}
-                    '{{item.name}}',
-                {% endfor %}
-            ];
-            var url = [
-                {% for item in omnisearch %}
-                    {name: '{{item.name}}', value:'{{item.slug}}'},
-                {% endfor %}
-            ];
-            $('#omnisearch .typeahead').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 1
-            },
-            {
-                name: 'data',
-                source: substringMatcher(data)
-            }).on('typeahead:selected', function(evt, item) {
-                var resultObject = search(item, url);
-                window.location = '{{request.build_absolute_uri}}' + 'market/items/' + resultObject.value;
-            });
-        </script>
+        </script>-->
     </body>
 </html>

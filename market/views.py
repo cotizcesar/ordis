@@ -7,29 +7,30 @@ from django.contrib.auth.models import User
 from django.views.generic import TemplateView, ListView, FormView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+#TEST
+#from codex.models import Companion, Warframe, Weapon
+
 # Market: Importing Models
 from .models import Item, Order
 
 # Market: Importing Forms
 from .forms import OrderForm
 
-class Market(TemplateView, FormView):
+class Market(TemplateView):
     template_name = 'market/market.html'
-    form_class = OrderForm
-
+    
     def get_context_data(self, *args, **kwargs):
         context = super(Market, self).get_context_data(**kwargs)
         context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(is_active=False)[:25]
         context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:25]
         return context
 
-class ItemDetail(DetailView, FormView):
+class ItemDetail(DetailView):
     model = Item
     template_name = "item_detail.html"
     pk_url_kwarg = "item_id"
     slug_url_kwarg = 'slug'
     query_pk_and_slug = True
-    form_class = OrderForm
 
     def get_context_data(self, *args, **kwargs):
         context = super(ItemDetail, self).get_context_data(**kwargs)

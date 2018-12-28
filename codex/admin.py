@@ -27,6 +27,7 @@ class CompanionResource(resources.ModelResource):
 
 @admin.register(Companion)
 class CompanionAdmin(ImportExportModelAdmin):
+    list_display = ('name', 'slug', 'is_tradeable', 'is_prime')
     pass
 
 class WeaponResource(resources.ModelResource):
@@ -35,6 +36,7 @@ class WeaponResource(resources.ModelResource):
 
 @admin.register(Weapon)
 class WeaponAdmin(ImportExportModelAdmin):
+    list_display = ('name', 'slug', 'is_tradeable', 'is_prime')
     pass
 
 class StatResource(resources.ModelResource):
@@ -46,11 +48,13 @@ class StatAdmin(ImportExportModelAdmin):
     pass
 
 class WarframeResource(resources.ModelResource):
+    fields = ['name', 'slug']
     class Meta:
         model = Warframe
 
 @admin.register(Warframe)
 class WarframeAdmin(ImportExportModelAdmin):
+    list_display = ('name', 'slug', 'is_tradeable', 'is_prime')
     pass
 
 class WarframeAbilityResource(resources.ModelResource):
