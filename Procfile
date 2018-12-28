@@ -1,1 +1,1 @@
-web: gunicorn wfpy.wsgi
+web: gunicorn ordis-app.wsgi
