@@ -157,6 +157,7 @@ THUMBNAIL_TRANSPARENCY_EXTENSION = 'png'
 # easy-thumbnails: Every size for all images.
 THUMBNAIL_ALIASES = {
     '': {
+        '50x50': {'size': (50, 50), 'crop': 'smart', 'upscale' : True},
         'avatar': {'size': (510, 510), 'crop': 'smart', 'upscale' : True},
         'avatar_44x44': {'size': (44, 44), 'crop': 'smart', 'upscale' : True},
         'avatar_50x50': {'size': (50, 50), 'crop': 'smart', 'upscale' : True},
@@ -168,7 +169,8 @@ THUMBNAIL_ALIASES = {
         'item': {'size': (510, 287), 'crop': 'smart', 'upscale' : True},
         # Codex: Warframe Model
         # easy-thumbnails: Different sizes for Warframes image thumbs.
-        'warframe': {'size': (510, 910), 'crop': 'smart', 'upscale' : True},
+        'warframe': {'size': (510, 906), 'crop': 'smart', 'upscale' : True},
+        'warframe_detail': {'size': (510, 906), 'crop': 'smart', 'upscale' : True},
         'warframe_list': {'size': (510, 287), 'crop': '0,0', 'upscale' : True},
         'warframe_market_list': {'size': (510, 287), 'crop': '0,0', 'upscale' : True},
     },

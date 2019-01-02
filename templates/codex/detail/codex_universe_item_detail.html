@@ -11,82 +11,60 @@
         <meta name="twitter:creator" content="@cotizcesar" />{% endblock %}
 {% block head_title %}{{item.name}}{% endblock %}
 {% block content %}
-<div class="container bg-black-t my-3">
+{% if item.tipe.id == 1 %}
+<div id="{{item.tipe}}" class="container my-3">
     <div class="row">
-        <div class="col-md-3 py-3">
-            <img class="img-fluid bg-black-t" src="{{item.image|thumbnail_url:'warframe'|default:'https://via.placeholder.com/510x910'}}">
+        <div class="col-md-3">
+            <img class="img-fluid bg-black-t" src="{{item.image|thumbnail_url:'warframe_detail'|default:'https://via.placeholder.com/510x906'}}">
         </div>
-        <div class="col-md-9 pt-3">
-            <h1 class="h3 mb-3"><i class="fas fa-book-open fa-fw text-info mr-1"></i> {{item.name}} <div class="social float-right"><div class="fb-share-button" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div> <a class="twitter-share-button" href="{{request.build_absolute_uri}}" data-size="large">Tweet</a></div></h1>
-            <h2 class="h6 text-info text-uppercase my-1">Description</h2>
-            <p class="mb-0">{{item.description}}</p>
+        <div class="col-md-9 pt-3 bg-black-t">
+            <h1 class="h3"><i class="fas fa-book-open fa-fw text-info mr-1"></i> {{item.name}} <div class="social float-right"><div class="fb-share-button" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div> <a class="twitter-share-button" href="{{request.build_absolute_uri}}" data-size="large">Tweet</a></div></h1>
             <div class="row">
-                <div class="col-md-3 my-3">
-                    <h2 class="h6 text-info text-uppercase my-1">Release Date</h2>
-                    <p class="mb-0">{{item.release_date}}</p>
+                <div class="col-md-12">
+                    <p class="text-info mb-1">Description</p>
+                    <p>{{item.description}}</p>
                 </div>
-                {% for text in texts %}
-                <div class="col-md-9 my-3">
-                    <h2 class="h6 text-info text-uppercase my-1">{{text.name}}</h2>
-                    <p class="mb-0">{{text.value}}</p>
-                </div>
-                {% endfor %}
             </div>
-            <hr class="m-0">
+            <hr class="mt-0">
+            <div class="row">
+                <div class="col-md-9 col-sm-9">
+                    {% for pasive in pasive %}
+                        <p class="text-info mb-1">{{pasive.name}}</p>
+                        <p>{{pasive.value}}</p>
+                    {% endfor %}
+                </div>
+                <div class="col-md-3 col-sm-3">                    
+                    <p class="text-info mb-1">Release Date</p>
+                    <p>{{item.release_date}}</p>                    
+                </div>
+            </div>
+            <hr class="mt-0">
             <div class="row">
                 {% for attribute in attributes %}
-                <div class="col-md-3 my-3">
-                    <h2 class="h6 text-info text-uppercase mb-1">{{attribute.name}}</h2>
-                    <p class="mb-0">{{attribute.value}}</p>
+                <div class="col-md-2 col-sm-4">                    
+                    <p class="text-info mb-1">{{attribute.name}}</p>
+                    <p>{{attribute.value}}</p>                    
                 </div>
                 {% endfor %}
             </div>
             <hr class="mt-0">
             <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="media bg-black-t p-3">
-                        <img class="mr-3" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
+                {% for ability in abilities %}
+                <div class="col-md-6 pb-3 small">
+                    <div class="media bg-black-t px-3 pt-3">
+                        <img src="{{ability.image|thumbnail_url:'50x50'|default:'https://via.placeholder.com/50x50'}}" class="mr-3" alt="{{ability.name}} - {{ability.value}}">
                         <div class="media-body">
-                            <h3 class="h6 mt-0">Media heading</h3>
-                            <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-                            vestibulum in vulputate at.</p>
+                            <p class="text-info text-uppercase mb-1">{{ability.name}} <span class="text-muted float-right small">Keyboard [{{ability.id}}]</span></p>
+                            <p>{{ability.value}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <div class="media bg-black-t p-3">
-                        <img class="mr-3" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h3 class="h6 mt-0">Media heading</h3>
-                            <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-                            vestibulum in vulputate at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="media bg-black-t p-3">
-                        <img class="mr-3" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h3 class="h6 mt-0">Media heading</h3>
-                            <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-                            vestibulum in vulputate at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="media bg-black-t p-3">
-                        <img class="mr-3" src="https://via.placeholder.com/50x50" alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h3 class="h6 mt-0">Media heading</h3>
-                            <p class="mb-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-                            vestibulum in vulputate at.</p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
+{% endif %}
 <div class="container my-3">
     <div class="row">
         <div class="col-md-3">

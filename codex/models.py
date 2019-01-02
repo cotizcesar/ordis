@@ -3,6 +3,18 @@ from django.db import models
 # django-ckeditor: Usage for WYSIWYG fields.
 from ckeditor.fields import RichTextField
 
+# ItemAbility Model
+# Defines the ability name in the Item Model.
+class ItemAbility(models.Model):
+    name = models.CharField(max_length=80)
+    image = models.ImageField(upload_to='codex/item/ability/', default='codex/item/ability/default.png', blank=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
 # ItemAttribute Model
 # Defines the attribute name in the Item Model.
 class ItemAttribute(models.Model):
@@ -56,15 +68,15 @@ class ItemAttributeValue(models.Model):
     def __str__(self):
         return self.name.name
 
-# ItemAttributeValue Model
-# Defines the value and name of the item.
-class ItemAttributeText(models.Model):
+# ItemAbilityValue Model
+# Defines the value and name of the ability.
+class ItemAbilityValue(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    name = models.ForeignKey(ItemAttribute, on_delete=models.CASCADE)
+    name = models.ForeignKey(ItemAbility, on_delete=models.CASCADE)
     value = models.TextField(max_length=180)
 
     def __str__(self):
-        return self.item.name
+        return self.name.name
 
 class Quest(models.Model):
     TIPE_CHOICES = (

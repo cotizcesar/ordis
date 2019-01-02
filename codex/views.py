@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
 # Codex: Importing Models
-from .models import Quest, QuestWalkthrough, Item, ItemAttribute, ItemAttributeValue, ItemAttributeText, Companion, Weapon, Stat, Warframe, WarframeAbility
+from .models import Quest, QuestWalkthrough, Item, ItemAttribute, ItemAttributeValue, ItemAbilityValue, Companion, Weapon, Stat, Warframe, WarframeAbility
 
 class Codex(TemplateView):
     template_name = 'codex/codex.html'
@@ -117,5 +117,6 @@ class ItemDetail(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(ItemDetail, self).get_context_data(**kwargs)
         context['attributes'] = ItemAttributeValue.objects.filter(item=self.object.id).select_related()
-        context['texts'] = ItemAttributeText.objects.filter(item=self.object.id).select_related()
+        context['abilities'] = ItemAbilityValue.objects.filter(item=self.object.id).select_related()[:4]
+        context['pasive'] = ItemAbilityValue.objects.filter(item=self.object.id).select_related()[4:5]
         return context
