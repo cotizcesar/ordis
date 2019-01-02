@@ -18,7 +18,7 @@ from django.urls import include, path
 from django.conf.urls import url
 
 # userprofile: Importing Views
-from .views import Codex, Quests, QuestDetail, Companions, Universe, Weapons, WeaponsPrimary, WeaponsSecondary, WeaponsMelee, WeaponDetail, Warframes, WarframeDetail
+from .views import Codex, Quests, QuestDetail, ItemDetail, Companions, Universe, Weapons, WeaponsPrimary, WeaponsSecondary, WeaponsMelee, WeaponDetail, Warframes, WarframeDetail
 
 urlpatterns = [
     path('codex/', Codex.as_view(), name='codex'),
@@ -33,4 +33,5 @@ urlpatterns = [
     url(r'codex/universe/weapon/(?P<slug>[-\w]+)$', WeaponDetail.as_view(), name='codex_universe_weapon_detail'),
     path('codex/universe/warframes', Warframes.as_view(), name='codex_universe_warframes'),
     url(r'codex/universe/warframe/(?P<slug>[-\w]+)$', WarframeDetail.as_view(), name='codex_universe_warframe_detail'),
+    url(r'codex/universe/item/(?P<slug>[-\w]+)$', ItemDetail.as_view(), name='codex_universe_item_detail'),
 ]

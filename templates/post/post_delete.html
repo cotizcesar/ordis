@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block head_title %}Delete a Post{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 py-3">
+            {% include 'core/feed/menu/feed_menu.html' %}
+        </div>
+        <div class="col-md-6 bg-black-t py-3">
+            <h1 class="h3"><i class="fas fa-times fa-fw text-danger mr-1"></i> Delete a Post</h1>
+            <p class="text-muted m-0"></p>
+            <hr>
+            <form method="post">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+
+                {% include "post/post.html" %}
+
+            </div>
+            {% buttons %}
+            <div class="bg-black-t rounded p-3 my-3">
+                <a class="btn btn-light btn-sm px-3" href="{% url 'home' %}" role="button"><i class="fas fa-times fa-fw mr-1"></i> Cancel</a>
+                <button type="submit" class="btn btn-danger btn-sm float-right px-3"><i class="fas fa-times fa-fw mr-1"></i> Delete Post</button>
+            </div>
+            {% endbuttons %}
+        </form>
+        </div>
+        <div class="col-md-3 bg-black-t py-3"></div>
+    </div>
+</div>
+{% endblock %}

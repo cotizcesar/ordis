@@ -218,6 +218,23 @@ class PostDetailView(DetailView):
         context['comments'] = Comment.objects.filter(post=self.object.id).select_related()
         return context
 
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+    model = Post
+    form_class = PostForm
+    template_name = 'post/post_delete.html'
+    success_url = reverse_lazy('home')
+
+    def user_passes_test(self, request):
+        if request.user.is_authenticated:
+            self.object = self.get_object()
+            return self.object.user == request.user
+        return False
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.user_passes_test(request):
+            return redirect('home')
+        return super(PostDeleteView, self).dispatch(request, *args, **kwargs)
+
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
     slug_field = 'post_id'

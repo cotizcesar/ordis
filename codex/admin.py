@@ -3,8 +3,65 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 # Core: Importing Models
-from .models import Quest, QuestWalkthrough, Companion, Weapon, Stat, Warframe, WarframeAbility
+from .models import ItemAttribute, ItemTipe, Item, ItemAttributeValue, ItemAttributeText, Quest, QuestWalkthrough, Companion, Weapon, Stat, Warframe, WarframeAbility
 
+# ItemAttribute Model
+# ItemTipe > ItemAttribute
+class ItemAttributeResource(resources.ModelResource):
+    class Meta:
+        model = ItemAttribute
+
+@admin.register(ItemAttribute)
+class ItemAttributeAdmin(ImportExportModelAdmin):
+    list_display = ('name',)
+    pass 
+
+# ItemTipe Model
+# ItemTipe > Item
+class ItemTipeResource(resources.ModelResource):
+    class Meta:
+        model = ItemTipe
+
+@admin.register(ItemTipe)
+class ItemTipeAdmin(ImportExportModelAdmin):
+    list_display = ('name',)
+    pass 
+
+# Item Model
+# Item
+class ItemResource(resources.ModelResource):
+    class Meta:
+        model = Item
+
+@admin.register(Item)
+class ItemAdmin(ImportExportModelAdmin):
+    list_display = ('name', 'slug', 'tipe', 'is_prime', 'is_tradeable')
+    list_filter = ('tipe', 'is_prime', 'is_tradeable')
+    pass
+
+# ItemAttribute Model
+# Item < ItemAttributeValue > ItemAttribute
+class ItemAttributeValueResource(resources.ModelResource):
+    class Meta:
+        model = ItemAttributeValue
+
+@admin.register(ItemAttributeValue)
+class ItemAttributeValueAdmin(ImportExportModelAdmin):
+    list_display = ('item', 'name', 'value')
+    pass 
+
+# ItemAttribute Model
+# Item < ItemAttributeText > ItemAttribute
+class ItemAttributeTextResource(resources.ModelResource):
+    class Meta:
+        model = ItemAttributeText
+
+@admin.register(ItemAttributeText)
+class ItemAttributeTextAdmin(ImportExportModelAdmin):
+    list_display = ('item', 'name', 'value')
+    pass 
+
+# --
 class QuestResource(resources.ModelResource):
     class Meta:
         model = Quest

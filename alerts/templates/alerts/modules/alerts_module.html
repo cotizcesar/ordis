@@ -1,0 +1,20 @@
+{% load custom_filters %}
+<h2 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Alerts</h2>
+<p class="text-muted m-0">A fight that never ends between the Grineer, Corpus and Infested. Here you can see all the Invasions.</p>
+<hr>
+{% for alert in alerts.Alerts reversed %}
+<div id="{{alert.id.oid}}" class="alrt bg-black-t border-top border-bottom border-dark">
+    <div class="media p-3">
+        <img src="https://via.placeholder.com/57x57" class="mr-3" alt="...">
+        <div class="media-body">
+            <p id="{{alert.MissionInfo.location}}" class="m-0"><span class="text-info font-weight-bold">{{alert.MissionInfo.location|solnode_name}}</span> - Level: {{alert.MissionInfo.minEnemyLevel}} - {{alert.MissionInfo.maxEnemyLevel}} {% if alert.MissionInfo.maxWaveNum >= 2 %}/ (Waves: {{alert.MissionInfo.maxWaveNum}}){% endif %}  <span class="float-right bg-info rounded py-1 px-2 text-white" data-countdown="{{alert.Expiry.date.numberLong|human_time}}"></span></p>
+            <p id="{{alert.MissionInfo.missionType}}" class="m-0 text-uppercase font-weight-bold">{{alert.MissionInfo.missionType|mission_name}} - {{alert.MissionInfo.faction|factions_name}}</p>
+            <p class="m-0">Reward: {{alert.MissionInfo.missionReward.credits}} Credits
+                {% for item in alert.MissionInfo.missionReward.countedItems %}
+                        + {{item.ItemCount}} <span id="{{item.ItemType}}">{{item.ItemType|item_name}}</span>
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endfor %}

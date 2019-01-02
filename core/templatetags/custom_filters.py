@@ -50,7 +50,7 @@ def youtube_embed_url(value):
 youtube_embed_url.is_safe = True
 
 @register.filter(name='unix_to_readeable')
-def human_time(value):
+def unix_to_readeable(value):
     value = value[:-3]
     value = int(value)
     value = datetime.fromtimestamp(value)
@@ -60,7 +60,7 @@ def human_time(value):
 def human_time(value):
     value = value[:-3]
     value = int(value)
-    value = datetime.fromtimestamp(value) + timedelta(hours=7)
+    value = datetime.fromtimestamp(value)
     return value.strftime('%m/%d/%Y %I:%M:%S') # %I:%M:%S MM/DD/YYYY hh:mm:ss
 
 @register.filter(name='hubs_name')
@@ -115,51 +115,88 @@ def mission_name(value):
 
 @register.filter(name='solnode_name')
 def solnode_name(value):
-    if value == 'SolNode56':
-        return 'Cypress (Pluto)'
-    elif value == 'SolNode43':
-        return 'Cerberus (Pluto)'
-    elif value == 'SolNode189':
-        return 'Naga (Sedna)'
-    elif value == 'SolNode130':
-        return 'Lares (Mercury)'
-    elif value == 'SolNode31':
-        return 'Anthe (Saturn)'
-    elif value == 'SettlementNode2':
-        return 'Skyresh (Phobos)'
-    elif value == 'SolNode209':
-        return 'Morax (Europa)'
-    elif value == 'SolNode75':
+    # Earth
+    if value == 'SolNode75':
         return 'Cervantes (Earth)'
-    elif value == 'SolNode20':
-        return 'Telesto (Saturn)'
-    elif value == 'SolNode149':
-        return 'Casta (Ceres)'
-    elif value == 'SolNode223':
-        return 'Boethius (Mercury)'
-    elif value == 'SettlementNode3':
-        return 'Stickney (Phobos)'
+    
+    # Venus    
+    elif value == 'SolNode22':
+        return 'Tessera (Venus)'
+    elif value == 'SolNode23':
+        return 'Cytherean (Venus)'
     elif value == 'SolNode107':
         return 'Venera (Venus)'
-    elif value == 'SolNode57':
-        return 'Sao (Neptune)'
-    elif value == 'SolNode10':
-        return 'Thebe (Jupiter)'
-    elif value == 'SolNode412':
-        return 'Mithra (Void)'
+    
+    # Mars
+    elif value == 'SolNode68':
+        return 'Vallis (Mars)'
+    
+    # Mercury
+    elif value == 'SolNode130':
+        return 'Lares (Mercury)'
+    elif value == 'SolNode223':
+        return 'Boethius (Mercury)'
+    
+    # Ceres
     elif value == 'SolNode138':
         return 'Ludi (Ceres)'
     elif value == 'SolNode140':
         return 'Kiste (Ceres)'
-    elif value == 'SolNode166':
-        return 'Nimus (Eris)'
-    elif value == 'SolNode220':
-        return 'Kokabiel (Europa)'
+    elif value == 'SolNode149':
+        return 'Casta (Ceres)'
+
+    # Saturn
+    elif value == 'SolNode20':
+        return 'Telesto (Saturn)'
+    elif value == 'SolNode31':
+        return 'Anthe (Saturn)'
     elif value == 'SolNode96':
         return 'Titan (Saturn)'
-    elif value == 'SolNode23':
-        return 'Cytherean (Venus)'
-        
+    
+    # Europa
+    elif value == 'SolNode209':
+        return 'Morax (Europa)'
+    elif value == 'SolNode211':
+        return 'Ose (Europa)'
+    elif value == 'SolNode220':
+        return 'Kokabiel (Europa)'
+
+    # Sedna
+    elif value == 'SolNode189':
+        return 'Naga (Sedna)'
+    elif value == 'SolNode191':
+        return 'Marid (Sedna)'
+    
+    # Pluto
+    elif value == 'SolNode43':
+        return 'Cerberus (Pluto)'
+    elif value == 'SolNode56':
+        return 'Cypress (Pluto)'
+    
+    # Phobos
+    elif value == 'SettlementNode2':
+        return 'Skyresh (Phobos)'
+    elif value == 'SettlementNode3':
+        return 'Stickney (Phobos)'
+    
+    # Eris
+    elif value == 'SolNode166':
+        return 'Nimus (Eris)'
+    
+    # Neptune
+    elif value == 'SolNode17':
+        return 'Proteus (Neptune)'
+    elif value == 'SolNode57':
+        return 'Sao (Neptune)'
+    
+    # Jupiter
+    elif value == 'SolNode10':
+        return 'Thebe (Jupiter)'
+    
+    # Void
+    elif value == 'SolNode412':
+        return 'Mithra (Void)'
+
     else:
         return '???'
 
@@ -175,5 +212,9 @@ def item_name(value):
         return 'Morphics'
     elif value == '/Lotus/Types/Items/MiscItems/VoidTearDrop':
         return 'Void Traces'
+    elif value == '/Lotus/Types/Items/MiscItems/OxiumAlloy':
+        return 'Oxium'
+    elif value == '/Lotus/Types/Items/MiscItems/OrokinCell':
+        return 'Orokin Cell'
     else:
         return '???'

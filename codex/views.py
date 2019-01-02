@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
 # Codex: Importing Models
-from .models import Quest, QuestWalkthrough, Companion, Weapon, Stat, Warframe, WarframeAbility
+from .models import Quest, QuestWalkthrough, Item, ItemAttribute, ItemAttributeValue, ItemAttributeText, Companion, Weapon, Stat, Warframe, WarframeAbility
 
 class Codex(TemplateView):
     template_name = 'codex/codex.html'
@@ -33,9 +33,9 @@ class Universe(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Universe, self).get_context_data(**kwargs)
-        context['latest_companions'] = Companion.objects.all().values('name', 'image', 'slug', 'description', 'release_date').order_by('-release_date')[:3]
-        context['latest_warframes'] = Warframe.objects.all().values('name', 'image', 'slug', 'description', 'release_date').order_by('-release_date')[:3]
-        context['latest_weapons'] = Weapon.objects.all().values('name', 'slug', 'image', 'tipe', 'description').order_by('-date_created')[:3]
+        context['latest_companions'] = Item.objects.filter(tipe=2).values('name', 'image', 'slug', 'description', 'release_date').order_by('-release_date')[:3]
+        context['latest_warframes'] = Item.objects.filter(tipe=1).values('name', 'image', 'slug', 'description', 'release_date').order_by('-release_date')[:3]
+        context['latest_weapons'] = Item.objects.filter(tipe=3).values('name', 'slug', 'image', 'tipe', 'description').order_by('-date_created')[:3]
         return context
 
 class Companions(TemplateView):
@@ -43,7 +43,7 @@ class Companions(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Companions, self).get_context_data(**kwargs)
-        context['companions'] = Companion.objects.all().values('name', 'image', 'slug').order_by('name')
+        context['companions'] = Item.objects.filter(tipe=2).values('name', 'image', 'slug').order_by('name')
         return context
 
 class Weapons(TemplateView):
@@ -51,7 +51,7 @@ class Weapons(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Weapons, self).get_context_data(**kwargs)
-        context['weapons'] = Weapon.objects.all().values('name', 'image', 'slug').order_by('name')
+        context['weapons'] = Item.objects.filter(tipe=3).values('name', 'image', 'slug').order_by('name')
         return context
 
 class WeaponsPrimary(TemplateView):
@@ -94,7 +94,7 @@ class Warframes(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Warframes, self).get_context_data(**kwargs)
-        context['warframes'] = Warframe.objects.all().values('name', 'image', 'slug').order_by('name')
+        context['warframes'] = Item.objects.filter(tipe=1).values('name', 'image', 'slug').order_by('name')
         return context
 
 class WarframeDetail(DetailView):
@@ -106,4 +106,16 @@ class WarframeDetail(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(WarframeDetail, self).get_context_data(**kwargs)
         context['abilities'] = WarframeAbility.objects.filter(warframe=self.get_object())
+        return context
+
+class ItemDetail(DetailView):
+    model = Item
+    template_name = 'codex/detail/codex_universe_item_detail.html'
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ItemDetail, self).get_context_data(**kwargs)
+        context['attributes'] = ItemAttributeValue.objects.filter(item=self.object.id).select_related()
+        context['texts'] = ItemAttributeText.objects.filter(item=self.object.id).select_related()
         return context
