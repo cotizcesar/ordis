@@ -32,10 +32,12 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('avatar', 'bio', 'platform')
+        fields = ('avatar', 'bio', 'platform', 'status')
         help_texts = {
             'avatar': 'Only images in JPG and PNG are allowed.',
             'bio': 'Use this space for text, you have a limit of 140 characters.',
+            'platform': 'Select the platform on which you play.',
+            'status': 'If you want to make transactions faster in the Market, you must change your status to Online or In-Game.',
         }
 
 class PostForm(forms.ModelForm):

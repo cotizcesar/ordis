@@ -3,15 +3,7 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 # Core: Importing Models
-from .models import Item, Order
-
-class ItemResource(resources.ModelResource):
-    class Meta:
-        model = Item
-
-@admin.register(Item)
-class ItemAdmin(ImportExportModelAdmin):
-    pass
+from .models import Order
 
 class OrderResource(resources.ModelResource):
     class Meta:

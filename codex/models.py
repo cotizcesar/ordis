@@ -7,7 +7,6 @@ from ckeditor.fields import RichTextField
 # Defines the ability name in the Item Model.
 class ItemAbility(models.Model):
     name = models.CharField(max_length=80)
-    image = models.ImageField(upload_to='codex/item/ability/', default='codex/item/ability/default.png', blank=True)
 
     class Meta:
         ordering = ['name']
@@ -44,7 +43,7 @@ class Item(models.Model):
     slug = models.SlugField()
     tipe = models.ForeignKey(ItemTipe, on_delete=models.CASCADE)
     description = models.TextField(max_length=700)
-    image = models.ImageField(upload_to='codex/items/', default='codex/items/default.png', blank=True)
+    image = models.ImageField(upload_to='codex/item', default='codex/item/default.png', blank=True)
     mastery_rank = models.PositiveIntegerField(default=0)
     is_prime = models.BooleanField(default=False)
     is_tradeable = models.BooleanField(default=False)
@@ -74,7 +73,8 @@ class ItemAbilityValue(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     name = models.ForeignKey(ItemAbility, on_delete=models.CASCADE)
     value = models.TextField(max_length=180)
-
+    image = models.ImageField(upload_to='codex/item/ability', default='codex/item/ability/default.png', blank=True)
+    
     def __str__(self):
         return self.name.name
 

@@ -51,7 +51,7 @@ class Weapons(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Weapons, self).get_context_data(**kwargs)
-        context['weapons'] = Item.objects.filter(tipe=3).values('name', 'image', 'slug').order_by('name')
+        context['weapons'] = Item.objects.filter(tipe=3).values('name', 'image', 'slug', 'release_date').order_by('name')
         return context
 
 class WeaponsPrimary(TemplateView):
@@ -94,7 +94,7 @@ class Warframes(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Warframes, self).get_context_data(**kwargs)
-        context['warframes'] = Item.objects.filter(tipe=1).values('name', 'image', 'slug').order_by('name')
+        context['warframes'] = Item.objects.filter(tipe=1).values('name', 'image', 'slug', 'release_date').order_by('name')
         return context
 
 class WarframeDetail(DetailView):

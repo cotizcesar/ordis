@@ -3,7 +3,7 @@
     {% include 'user/user_thumb.html' %}
 </div>
 <div class="mb-3">
-    <a class="btn btn-success btn-block" href="#" role="button"><i class="fas fa-shopping-cart fa-fw mr-1"></i> Make a Order</a>
+    <a class="btn btn-success btn-block" href="{% url 'order_create' %}" role="button"><i class="fas fa-shopping-cart fa-fw mr-1"></i> Make a Order</a>
 </div>
 {% endif %}
 <div class="mb-3">

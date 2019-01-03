@@ -5,13 +5,13 @@
         <meta property="og:type"               content="website" />
         <meta property="og:title"              content="Ordis.app - {{item.name}}" />
         <meta property="og:description"        content="{{item.description}}" />
-        <meta property="og:image"              content="{{item.image|thumbnail_url:'warframe'|default:'https://via.placeholder.com/510x910'}}" />
+        <meta property="og:image"              content="{{item.image|thumbnail_url:'warframe_detail'|default:'https://via.placeholder.com/510x906'}}" />
         <meta name="twitter:card" content="app" />
         <meta name="twitter:site" content="@cotizcesar" />
         <meta name="twitter:creator" content="@cotizcesar" />{% endblock %}
 {% block head_title %}{{item.name}}{% endblock %}
 {% block content %}
-{% if item.tipe.id == 1 %}
+{% if item.tipe.name == 'Warframe' %}
 <div id="{{item.tipe}}" class="container my-3">
     <div class="row">
         <div class="col-md-3">
@@ -50,12 +50,13 @@
             <hr class="mt-0">
             <div class="row">
                 {% for ability in abilities %}
+                {{ability.image}}
                 <div class="col-md-6 pb-3 small">
-                    <div class="media bg-black-t px-3 pt-3">
+                    <div class="media bg-black-t p-2">
                         <img src="{{ability.image|thumbnail_url:'50x50'|default:'https://via.placeholder.com/50x50'}}" class="mr-3" alt="{{ability.name}} - {{ability.value}}">
                         <div class="media-body">
                             <p class="text-info text-uppercase mb-1">{{ability.name}} <span class="text-muted float-right small">Keyboard [{{ability.id}}]</span></p>
-                            <p>{{ability.value}}</p>
+                            <p class="mt-1 mb-0">{{ability.value}}</p>
                         </div>
                     </div>
                 </div>

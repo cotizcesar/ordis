@@ -4,21 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Codex: Importing Models
-from codex.models import Companion, Warframe, Weapon
-
-class Item(models.Model):
-    TIPE_CHOICES = (
-        ('C', 'Companion'),
-        ('M', 'Mods'),
-        ('W', 'Warframe'),
-        ('E', 'Weapon'),
-    )
-    tipe = models.CharField(default='E', max_length=1, choices=TIPE_CHOICES)
-    companion = models.ForeignKey(Companion, on_delete=models.CASCADE, null=True, blank=True)
-    warframe = models.ForeignKey(Warframe, on_delete=models.CASCADE, null=True, blank=True)
-    weapon = models.ForeignKey(Weapon, on_delete=models.CASCADE, null=True, blank=True)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
+from codex.models import Item
 
 class Order(models.Model):
     WANT_CHOICES = (

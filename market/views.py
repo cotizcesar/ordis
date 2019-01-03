@@ -6,12 +6,11 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.views.generic import TemplateView, ListView, FormView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-
-#TEST
-#from codex.models import Companion, Warframe, Weapon
+# Codex: Importing Models
+from codex.models import Item
 
 # Market: Importing Models
-from .models import Item, Order
+from .models import Order
 
 # Market: Importing Forms
 from .forms import OrderForm
@@ -25,19 +24,19 @@ class Market(TemplateView):
         context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:25]
         return context
 
-class ItemDetail(DetailView):
-    model = Item
-    template_name = "item_detail.html"
-    pk_url_kwarg = "item_id"
-    slug_url_kwarg = 'slug'
-    query_pk_and_slug = True
+#class ItemDetail(DetailView):
+#    model = Item
+#    template_name = "item_detail.html"
+#    pk_url_kwarg = "item_id"
+#    slug_url_kwarg = 'slug'
+#    query_pk_and_slug = True
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(ItemDetail, self).get_context_data(**kwargs)
-        context['wts'] = Order.objects.all().filter(item=self.get_object(), want='S').exclude(is_active=False)
-        context['wtb'] = Order.objects.all().filter(item=self.get_object(), want='B').exclude(is_active=False)
+#    def get_context_data(self, *args, **kwargs):
+#        context = super(ItemDetail, self).get_context_data(**kwargs)
+#        context['wts'] = Order.objects.all().filter(item=self.get_object(), want='S').exclude(is_active=False)
+#        context['wtb'] = Order.objects.all().filter(item=self.get_object(), want='B').exclude(is_active=False)
         #context['childs'] = Item.objects.filter(parent=self.get_object())
-        return context
+#        return context
 
 # Order: Create View
 # Description: Used to create a new order.
