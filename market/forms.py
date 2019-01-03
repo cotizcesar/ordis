@@ -7,7 +7,6 @@ from codex.models import Item
 from .models import Order
 
 class OrderForm(forms.ModelForm):
-    #form.base_fields['item'].queryset = Item.objects.filter(is_tradeable=True)
     class Meta:
         model = Order
         want = forms.ModelChoiceField(queryset=Order.objects.all(), widget=forms.RadioSelect, empty_label=None)
@@ -16,4 +15,4 @@ class OrderForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['item'].queryset = Item.objects.filter(is_tradeable=True)
+        self.fields['item'].queryset = Item.objects.filter(is_tradeable=True).exclude(tipe=4)

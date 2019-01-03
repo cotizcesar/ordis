@@ -1,6 +1,5 @@
 body{
     background-color: #202D3D;
-    color: #fff;
     font-family: 'Open Sans', sans-serif;
 }
 /* Theme: Warframe */
@@ -14,6 +13,7 @@ a:hover{
 /* Theme: Warframe - Background */
 .bg-title{
     background-color: #121B25;
+    color: #c6d4df;
 }
 .bg-box{
     background-color: #16202D;

@@ -7,8 +7,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block sitename %}Ordis.app - {% endblock %}{% block head_title %}{% endblock %}</title>
-        {% block meta_extra %}
-        <meta property="og:url"                content="{{request.build_absolute_uri}}" />
+
+        <!-- OpenGraph: General -->
+        {% block meta_extra %}<meta property="og:url"                content="{{request.build_absolute_uri}}" />
         <meta property="og:type"               content="website" />
         <meta property="og:title"              content="Ordis.app" />
         <meta property="og:description"        content="Open-Source SocialMarket with Alerts, Character Builder and Codex for Warframe." />
@@ -16,7 +17,11 @@
         <meta name="twitter:card" content="app" />
         <meta name="twitter:site" content="@cotizcesar" />
         <meta name="twitter:creator" content="@cotizcesar" />{% endblock %}
+
+        <!-- Facebook: App ID -->
         <meta property="fb:app_id" content="950703808651111" />
+
+        <!-- Favicon's -->
         <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
         <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/apple-icon-57x57.png' %}">
         <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/apple-icon-60x60.png' %}">
@@ -35,18 +40,19 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{% static 'img/ms-icon-144x144.png' %}">
         <meta name="theme-color" content="#ffffff">
-        {% bootstrap_css %}
+
+        <!-- Google Fonts-CDN: OpenSans Font-->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+        <!-- Select2-CDN: CSS Requirement -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+        <!-- Bootstrap 4-CDN: Main CSS -->
+        {% bootstrap_css %}
+
+        <!-- Ordis.app: Main CSS -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        {% bootstrap_javascript jquery='full' %}
-        <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-        <script src="{% static 'js/infinite.min.js' %}"></script>
-        <script src="{% static 'js/moment-with-locales.js' %}"></script>
-        <script src="//cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-        <script src="{% static 'js/typeahead.bundle.js' %}"></script>
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130957387-1"></script>
         <script>
@@ -56,7 +62,6 @@
 
             gtag('config', 'UA-130957387-1');
         </script>
-        <!-- Global site tag (gtag.js) - Google Analytics - End -->
     </head>
     <body class="small pt-1">
         <!-- Load Facebook SDK for JavaScript -->
@@ -93,21 +98,33 @@
             return t;
             }(document, "script", "twitter-wjs"));
         </script>
-        <!-- Twitter: Share Js end -->
+
+        <!-- Bootstrap 4-CDN: (jQuery, Popper & Bootstrap) -->
+        {% bootstrap_javascript jquery='full' %}
+
+        <!-- jQuery Waypoints-CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+
+        <!-- Infinite-CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/shortcuts/infinite.min.js"></script>
+        
+        <!-- jQuery Countdown-CDN -->
+        <script src="//cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+
+        <!-- Fontawesome-CDN -->
+        <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+        <!-- Select2-CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+        <!-- Typeaheadjs-CDN -->
+        <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
         <script>
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
-            })
-            $('#myModal').on('shown.bs.modal', function () {
-                $('#myInput').trigger('focus')
-            })
-        </script>
-        <!--<script>
             // Select2: Init
             $(document).ready(function() {
                 $('#id_item').select2({
+                    theme: "classic",
                     placeholder: 'Select an option',
-                    theme: 'classic',
                     width: '100%'
                 });
             });
@@ -115,6 +132,6 @@
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
             })
-        </script>-->
+        </script>
     </body>
 </html>
