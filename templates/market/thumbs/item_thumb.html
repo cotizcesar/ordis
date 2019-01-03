@@ -2,7 +2,13 @@
 <div class="media bg-black-t mb-3{% if order.want == 'B' %} border-right border-success{% elif order.want == 'S' %} border-right border-danger{% endif %}">
     <img src="{{order.image|thumbnail_url:'50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{{order.name}}">
     <div class="media-body pl-3 pr-2">
-        <p class="text-info my-1">{{order.item}} <span class="text-muted">[{{order.quantity}} <i class="fas fa-boxes fa-fw small"></i>]</span> <a href="{% url 'pinax_messages:message_user_create' order.user.id %}" class="badge badge-info text-white float-right mt-1 ml-1">Message</a> <a href="#" class="badge badge-info text-white float-right mt-1 ">/w</a></p>
+        <p class="text-info my-1">
+            {{order.item}} 
+            <span class="text-muted">[{{order.quantity}} <i class="fas fa-boxes fa-fw small"></i>]</span> 
+            <a href="{% url 'pinax_messages:message_user_create' order.user.id %}" class="badge badge-info text-white float-right mt-1 ml-1">Message</a> 
+            <input type="text" class="d-none" value="/w {{order.user.username}} Hi! I want to {{order.get_want_display}}: {{order.item}} for {{order.price}} platinum. (Ordis.app)" id="myInput">
+            <button type="button" onclick="myFunction()" class="badge badge-info text-white float-right mt-1" >/w </button>
+        </p>
         <p class="my-1">
             <a class="small mr-1" href="{% url 'userprofile' order.user.username %}">{{order.user.username}}</a>
             {% if order.user.userprofile.status == 'O' %}

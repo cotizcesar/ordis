@@ -64,6 +64,7 @@
         </script>
     </head>
     <body class="small pt-1">
+
         <!-- Load Facebook SDK for JavaScript -->
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
@@ -73,13 +74,15 @@
             js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-        <!-- Load Facebook SDK for JavaScript End -->
+
         {% include 'header.html' %}
         <main class="py-5">
             {% block content %}{% endblock %}
         </main>
         {% include 'footer.html' %}
+
         {% block extras %}{% endblock %}
+
         <!-- Twitter: Share Js -->
         <script>window.twttr = (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0],
@@ -119,6 +122,8 @@
 
         <!-- Typeaheadjs-CDN -->
         <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+
+        <!-- Select2: Init Function -->
         <script>
             // Select2: Init
             $(document).ready(function() {
@@ -132,6 +137,30 @@
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
             })
+        </script>
+        <script>
+            function myFunction() {
+                /* Get the text field */
+                var copyText = $("myInput").val();
+
+                /* Select the text field */
+                copyText.select();
+
+                /* Copy the text inside the text field */
+                document.execCommand("copy");
+
+                /* Alert the copied text */
+                alert("Copied the text: " + copyText.value);
+            }
+        </script>
+
+        <!-- Market: Copy On Click Function -->
+        <script type="text/javascript">
+            $('#copy_on_click').click(function() {
+                $(this).children('span').focus();
+                $(this).children('span').select();
+                document.execCommand('copy');
+            });
         </script>
     </body>
 </html>
