@@ -17,7 +17,7 @@
             <h2 class="h4 mt-3 mb-2"><i class="fas fa-envelope fa-fw text-info mr-1"></i> {{thread.subject}} <a href="{% url "pinax_messages:thread_delete" thread.pk %}"><i class="fas fa-times fa-fw text-muted float-right mt-1"></i></a></h2>
             {% for message in thread.messages.all %}
             <div class="media bg-box pt-3 px-3 my-3">
-                <img class="mr-3 mb-3 rounded-circle" src="{{message.sender.userprofile.avatar|thumbnail_url:'avatar_50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{% if message.sender.get_full_name %}{{message.sender.get_full_name}}{% else %}{{message.sender.username}}{% endif %} avatar.">
+                <img class="mr-3 mb-3 rounded-circle" src="{{message.sender.userprofile.avatar|thumbnail_url:'50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{% if message.sender.get_full_name %}{{message.sender.get_full_name}}{% else %}{{message.sender.username}}{% endif %} avatar.">
                 <div class="media-body">
                     <p class="mt-0 mb-1">
                         {% if message.sender.get_full_name %}

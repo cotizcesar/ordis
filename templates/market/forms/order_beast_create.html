@@ -11,7 +11,7 @@
             <h1 class="h3"><i class="fas fa-columns fa-fw text-info mr-1"></i> Create an Order</h1>
             <p class="text-muted m-0">Buy and sell any tradable item in the game. Warframes, Weapons, Companions and more.</p>
             <hr>
-            <form action="{% url 'order_create' %}" method="post">
+            <form action="{% url 'order_beast_create' %}" enctype="multipart/form-data" method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
                 {% buttons %}

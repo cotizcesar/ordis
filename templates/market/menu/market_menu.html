@@ -3,7 +3,11 @@
     {% include 'user/user_thumb.html' %}
 </div>
 <div class="mb-3">
-    <a class="btn btn-success btn-block" href="{% url 'order_create' %}" role="button"><i class="fas fa-shopping-cart fa-fw mr-1"></i> Make a Order</a>
+    {% if request.resolver_match.url_name == 'market' %}
+    <a class="btn btn-success btn-block" href="{% url 'order_create' %}" role="button"><i class="fas fa-shopping-cart fa-fw mr-1"></i> Create a Order</a>
+    {% elif request.resolver_match.url_name == 'market_beast' %}
+    <a class="btn btn-success btn-block" href="{% url 'order_beast_create' %}" role="button"><i class="fas fa-shopping-cart fa-fw mr-1"></i> Create a Order</a>
+    {% endif %}
 </div>
 {% endif %}
 <div class="mb-3">
@@ -23,7 +27,7 @@
                 <a class="nav-link disabled{% if request.resolver_match.url_name == 'explore_users' %} bg-black-t text-white{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Sentinels</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled{% if request.resolver_match.url_name == 'explore_users' %} bg-black-t text-white{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Kubrows & Kavats</a>
+                <a class="nav-link{% if request.resolver_match.url_name == 'market_beast' %} bg-black-t text-white{% endif %}" href="{% url 'market_beast' %}"><i class="fas fa-chevron-right fa-fw mr-1"></i> Kubrows & Kavats</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled{% if request.resolver_match.url_name == 'explore_users' %} bg-black-t text-white{% endif %}" href="#"><i class="fas fa-chevron-right fa-fw mr-1"></i> Relics & Arcanes</a>

@@ -14,7 +14,7 @@
                         {% if childs %}
                         <div class="text-center">
                             {% for item in childs %}
-                                <a href="{% url 'item_detail' item.slug %}"><img class="img-fluid bg-light rounded-circle w-auto mt-3 mx-1" src="{{item.image|thumbnail_url:'item_child'|default:'/media/item/item_child.png'}}" data-toggle="tooltip" data-placement="bottom" title="{{item.name}}" alt="{{item.name}} image."></a>
+                                <a href="{% url 'item_detail' item.slug %}"><img class="img-fluid bg-light rounded-circle w-auto mt-3 mx-1" src="{{item.image|thumbnail_url:'50x50'|default:'/media/item/50x50.png'}}" data-toggle="tooltip" data-placement="bottom" title="{{item.name}}" alt="{{item.name}} image."></a>
                             {% endfor %}
                         </div>
                         {% endif %}

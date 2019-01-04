@@ -1,16 +1,26 @@
 {% load thumbnail %}
 <div class="media bg-black-t mb-3{% if order.want == 'B' %} border-right border-success{% elif order.want == 'S' %} border-right border-danger{% endif %}">
-    <img src="{{order.image|thumbnail_url:'50x50'|default:'https://via.placeholder.com/50x50'}}" alt="{{order.name}}">
-    <div class="media-body pl-3 pr-2">
+    {% if order.item.tipe.name == 'Beast' %}
+    <img src="{{order.image|thumbnail_url:'89x89'|default:'https://via.placeholder.com/89x89'}}" alt="{{order.item}} - {{order.price}} Platinum">
+    {% else %}
+    <img src="{{order.item.image|thumbnail_url:'66x66'|default:'https://via.placeholder.com/66x66'}}" alt="{{order.item}} - {{order.price}} Platinum">
+    {% endif %}
+    <div class="media-body px-3 py-2">
         <p class="text-info my-1">
             {{order.item}} 
+            {% if not order.item.tipe.name == 'Beast' %}
             <span class="text-muted">[{{order.quantity}} <i class="fas fa-boxes fa-fw small"></i>]</span> 
+            {% endif %}
             <a href="{% url 'pinax_messages:message_user_create' order.user.id %}" class="badge badge-info text-white float-right mt-1 ml-1">Message</a> 
+            <a href="{% url 'pinax_messages:message_user_create' order.user.id %}" class="badge badge-info text-white float-right mt-1 ml-1">/w</a> 
             <input type="text" class="d-none" value="/w {{order.user.username}} Hi! I want to {{order.get_want_display}}: {{order.item}} for {{order.price}} platinum. (Ordis.app)" id="myInput">
-            <button type="button" onclick="myFunction()" class="badge badge-info text-white float-right mt-1" >/w </button>
+            <button type="button" class="d-none" onclick="myFunction()" class="badge badge-info text-white float-right mt-1" >/w </button>
         </p>
+        {% if order.item.tipe.name == 'Beast' %}
+        <p class="text-muted my-1">[{{order.quantity}} Imprints <i class="fas fa-boxes fa-fw small"></i>]</p>
+        {% endif %}
         <p class="my-1">
-            <a class="small mr-1" href="{% url 'userprofile' order.user.username %}">{{order.user.username}}</a>
+            <a class="mr-1" href="{% url 'userprofile' order.user.username %}">{{order.user.username}}</a>
             {% if order.user.userprofile.status == 'O' %}
             <span class="badge badge-success">Online</span>
             {% elif order.user.userprofile.status == 'I' %}
@@ -29,7 +39,7 @@
             <span class="badge badge-danger">NSW</span>
             {% endif %}
 
-            <span class="float-right mt-1 small">{{order.price}} Platinum</span>
+            <span class="float-right"><span class="font-weight-bold{% if order.want == 'S' %} text-danger{% elif order.want == 'B' %} text-success{% endif %}">{{order.price}}</span> Platinum</span>
         </p>
     </div>
 </div>
