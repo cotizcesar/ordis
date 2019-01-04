@@ -2,6 +2,8 @@
 <div class="media bg-black-t mb-3{% if order.want == 'B' %} border-right border-success{% elif order.want == 'S' %} border-right border-danger{% endif %}">
     {% if order.item.tipe.name == 'Beast' %}
     <img src="{{order.image|thumbnail_url:'89x89'|default:'https://via.placeholder.com/89x89'}}" alt="{{order.item}} - {{order.price}} Platinum">
+    {% elif order.item.tipe.name == 'Warframe' %}
+    <img src="{{order.item.image|thumbnail_url:'warframe_66x66'|default:'https://via.placeholder.com/66x66'}}" alt="{{order.item}} - {{order.price}} Platinum">
     {% else %}
     <img src="{{order.item.image|thumbnail_url:'66x66'|default:'https://via.placeholder.com/66x66'}}" alt="{{order.item}} - {{order.price}} Platinum">
     {% endif %}

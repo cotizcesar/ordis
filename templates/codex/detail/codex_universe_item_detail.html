@@ -50,7 +50,6 @@
             <hr class="mt-0">
             <div class="row">
                 {% for ability in abilities %}
-                {{ability.image}}
                 <div class="col-md-6 pb-3 small">
                     <div class="media bg-black-t p-2">
                         <img src="{{ability.image|thumbnail_url:'50x50'|default:'https://via.placeholder.com/50x50'}}" class="mr-3" alt="{{ability.name}} - {{ability.value}}">

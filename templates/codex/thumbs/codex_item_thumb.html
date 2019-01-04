@@ -12,7 +12,7 @@
         {% if not quests %}
         <img src="{{item.image|thumbnail_url:'50x50'|default:'https://via.placeholder.com/50x50'}}" class="mr-3" alt="{{item.name}}">
         {% else %}
-        <img src="{{item.image|thumbnail_url:'warframe_50x50'|default:'https://via.placeholder.com/510x287'}}" class="mr-3" alt="{{item.name}}">
+        <img src="{{item.image|thumbnail_url:'warframe_50x50'|default:'https://via.placeholder.com/50x50'}}" class="mr-3" alt="{{item.name}}">
         {% endif %}
         <div class="media-body">
             <p class="text-info my-1">{{item.name}}</p>
