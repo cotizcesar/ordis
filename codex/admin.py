@@ -13,7 +13,7 @@ class ItemResource(resources.ModelResource):
 
 @admin.register(Item)
 class ItemAdmin(ImportExportModelAdmin):
-    list_display = ('name', 'slug', 'tipe', 'is_prime', 'is_tradeable')
+    list_display = ('name', 'slug', 'tipe', 'image', 'is_prime', 'is_tradeable')
     list_filter = ('tipe', 'is_prime', 'is_tradeable')
     pass
 
