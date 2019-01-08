@@ -67,6 +67,8 @@ def human_time(value):
 def hubs_name(value):
     if value == 'MercuryHUB':
         return 'Larunda Relay'
+    elif value == 'EarthHUB':
+        return 'Strata Relay'
     else:
         return '???'
 
@@ -118,7 +120,9 @@ def solnode_name(value):
     # Earth
     if value == 'SolNode75':
         return 'Cervantes (Earth)'
-    
+    elif value == 'SolNode39':
+        return 'Everest (Earth)'
+
     # Venus    
     elif value == 'SolNode22':
         return 'Tessera (Venus)'
@@ -136,6 +140,8 @@ def solnode_name(value):
         return 'Lares (Mercury)'
     elif value == 'SolNode223':
         return 'Boethius (Mercury)'
+    elif value == 'SolNode119':
+        return 'Caloris (Mercury)'
     
     # Ceres
     elif value == 'SolNode138':
@@ -158,14 +164,19 @@ def solnode_name(value):
         return 'Morax (Europa)'
     elif value == 'SolNode211':
         return 'Ose (Europa)'
+    elif value == 'SolNode217':
+        return 'Orias (Europa)'
     elif value == 'SolNode220':
-        return 'Kokabiel (Europa)'
+        return 'Kokabiel (Europa)'        
 
     # Sedna
     elif value == 'SolNode189':
         return 'Naga (Sedna)'
     elif value == 'SolNode191':
         return 'Marid (Sedna)'
+    elif value == 'SolNode196':
+        return 'Charybdis (Sedna)'
+        
     
     # Pluto
     elif value == 'SolNode43':
@@ -178,6 +189,9 @@ def solnode_name(value):
         return 'Skyresh (Phobos)'
     elif value == 'SettlementNode3':
         return 'Stickney (Phobos)'
+    elif value == 'SettlementNode14':
+        return 'Shklovsky (Phobos)'
+        
     
     # Eris
     elif value == 'SolNode166':
@@ -188,6 +202,8 @@ def solnode_name(value):
         return 'Proteus (Neptune)'
     elif value == 'SolNode57':
         return 'Sao (Neptune)'
+    elif value == 'SolNode84':
+        return 'Nereid (Neptune)'
     
     # Jupiter
     elif value == 'SolNode10':
@@ -197,6 +213,9 @@ def solnode_name(value):
     elif value == 'SolNode412':
         return 'Mithra (Void)'
 
+    # Uranus
+    elif value == 'SolNode34':
+        return 'Sycorax (Uranus)'
     else:
         return '???'
 
@@ -216,5 +235,16 @@ def item_name(value):
         return 'Oxium'
     elif value == '/Lotus/Types/Items/MiscItems/OrokinCell':
         return 'Orokin Cell'
+    else:
+        return '???'
+
+@register.filter(name='sortie_condition')
+def item_name(value):
+    if value == 'SORTIE_MODIFIER_HAZARD_COLD':
+        return 'Extreme Cold'
+    elif value == 'SORTIE_MODIFIER_MAGNETIC':
+        return 'Enemy Elemental Enhancement (Magnetic)'
+    elif value == 'SORTIE_MODIFIER_PUNCTURE':
+        return 'Enemy Physical Enhancement (Puncture)'
     else:
         return '???'
