@@ -18,7 +18,7 @@ from django.urls import include, path
 from django.conf.urls import url
 
 # userprofile: Importing Views
-from .views import Codex, Quests, QuestDetail, ItemDetail, Companions, Universe, Weapons, WeaponsPrimary, WeaponsSecondary, WeaponsMelee, WeaponDetail, Warframes, WarframeDetail
+from .views import Codex, Quests, QuestDetail, ItemDetail, Companions, Universe, Weapons, WeaponDetail, Warframes, WarframeDetail
 
 urlpatterns = [
     path('codex/', Codex.as_view(), name='codex'),
@@ -27,11 +27,6 @@ urlpatterns = [
     path('codex/universe', Universe.as_view(), name='codex_universe'),
     path('codex/universe/companions', Companions.as_view(), name='codex_universe_companions'),
     path('codex/universe/weapons', Weapons.as_view(), name='codex_universe_weapons'),
-    path('codex/universe/weapons/primary', WeaponsPrimary.as_view(), name='codex_universe_weapons_primary'),
-    path('codex/universe/weapons/secondary', WeaponsSecondary.as_view(), name='codex_universe_weapons_secondary'),
-    path('codex/universe/weapons/melee', WeaponsMelee.as_view(), name='codex_universe_weapons_melee'),
-    url(r'codex/universe/weapon/(?P<slug>[-\w]+)$', WeaponDetail.as_view(), name='codex_universe_weapon_detail'),
     path('codex/universe/warframes', Warframes.as_view(), name='codex_universe_warframes'),
-    url(r'codex/universe/warframe/(?P<slug>[-\w]+)$', WarframeDetail.as_view(), name='codex_universe_warframe_detail'),
     url(r'codex/universe/item/(?P<slug>[-\w]+)$', ItemDetail.as_view(), name='codex_universe_item_detail'),
 ]

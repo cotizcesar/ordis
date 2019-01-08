@@ -2,7 +2,7 @@
 {% if quests %}
 <a href="{% url 'codex_quest_detail' item.slug %}">
 {% elif companions %}
-<a href="#">
+<a href="{% url 'codex_universe_item_detail' item.slug %}">
 {% elif weapons %}
 <a href="{% url 'codex_universe_item_detail' item.slug %}">
 {% elif warframes %}
@@ -16,7 +16,7 @@
         {% endif %}
         <div class="media-body">
             <p class="text-info my-1">{{item.name}}</p>
-            <p class="my-1 small">{{item.release_date}}</p>
+            <p class="my-1 small">Released: {{item.release_date}}</p>
         </div>
     </div>
 </a>

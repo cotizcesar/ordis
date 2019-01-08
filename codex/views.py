@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
 # Codex: Importing Models
-from .models import Quest, QuestWalkthrough, Item, ItemAttribute, ItemAttributeValue, ItemAbilityValue, Companion, Weapon, Stat, Warframe, WarframeAbility
+from .models import Quest, QuestWalkthrough, Item, ItemAttribute, ItemAttributeValue, ItemAbilityValue, Weapon, Stat, Warframe
 
 class Codex(TemplateView):
     template_name = 'codex/codex.html'
@@ -43,7 +43,7 @@ class Companions(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Companions, self).get_context_data(**kwargs)
-        context['companions'] = Item.objects.filter(tipe=2).values('name', 'image', 'slug').order_by('name')
+        context['companions'] = Item.objects.filter(tipe=2).values('name', 'image', 'slug', 'release_date').order_by('name')
         return context
 
 class Weapons(TemplateView):
@@ -52,30 +52,6 @@ class Weapons(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(Weapons, self).get_context_data(**kwargs)
         context['weapons'] = Item.objects.filter(tipe=3).values('name', 'image', 'slug', 'release_date').order_by('name')
-        return context
-
-class WeaponsPrimary(TemplateView):
-    template_name = 'codex/codex.html'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(WeaponsPrimary, self).get_context_data(**kwargs)
-        context['weapons'] = Weapon.objects.filter(tipe='P').values('name', 'image', 'slug').order_by('name')
-        return context
-
-class WeaponsSecondary(TemplateView):
-    template_name = 'codex/codex.html'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(WeaponsSecondary, self).get_context_data(**kwargs)
-        context['weapons'] = Weapon.objects.filter(tipe='S').values('name', 'image', 'slug').order_by('name')
-        return context
-
-class WeaponsMelee(TemplateView):
-    template_name = 'codex/codex.html'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(WeaponsMelee, self).get_context_data(**kwargs)
-        context['weapons'] = Weapon.objects.filter(tipe='M').values('name', 'image', 'slug').order_by('name')
         return context
 
 class WeaponDetail(DetailView):
