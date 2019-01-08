@@ -64,6 +64,9 @@ class ItemAttributeValue(models.Model):
     name = models.ForeignKey(ItemAttribute, on_delete=models.CASCADE)
     value = models.PositiveIntegerField()
 
+    class Meta:
+        ordering = ['item']
+
     def __str__(self):
         return self.name.name
 
@@ -72,9 +75,12 @@ class ItemAttributeValue(models.Model):
 class ItemAbilityValue(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     name = models.ForeignKey(ItemAbility, on_delete=models.CASCADE)
-    value = models.TextField(max_length=180)
+    value = models.TextField(max_length=210)
     image = models.ImageField(upload_to='codex/item/ability', default='codex/item/ability/default.png', blank=True)
     
+    class Meta:
+        ordering = ['item']
+
     def __str__(self):
         return self.name.name
 
