@@ -60,7 +60,7 @@ def unix_to_readeable(value):
 def human_time(value):
     value = value[:-3]
     value = int(value)
-    value = datetime.fromtimestamp(value)
+    value = datetime.fromtimestamp(value) + timedelta(hours=7)
     return value.strftime('%m/%d/%Y %I:%M:%S') # %I:%M:%S MM/DD/YYYY hh:mm:ss
 
 @register.filter(name='hubs_name')
