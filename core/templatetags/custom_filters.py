@@ -128,10 +128,14 @@ def solnode_name(value):
         return 'Tessera (Venus)'
     elif value == 'SolNode23':
         return 'Cytherean (Venus)'
+    elif value == 'SolNode101':
+        return 'Kiliken (Venus)'        
     elif value == 'SolNode107':
         return 'Venera (Venus)'
     
     # Mars
+    elif value == 'SolNode14':
+        return 'Ultor (Mars)'    
     elif value == 'SolNode68':
         return 'Vallis (Mars)'
     
@@ -144,6 +148,8 @@ def solnode_name(value):
         return 'Caloris (Mercury)'
     
     # Ceres
+    elif value == 'SolNode137':
+        return 'Nuovo (Ceres)'
     elif value == 'SolNode138':
         return 'Ludi (Ceres)'
     elif value == 'SolNode140':
@@ -179,10 +185,13 @@ def solnode_name(value):
         
     
     # Pluto
+    elif value == 'SolNode4':
+        return 'Acheron (Pluto)'
     elif value == 'SolNode43':
         return 'Cerberus (Pluto)'
     elif value == 'SolNode56':
         return 'Cypress (Pluto)'
+        
     
     # Phobos
     elif value == 'SettlementNode2':
@@ -191,17 +200,21 @@ def solnode_name(value):
         return 'Stickney (Phobos)'
     elif value == 'SettlementNode14':
         return 'Shklovsky (Phobos)'
-        
+    elif value == 'SettlementNode15':
+        return 'Sharpless (Phobos)'
     
     # Eris
     elif value == 'SolNode166':
         return 'Nimus (Eris)'
     
     # Neptune
+    
     elif value == 'SolNode17':
         return 'Proteus (Neptune)'
     elif value == 'SolNode57':
         return 'Sao (Neptune)'
+    elif value == 'SolNode62':
+        return 'Neso (Neptune)'        
     elif value == 'SolNode84':
         return 'Nereid (Neptune)'
     
@@ -235,6 +248,8 @@ def item_name(value):
         return 'Oxium'
     elif value == '/Lotus/Types/Items/MiscItems/OrokinCell':
         return 'Orokin Cell'
+    elif value == '/Lotus/Types/Items/MiscItems/PolymerBundle':
+        return 'Polymer Bundle'
     else:
         return '???'
 
@@ -246,5 +261,11 @@ def item_name(value):
         return 'Enemy Elemental Enhancement (Magnetic)'
     elif value == 'SORTIE_MODIFIER_PUNCTURE':
         return 'Enemy Physical Enhancement (Puncture)'
+    elif value == 'SORTIE_MODIFIER_EXIMUS':
+        return 'Eximus Stronghold'
+    elif value == 'SORTIE_MODIFIER_SHIELDS':
+        return 'Augmented Enemy Shields'
+    elif value == 'SORTIE_MODIFIER_SNIPER_ONLY':
+        return 'Sniper Only'        
     else:
         return '???'

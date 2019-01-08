@@ -19,36 +19,9 @@
     <div class="row bg-black-t pb-3">
         <div class="col-md-8">
             {% include 'alerts/modules/alerts_module.html' %}
-            <div class="sorties mb-3">
-                <h2 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Sorties</h2>
-                <p class="text-muted m-0">A fight that never ends between the Grineer, Corpus and Infested. Here you can see all the Invasions. {% for sortie in alerts.Sorties %}<span class="float-right badge badge-info p-1" data-countdown="{{sortie.Expiry.date.numberLong|human_time}}"></span>{% endfor %}</p>
-                <hr>
-                {% for sortie in alerts.Sorties %}
-                    {% for sortie in sortie.Variants %}
-                    <div class="media bg-black-t p-3 border-top border-bottom border-dark">
-                        <img src="https://via.placeholder.com/57x57" class="mr-3" alt="...">
-                        <div class="media-body">
-                            <p id="{{sortie.node}}" class="m-0">
-                                <span class="text-info font-weight-bold">{{sortie.node|solnode_name}} </span>
-                                Level: 
-                                {% if forloop.first %}
-                                50 - 60
-                                {% elif forloop.last %}
-                                80 - 100
-                                {% else %}
-                                65 - 80
-                                {% endif %}
-                            </p>
-                            <p id="{{sortie.missionType}}" class="font-weight-bold m-0">Mission: {{sortie.missionType|mission_name}}</p>
-                            <p id="{{sortie.modifierType}}" class="font-weight-bold m-0">Conditions: {{sortie.modifierType|sortie_condition}}</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                {% endfor %}
-            </div>
-            <hr>
+            {% include 'alerts/modules/sorties_module.html' %}
             <div class="invasions mb-3">
-                <h2 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Invasions</h2>
+                <h2 class="h3 mt-3 mb-2"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Invasions (Work-in-Progress)</h2>
                 <p class="text-muted m-0">A fight that never ends between the Grineer, Corpus and Infested. Here you can see all the Invasions.</p>
                 <hr>
                 <table class="table table-dark">
