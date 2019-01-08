@@ -1,11 +1,7 @@
 {% load thumbnail %}
 {% if quests %}
 <a href="{% url 'codex_quest_detail' item.slug %}">
-{% elif companions %}
-<a href="{% url 'codex_universe_item_detail' item.slug %}">
-{% elif weapons %}
-<a href="{% url 'codex_universe_item_detail' item.slug %}">
-{% elif warframes %}
+{% else %}
 <a href="{% url 'codex_universe_item_detail' item.slug %}">
 {% endif %}
     <div id="{{item.name}}" class="media bg-black-t">
