@@ -14,7 +14,17 @@
 {% if item.tipe.name == 'Companion' %}
 <div id="{{item.tipe}}" class="container my-3">
     <div class="row">
-        <div class="col-md-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-black-t">
+                <li class="breadcrumb-item"><a href="{% url 'codex' %}"><i class="fas fa-book-open fa-fw text-info mr-1"></i> Codex</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'codex_universe' %}">Universe</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'codex_universe_companions' %}">Companions</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{item.name}}</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-md-3 py-3 bg-black-t">
             <img class="img-fluid bg-black-t" src="{{item.image|thumbnail_url:'warframe_detail'|default:'https://via.placeholder.com/510x906'}}">
         </div>
         <div class="col-md-9 pt-3 bg-black-t">
@@ -66,6 +76,16 @@
 </div>
 {% elif item.tipe.name == 'Warframe' %}
 <div id="{{item.tipe}}" class="container my-3">
+    <div class="row">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-black-t">
+                <li class="breadcrumb-item"><a href="{% url 'codex' %}"><i class="fas fa-book-open fa-fw text-info mr-1"></i> Codex</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'codex_universe' %}">Universe</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'codex_universe_warframes' %}">Warframes & Archwings</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{item.name}}</li>
+            </ol>
+        </nav>
+    </div>
     <div class="row">
         <div class="col-md-3 py-3 bg-black-t">
             <img class="img-fluid bg-black-t" src="{{item.image|thumbnail_url:'warframe_detail'|default:'https://via.placeholder.com/510x906'}}">

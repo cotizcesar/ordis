@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from django.db.models import Q
+
 # Django: Generic CBV
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
@@ -43,7 +45,7 @@ class Companions(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Companions, self).get_context_data(**kwargs)
-        context['companions'] = Item.objects.filter(tipe=2).values('name', 'image', 'slug', 'release_date').order_by('name')
+        context['companions'] = Item.objects.filter(Q(tipe=4) | Q(tipe=2)).values('name', 'image', 'slug', 'release_date').order_by('name')
         return context
 
 class Weapons(TemplateView):
