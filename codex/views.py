@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 
 # Codex: Importing Models
-from .models import Quest, QuestWalkthrough, Item, ItemAttribute, ItemAttributeValue, ItemAbilityValue, Weapon, Stat, Warframe
+from .models import Quest, QuestWalkthrough, Item, ItemAttribute, ItemAttributeValue, ItemAbilityValue
 
 class Codex(TemplateView):
     template_name = 'codex/codex.html'
@@ -56,34 +56,12 @@ class Weapons(TemplateView):
         context['weapons'] = Item.objects.filter(tipe=3).values('name', 'image', 'slug', 'release_date').order_by('name')
         return context
 
-class WeaponDetail(DetailView):
-    model = Weapon
-    template_name = 'codex/detail/codex_universe_weapon_detail.html'
-    slug_field = 'slug'
-    slug_url_kwarg = 'slug'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(WeaponDetail, self).get_context_data(**kwargs)
-        context['stats'] = Stat.objects.filter(weapon=self.get_object())
-        return context
-
 class Warframes(TemplateView):
     template_name = 'codex/codex.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(Warframes, self).get_context_data(**kwargs)
         context['warframes'] = Item.objects.filter(tipe=1).values('name', 'image', 'slug', 'release_date').order_by('name')
-        return context
-
-class WarframeDetail(DetailView):
-    model = Warframe
-    template_name = 'codex/detail/codex_universe_warframe_detail.html'
-    slug_field = 'slug'
-    slug_url_kwarg = 'slug'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(WarframeDetail, self).get_context_data(**kwargs)
-        context['abilities'] = WarframeAbility.objects.filter(warframe=self.get_object())
         return context
 
 class ItemDetail(DetailView):

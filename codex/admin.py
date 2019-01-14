@@ -3,7 +3,7 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 # Core: Importing Models
-from .models import Item, ItemTipe, ItemAttribute, ItemAttributeValue, ItemAbility, ItemAbilityValue, Quest, QuestWalkthrough, Weapon, Stat, Warframe
+from .models import Item, ItemTipe, ItemAttribute, ItemAttributeValue, ItemAbility, ItemAbilityValue, Quest, QuestWalkthrough
 
 # Item Model
 # Item
@@ -87,31 +87,4 @@ class QuestWalkthroughResource(resources.ModelResource):
 
 @admin.register(QuestWalkthrough)
 class QuestWalkthroughAdmin(ImportExportModelAdmin):
-    pass
-
-class WeaponResource(resources.ModelResource):
-    class Meta:
-        model = Weapon
-
-@admin.register(Weapon)
-class WeaponAdmin(ImportExportModelAdmin):
-    list_display = ('name', 'slug', 'is_tradeable', 'is_prime')
-    pass
-
-class StatResource(resources.ModelResource):
-    class Meta:
-        model = Stat
-
-@admin.register(Stat)
-class StatAdmin(ImportExportModelAdmin):
-    pass
-
-class WarframeResource(resources.ModelResource):
-    fields = ['name', 'slug']
-    class Meta:
-        model = Warframe
-
-@admin.register(Warframe)
-class WarframeAdmin(ImportExportModelAdmin):
-    list_display = ('name', 'slug', 'is_tradeable', 'is_prime')
     pass
