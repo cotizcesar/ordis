@@ -65,7 +65,7 @@ class ItemAttributeValue(models.Model):
     value = models.PositiveIntegerField()
 
     class Meta:
-        ordering = ['-item']
+        ordering = ['item']
 
     def __str__(self):
         return self.name.name
