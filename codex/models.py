@@ -8,9 +8,6 @@ from ckeditor.fields import RichTextField
 class ItemAbility(models.Model):
     name = models.CharField(max_length=80)
 
-    class Meta:
-        ordering = ['name']
-
     def __str__(self):
         return self.name
 
@@ -19,9 +16,6 @@ class ItemAbility(models.Model):
 class ItemAttribute(models.Model):
     name = models.CharField(max_length=80)
 
-    class Meta:
-        ordering = ['name']
-
     def __str__(self):
         return self.name
 
@@ -29,9 +23,6 @@ class ItemAttribute(models.Model):
 # Defines the tipe name in the Item Model.
 class ItemTipe(models.Model):
     name = models.CharField(max_length=80)
-
-    class Meta:
-        ordering = ['name']
 
     def __str__(self):
         return self.name
@@ -64,9 +55,6 @@ class ItemAttributeValue(models.Model):
     name = models.ForeignKey(ItemAttribute, on_delete=models.CASCADE)
     value = models.PositiveIntegerField()
 
-    class Meta:
-        ordering = ['item']
-
     def __str__(self):
         return self.name.name
 
@@ -77,9 +65,6 @@ class ItemAbilityValue(models.Model):
     name = models.ForeignKey(ItemAbility, on_delete=models.CASCADE)
     value = models.TextField(max_length=210)
     image = models.ImageField(upload_to='codex/item/ability', default='codex/item/ability/default.png', blank=True)
-    
-    class Meta:
-        ordering = ['item']
 
     def __str__(self):
         return self.name.name
