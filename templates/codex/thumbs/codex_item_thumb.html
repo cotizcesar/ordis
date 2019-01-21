@@ -1,5 +1,5 @@
 {% load thumbnail %}
-{% if quests %}
+{% if item.tipe %}
 <a href="{% url 'codex_quest_detail' item.slug %}">
 {% else %}
 <a href="{% url 'codex_universe_item_detail' item.slug %}">
