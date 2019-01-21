@@ -16,7 +16,7 @@ class Quests(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Quests, self).get_context_data(**kwargs)
-        context['quests'] = Quest.objects.all().values('name', 'image', 'slug').order_by('quest_order')
+        context['quests'] = Quest.objects.all().values('name', 'image', 'slug', 'tipe').order_by('quest_order')
         return context
 
 class QuestDetail(DetailView):
