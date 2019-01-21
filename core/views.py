@@ -32,6 +32,11 @@ from codex.models import Quest, Item
 
 class Index(TemplateView):
     template_name = 'index.html'
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return HttpResponseRedirect('feed')
+        return super(Index, self).get(request, *args, **kwargs)
         
     def get_context_data(self, *args, **kwargs):
         context = super(Index, self).get_context_data(**kwargs)
