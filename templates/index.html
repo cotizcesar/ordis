@@ -23,13 +23,13 @@
             {% include 'modules/disclaimer.html' %}
         </div>
         <div class="col-md-9 mb-3">
-            <div class="bg-black-t pt-3 px-3 rounded mb-3">
+            <div class="bg-black-t pt-3 px-3 mb-3">
                 <h2 class="h5"><i class="fas fa-shopping-cart fa-fw text-info mr-1"></i> Latest Items on Market <a class="small text-info float-right mt-1" href="{% url 'market' %}">More <i class="fas fa-chevron-right fa-fw small"></i></a></h2>
                 <p class="text-muted m-0">Only 10 items are displayed, if you want to see more to buy or sell, please sign up.</p>
                 <hr>
                 <div class="row">
                     <div class="col-md-6">
-                        <p class="text-uppercase bg-title px-3 py-2 mb-3"><i class="fas fa-dollar-sign fa-fw text-danger mr-1"></i> Want to Sell</p>
+                        <p class="text-uppercase bg-title p-2 mb-3"><i class="fas fa-dollar-sign fa-fw text-danger mr-1"></i> Want to Sell</p>
                         {% if wts %}
                             {% for order in wts %}
                                 {% include 'market/thumbs/item_thumb.html' %}
@@ -41,7 +41,7 @@
                         {% endif %}
                     </div>
                     <div class="col-md-6">
-                        <p class="text-uppercase bg-title px-3 py-2 mb-3"><i class="fas fa-dollar-sign fa-fw text-success mr-1"></i> Want to Buy</p>
+                        <p class="text-uppercase bg-title p-2 mb-3"><i class="fas fa-dollar-sign fa-fw text-success mr-1"></i> Want to Buy</p>
                         {% if wtb %}
                             {% for order in wtb %}
                                 {% include 'market/thumbs/item_thumb.html' %}
@@ -54,13 +54,35 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-black-t pt-3 px-3 rounded">
+            <div class="bg-black-t pt-3 px-3 mb-3">
                 <h2 class="h5"><i class="fas fa-book-open fa-fw text-info mr-1"></i> Latest Items in Codex <a class="small text-info float-right mt-1" href="{% url 'codex' %}">More <i class="fas fa-chevron-right fa-fw small"></i></a></h2>
                 <p class="text-muted m-0">Here you can see the last items that were added to the Codex, from Quests, Warframes and Weapons.</p>
                 <hr>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <p class="text-uppercase bg-title p-2 mb-3"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Latest Quests</p>
+                        {% for item in quests %}
+                            <div class="mb-3">
+                                {% include 'codex/thumbs/codex_item_thumb.html' %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-uppercase bg-title p-2 mb-3"><i class="fas fa-cat fa-fw text-info mr-1"></i> Latest Companions</p>
+                        {% for item in companions %}
+                            <div class="mb-3">
+                                {% include 'codex/thumbs/codex_item_thumb.html' %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-uppercase bg-title p-2 mb-3"><i class="fas fa-chevron-right fa-fw text-info mr-1"></i> Latest Warframes</p>
+                        {% for item in warframes %}
+                            <div class="mb-3">
+                                {% include 'codex/thumbs/codex_item_thumb.html' %}
+                            </div>
+                        {% endfor %}
+                    </div>
                     <div class="col-md-4"></div>
                 </div>
             </div>

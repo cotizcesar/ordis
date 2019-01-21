@@ -12,7 +12,11 @@
         {% endif %}
         <div class="media-body">
             <p class="text-info my-1">{{item.name}}</p>
-            <p class="my-1 small">Released: {{item.release_date}}</p>
+            {% if quests %}
+            <p class="mb-0 mt-1 small">Released: {{item.release_date}}</p>
+            {% else %}
+            <p class="mb-0 mt-1 small">Quest Type: {{item.get_tipe_display}}</p>
+            {% endif %}
         </div>
     </div>
 </a>

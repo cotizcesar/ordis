@@ -22,6 +22,9 @@ from .forms import UserForm, UserProfileForm, PostForm, CommentForm
 # Market: Importing Models
 from market.models import Order
 
+# Codex: Importing Models
+from codex.models import Quest, Item
+
 # django-allauth: Forms
 # https://django-allauth.readthedocs.io/en/latest/forms.html
 #from allauth.account.forms import SignupForm
@@ -34,6 +37,10 @@ class Index(TemplateView):
         context = super(Index, self).get_context_data(**kwargs)
         context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(is_active=False)[:5]
         context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:5]
+        #context['quests'] = Quest.objects.all().order_by()
+        context['quests'] = Quest.objects.all().values('name', 'image', 'slug').order_by('quest_order')[:3]
+        context['companions'] = Item.objects.filter(tipe=2).values('name', 'image', 'slug', 'description', 'release_date').order_by('-release_date')[:3]
+        context['warframes'] = Item.objects.filter(tipe=1).values('name', 'image', 'slug', 'description', 'release_date').order_by('-release_date')[:3]
         return context
 
 class Feed(LoginRequiredMixin, ListView, FormView):
