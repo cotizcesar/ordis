@@ -32,7 +32,7 @@ from codex.models import Quest, Item
 
 class Index(TemplateView):
     template_name = 'index.html'
-
+        
     def get_context_data(self, *args, **kwargs):
         context = super(Index, self).get_context_data(**kwargs)
         context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(is_active=False)[:5]
