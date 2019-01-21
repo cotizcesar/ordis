@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     # django-allauth : Social Logins
     # https://django-allauth.readthedocs.io/en/latest/installation.html
     'allauth.socialaccount.providers.discord',
-    'allauth.socialaccount.providers.facebook',
+    #'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.twitch',
     # easy_thumbnails: Images handle and thumbnails generator.
     'easy_thumbnails',
@@ -187,6 +187,7 @@ THUMBNAIL_NAMER = 'easy_thumbnails.namers.hashed'
 
 # django-allauth: Social providers.
 # https://django-allauth.readthedocs.io/en/latest/providers.html
+
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
         'METHOD': 'oauth2',
