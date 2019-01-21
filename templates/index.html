@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block head_title %}Home{% endblock %}
+{% load account socialaccount %}
+{% block content %}
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <div class="bg-black-t p-3 rounded mb-3">
+                <h1 class="h3 text-white text-center mt-4"><i class="fas fa-gamepad fa-fw text-info mr-1"></i> Ordis</h1>
+                <p class="text-center mb-5">The Warframe SocialMarket</p>
+                {% get_providers as socialaccount_providers %}
+                {% if socialaccount_providers %}
+                    <div class="text-center">
+                        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                        {% include "socialaccount/snippets/login_extra.html" %}
+                    </div>
+                {% endif %}
+                <p class="small text-center text-secondary">By clicking any social provider below you agree to follow the rules of the site and our terms of service.</p>
+                <hr>
+                <p class="text-center">or</p>
+                <a class="btn btn-info btn-sm btn-block" href="#" role="button"><i class="fas fa-sign-in-alt fa-fw mr-1"></i> Sign In</a>
+            </div>
+            {% include 'modules/disclaimer.html' %}
+        </div>
+        <div class="col-md-9 mb-3">
+            <div class="bg-black-t pt-3 px-3 rounded mb-3">
+                <h2 class="h5"><i class="fas fa-shopping-cart fa-fw text-info mr-1"></i> Latest Items on Market <a class="small text-info float-right mt-1" href="{% url 'market' %}">More <i class="fas fa-chevron-right fa-fw small"></i></a></h2>
+                <p class="text-muted m-0">Only 10 items are displayed, if you want to see more to buy or sell, please sign up.</p>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="text-uppercase bg-title px-3 py-2 mb-3"><i class="fas fa-dollar-sign fa-fw text-danger mr-1"></i> Want to Sell</p>
+                        {% if wts %}
+                            {% for order in wts %}
+                                {% include 'market/thumbs/item_thumb.html' %}
+                            {% endfor %}
+                        {% else %}
+                            <div class="bg-black-t px-3 py-2 my-3">
+                                <p class="mb-0">No items to show.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-uppercase bg-title px-3 py-2 mb-3"><i class="fas fa-dollar-sign fa-fw text-success mr-1"></i> Want to Buy</p>
+                        {% if wtb %}
+                            {% for order in wtb %}
+                                {% include 'market/thumbs/item_thumb.html' %}
+                            {% endfor %}
+                        {% else %}
+                            <div class="bg-black-t px-3 py-2 my-3">
+                                <p class="mb-0">No items to show.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="bg-black-t pt-3 px-3 rounded">
+                <h2 class="h5"><i class="fas fa-book-open fa-fw text-info mr-1"></i> Latest Items in Codex <a class="small text-info float-right mt-1" href="{% url 'codex' %}">More <i class="fas fa-chevron-right fa-fw small"></i></a></h2>
+                <p class="text-muted m-0">Here you can see the last items that were added to the Codex, from Quests, Warframes and Weapons.</p>
+                <hr>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

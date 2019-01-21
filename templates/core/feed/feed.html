@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-6 bg-black-t pt-3">
             <p class="text-uppercase bg-title px-3 py-2 mb-3">
-                {% if request.resolver_match.url_name == 'home' %}
+                {% if request.resolver_match.url_name == 'feed' %}
                     <i class="fas fa-columns fa-fw text-info mr-1"></i> Feed
                 {% elif request.resolver_match.url_name == 'feed_public' %}
                     <i class="fas fa-globe-americas fa-fw text-info mr-1"></i> Public Feed

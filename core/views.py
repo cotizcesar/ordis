@@ -19,6 +19,9 @@ from .models import UserProfile, Connection, Post, Comment
 # Core: Importing forms
 from .forms import UserForm, UserProfileForm, PostForm, CommentForm
 
+# Market: Importing Models
+from market.models import Order
+
 # django-allauth: Forms
 # https://django-allauth.readthedocs.io/en/latest/forms.html
 #from allauth.account.forms import SignupForm
@@ -26,6 +29,12 @@ from .forms import UserForm, UserProfileForm, PostForm, CommentForm
 
 class Index(TemplateView):
     template_name = 'index.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(Index, self).get_context_data(**kwargs)
+        context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(is_active=False)[:5]
+        context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:5]
+        return context
 
 class Feed(LoginRequiredMixin, ListView, FormView):
     model = Post
@@ -43,7 +52,7 @@ class Feed(LoginRequiredMixin, ListView, FormView):
         obj.user = self.request.user
         obj.date_created = timezone.now()
         obj.save()
-        return redirect('home')
+        return redirect('feed')
 
 class FeedPublic(ListView):
     model = Post
@@ -60,7 +69,7 @@ class FeedPublic(ListView):
         obj.user = self.request.user
         obj.date_created = timezone.now()
         obj.save()
-        return redirect('home')
+        return redirect('feed')
         
 class UserProfileDetailView(DetailView, FormView):
     model = User
@@ -93,13 +102,13 @@ class UserProfileDetailView(DetailView, FormView):
         obj.user = self.request.user
         obj.date_created = timezone.now()
         obj.save()
-        return redirect('home')
+        return redirect('feed')
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserForm
     template_name = 'core/userprofile/userprofile_update.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('feed')
 
     def get_object(self):
         return self.request.user
@@ -108,7 +117,7 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = UserProfile
     form_class = UserProfileForm
     template_name = 'core/userprofile/userprofile_update.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('feed')
 
     def form_valid(self, form):
         form.save(self.request.user)
@@ -127,7 +136,7 @@ def follow_view(request, *args, **kwargs):
 
     except User.DoesNotExist:
         messages.warning(request, '{} is not a registered user.'.format(kwargs['username']))
-        return HttpResponseRedirect(reverse_lazy('home'))
+        return HttpResponseRedirect(reverse_lazy('feed'))
 
     if follower == following:
         messages.warning(request, 'You cannot follow yourself.')
@@ -189,7 +198,7 @@ def unfollow_view(request, *args, **kwargs):
             messages.success(request, 'You\'ve just unfollowed {}.'.format(following.username))
     except User.DoesNotExist:
         messages.warning(request, '{} is not a registered user.'.format(kwargs['username']))
-        return HttpResponseRedirect(reverse_lazy('home'))
+        return HttpResponseRedirect(reverse_lazy('feed'))
 
     except Connection.DoesNotExist:
         messages.warning(request, 'You didn\'t follow {0}.'.format(following.username))
@@ -204,7 +213,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         obj.user = self.request.user
         obj.date_created = timezone.now()
         obj.save()
-        return redirect('home')
+        return redirect('feed')
 
 class PostDetailView(DetailView):
     model = Post
@@ -220,7 +229,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     form_class = PostForm
     template_name = 'post/post_delete.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('feed')
 
     def user_passes_test(self, request):
         if request.user.is_authenticated:
@@ -230,7 +239,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         if not self.user_passes_test(request):
-            return redirect('home')
+            return redirect('feed')
         return super(PostDeleteView, self).dispatch(request, *args, **kwargs)
 
 class CommentCreateView(LoginRequiredMixin, CreateView):

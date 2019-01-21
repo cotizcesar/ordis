@@ -215,7 +215,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 # django-allauth: Log In/Log Out redirection
 # http://django-allauth.readthedocs.io/en/latest/configuration.html
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'feed'
 
 # Django: Email Registration Delivery
 # https://simpleisbetterthancomplex.com/tutorial/2017/05/27/how-to-configure-mailgun-to-send-emails-in-a-django-app.html
