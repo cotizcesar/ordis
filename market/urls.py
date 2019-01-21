@@ -18,10 +18,13 @@ from django.urls import include, path
 from django.conf.urls import url
 
 # userprofile: Importing Views
-from .views import Market, MarketBeast, OrderCreateView, OrderBeastCreateView #ItemDetail,
+from .views import Market, MarketWarframe, MarketWeapon, MarketSentinel, MarketBeast, OrderCreateView, OrderBeastCreateView #ItemDetail,
 
 urlpatterns = [
     path('market/', Market.as_view(), name='market'),
+    path('market/warframe', MarketWarframe.as_view(), name='market_warframe'),
+    path('market/weapon', MarketWeapon.as_view(), name='market_weapon'),
+    path('market/sentinel', MarketSentinel.as_view(), name='market_sentinel'),
     path('market/beast', MarketBeast.as_view(), name='market_beast'),
     path('market/order/create', OrderCreateView.as_view(), name='order_create'),
     path('market/order/beast/create', OrderBeastCreateView.as_view(), name='order_beast_create'),

@@ -27,6 +27,33 @@ class Market(TemplateView):
         context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:25]
         return context
 
+class MarketWarframe(TemplateView):
+    template_name = 'market/market.html'
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(MarketWarframe, self).get_context_data(**kwargs)
+        context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(Q(item__tipe=2) | Q(item__tipe=3) | Q(item__tipe=4))[:25]
+        context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(Q(item__tipe=2) | Q(item__tipe=3) | Q(item__tipe=4))[:25]
+        return context
+
+class MarketWeapon(TemplateView):
+    template_name = 'market/market.html'
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(MarketWeapon, self).get_context_data(**kwargs)
+        context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(Q(item__tipe=1) | Q(item__tipe=2) | Q(item__tipe=4))[:25]
+        context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(Q(item__tipe=1) | Q(item__tipe=2) | Q(item__tipe=4))[:25]
+        return context
+
+class MarketSentinel(TemplateView):
+    template_name = 'market/market.html'
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(MarketSentinel, self).get_context_data(**kwargs)
+        context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(Q(item__tipe=1) | Q(item__tipe=3) | Q(item__tipe=4))[:25]
+        context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(Q(item__tipe=1) | Q(item__tipe=3) | Q(item__tipe=4))[:25]
+        return context
+
 class MarketBeast(TemplateView):
     template_name = 'market/market.html'
     
