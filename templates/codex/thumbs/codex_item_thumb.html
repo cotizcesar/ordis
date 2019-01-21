@@ -12,10 +12,18 @@
         {% endif %}
         <div class="media-body">
             <p class="text-info my-1">{{item.name}}</p>
-            {% if quests %}
-            <p class="mb-0 mt-1 small">Released: {{item.release_date}}</p>
+            {% if item.tipe %}
+            <p class="mb-0 mt-1 small">
+                {% if item.tipe == 'M' %}
+                Main Quest
+                {% elif item.tipe == 'O' %}
+                Optional Quest
+                {% elif item.tipe == 'L' %}
+                Optional Lore Quest
+                {% endif %}
+            </p>
             {% else %}
-            <p class="mb-0 mt-1 small">Quest Type: {{item.get_tipe_display}}</p>
+            <p class="mb-0 mt-1 small">Released: {{item.release_date}}</p>
             {% endif %}
         </div>
     </div>
