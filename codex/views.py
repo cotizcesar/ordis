@@ -73,6 +73,6 @@ class ItemDetail(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(ItemDetail, self).get_context_data(**kwargs)
         context['attributes'] = ItemAttributeValue.objects.filter(item=self.object.id).select_related()
-        context['abilities'] = ItemAbilityValue.objects.filter(item=self.object.id).select_related()[:4]
+        context['abilities'] = ItemAbilityValue.objects.filter(item=self.object.id).order_by('id').select_related()[:4]
         context['pasive'] = ItemAbilityValue.objects.filter(item=self.object.id).select_related()[4:5]
         return context
