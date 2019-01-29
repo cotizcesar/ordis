@@ -63,7 +63,7 @@ class ItemAttributeValue(models.Model):
 class ItemAbilityValue(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     name = models.ForeignKey(ItemAbility, on_delete=models.CASCADE)
-    value = models.TextField(max_length=320)
+    value = models.TextField(max_length=360)
     image = models.ImageField(upload_to='codex/item/ability', default='codex/item/ability/default.png', blank=True)
 
     def __str__(self):
