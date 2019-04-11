@@ -254,7 +254,7 @@ def item_name(value):
         return '???'
 
 @register.filter(name='sortie_condition')
-def item_name(value):
+def sortie_condition(value):
     if value == 'SORTIE_MODIFIER_HAZARD_COLD':
         return 'Extreme Cold'
     elif value == 'SORTIE_MODIFIER_MAGNETIC':
@@ -267,5 +267,24 @@ def item_name(value):
         return 'Augmented Enemy Shields'
     elif value == 'SORTIE_MODIFIER_SNIPER_ONLY':
         return 'Sniper Only'        
+    else:
+        return '???'
+
+@register.filter(name='sale_TypeName')
+def sale_typename(value):
+    if value == '/Lotus/Types/StoreItems/Packages/PacifistBundle':
+        return 'Baruuk Collection'
+    elif value == '/Lotus/Types/StoreItems/Packages/GarudaBundle':
+        return 'Garuda Collection'
+    elif value == '/Lotus/Types/StoreItems/Packages/HildrynBundle':
+        return 'Hildryn Collection'
+    elif value == '/Lotus/Weapons/Tenno/Melee/Swords/TnTwoHandedKatana/TnTwoHandedKatana':
+        return 'Tatsu'
+    elif value == '/Lotus/Types/Items/DiscordItems/DiscordReverencePack':
+        return 'Reverence Pack - Free with Discord Nitro'
+    elif value == '/Lotus/Types/StoreItems/Packages/FortunaTwoWeaponBundle':
+        return 'Vallis Domination Collection'
+    elif value == '/Lotus/Types/StoreItems/Boosters/AffinityBooster7DayStoreItem':
+        return '7 Day Affinity Booster'
     else:
         return '???'
