@@ -286,5 +286,25 @@ def sale_typename(value):
         return 'Vallis Domination Collection'
     elif value == '/Lotus/Types/StoreItems/Boosters/AffinityBooster7DayStoreItem':
         return '7 Day Affinity Booster'
+    elif value == '/Lotus/Powersuits/IronFrame/IronFrame':
+        return 'Hildryn'
+    elif value == '/Lotus/Upgrades/Skins/Brawler/AtlasDeluxeSkin':
+        return 'Atlas Karst Skin'
+    elif value == '/Lotus/Upgrades/Skins/Magician/LimboDeluxeSkin':
+        return 'Limbo Limina Skin'
+    elif value == '/Lotus/Types/StoreItems/Packages/LimboDeluxeSkinBundle':
+        return 'Limbo Limina Collection'
+    elif value == '/Lotus/Upgrades/Skins/Scarves/ShieldFrameCape':
+        return 'Surator Syandana'
+    elif value == '/Lotus/Upgrades/Skins/Scarves/ShieldFrameCape':
+        return 'Surator Syandana'
+    elif value == '/Lotus/Weapons/Tenno/Archwing/Primary/TnShieldframeArchGun/TnShieldFrameArchGun':
+        return 'Larkspur'
+    elif value == '/Lotus/Types/BoosterPacks/RandomProjection':
+        return 'Relic Pack'
+    elif value == '/Lotus/Types/StoreItems/Packages/AtlasDeluxeSkinBundle':
+        return 'Atlas Karst Collection'
+
+    
     else:
         return '???'
