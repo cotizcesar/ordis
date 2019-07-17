@@ -1,1 +1,1 @@
-web: gunicorn ordis-app.wsgi
+web: gunicorn ordis.wsgi
