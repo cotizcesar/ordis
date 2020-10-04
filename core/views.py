@@ -1,3 +1,16 @@
 from django.shortcuts import render
 
-# Create your views here.
+#! Django: Generic CBV
+from django.views.generic import (
+    TemplateView,
+    ListView,
+    FormView,
+    CreateView,
+    DetailView,
+    UpdateView,
+    DeleteView,
+)
+
+
+class Index(TemplateView):
+    template_name = "index.html"
