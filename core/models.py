@@ -23,8 +23,16 @@ class UserProfile(models.Model):
     PLATFORM_CHOICES = (
         ("PC", "PC"),
         (
+            "PS5",
+            "Playstation 5",
+        ),
+        (
             "PS4",
             "Playstation 4",
+        ),
+        (
+            "XBS",
+            "Xbox Series S/X",
         ),
         (
             "XB1",
@@ -43,7 +51,6 @@ class UserProfile(models.Model):
     status = models.CharField(default="F", max_length=1, choices=STATUS_CHOICES)
     platform = models.CharField(default="PC", max_length=3, choices=PLATFORM_CHOICES)
     is_verified = models.BooleanField(default=False)
-    is_alpha_tester = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username

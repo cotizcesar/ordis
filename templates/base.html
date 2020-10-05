@@ -1,0 +1,38 @@
+{% load bootstrap4 %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Ordis - {% block head_title %}Home{% endblock %}</title>
+  {% bootstrap_css %}
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body class="bg-dark text-light">
+  {% block body %}
+  {% block header %}
+  {% include 'header.html' %}
+  {% endblock %}
+
+  {% if messages %}
+  <div>
+    <strong>Messages:</strong>
+    <ul>
+      {% for message in messages %}
+      <li>{{message}}</li>
+      <li>{% bootstrap_messages %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% block content %}{% endblock %}
+  {% endblock %}
+  {% block extra_body %}{% endblock %}
+  {% bootstrap_javascript jquery='full' %}
+  <script src="https://kit.fontawesome.com/7567f7a152.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
