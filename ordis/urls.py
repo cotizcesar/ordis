@@ -1,7 +1,7 @@
 """ordis URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.1/topics/http/urls/
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,20 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-# Django: To serve static files.
+#! Django: To serve static files.
 from django.conf import settings
 from django.conf.urls.static import static
 
-# Django: Creates Sitemaps.
-from django.contrib.sitemaps.views import sitemap
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('messages/', include("pinax.messages.urls", namespace="pinax_messages")),
-    path('', include('core.urls')),
-    path('', include('market.urls')),
-    path('', include('alerts.urls')),
-    path('', include('codex.urls')),
-    #path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = (
+    [
+        path("admin/", admin.site.urls),
+        path("accounts/", include("allauth.urls")),
+        path("", include("core.urls")),
+    ]
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)
