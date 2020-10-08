@@ -1,4 +1,6 @@
 {% load bootstrap4 %}
+{% load static %}
+{% load account socialaccount %}
 <!doctype html>
 <html lang="en">
 
@@ -7,11 +9,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Ordis - {% block head_title %}Home{% endblock %}</title>
   {% bootstrap_css %}
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
   {% block extra_head %}{% endblock %}
 </head>
 
-<body class="bg-dark text-light">
+<body>
   {% block body %}
+
   {% block header %}
   {% include 'header.html' %}
   {% endblock %}
@@ -29,6 +34,11 @@
   {% endif %}
 
   {% block content %}{% endblock %}
+
+  {% block footer %}
+  {% include 'footer.html' %}
+  {% endblock %}
+
   {% endblock %}
   {% block extra_body %}{% endblock %}
   {% bootstrap_javascript jquery='full' %}
