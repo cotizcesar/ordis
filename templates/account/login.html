@@ -8,7 +8,7 @@
 {% get_providers as socialaccount_providers %}
 <div id="login">
   <div>
-    <h1 class="title">Ordis</h1>
+    <h1 class="title">{% trans "Sign In" %}</h1>
     {% if socialaccount_providers %}
     <p class="subtitle">
       {% blocktrans with site.name as site_name %}Please sign in with one
@@ -34,8 +34,10 @@
       {% if redirect_field_value %}
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
-      <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-      <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+      <div class="button-list">
+        <a class="btn btn-link" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+        <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+      </div>
     </form>
   </div>
 </div>
