@@ -104,55 +104,24 @@ a:hover {
     font-weight: 500;
     color: #d9e1e8;
 }
-/* Page: Login */
-/* Block: Loginbox */
-#login {
-    margin: 100px auto 0 auto;
-    max-width: 400px;
-}
-#login .title {
-    color: #fff;
-    text-align: center;
-}
-#login .subtitle {
-    font-size: 13px;
-    margin: 0 0 50px 0;
-    text-align: center;
-}
-#login .login .button-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
-}
-/* Page: Signup */
-/* Block: Infobox */
-#signup {
-    margin: 100px auto 0 auto;
-    max-width: 400px;
-}
-#signup .title {
-    color: #fff;
-    text-align: center;
-}
-#signup .subtitle {
-    font-size: 13px;
-    margin: 0 0 50px 0;
-    text-align: center;
-}
-/* Page: Signout */
-/* Block: Infobox */
-#signout {
+/* Page: Auth */
+#auth {
     margin: 100px auto;
     max-width: 400px;
 }
-#signout .title {
+#auth .title {
     color: #fff;
     text-align: center;
 }
-#signout .subtitle {
+#auth .subtitle {
     font-size: 13px;
     margin: 0 0 50px 0;
     text-align: center;
+}
+#auth .login .button-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
 }
 /* Color Scheme */
 /* Buttons */
@@ -160,6 +129,12 @@ a:hover {
     background: #3c99dc;
     border-color: #3c99dc;
     color: #fff;
+}
+.btn-primary:hover, .btn-outline-primary:hover {
+    background: #3c99dc;
+    border-color: #3c99dc;
+    color: #fff;
+    opacity: 0.9;
 }
 .btn-outline-primary {
     border-color: #3c99dc;

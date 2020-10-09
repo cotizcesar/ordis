@@ -3,10 +3,9 @@
 {% load bootstrap4 %}
 {% load account socialaccount %}
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
-{% block header %}{% endblock %}
 {% block content %}
 {% get_providers as socialaccount_providers %}
-<div id="login">
+<div id="auth">
   <div>
     <h1 class="title">{% trans "Sign In" %}</h1>
     {% if socialaccount_providers %}
@@ -42,4 +41,3 @@
   </div>
 </div>
 {% endblock %}
-{% block footer %}{% endblock %}
