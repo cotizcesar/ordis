@@ -201,27 +201,34 @@ a:hover {
     text-align: center;
     border-bottom: 4px solid #9baec8;
     border-right: 1px solid #313543;
-    padding: 7px 0px;
+    padding: 10px 0 8px 0;
     transition: all .4s ease;
 }
 #userprofile .info .inner-info .userinfo .userdata .usermenu ul li:hover {
     border-bottom: 4px solid #2b90d9;
     transition: all .4s ease;
 }
+#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a {
+    display: block;
+}
 #userprofile .info .inner-info .userinfo .userdata .usermenu ul li a:hover {
     text-decoration: none;
 }
 #userprofile .info .inner-info .userinfo .userdata .usermenu ul li a .counter {
-    font-weight: 500;
+    font-weight: 700;
     font-size: 18px;
-    line-height: 18px;
-    margin-bottom: 5px;
+    line-height: 20px;
     color: #fff;
+    display: block;
 }
 #userprofile .info .inner-info .userinfo .userdata .usermenu ul li a .label {
     font-size: 12px;
     display: block;
     color: #9baec8;
+}
+#userprofile .feed {
+    display: grid;
+    grid-template-columns: 1fr 298px;
 }
 /* Color Scheme */
 /* Buttons */
@@ -254,4 +261,15 @@ a:hover {
 .post .user-avatar {
     border-radius: 50%;
     max-width: 49px;
+}
+.omnibox {
+    background: #393F4F ;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    padding: 20px;
+}
+.omnibox .joined {
+    color: #9baec8;
+    margin: 0;
 }

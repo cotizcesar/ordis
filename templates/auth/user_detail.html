@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load humanize %}
 {% block title %}
 {% if profile.get_full_name %}{{ profile.get_full_name }}{% else %}{{ profile.username }}{% endif %}
 (@{{ profile.username }}) / Ordis
@@ -54,7 +55,22 @@
             ">
         </div>
     </div>
-    <div class="feed"></div>
+    <div class="feed">
+        <div class="timeline">
+            {% for object in posts %}
+            a
+            {% endfor %}
+        </div>
+        <div class="aside">
+            <div class="omnibox">
+                {% if profile.is_superuser %}
+                <a href="#" class="badge badge-danger">Admin</a>
+                {% endif %}
+                <p>{{ profile.userprofile.bio }}</p>
+                <p class="joined">Joined {{ profile.date_joined|naturalday }}</p>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 {% block footer %}{% endblock %}
