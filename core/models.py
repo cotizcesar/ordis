@@ -44,6 +44,9 @@ class UserProfile(models.Model):
         ),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    header = models.ImageField(
+        upload_to="user/header", default="user/header/default.png", blank=True
+    )
     avatar = models.ImageField(
         upload_to="user/avatar", default="user/avatar/default.png", blank=True
     )

@@ -1,5 +1,5 @@
 body {
-    background: #282c37;
+    background: #191b22;
     color: #9baec8;
     font-family: 'Roboto', sans-serif;
 }
@@ -104,7 +104,7 @@ a:hover {
     font-weight: 500;
     color: #d9e1e8;
 }
-/* Page: Auth */
+/* Page: Auth (django-allauth) */
 #auth {
     margin: 100px auto;
     max-width: 400px;
@@ -122,6 +122,106 @@ a:hover {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 20px;
+}
+/* Page: Feed (Internal and Public) */
+#feed {
+    display: grid;
+    grid-template-columns: 1fr 570px 1fr;
+    column-gap: 15px;
+    margin: 30px auto;
+    align-self: center;
+}
+/* Page: Userprofile (Internal and Public) */
+#userprofile {
+    display: grid;
+    column-gap: 10px;
+    row-gap: 10px;
+    margin: 0 auto;
+    max-width: 960px;
+    align-self: center;
+}
+#userprofile .info {
+    background: #313543;
+    border-radius: 4px;
+    min-height: 360px;
+}
+#userprofile .info .inner-info {
+    position: relative;
+}
+#userprofile .info .inner-info .userinfo {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 16px;
+    padding: 0 16px;
+    position: absolute;
+    bottom: -60px;
+    left: 0;
+}
+#userprofile .info .inner-info .userinfo .avatar {
+    border: 3px solid #313543;
+    border-radius: 50%;
+}
+#userprofile .info .inner-info .header {
+    border-radius: 4px 4px 0 0;
+}
+#userprofile .info .inner-info .userinfo .userdata {
+    display: grid;
+    grid-template-rows: auto 60px;
+    padding: 20px 0 0 0;
+}
+#userprofile .info .inner-info .userinfo .userdata .name {
+    font-size: 20px;
+    line-height: 27px;
+    color: #fff;
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-shadow: 1px 1px 1px #000;
+}
+#userprofile .info .inner-info .userinfo .userdata .name small {
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#userprofile .info .inner-info .userinfo .userdata .usermenu ul {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#userprofile .info .inner-info .userinfo .userdata .usermenu ul .active{
+    border-bottom: 4px solid #2b90d9;
+}
+#userprofile .info .inner-info .userinfo .userdata .usermenu ul li {
+    text-align: center;
+    border-bottom: 4px solid #9baec8;
+    border-right: 1px solid #313543;
+    padding: 7px 0px;
+    transition: all .4s ease;
+}
+#userprofile .info .inner-info .userinfo .userdata .usermenu ul li:hover {
+    border-bottom: 4px solid #2b90d9;
+    transition: all .4s ease;
+}
+#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a:hover {
+    text-decoration: none;
+}
+#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a .counter {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a .label {
+    font-size: 12px;
+    display: block;
+    color: #9baec8;
 }
 /* Color Scheme */
 /* Buttons */
@@ -142,4 +242,16 @@ a:hover {
 }
 .btn-link, .btn-link:hover {
     color: #4ea2df;
+}
+/* Modules */
+/* Module: Post */
+.post {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 10px;
+    padding: 0 15px;
+}
+.post .user-avatar {
+    border-radius: 50%;
+    max-width: 49px;
 }

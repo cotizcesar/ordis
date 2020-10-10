@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "easy_thumbnails",
+    "import_export",
     "bootstrap4",
     "core",
 ]
@@ -182,6 +184,30 @@ ACCOUNT_USERNAME_BLACKLIST = ["admin", "ordis", "cotizcesar", "Warframe"]
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_MIN_LENGTH = 6
 REGISTRATION_OPEN = False  # Change for True in Production
+
+THUMBNAIL_TRANSPARENCY_EXTENSION = "png"
+THUMBNAIL_ALIASES = {
+    "": {
+        "userprofile_header": {"size": (960, 300), "crop": "smart", "upscale": True},
+        "userprofile_avatar": {"size": (120, 120), "crop": "smart", "upscale": True},
+        "avatar": {"size": (510, 510), "crop": "smart", "upscale": True},
+        "post": {"size": (540, 0), "crop": "smart", "upscale": True},
+        "order": {"size": (74, 74), "crop": "smart", "upscale": True},
+        "item": {"size": (510, 287), "crop": "smart", "upscale": True},
+        "warframe": {"size": (510, 906), "crop": "smart", "upscale": True},
+        "warframe_detail": {"size": (510, 906), "crop": "smart", "upscale": True},
+        "warframe_list": {"size": (510, 287), "crop": "0,0", "upscale": True},
+        "warframe_market_list": {"size": (510, 287), "crop": "0,0", "upscale": True},
+        "warframe_50x50": {"size": (50, 50), "crop": "0,0", "upscale": True},
+        "44x44": {"size": (44, 44), "crop": "smart", "upscale": True},
+        "50x50": {"size": (50, 50), "crop": "smart", "upscale": True},
+        "66x66": {"size": (66, 66), "crop": "smart", "upscale": True},
+        "warframe_66x66": {"size": (66, 66), "crop": "0,0", "upscale": True},
+        "89x89": {"size": (89, 89), "crop": "smart", "upscale": True},
+        "510x287": {"size": (510, 287), "crop": "smart", "upscale": True},
+    },
+}
+THUMBNAIL_NAMER = "easy_thumbnails.namers.hashed"
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

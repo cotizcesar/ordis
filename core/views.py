@@ -87,7 +87,6 @@ class FeedPublic(ListView):
 
 class UserProfileDetailView(DetailView, FormView):
     model = User
-    template_name = "core/userprofile/userprofile.html"
     slug_field = "username"
     slug_url_kwarg = "username"
     context_object_name = "profile"
@@ -103,10 +102,10 @@ class UserProfileDetailView(DetailView, FormView):
         context["username"] = username
         context["user"] = self.request.user
         #! Following / Followers counters
-        context["following"] = Connection.objects.filter(
+        context["following_count"] = Connection.objects.filter(
             follower__username=username
         ).count()
-        context["followers"] = Connection.objects.filter(
+        context["followers_count"] = Connection.objects.filter(
             following__username=username
         ).count()
 
