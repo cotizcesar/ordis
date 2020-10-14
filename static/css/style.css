@@ -229,6 +229,7 @@ a:hover {
 #userprofile .feed {
     display: grid;
     grid-template-columns: 1fr 298px;
+    column-gap: 10px;
 }
 /* Color Scheme */
 /* Buttons */
@@ -250,26 +251,97 @@ a:hover {
 .btn-link, .btn-link:hover {
     color: #4ea2df;
 }
+/* Badges */
+.badge-danger-outline {
+    color: #e87487;
+    background-color: rgba(232,116,135,.1);
+    border: 1px solid rgba(217,225,232,.5);
+    border-color: rgba(232,116,135,.5);
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 500;
+    padding: 4px 6px;
+}
 /* Modules */
 /* Module: Post */
 .post {
     display: grid;
     grid-template-columns: auto 1fr;
-    column-gap: 10px;
-    padding: 0 15px;
+    column-gap: 15px;
+    padding: 15px;
+    background: #282C37;
+    border-bottom: 1px solid #393f4f;
+    color: #fff;
+    font-size: 15px;
 }
 .post .user-avatar {
-    border-radius: 50%;
-    max-width: 49px;
+    border-radius: 4px;
+    max-width: 48px;
+    height: auto;
 }
+.post .title {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    column-gap: 10px;
+    align-items: flex-end;
+}
+.post .title .name {
+    color: #fff;
+    font-size: 15px;
+}
+.post .title .username {
+    color: #606984;
+    font-size: 14px;
+}
+.post .title .username:hover {
+    text-decoration: none;
+}
+.post .title .date {
+    color: #606984;
+    font-size: 14px;
+    justify-self: end;
+}
+/* Module: Omnibox */
 .omnibox {
+    display: grid;
+    row-gap: 16px;
     background: #393F4F ;
     border-radius: 4px;
     color: #fff;
     font-size: 14px;
     padding: 20px;
 }
+.omnibox .bio p {
+    margin: 0;
+}
 .omnibox .joined {
     color: #9baec8;
     margin: 0;
+}
+/* Module: Timenav */
+.timenav {
+    background: #1f232b;
+    border-radius: 4px 4px 0 0;
+}
+.timenav ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.timenav ul li a {
+    color: #9baec8;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 15px 0;
+    display: block;
+}
+.timenav ul li a:hover {
+    text-decoration: none;
+}
+.timenav ul li .active {
+    color: #fff;
 }

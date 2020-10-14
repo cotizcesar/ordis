@@ -57,17 +57,55 @@
     </div>
     <div class="feed">
         <div class="timeline">
+            <nav class="timenav">
+                <ul>
+                    <li>
+                        <a class="{% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}" href="#">
+                            Posts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Posts and replies</a>
+                    </li>
+                    <li>
+                        <a href="#">Media</a>
+                    </li>
+                    <li>
+                        <a href="#">Market</a>
+                    </li>
+                </ul>
+            </nav>
             {% for object in posts %}
-            a
+            <div class="post">
+                <div>
+                    <a href="#">
+                        <img class="user-avatar" src="https://via.placeholder.com/49x49">
+                    </a>
+                </div>
+                <div>
+                    <h2 class="title">
+                        <a class="name" href="#">
+                            <strong>{% if profile.get_full_name %}{{ profile.get_full_name }}{% else %}{{ profile.username }}{% endif %}</strong>
+                        </a>
+                        <a class="username" href="#">
+                            @{{ profile.username }}
+                        </a>
+                        <a class="date" href="#">{{ object.date_created|naturalday }}</a>
+                    </h2>
+                    <div>{{ object.text|linebreaks }}</div>
+                </div>
+            </div>
             {% endfor %}
         </div>
         <div class="aside">
             <div class="omnibox">
                 {% if profile.is_superuser %}
-                <a href="#" class="badge badge-danger">Admin</a>
+                <span class="badge-list"><a href="#" class="badge badge-danger-outline">Admin</a></span>
                 {% endif %}
-                <p>{{ profile.userprofile.bio }}</p>
-                <p class="joined">Joined {{ profile.date_joined|naturalday }}</p>
+                {% if profile.userprofile.bio %}
+                <span class="bio">{{ profile.userprofile.bio|linebreaks }}</span>
+                {% endif %}
+                <span class="joined">Joined {{ profile.date_joined|naturalday }}</span>
             </div>
         </div>
     </div>
