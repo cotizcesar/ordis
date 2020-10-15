@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load custom_filters %}
 {% load humanize %}
 {% block title %}
 {% if profile.get_full_name %}{{ profile.get_full_name }}{% else %}{{ profile.username }}{% endif %}
@@ -29,19 +30,19 @@
                         <ul>
                             <li class="{% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}">
                                 <a href="#">
-                                    <span class="counter">{{ posts_count }}</span>
+                                    <span class="counter">{{ posts_count|number_formatter }}</span>
                                     <span class="label">Posts</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="counter">{{ following_count }}</span>
+                                    <span class="counter">{{ following_count|number_formatter }}</span>
                                     <span class="label">Following</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="counter">{{ followers_count }}</span>
+                                    <span class="counter">{{ followers_count|number_formatter }}</span>
                                     <span class="label">Followers</span>
                                 </a>
                             </li>

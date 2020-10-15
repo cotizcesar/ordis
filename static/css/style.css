@@ -262,6 +262,10 @@ a:hover {
     grid-template-columns: auto 1fr;
     column-gap: 10px;
 }
+.post-welcome .inner-footer .info:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
 .post-welcome .inner-footer .info .avatar {
     border-radius: 4px;
 }
@@ -369,7 +373,6 @@ a:hover {
     padding: 15px;
     text-decoration: none;
     color: inherit;
-    box-shadow: 0 0 15px rgba(0,0,0,.2);
 }
 .auth-block a:hover {
     background: #393f4f;
@@ -401,7 +404,6 @@ a:hover {
     padding: 15px;
     text-decoration: none;
     color: inherit;
-    box-shadow: 0 0 15px rgba(0,0,0,.2);
 }
 .features-block a:hover {
     background: #393f4f;

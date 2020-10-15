@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load custom_filters %}
 {% block content %}
 <div id="home">
     <div>
@@ -69,11 +70,11 @@
                         <h4>Server stats:</h4>
                         <div class="server-stats">
                             <div>
-                                <span class="counter">{{ users_count }}</span>
+                                <span class="counter">{{ users_count|number_formatter }}</span>
                                 <span class="label">users</span>
                             </div>
                             <div>
-                                <span class="counter">{{ posts_count }}</span>
+                                <span class="counter">{{ posts_count|number_formatter }}</span>
                                 <span class="label">posts</span>
                             </div>
                         </div>
