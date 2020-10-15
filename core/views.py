@@ -39,7 +39,7 @@ class Index(TemplateView):
         context["welcome_post"] = Post.objects.filter(featured=True).order_by(
             "-date_created"
         )[:1]
-        context["users_count"] = 2000  # User.objects.all().count()
+        context["users_count"] = User.objects.all().count()
         context["posts_count"] = Post.objects.all().count()
         # context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(is_active=False)[:5]
         # context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:5]
