@@ -50,7 +50,7 @@
                 </div>
             </div>
             <img class="header"
-                src="{{profile.userprofile.header|thumbnail_url:'userprofile_header'|default:'https://via.placeholder.com/960x300'}}"
+                src="{{ profile.userprofile.header|thumbnail_url:'userprofile_header'|default:'https://via.placeholder.com/960x300' }}"
                 alt="{% if profile.get_full_name %}{{profile.get_full_name}} - @{{profile.username}}{% else %}@{{profile.username}} header.{% endif %}
             ">
         </div>

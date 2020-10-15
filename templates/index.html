@@ -1,56 +1,88 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 {% block content %}
 <div id="home">
-    <div class="hero">
-        <h1 class="title">
-            Social network, Market, Alerts, Builder and Codex, <strong>all in the same place</strong>.
-        </h1>
-        <p class="subtitle">
-            Discover and follow new players, find help in the constant updated Codex, buy and sell items for
-            platinum (in-game). Publish anything you want: links, pictures, text, video.
-        </p>
-        <div class="button-list">
-            <a class="btn btn-primary" href="#" role="button">Get started</a>
-            <a class="btn btn-outline-primary" href="#" role="button">
-                <i class="fas fa-play fa-fw mr-1"></i>
-                How it works
+    <div>
+        <div class="auth-block">
+            <a class="signup" href="{% url 'account_signup' %}">
+                <h4>
+                    <i class="fas fa-plus-circle fa-fw text-success mr-1"></i>
+                    Sign up
+                </h4>
+            </a>
+            <a class="signin" href="{% url 'account_login' %}">
+                <h4>
+                    <i class="fas fa-sign-in-alt fa-fw text-info mr-1"></i>
+                    Sign in
+                </h4>
+            </a>
+        </div>
+        <div class="features-block">
+            <a href="#">
+                <h4>
+                    <i class="fas fa-address-book fa-fw"></i>
+                    Discover Users
+                    <small>Browse a profile directory and filter by interests</small>
+                </h4>
+            </a>
+            <a href="#">
+                <h4>
+                    <i class="fas fa-globe-americas fa-fw"></i>
+                    See what's happening
+                    <small>Browse a live stream of public posts on Ordis</small>
+                </h4>
+            </a>
+            <a href="https://github.com/cotizcesar/ordis" target="_blank">
+                <h4>
+                    <i class="fab fa-github fa-fw"></i>
+                    Look at the source code
+                    <small>Create, update and modify the code to improve the experience</small>
+                </h4>
             </a>
         </div>
     </div>
-    <div class="as-seen-on"></div>
-    <div class="features">
-        <div class="feature right">
-            <div>
-                <h2 class="title">Socialize with players</h2>
-                <p class="subtitle">
-                    Explore, Follow and comments post from other players. Upload links, pictures, text, video. All
-                    modern features are available to provide a seamless
-                    social media experience.
-                </p>
+    <div>
+        {% if welcome_post %}
+        <div class="featured-post">
+            {% for object in welcome_post %}
+            <div class="post-welcome">
+                <img class="header"
+                    src="{{ object.image|thumbnail_url:'post_welcome'|default:'https://via.placeholder.com/465x262' }}">
+                <div class="inner">
+                    {{ object.text|linebreaks }}
+                </div>
+                <div class="inner-footer">
+                    <div>
+                        <h4>Administered by:</h4>
+                        <a class="info" href="#">
+                            <div>
+                                <img class="avatar"
+                                    src="{{ object.user.userprofile.avatar|thumbnail_url:'post_welcome_avatar'|default:'https://via.placeholder.com/36' }}">
+                            </div>
+                            <div>
+                                <strong>{% if object.user.first_name %}{{ object.user.first_name }}{% else %}{{ object.user.username }}{% endif %}</strong>
+                                <span>@{{ object.user.username }}</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <h4>Server stats:</h4>
+                        <div class="server-stats">
+                            <div>
+                                <span class="counter">{{ users_count }}</span>
+                                <span class="label">users</span>
+                            </div>
+                            <div>
+                                <span class="counter">{{ posts_count }}</span>
+                                <span class="label">posts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div><i class="fas fa-share-alt fa-fw fa-6x"></i></div>
+            {% endfor %}
         </div>
-        <div class="feature left">
-            <div><i class="fas fa-store fa-fw fa-6x"></i></div>
-            <div>
-                <h2 class="title">Buy and Sell tradeable items for in-game currency</h2>
-                <p class="subtitle">
-                    Do you want a prime set? Or maybe a rare piece for your blueprint? If you have the platinum you can
-                    contact the seller to buy it in-game.
-                </p>
-            </div>
-        </div>
-        <div class="feature right">
-            <div>
-                <h2 class="title">Find help in our self-maintained codex</h2>
-                <p class="subtitle">
-                    Every day we check in various sources like in-game codex or external wikis to get the most accurate
-                    and latest info about everything in the game.
-                </p>
-            </div>
-            <div><i class="fas fa-book fa-fw fa-6x"></i></div>
-        </div>
-
+        {% endif %}
     </div>
 </div>
 {% endblock %}

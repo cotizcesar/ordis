@@ -93,6 +93,7 @@ class Post(models.Model):
     video = models.URLField(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
+    featured = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["-date_created"]

@@ -191,6 +191,8 @@ THUMBNAIL_ALIASES = {
     "": {
         "userprofile_header": {"size": (960, 300), "crop": "smart", "upscale": True},
         "userprofile_avatar": {"size": (120, 120), "crop": "smart", "upscale": True},
+        "post_welcome": {"size": (465, 0), "crop": "smart", "upscale": True},
+        "post_welcome_avatar": {"size": (36, 36), "crop": "smart", "upscale": True},
         "avatar": {"size": (510, 510), "crop": "smart", "upscale": True},
         "post": {"size": (540, 0), "crop": "smart", "upscale": True},
         "order": {"size": (74, 74), "crop": "smart", "upscale": True},
