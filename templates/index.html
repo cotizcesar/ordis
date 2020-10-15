@@ -54,7 +54,7 @@
                 <div class="inner-footer">
                     <div>
                         <h4>Administered by:</h4>
-                        <a class="info" href="#">
+                        <a class="info" href="{% url 'userprofile' object.user.username %}">
                             <div>
                                 <img class="avatar"
                                     src="{{ object.user.userprofile.avatar|thumbnail_url:'post_welcome_avatar'|default:'https://via.placeholder.com/36' }}">
