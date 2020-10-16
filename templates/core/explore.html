@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load thumbnail %}
+{% block content %}
+<div id="explore">
+    <div class="page-header">
+        <h1>Explore Ordis</h1>
+        <p>Discover users based on their interests</p>
+    </div>
+    {% if object_list %}
+    <div class="users-list">
+        {% for object in object_list %}
+        <div class="user">
+            <img class="header"
+                src="{{ object.userprofile.header|thumbnail_url:'explore_header'|default:'https://via.placeholder.com/475x125' }}"
+                alt="{% if object.get_full_name %}{{ object.get_full_name }} - @{{ object.username }}{% else %}@{{ object.username }} header.{% endif %}
+            ">
+            <div class="profile">
+                <img class="avatar"
+                    src="{{ object.userprofile.avatar|thumbnail_url:'explore_avatar'|default:'https://via.placeholder.com/48' }}"
+                    alt="{% if object.get_full_name %}{{ object.get_full_name }} - @{{ object.username }}{% else %}@{{ object.username }} avatar.{% endif %}
+                ">
+                <a href="{% url 'userprofile' object.username %}">
+                    <strong>{% if object.get_full_name %}{{ object.get_full_name }}{% else %}{{ object.username }}{% endif %}</strong>
+                    <span>@{{ object.username }}</span>
+                </a>
+            </div>
+            <div class="description">
+                <p>{{ object.userprofile.bio|truncatechars:"65" }}</p>
+            </div>
+            <div class="stats">
+                <!-- WIP: Needs a research for better implementation
+                <div>
+                    <span class="counter">10</span>
+                    <span class="label">posts</span>
+                </div>
+                <div>
+                    <span class="counter">20</span>
+                    <span class="label">followers</span>
+                </div>
+                -->
+                <div>
+                    <span class="counter">{{ object.date_joined|naturalday }}</span>
+                    <span class="label">joined</span>
+                </div>
+                <div>
+                    <span class="counter">{{ object.last_login|naturalday }}</span>
+                    <span class="label">last active</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if is_paginated %}
+    {% load proper_paginate %}
+    {% load url_replace %}
+    <div class="pagination-block">
+        <div>
+            {% if not page_obj.number == 1 %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' 1 %}">
+                    <i class="fas fa-step-backward"></i>
+                </a>
+            </span>
+            {% endif %}
+            {% if page_obj.has_previous %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' page_obj.previous_page_number %}">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </span>
+            {% endif %}
+            {% for i in paginator|proper_paginate:page_obj.number %}
+            {% if page_obj.number == i %}
+            <span class="page current">
+                <span>{{ i }}</span>
+            </span>
+            {% else %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' i %}">{{ i }}</a>
+            </span>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' page_obj.next_page_number %}">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </span>
+            {% endif %}
+            {% if not page_obj.number == paginator.num_pages %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' paginator.num_pages %}">
+                    <i class="fas fa-step-forward"></i>
+                </a>
+            </span>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

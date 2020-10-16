@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load custom_filters %}
+{% load humanize %}
+{% block title %}
+{% if profile.get_full_name %}{{ profile.get_full_name }}{% else %}{{ profile.username }}{% endif %}
+(@{{ profile.username }}) / Ordis
+{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+<div id="userprofile">
+    <div class="menu"></div>
+    <div class="info">
+        <div class="inner-info">
+            <div class="userinfo">
+                <div>
+                    <img class="avatar"
+                        src="{{profile.userprofile.avatar|thumbnail_url:'userprofile_avatar'|default:'https://via.placeholder.com/120x120'}}"
+                        alt="{% if profile.get_full_name %}{{profile.get_full_name}} - @{{profile.username}}{% else %}@{{profile.username}} avatar.{% endif %}
+                    ">
+                </div>
+                <div class="userdata">
+                    <h1 class="name">
+                        {% if profile.get_full_name %}{{ profile.get_full_name }}{% else %}{{ profile.username }}{% endif %}
+                        <small>
+                            @{{ profile.username }}
+                        </small>
+                    </h1>
+                    <nav class="usermenu">
+                        <ul>
+                            <li class="{% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}">
+                                <a href="#">
+                                    <span class="counter">{{ posts_count|number_formatter }}</span>
+                                    <span class="label">Posts</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="counter">{{ following_count|number_formatter }}</span>
+                                    <span class="label">Following</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="counter">{{ followers_count|number_formatter }}</span>
+                                    <span class="label">Followers</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <img class="header"
+                src="{{ profile.userprofile.header|thumbnail_url:'userprofile_header'|default:'https://via.placeholder.com/960x300' }}"
+                alt="{% if profile.get_full_name %}{{profile.get_full_name}} - @{{profile.username}}{% else %}@{{profile.username}} header.{% endif %}
+            ">
+        </div>
+    </div>
+    <div class="feed">
+        <div class="timeline">
+            <nav class="timenav">
+                <ul>
+                    <li>
+                        <a class="{% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}" href="#">
+                            Posts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Posts and replies</a>
+                    </li>
+                    <li>
+                        <a href="#">Media</a>
+                    </li>
+                    <li>
+                        <a href="#">Market</a>
+                    </li>
+                </ul>
+            </nav>
+            {% for object in posts %}
+            <div class="post">
+                <div>
+                    <a href="#">
+                        <img class="user-avatar" src="https://via.placeholder.com/49x49">
+                    </a>
+                </div>
+                <div>
+                    <h2 class="title">
+                        <a class="name" href="#">
+                            <strong>{% if profile.get_full_name %}{{ profile.get_full_name }}{% else %}{{ profile.username }}{% endif %}</strong>
+                        </a>
+                        <a class="username" href="#">
+                            @{{ profile.username }}
+                        </a>
+                        <a class="date" href="#">{{ object.date_created|naturalday }}</a>
+                    </h2>
+                    <div>{{ object.text|linebreaks }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="aside">
+            <div class="omnibox">
+                {% if profile.is_superuser %}
+                <span class="badge-list"><a href="#" class="badge badge-danger-outline">Admin</a></span>
+                {% endif %}
+                {% if profile.userprofile.bio %}
+                <span class="bio">{{ profile.userprofile.bio|linebreaks }}</span>
+                {% endif %}
+                <span class="joined">Joined {{ profile.date_joined|naturalday }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block footer %}{% endblock %}

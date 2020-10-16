@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="home">
+    <div>
+        {% include 'core/components/auth_block.html' %}
+        {% include 'core/components/features_block.html' %}
+    </div>
+    <div>
+        {% if welcome_post %}
+        <div class="featured-post">
+            {% for object in welcome_post %}
+            {% include 'core/components/post_welcome.html' %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

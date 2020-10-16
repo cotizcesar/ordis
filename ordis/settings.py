@@ -35,9 +35,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    "django.contrib.humanize",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "easy_thumbnails",
+    "import_export",
     "bootstrap4",
     "core",
 ]
@@ -168,20 +171,48 @@ LOGIN_REDIRECT_URL = "feed"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 5
 ACCOUNT_EMAIL_REQUIRED = False  # Change for True in Production
-ACCOUNT_EMAIL_VERIFICATION = "none"  # Change for mandatory in Production
+ACCOUNT_EMAIL_VERIFICATION = "optional"  # Change for mandatory in Production
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"  # Change for https in Production
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 600
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 ACCOUNT_LOGOUT_REDIRECT_URL = "home"
+ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_USERNAME_BLACKLIST = ["admin", "ordis", "cotizcesar", "Warframe"]
-ACCOUNT_USERNAME_MIN_LENGTH = 4
-REGISTRATION_OPEN = False
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_MIN_LENGTH = 6
+REGISTRATION_OPEN = False  # Change for True in Production
+
+THUMBNAIL_TRANSPARENCY_EXTENSION = "png"
+THUMBNAIL_ALIASES = {
+    "": {
+        "userprofile_header": {"size": (960, 300), "crop": "smart", "upscale": True},
+        "userprofile_avatar": {"size": (120, 120), "crop": "smart", "upscale": True},
+        "post_welcome": {"size": (465, 0), "crop": "smart", "upscale": True},
+        "post_welcome_avatar": {"size": (36, 36), "crop": "smart", "upscale": True},
+        "explore_header": {"size": (475, 125), "crop": "smart", "upscale": True},
+        "explore_avatar": {"size": (48, 48), "crop": "smart", "upscale": True},
+        "avatar": {"size": (510, 510), "crop": "smart", "upscale": True},
+        "post": {"size": (540, 0), "crop": "smart", "upscale": True},
+        "order": {"size": (74, 74), "crop": "smart", "upscale": True},
+        "item": {"size": (510, 287), "crop": "smart", "upscale": True},
+        "warframe": {"size": (510, 906), "crop": "smart", "upscale": True},
+        "warframe_detail": {"size": (510, 906), "crop": "smart", "upscale": True},
+        "warframe_list": {"size": (510, 287), "crop": "0,0", "upscale": True},
+        "warframe_market_list": {"size": (510, 287), "crop": "0,0", "upscale": True},
+        "warframe_50x50": {"size": (50, 50), "crop": "0,0", "upscale": True},
+        "44x44": {"size": (44, 44), "crop": "smart", "upscale": True},
+        "50x50": {"size": (50, 50), "crop": "smart", "upscale": True},
+        "66x66": {"size": (66, 66), "crop": "smart", "upscale": True},
+        "warframe_66x66": {"size": (66, 66), "crop": "0,0", "upscale": True},
+        "89x89": {"size": (89, 89), "crop": "smart", "upscale": True},
+        "510x287": {"size": (510, 287), "crop": "smart", "upscale": True},
+    },
+}
+THUMBNAIL_NAMER = "easy_thumbnails.namers.hashed"
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

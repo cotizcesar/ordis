@@ -44,6 +44,9 @@ class UserProfile(models.Model):
         ),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    header = models.ImageField(
+        upload_to="user/header", default="user/header/default.png", blank=True
+    )
     avatar = models.ImageField(
         upload_to="user/avatar", default="user/avatar/default.png", blank=True
     )
@@ -90,6 +93,7 @@ class Post(models.Model):
     video = models.URLField(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
+    featured = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["-date_created"]

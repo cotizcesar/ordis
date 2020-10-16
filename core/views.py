@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.utils import timezone
 from django.contrib import messages
+from django.db.models import Count
 
 #! Django: Importing User Model
 from django.contrib.auth.models import User
@@ -27,7 +28,7 @@ from .forms import UserForm, UserProfileForm, PostForm, CommentForm
 
 
 class Index(TemplateView):
-    template_name = "index.html"
+    template_name = "core/index.html"
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -36,6 +37,11 @@ class Index(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Index, self).get_context_data(**kwargs)
+        context["welcome_post"] = Post.objects.filter(featured=True).order_by(
+            "-date_created"
+        )[:1]
+        context["users_count"] = User.objects.all().count()
+        context["posts_count"] = Post.objects.all().count()
         # context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(is_active=False)[:5]
         # context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:5]
         # context['quests'] = Quest.objects.all().order_by()
@@ -45,11 +51,10 @@ class Index(TemplateView):
         return context
 
 
-class Feed(LoginRequiredMixin, ListView, FormView):
+class Feed(LoginRequiredMixin, ListView):
     model = Post
     paginate_by = 10
-    template_name = "core/feed/feed.html"
-    form_class = PostForm
+    template_name = "core/feed.html"
 
     def get_context_data(self, *args, **kwargs):
         context = super(Feed, self).get_context_data(**kwargs)
@@ -58,13 +63,6 @@ class Feed(LoginRequiredMixin, ListView, FormView):
             | Q(user=self.request.user)
         )
         return context
-
-    def form_valid(self, form):
-        obj = form.save(commit=False)
-        obj.user = self.request.user
-        obj.date_created = timezone.now()
-        obj.save()
-        return redirect("feed")
 
 
 class FeedPublic(ListView):
@@ -77,17 +75,9 @@ class FeedPublic(ListView):
         context["posts"] = Post.objects.all()
         return context
 
-    def form_valid(self, form):
-        obj = form.save(commit=False)
-        obj.user = self.request.user
-        obj.date_created = timezone.now()
-        obj.save()
-        return redirect("feed")
-
 
 class UserProfileDetailView(DetailView, FormView):
     model = User
-    template_name = "core/userprofile/userprofile.html"
     slug_field = "username"
     slug_url_kwarg = "username"
     context_object_name = "profile"
@@ -103,10 +93,10 @@ class UserProfileDetailView(DetailView, FormView):
         context["username"] = username
         context["user"] = self.request.user
         #! Following / Followers counters
-        context["following"] = Connection.objects.filter(
+        context["following_count"] = Connection.objects.filter(
             follower__username=username
         ).count()
-        context["followers"] = Connection.objects.filter(
+        context["followers_count"] = Connection.objects.filter(
             following__username=username
         ).count()
 
@@ -305,8 +295,6 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
 
 class Explore(LoginRequiredMixin, TemplateView):
-    template_name = "explore/explore.html"
-
     def get_context_data(self, **kwargs):
         context = super(Explore, self).get_context_data(**kwargs)
         context["users"] = (
@@ -317,13 +305,7 @@ class Explore(LoginRequiredMixin, TemplateView):
         return context
 
 
-class ExploreUsers(LoginRequiredMixin, TemplateView):
-    template_name = "explore/explore.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(ExploreUsers, self).get_context_data(**kwargs)
-        context["users"] = (
-            User.objects.all().exclude(last_login=None).order_by("-last_login")
-        )
-        context["mode"] = "explore_users"
-        return context
+class ExploreUsers(ListView):
+    model = User
+    paginate_by = 20
+    template_name = "core/explore.html"
