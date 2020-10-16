@@ -4,7 +4,7 @@ register = template.Library()
 
 
 @register.filter
-def proper_paginate(paginator, current_page, neighbors=10):
+def proper_paginate(paginator, current_page, neighbors=1):
     #! Source: https://medium.com/@sumitlni/paginate-properly-please-93e7ca776432
     if paginator.num_pages > 2 * neighbors:
         start_index = max(1, current_page - neighbors)

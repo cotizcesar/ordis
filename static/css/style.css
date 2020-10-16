@@ -485,6 +485,7 @@ a:hover {
 }
 .users-list .user .description p {
     margin: 0;
+    min-height: 21px;
 }
 .users-list .user .stats {
     display: grid;
@@ -506,7 +507,24 @@ a:hover {
     color: #9baec8;
 }
 /* Component: Pagination Simple (Explore Users) */
-.pagination {
-    justify-self: center;
+.pagination-block {
+    display: grid;
+    justify-items: center;
     padding: 30px 0;
+}
+.pagination-block .page, .pagination-block .page a {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: #fff;
+    font-weight: 500;
+    display: inline-block;
+    padding: 6px 10px;
+    text-decoration: none;
+}
+.pagination-block .current {
+    background: #fff;
+    border-radius: 100px;
+    color: #282c37;
+    cursor: default;
+    margin: 0 10px;
 }

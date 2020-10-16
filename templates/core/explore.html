@@ -54,73 +54,49 @@
     {% if is_paginated %}
     {% load proper_paginate %}
     {% load url_replace %}
-    <nav aria-label="Main pagination">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.number == 1 %}
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+    <div class="pagination-block">
+        <div>
+            {% if not page_obj.number == 1 %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' 1 %}">
                     <i class="fas fa-step-backward"></i>
                 </a>
-            </li>
-            {% else %}
-            <li class="page-item">
-                <a class="page-link" href="?{% url_replace request 'page' 1 %}">
-                    <i class="fas fa-step-backward"></i>
-                </a>
-            </li>
+            </span>
             {% endif %}
             {% if page_obj.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="?{% url_replace request 'page' page_obj.previous_page_number %}">
+            <span class="page">
+                <a href="?{% url_replace request 'page' page_obj.previous_page_number %}">
                     <i class="fas fa-chevron-left"></i>
                 </a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                    <i class="fas fa-chevron-left"></i>
-                </a>
-            </li>
+            </span>
             {% endif %}
             {% for i in paginator|proper_paginate:page_obj.number %}
             {% if page_obj.number == i %}
-            <li class="page-item active">
-                <a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a>
-            </li>
+            <span class="page current">
+                <span>{{ i }}</span>
+            </span>
             {% else %}
-            <li class="page-item">
-                <a class="page-link" href="?{% url_replace request 'page' i %}">{{ i }}</a>
-            </li>
+            <span class="page">
+                <a href="?{% url_replace request 'page' i %}">{{ i }}</a>
+            </span>
             {% endif %}
             {% endfor %}
             {% if page_obj.has_next %}
-            <li class="page-item">
-                <a class="page-link" href="?{% url_replace request 'page' page_obj.next_page_number %}">
+            <span class="page">
+                <a href="?{% url_replace request 'page' page_obj.next_page_number %}">
                     <i class="fas fa-chevron-right"></i>
                 </a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                    <i class="fas fa-chevron-right"></i>
-                </a>
-            </li>
+            </span>
             {% endif %}
-            {% if page_obj.number == paginator.num_pages %}
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+            {% if not page_obj.number == paginator.num_pages %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' paginator.num_pages %}">
                     <i class="fas fa-step-forward"></i>
                 </a>
-            </li>
-            {% else %}
-            <li class="page-item">
-                <a class="page-link" href="?{% url_replace request 'page' paginator.num_pages %}">
-                    <i class="fas fa-step-forward"></i>
-                </a>
-            </li>
+            </span>
             {% endif %}
-        </ul>
-    </nav>
+        </div>
+    </div>
     {% endif %}
     {% endif %}
 </div>
