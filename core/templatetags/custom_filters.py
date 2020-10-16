@@ -1,9 +1,10 @@
 from django import template
+from django.template.defaultfilters import stringfilter
 
 register = template.Library()
 
 
-@register.filter(name="number_formatter")
+@register.filter
 def number_formatter(value, num_decimals=2):
     """
     Django template filter to convert regular numbers to a
@@ -24,3 +25,10 @@ def number_formatter(value, num_decimals=2):
         return (
             formatted_number.format(int_value / 1000000.0).rstrip("0").rstrip(".") + "M"
         )
+
+
+@register.filter
+@stringfilter
+def counter_by_model(value, arg):
+    """Filter to fetch a dict's value by a variable as key"""
+    return "0"

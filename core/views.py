@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.utils import timezone
 from django.contrib import messages
+from django.db.models import Count
 
 #! Django: Importing User Model
 from django.contrib.auth.models import User
@@ -306,13 +307,5 @@ class Explore(LoginRequiredMixin, TemplateView):
 
 class ExploreUsers(ListView):
     model = User
-    paginate_by = 20
+    paginate_by = 1
     template_name = "core/explore.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(ExploreUsers, self).get_context_data(**kwargs)
-        context["users"] = (
-            User.objects.all().exclude(last_login=None).order_by("-last_login")
-        )
-        context["mode"] = "explore_users"
-        return context
