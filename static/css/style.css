@@ -63,6 +63,7 @@ a:hover {
 /* Page: Explore (Users) */
 #explore {
     grid-gap: 10px;
+    margin: 10px auto;
 }
 /* Page: Userprofile (Internal and Public) */
 #userprofile {
@@ -432,7 +433,6 @@ a:hover {
 .page-header {
     background: #393f4f;
     border-radius: 4px;
-    margin: 10px 0;
     padding: 60px 15px;
     text-align: center;
 }
@@ -459,6 +459,7 @@ a:hover {
     grid-gap: 15px;
     align-items: center;
     padding: 10px;
+    background: #313543;
 }
 .users-list .user .profile .avatar {
     border-radius: 4px;
@@ -480,4 +481,26 @@ a:hover {
     border-bottom: 1px solid #393f4f;
     font-size: 0.875rem;
     padding: 15px 10px;
+}
+.users-list .user .description p {
+    margin: 0;
+}
+.users-list .user .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #282c37;
+    padding: 15px 0;
+    text-align: center;
+}
+.users-list .user .stats .counter {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    color: #fff;
+    display: block;
+}
+.users-list .user .stats .label {
+    font-size: 14px;
+    display: block;
+    color: #9baec8;
 }
