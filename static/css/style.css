@@ -21,13 +21,18 @@ a:hover {
     font-weight: 500;
 }
 
+/* Page: Containers (max-width) */
+#home, #feed, #userprofile, #explore {
+    display: grid;
+    margin: 0 auto;
+    max-width: 960px;
+}
 /* Page: Home */
 #home {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 30px;
-    margin: 50px auto 100px auto;
-    max-width: 960px;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
 /* Page: Auth (django-allauth) */
 #auth {
@@ -50,19 +55,14 @@ a:hover {
 }
 /* Page: Feed (Internal and Public) */
 #feed {
-    display: grid;
     grid-template-columns: 1fr 570px 1fr;
     column-gap: 15px;
-    margin: 30px auto;
-    align-self: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 /* Page: Userprofile (Internal and Public) */
 #userprofile {
-    display: grid;
-    column-gap: 10px;
-    row-gap: 10px;
-    margin: 0 auto;
-    max-width: 960px;
+    grid-gap: 10px;
     align-self: center;
 }
 #userprofile .info {

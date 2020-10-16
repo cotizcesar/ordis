@@ -27,7 +27,7 @@ from .forms import UserForm, UserProfileForm, PostForm, CommentForm
 
 
 class Index(TemplateView):
-    template_name = "index.html"
+    template_name = "core/index.html"
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -50,11 +50,10 @@ class Index(TemplateView):
         return context
 
 
-class Feed(LoginRequiredMixin, ListView, FormView):
+class Feed(LoginRequiredMixin, ListView):
     model = Post
     paginate_by = 10
-    template_name = "core/feed/feed.html"
-    form_class = PostForm
+    template_name = "core/feed.html"
 
     def get_context_data(self, *args, **kwargs):
         context = super(Feed, self).get_context_data(**kwargs)
@@ -63,13 +62,6 @@ class Feed(LoginRequiredMixin, ListView, FormView):
             | Q(user=self.request.user)
         )
         return context
-
-    def form_valid(self, form):
-        obj = form.save(commit=False)
-        obj.user = self.request.user
-        obj.date_created = timezone.now()
-        obj.save()
-        return redirect("feed")
 
 
 class FeedPublic(ListView):
@@ -81,13 +73,6 @@ class FeedPublic(ListView):
         context = super(FeedPublic, self).get_context_data(**kwargs)
         context["posts"] = Post.objects.all()
         return context
-
-    def form_valid(self, form):
-        obj = form.save(commit=False)
-        obj.user = self.request.user
-        obj.date_created = timezone.now()
-        obj.save()
-        return redirect("feed")
 
 
 class UserProfileDetailView(DetailView, FormView):
@@ -309,8 +294,6 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
 
 class Explore(LoginRequiredMixin, TemplateView):
-    template_name = "explore/explore.html"
-
     def get_context_data(self, **kwargs):
         context = super(Explore, self).get_context_data(**kwargs)
         context["users"] = (
@@ -321,8 +304,10 @@ class Explore(LoginRequiredMixin, TemplateView):
         return context
 
 
-class ExploreUsers(LoginRequiredMixin, TemplateView):
-    template_name = "explore/explore.html"
+class ExploreUsers(ListView):
+    model = User
+    paginate_by = 20
+    template_name = "core/explore.html"
 
     def get_context_data(self, **kwargs):
         context = super(ExploreUsers, self).get_context_data(**kwargs)
