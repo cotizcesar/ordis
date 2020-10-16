@@ -342,6 +342,10 @@ a:hover {
     color: #fff;
 }
 /* Component: Footer */
+#footer {
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
 #footer .grid {
     display: grid;
     grid-template-columns: 17% 17% 1fr 17% 17%;
