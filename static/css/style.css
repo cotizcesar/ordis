@@ -67,6 +67,7 @@ a:hover {
 }
 /* Page: Userprofile (Internal and Public) */
 #userprofile {
+    grid-template-rows: repeat(3, auto);
     grid-gap: 10px;
     align-self: center;
 }
@@ -429,7 +430,7 @@ a:hover {
 .features-block a h4 .fas, .features-block a h4 .fa, .features-block a h4 .fab {
     color: #9baec8;
 }
-/* Component: Page Header */
+/* Component: Page Header (Explore Users) */
 .page-header {
     background: #393f4f;
     border-radius: 4px;
@@ -447,7 +448,7 @@ a:hover {
     color: #9baec8;
     margin: 0;
 }
-/* Component: Users List (Explore) */
+/* Component: Users List (Explore Users) */
 .users-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -487,7 +488,7 @@ a:hover {
 }
 .users-list .user .stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     background: #282c37;
     padding: 15px 0;
     text-align: center;
@@ -503,4 +504,9 @@ a:hover {
     font-size: 14px;
     display: block;
     color: #9baec8;
+}
+/* Component: Pagination Simple (Explore Users) */
+.pagination {
+    justify-self: center;
+    padding: 30px 0;
 }

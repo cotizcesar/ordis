@@ -3,7 +3,10 @@
 {% load thumbnail %}
 {% block content %}
 <div id="explore">
-    {% include 'core/components/page_header.html' %}
+    <div class="page-header">
+        <h1>Explore Ordis</h1>
+        <p>Discover users based on their interests</p>
+    </div>
     {% if object_list %}
     <div class="users-list">
         {% for object in object_list %}
@@ -26,6 +29,7 @@
                 <p>{{ object.userprofile.bio|truncatechars:"65" }}</p>
             </div>
             <div class="stats">
+                <!-- WIP: Needs a research for better implementation
                 <div>
                     <span class="counter">10</span>
                     <span class="label">posts</span>
@@ -34,6 +38,7 @@
                     <span class="counter">20</span>
                     <span class="label">followers</span>
                 </div>
+                -->
                 <div>
                     <span class="counter">{{ object.date_joined|naturalday }}</span>
                     <span class="label">joined</span>
@@ -47,23 +52,75 @@
         {% endfor %}
     </div>
     {% if is_paginated %}
-    <div class="pagination">
-        <span class="step-links">
+    {% load proper_paginate %}
+    {% load url_replace %}
+    <nav aria-label="Main pagination">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.number == 1 %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                    <i class="fas fa-step-backward"></i>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?{% url_replace request 'page' 1 %}">
+                    <i class="fas fa-step-backward"></i>
+                </a>
+            </li>
+            {% endif %}
             {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            <li class="page-item">
+                <a class="page-link" href="?{% url_replace request 'page' page_obj.previous_page_number %}">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </li>
             {% endif %}
-
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
-
+            {% for i in paginator|proper_paginate:page_obj.number %}
+            {% if page_obj.number == i %}
+            <li class="page-item active">
+                <a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?{% url_replace request 'page' i %}">{{ i }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
             {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            <li class="page-item">
+                <a class="page-link" href="?{% url_replace request 'page' page_obj.next_page_number %}">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
             {% endif %}
-        </span>
-    </div>
+            {% if page_obj.number == paginator.num_pages %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                    <i class="fas fa-step-forward"></i>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?{% url_replace request 'page' paginator.num_pages %}">
+                    <i class="fas fa-step-forward"></i>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
     {% endif %}
     {% endif %}
 </div>

@@ -307,5 +307,5 @@ class Explore(LoginRequiredMixin, TemplateView):
 
 class ExploreUsers(ListView):
     model = User
-    paginate_by = 20
+    paginate_by = 1
     template_name = "core/explore.html"
