@@ -1,6 +1,32 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 {% block content %}
 <div id="explore">
-
+    {% include 'core/components/page_header.html' %}
+    {% if object_list %}
+    <div class="users-list">
+        {% for object in object_list %}
+        <div class="user">
+            <img class="header"
+                src="{{ object.userprofile.header|thumbnail_url:'explore_header'|default:'https://via.placeholder.com/475x125' }}"
+                alt="{% if object.get_full_name %}{{ object.get_full_name }} - @{{ object.username }}{% else %}@{{ object.username }} header.{% endif %}
+            ">
+            <div class="profile">
+                <img class="avatar"
+                    src="{{ object.userprofile.avatar|thumbnail_url:'explore_avatar'|default:'https://via.placeholder.com/48' }}"
+                    alt="{% if object.get_full_name %}{{ object.get_full_name }} - @{{ object.username }}{% else %}@{{ object.username }} avatar.{% endif %}
+                ">
+                <a href="{% url 'userprofile' object.username %}">
+                    <strong>{% if object.get_full_name %}{{ object.get_full_name }}{% else %}{{ object.username }}{% endif %}</strong>
+                    <span>@{{ object.username }}</span>
+                </a>
+            </div>
+            <div class="description">
+                {{ object.userprofile.bio }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -60,6 +60,10 @@ a:hover {
     margin-top: 30px;
     margin-bottom: 30px;
 }
+/* Page: Explore (Users) */
+#explore {
+    grid-gap: 10px;
+}
 /* Page: Userprofile (Internal and Public) */
 #userprofile {
     grid-gap: 10px;
@@ -188,8 +192,8 @@ a:hover {
     font-weight: 500;
     padding: 4px 6px;
 }
-/* Modules */
-/* Module: Post */
+/* Components */
+/* Component: Post */
 .post {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -227,7 +231,7 @@ a:hover {
     font-size: 14px;
     justify-self: end;
 }
-/* Module: Post Welcome */
+/* Component: Post Welcome */
 .post-welcome {
     background: #282C37;
     border-radius: 4px;
@@ -292,7 +296,7 @@ a:hover {
     font-weight: 700;
     line-height: 0.9375rem;
 }
-/* Module: Omnibox */
+/* Component: Omnibox */
 .omnibox {
     display: grid;
     row-gap: 16px;
@@ -309,7 +313,7 @@ a:hover {
     color: #9baec8;
     margin: 0;
 }
-/* Module: Timenav */
+/* Component: Timenav */
 .timenav {
     background: #1f232b;
     border-radius: 4px 4px 0 0;
@@ -335,7 +339,7 @@ a:hover {
 .timenav ul li .active {
     color: #fff;
 }
-/* Module: Footer */
+/* Component: Footer */
 #footer .grid {
     display: grid;
     grid-template-columns: 17% 17% 1fr 17% 17%;
@@ -360,7 +364,7 @@ a:hover {
 #footer .grid ul li a {
     color: #737d99;
 }
-/* Module: Auth Block */
+/* Component: Auth Block */
 .auth-block {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -393,7 +397,7 @@ a:hover {
 .auth-block a h4 .fas, .auth-block a h4 .fa, .auth-block a h4 .fab {
     color: #9baec8;
 }
-/* Module: Features Block */
+/* Component: Features Block */
 .features-block {
     display: grid;
     row-gap: 10px;
@@ -423,4 +427,57 @@ a:hover {
 }
 .features-block a h4 .fas, .features-block a h4 .fa, .features-block a h4 .fab {
     color: #9baec8;
+}
+/* Component: Page Header */
+.page-header {
+    background: #393f4f;
+    border-radius: 4px;
+    margin: 10px 0;
+    padding: 60px 15px;
+    text-align: center;
+}
+.page-header h1 {
+    color: #fff;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.page-header p {
+    font-size: 0.9375rem;
+    color: #9baec8;
+    margin: 0;
+}
+/* Component: Users List (Explore) */
+.users-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+.users-list .user .profile {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 15px;
+    align-items: center;
+    padding: 10px;
+}
+.users-list .user .profile .avatar {
+    border-radius: 4px;
+}
+.users-list .user .profile a:hover{
+    text-decoration: none;
+}
+.users-list .user .profile strong {
+    font-size: 0.9375rem;
+    line-height: normal;
+    color: #fff;
+    display: block;
+}
+.users-list .user .profile span {
+    color: #9baec8;
+}
+.users-list .user .description {
+    background: #282c37;
+    border-bottom: 1px solid #393f4f;
+    font-size: 0.875rem;
+    padding: 15px 10px;
 }
