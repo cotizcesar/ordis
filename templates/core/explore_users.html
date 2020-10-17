@@ -12,12 +12,12 @@
         {% for object in object_list %}
         <div class="user">
             <img class="header"
-                src="{{ object.userprofile.header|thumbnail_url:'explore_header'|default:'https://via.placeholder.com/475x125' }}"
+                src="{{ object.userprofile.header|thumbnail_url:'475x125'|default:'https://via.placeholder.com/475x125' }}"
                 alt="{% if object.get_full_name %}{{ object.get_full_name }} - @{{ object.username }}{% else %}@{{ object.username }} header.{% endif %}
             ">
             <div class="profile">
                 <img class="avatar"
-                    src="{{ object.userprofile.avatar|thumbnail_url:'explore_avatar'|default:'https://via.placeholder.com/48' }}"
+                    src="{{ object.userprofile.avatar|thumbnail_url:'48x48'|default:'https://via.placeholder.com/48' }}"
                     alt="{% if object.get_full_name %}{{ object.get_full_name }} - @{{ object.username }}{% else %}@{{ object.username }} avatar.{% endif %}
                 ">
                 <a href="{% url 'userprofile' object.username %}">

@@ -532,3 +532,53 @@ a:hover {
     cursor: default;
     margin: 0 10px;
 }
+/* Component: Post (Thumbnail) (Explore Posts) */
+.posts-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+    grid-gap: 10px;
+    max-width: 960px;
+}
+.post-thumb {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 15px;
+    background: #313543;
+    border-radius: 4px;
+    padding: 15px;
+}
+.post-thumb .header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 10px;
+    align-items: center;
+}
+.post-thumb .header .avatar {
+    border-radius: 4px;
+}
+.post-thumb .header .name {
+    color: #fff;
+    display: block;
+    font-size: 1rem;
+}
+.post-thumb .header .username {
+    color: #d9e1e8;
+    font-size: 0.875rem;
+}
+.post-thumb .header .username:hover {
+    text-decoration: none;
+}
+.post-thumb .content {
+    color: #fff;
+    font-size: 0.9375rem;
+}
+.post-thumb .content .featured-image {
+    border-radius: 4px;
+}
+.post-thumb .content p:last-child {
+    margin: 0;
+}
+.post-thumb .footer a {
+    color: #606984;
+    font-size: 0.875rem;
+}

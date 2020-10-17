@@ -294,18 +294,13 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         return redirect("post_detail", pk=obj.post.id)
 
 
-class Explore(LoginRequiredMixin, TemplateView):
-    def get_context_data(self, **kwargs):
-        context = super(Explore, self).get_context_data(**kwargs)
-        context["users"] = (
-            User.objects.all().exclude(last_login=None).order_by("-last_login")[:10]
-        )
-        context["posts"] = Post.objects.all().order_by("?")
-        context["mode"] = "explore"
-        return context
+class ExplorePosts(ListView):
+    model = Post
+    paginate_by = 20
+    template_name = "core/explore_posts.html"
 
 
 class ExploreUsers(ListView):
     model = User
     paginate_by = 20
-    template_name = "core/explore.html"
+    template_name = "core/explore_users.html"

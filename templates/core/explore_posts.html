@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load thumbnail %}
+{% block content %}
+<div id="explore">
+    <div class="page-header">
+        <h1>See what's happening</h1>
+        <p>Browse a live stream of public posts on Ordis</p>
+    </div>
+    {% if object_list %}
+    <div class="posts-list">
+        {% for object in object_list %}
+        <div class="post-thumb">
+            <div class="header">
+                <a href="{% url 'userprofile' object.user.username %}">
+                    <img class="avatar"
+                        src="{{ object.user.userprofile.avatar|thumbnail_url:'48x48'|default:'https://via.placeholder.com/48x48' }}"
+                        alt="{% if object.user.get_full_name %}{{ object.user.get_full_name }} - @{{ object.user.username }}{% else %}@{{ object.user.username }}{% endif %} avatar.
+                    ">
+                </a>
+                <div>
+                    <a class="name" href="{% url 'userprofile' object.user.username %}">
+                        <strong>{% if object.user.get_full_name %}{{ object.user.get_full_name }}{% else %}{{ object.user.username }}{% endif %}</strong>
+                    </a>
+                    <a class="username" href="{% url 'userprofile' object.user.username %}">
+                        <span>@{{ object.user.username }}</span>
+                    </a>
+                </div>
+            </div>
+            <div class="content">
+                {{ object.text|linebreaks }}
+                {% if object.image %}
+                <img class="featured-image img-fluid"
+                    src="{{ object.image|thumbnail_url:'283x'|default:'https://via.placeholder.com/283' }}" alt="{% if object.user.get_full_name %}{{ object.user.get_full_name }} - @{{ object.user.username }}{% else %}@{{ object.user.username }}{% endif %} avatar.
+                ">
+                {% endif %}
+            </div>
+            <div class="footer">
+                <a href="#">
+                    {{ object.date_created }}
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if is_paginated %}
+    {% load proper_paginate %}
+    {% load url_replace %}
+    <div class="pagination-block">
+        <div>
+            {% if not page_obj.number == 1 %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' 1 %}">
+                    <i class="fas fa-step-backward"></i>
+                </a>
+            </span>
+            {% endif %}
+            {% if page_obj.has_previous %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' page_obj.previous_page_number %}">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </span>
+            {% endif %}
+            {% for i in paginator|proper_paginate:page_obj.number %}
+            {% if page_obj.number == i %}
+            <span class="page current">
+                <span>{{ i }}</span>
+            </span>
+            {% else %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' i %}">{{ i }}</a>
+            </span>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' page_obj.next_page_number %}">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </span>
+            {% endif %}
+            {% if not page_obj.number == paginator.num_pages %}
+            <span class="page">
+                <a href="?{% url_replace request 'page' paginator.num_pages %}">
+                    <i class="fas fa-step-forward"></i>
+                </a>
+            </span>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

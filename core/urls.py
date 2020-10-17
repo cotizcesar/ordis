@@ -11,7 +11,7 @@ from .views import (
     unfollow_view,
     Feed,
     FeedPublic,
-    Explore,
+    ExplorePosts,
     ExploreUsers,
     PostCreateView,
     PostDetailView,
@@ -23,13 +23,13 @@ urlpatterns = [
     path("", Index.as_view(), name="home"),
     path("feed/", Feed.as_view(), name="feed"),
     path("feed/public/", FeedPublic.as_view(), name="feed_public"),
-    path("explore/", Explore.as_view(), name="explore"),
+    path("explore/posts/", ExplorePosts.as_view(), name="explore_posts"),
     path("explore/users/", ExploreUsers.as_view(), name="explore_users"),
     path("post/create/", PostCreateView.as_view(), name="post_create"),
-    url(r"^p/(?P<pk>\d+)/$", PostDetailView.as_view(), name="post_detail"),
-    url(r"^p/(?P<pk>\d+)/delete/$", PostDeleteView.as_view(), name="post_delete"),
+    url(r"^post/(?P<pk>\d+)/$", PostDetailView.as_view(), name="post_detail"),
+    url(r"^post/(?P<pk>\d+)/delete/$", PostDeleteView.as_view(), name="post_delete"),
     url(
-        r"^p/(?P<pk>\d+)/comment/$",
+        r"^post/(?P<pk>\d+)/comment/$",
         CommentCreateView.as_view(),
         name="post_comment_create",
     ),
@@ -46,6 +46,8 @@ urlpatterns = [
     ),
     url(r"^u/(?P<username>[a-zA-Z-_\d+\.]+)/follow/$", follow_view, name="follow"),
     url(
-        r"^u/(?P<username>[a-zA-Z-_\d+\.]+)/unfollow/$", unfollow_view, name="unfollow"
+        r"^u/(?P<username>[a-zA-Z-_\d+\.]+)/unfollow/$",
+        unfollow_view,
+        name="unfollow",
     ),
 ]
