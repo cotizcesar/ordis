@@ -550,7 +550,6 @@ body {
 .post-welcome .footer .info {
     display: grid;
     grid-template-columns: auto 1fr;
-    align-items: center;
     column-gap: 10px;
     padding: 10px 0 0 0;
 }
@@ -567,6 +566,9 @@ body {
     color: #9baec8;
     display: block;
     font-size: 1.077em;
+}
+.post-welcome .footer .info .username:hover {
+    text-decoration: none;
 }
 .post-welcome .footer .server-stats {
     display: grid;
