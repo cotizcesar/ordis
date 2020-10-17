@@ -442,6 +442,66 @@ body {
 }
 
 /* Components */
+/* Component: Header (Internal) FIXED */
+#header .inner {
+    background: #393F4F;
+    border-radius: 4px;
+    margin: 10px auto 0 auto;
+    max-width: 960px;
+}
+#header .inner nav {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+#header .inner nav ul {
+    list-style: none;
+}
+#header .inner nav a {
+    color: #9baec8;
+    display: block;
+    font-size: 0.923em;
+    font-weight: 700;
+    padding: 15px;
+    text-align: center;
+    white-space: nowrap;
+}
+#header .inner nav a:hover {
+    color: #fff;
+}
+#header .inner nav .disabled {
+    opacity: 0.5;
+}
+#header .inner nav .left .brand:hover {
+    background: #42485a;
+    border-radius: 4px 0 0 4px;
+    text-decoration: none;
+}
+#header .inner nav .right {
+    display: inline-block;
+    align-items: center;
+    justify-self: end;
+}
+#header .inner nav .right .nav-button {
+    background: #4a5266;
+    border-radius: 4px;
+    color: #9baec8;
+    display: block;
+    font-size: 0.923em;
+    font-weight: 700;
+    padding: 7px 15px;
+    margin: 8px 8px 8px 0;
+    text-align: center;
+    white-space: nowrap;
+
+}
+#header .inner nav .right .nav-button:hover {
+    color: #fff;
+    text-decoration: none;
+    background: #535b72;
+}
+#header .inner nav ul li {
+    display: inline-block;
+}
 /* Component: Page Header (Explore Users) FIXED */
 .page-header {
     background: #393f4f;
@@ -539,7 +599,6 @@ body {
 .features-block a {
     background: #282c37;
     border-radius: 4px;
-    box-shadow: 0 0 15px rgba(0,0,0,.2);
     padding: 15px;
 }
 .features-block a:hover {

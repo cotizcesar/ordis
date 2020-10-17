@@ -1,56 +1,68 @@
 <header id="header">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-robot fa-fw text-info mr-1"></i> Ordis</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    {% if user.is_authenticated %}
-                    <li
-                        class="nav-item{% if request.resolver_match.url_name == 'feed' or request.resolver_match.url_name == 'feed_public' %} active{% endif %}">
-                        <a class="nav-link" href="{% url 'feed' %}">Timeline</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Explore</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Market</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Alerts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Builder</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Codex</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ user.username }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'userprofile' user.username %}">Profile</a>
-                            <a class="dropdown-item" href="#">Settings</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
-                        </div>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">
-                            <i class="fas fa-sign-in-alt fa-fw text-info mr-1"></i>
-                            Sign In
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="inner">
+        <nav>
+            {% if not user.is_authenticated %}
+            <ul class="left">
+                <li>
+                    <a class="brand" href="{% url 'home' %}">
+                        <i class="fas fa-robot fa-fw text-info mr-1"></i> Ordis
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'explore_users' %}">Profile directory</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Mobile apps</a>
+                </li>
+            </ul>
+            <ul class="right">
+                <li>
+                    <a class="nav-button" href="{% url 'account_login' %}">Log in</a>
+                </li>
+                <li>
+                    <a class="nav-button" href="{% url 'account_signup' %}">Sign up</a>
+                </li>
+            </ul>
+            {% else %}
+            <ul class="left">
+                <li>
+                    <a class="brand" href="{% url 'feed' %}">
+                        <i class="fas fa-robot fa-fw text-info mr-1"></i> Ordis
+                    </a>
+                </li>
+            </ul>
+            <ul class="right">
+                <li>
+                    <a href="{% url 'feed' %}">Timeline</a>
+                </li>
+                <li>
+                    <a class="disabled" href="#">Explore</a>
+                </li>
+                <li>
+                    <a class="disabled" href="#">Market</a>
+                </li>
+                <li>
+                    <a class="disabled" href="#">Alerts</a>
+                </li>
+                <li>
+                    <a class="disabled" href="#">Builder</a>
+                </li>
+                <li>
+                    <a class="disabled" href="#">Codex</a>
+                </li>
+                <li>
+                    <a href="{% url 'userprofile' user.username %}">@{{ user.username }}</a>
+                </li>
+                <li>
+                    <a class="text-danger" href="{% url 'account_logout' %}">
+                        Sign out <i class="fas fa-sign-out-alt fa-fw"></i>
+                    </a>
+                </li>
+            </ul>
+            {% endif %}
+        </nav>
+    </div>
 </header>
