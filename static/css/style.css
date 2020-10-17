@@ -310,39 +310,6 @@ body {
 #footer .grid ul li a {
     color: #737d99;
 }
-/* Component: Auth Block */
-.auth-block {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 10px;
-    margin: 0 0 30px 0;
-}
-.auth-block a {
-    background: #282c37;
-    border-radius: 4px;
-    padding: 15px;
-    text-decoration: none;
-    color: inherit;
-}
-.auth-block a:hover {
-    background: #393f4f;
-}
-.auth-block a h4 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    margin: 0;
-}
-.auth-block a h4 small {
-    display: block;
-    font-weight: 400;
-    font-size: 15px;
-    margin-top: 8px;
-    color: #9baec8;
-}
-.auth-block a h4 .fas, .auth-block a h4 .fa, .auth-block a h4 .fab {
-    color: #9baec8;
-}
 /* Component: Users List (Explore Users) */
 .users-list {
     display: grid;
@@ -567,7 +534,7 @@ body {
 .features-block {
     display: grid;
     align-items: center;
-    row-gap: 10px;
+    grid-gap: 10px;
 }
 .features-block a {
     background: #282c37;
@@ -594,4 +561,10 @@ body {
 }
 .features-block a h4 .fas, .features-block a h4 .fa, .features-block a h4 .fab {
     color: #9baec8;
+}
+/* Component: Auth Block */
+.auth-block {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 10px;
 }
