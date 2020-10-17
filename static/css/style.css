@@ -527,6 +527,7 @@ body {
 .post-welcome .content {
     color: #9baec8;
     font-size: 1.154em;
+    line-height: 20px;
     padding: 0 20px;
 }
 .post-welcome .content p:last-child {
