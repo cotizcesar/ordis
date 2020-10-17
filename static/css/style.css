@@ -1,3 +1,11 @@
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
 body {
     background: #191b22;
     color: #fff;
@@ -335,55 +343,6 @@ body {
 .auth-block a h4 .fas, .auth-block a h4 .fa, .auth-block a h4 .fab {
     color: #9baec8;
 }
-/* Component: Features Block */
-.features-block {
-    display: grid;
-    row-gap: 10px;
-}
-.features-block a {
-    background: #282c37;
-    border-radius: 4px;
-    padding: 15px;
-    text-decoration: none;
-    color: inherit;
-}
-.features-block a:hover {
-    background: #393f4f;
-}
-.features-block a h4 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    margin: 0;
-}
-.features-block a h4 small {
-    display: block;
-    font-weight: 400;
-    font-size: 15px;
-    margin-top: 8px;
-    color: #9baec8;
-}
-.features-block a h4 .fas, .features-block a h4 .fa, .features-block a h4 .fab {
-    color: #9baec8;
-}
-/* Component: Page Header (Explore Users) */
-.page-header {
-    background: #393f4f;
-    border-radius: 4px;
-    padding: 60px 15px;
-    text-align: center;
-}
-.page-header h1 {
-    color: #fff;
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-}
-.page-header p {
-    font-size: 0.9375rem;
-    color: #9baec8;
-    margin: 0;
-}
 /* Component: Users List (Explore Users) */
 .users-list {
     display: grid;
@@ -514,7 +473,27 @@ body {
     color: #606984;
     font-size: 0.875rem;
 }
-/* Component: Post (Welcome) (Index) EM */
+
+/* Components */
+/* Component: Page Header (Explore Users) FIXED */
+.page-header {
+    background: #393f4f;
+    border-radius: 4px;
+    padding: 60px 15px;
+    text-align: center;
+}
+.page-header h1 {
+    color: #fff;
+    font-size: 2.769em;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+.page-header p {
+    font-size: 1.154em;
+    color: #9baec8;
+}
+/* Component: Post (Welcome) (Index) FIXED */
 .post-welcome {
     display: grid;
     row-gap: 20px;
@@ -583,4 +562,36 @@ body {
     color: #9baec8;
     display: block;
     font-size: 14px;
-} 
+}
+/* Component: Features Block (Index) FIXED */
+.features-block {
+    display: grid;
+    align-items: center;
+    row-gap: 10px;
+}
+.features-block a {
+    background: #282c37;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0,0,0,.2);
+    padding: 15px;
+}
+.features-block a:hover {
+    background: #393f4f;
+    text-decoration: none;
+}
+.features-block a h4 {
+    font-size: 1.385em;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+.features-block a h4 small {
+    color: #9baec8;
+    display: block;
+    font-size: 0.833em;
+    font-weight: 400;
+    margin-top: 8px;
+}
+.features-block a h4 .fas, .features-block a h4 .fa, .features-block a h4 .fab {
+    color: #9baec8;
+}
