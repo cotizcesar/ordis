@@ -1,14 +1,11 @@
 body {
     background: #191b22;
-    color: #9baec8;
+    color: #fff;
     font-family: 'Roboto', sans-serif;
+    font-feature-settings: "kern";
     font-size: 13px;
-}
-a {
-    color: #4ea2df;
-}
-a:hover {
-    color: #4ea2df;
+    line-height: 18px;
+    text-rendering: optimizelegibility;
 }
 
 /* Snippets */
@@ -232,71 +229,6 @@ a:hover {
     color: #606984;
     font-size: 14px;
     justify-self: end;
-}
-/* Component: Post Welcome */
-.post-welcome {
-    background: #282C37;
-    border-radius: 4px;
-}
-.post-welcome .header {
-    border-radius: 4px 4px 0 0;
-}
-.post-welcome .inner {
-    padding: 20px 20px 10px 20px;
-}
-.post-welcome .inner p {
-    font-size: 0.9375rem;
-}
-.post-welcome .inner p:last-child {
-    margin-bottom: 0;
-}
-.post-welcome .inner-footer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
-    padding: 10px 20px 20px 20px;
-}
-.post-welcome .inner-footer h4 {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 0.8125rem;
-    margin: 0;
-    padding: 0 0 20px 0;
-}
-.post-welcome .inner-footer .info {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 10px;
-}
-.post-welcome .inner-footer .info:hover {
-    text-decoration: none;
-    opacity: 0.8;
-}
-.post-welcome .inner-footer .info .avatar {
-    border-radius: 4px;
-}
-.post-welcome .inner-footer .info strong, .post-welcome .inner-footer .info span {
-    font-size: 0.875rem;
-    display: block;
-}
-.post-welcome .inner-footer .info strong {
-    color: #fff;
-    line-height: 0.9375rem;
-}
-.post-welcome .inner-footer .info span {
-    color: #9baec8;
-    text-decoration: none;
-}
-.post-welcome .inner-footer .server-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-.post-welcome .inner-footer .server-stats .counter {
-    color: #fff;
-    display: block;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 0.9375rem;
 }
 /* Component: Omnibox */
 .omnibox {
@@ -582,3 +514,72 @@ a:hover {
     color: #606984;
     font-size: 0.875rem;
 }
+/* Component: Post (Welcome) (Index) EM */
+.post-welcome {
+    display: grid;
+    row-gap: 20px;
+    background: #282c37;
+    border-radius: 4px;
+}
+.post-welcome .header {
+    border-radius: 4px 4px 0 0;
+}
+.post-welcome .content {
+    color: #9baec8;
+    font-size: 1.154em;
+    padding: 0 20px;
+}
+.post-welcome .content p:last-child {
+    margin: 0;
+}
+.post-welcome .footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    padding: 0 20px 20px 20px;
+}
+.post-welcome .footer h4 {
+    color: #9baec8;
+    font-size: 1em;
+    font-weight: 700;
+    margin: 0;
+    padding: 0 0 10px 0;
+    text-transform: uppercase;
+}
+.post-welcome .footer .info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 10px;
+    padding: 10px 0 0 0;
+}
+.post-welcome .footer .info .avatar {
+    border-radius: 4px;
+}
+.post-welcome .footer .info .name {
+    color: #fff;
+    display: block;
+    font-size: 1.077em;
+    font-weight: 700;
+}
+.post-welcome .footer .info .username {
+    color: #9baec8;
+    display: block;
+    font-size: 1.077em;
+}
+.post-welcome .footer .server-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    padding: 10px 0 0 0;
+}
+.post-welcome .footer .server-stats .count {
+    display: block;
+    font-size: 1.154em;
+    font-weight: 700;
+} 
+.post-welcome .footer .server-stats .label {
+    color: #9baec8;
+    display: block;
+    font-size: 14px;
+} 

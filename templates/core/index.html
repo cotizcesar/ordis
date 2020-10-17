@@ -44,45 +44,49 @@
     </div>
     <div>
         {% if welcome_post %}
-        <div class="featured-post">
-            {% for object in welcome_post %}
-            <div class="post-welcome">
-                <img class="header"
-                    src="{{ object.image|thumbnail_url:'465x'|default:'https://via.placeholder.com/465x262' }}">
-                <div class="inner">
-                    {{ object.text|linebreaks }}
-                </div>
-                <div class="inner-footer">
-                    <div>
-                        <h4>Administered by:</h4>
-                        <a class="info" href="{% url 'userprofile' object.user.username %}">
-                            <div>
+        {% for object in welcome_post %}
+        <div class="post-welcome">
+            <img class="header"
+                src="{{ object.image|thumbnail_url:'465x'|default:'https://via.placeholder.com/465x262' }}">
+            <div class="content">
+                {{ object.text|linebreaks }}
+            </div>
+            <div class="footer">
+                <div>
+                    <h4>Administered by:</h4>
+                    <div class="info">
+                        <div>
+                            <a href="{% url 'userprofile' object.user.username %}">
                                 <img class="avatar"
                                     src="{{ object.user.userprofile.avatar|thumbnail_url:'36x36'|default:'https://via.placeholder.com/36' }}">
-                            </div>
-                            <div>
-                                <strong>{% if object.user.first_name %}{{ object.user.first_name }}{% else %}{{ object.user.username }}{% endif %}</strong>
+                            </a>
+                        </div>
+                        <div>
+                            <a class="name" href="{% url 'userprofile' object.user.username %}">
+                                <strong>{% if object.user.get_full_name %}{{ object.user.get_full_name }}{% else %}{{ object.user.username }}{% endif %}</strong>
+                            </a>
+                            <a class="username" href="{% url 'userprofile' object.user.username %}">
                                 <span>@{{ object.user.username }}</span>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
-                    <div>
-                        <h4>Server stats:</h4>
-                        <div class="server-stats">
-                            <div>
-                                <span class="counter">{{ users_count|number_formatter }}</span>
-                                <span class="label">users</span>
-                            </div>
-                            <div>
-                                <span class="counter">{{ posts_count|number_formatter }}</span>
-                                <span class="label">posts</span>
-                            </div>
+                </div>
+                <div>
+                    <h4>Server stats:</h4>
+                    <div class="server-stats">
+                        <div>
+                            <strong class="count">{{ users_count|number_formatter }}</strong>
+                            <span class="label">users</span>
+                        </div>
+                        <div>
+                            <strong class="count">{{ posts_count|number_formatter }}</strong>
+                            <span class="label">posts</span>
                         </div>
                     </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
         {% endif %}
     </div>
 </div>
