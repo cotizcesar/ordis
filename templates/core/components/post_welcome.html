@@ -1,8 +1,7 @@
 {% load thumbnail %}
 {% load custom_filters %}
 <div class="post-welcome">
-    <img class="header"
-        src="{{ object.image|thumbnail_url:'post_welcome'|default:'https://via.placeholder.com/465x262' }}">
+    <img class="header" src="{{ object.image|thumbnail_url:'465x'|default:'https://via.placeholder.com/465x262' }}">
     <div class="inner">
         {{ object.text|linebreaks }}
     </div>
@@ -12,7 +11,7 @@
             <a class="info" href="{% url 'userprofile' object.user.username %}">
                 <div>
                     <img class="avatar"
-                        src="{{ object.user.userprofile.avatar|thumbnail_url:'post_welcome_avatar'|default:'https://via.placeholder.com/36' }}">
+                        src="{{ object.user.userprofile.avatar|thumbnail_url:'36x36'|default:'https://via.placeholder.com/36' }}">
                 </div>
                 <div>
                     <strong>{% if object.user.first_name %}{{ object.user.first_name }}{% else %}{{ object.user.username }}{% endif %}</strong>
