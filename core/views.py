@@ -41,6 +41,9 @@ class Index(TemplateView):
             "-date_created"
         )[:1]
         context["users_count"] = User.objects.all().count()
+        context["users_related"] = User.objects.filter(is_active=True).order_by(
+            "-last_login"
+        )[:3]
         context["posts_count"] = Post.objects.all().count()
         # context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(is_active=False)[:5]
         # context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:5]

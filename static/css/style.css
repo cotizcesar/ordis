@@ -635,6 +635,22 @@ body {
 .features-block a h4 .fas, .features-block a h4 .fa, .features-block a h4 .fab {
     color: #9baec8;
 }
+.features-block .explore-users {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+.features-block .explore-users .users-stack {
+    align-self: center;
+    justify-self: right;
+}
+.features-block .explore-users .users-stack .avatar {
+    border: 2px solid #282c37;
+    border-radius: 50%;
+    margin-right: -15px;
+}
+.features-block .explore-users .users-stack .avatar:last-child {
+    margin-right: 0;
+}
 /* Component: Auth Block */
 .auth-block {
     display: grid;

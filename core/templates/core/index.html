@@ -20,14 +20,22 @@
                     </h4>
                 </a>
             </div>
-            <a href="{% url 'explore_users' %}">
+            <a class="explore-users" href="{% url 'explore_users' %}">
                 <h4>
                     <i class="fas fa-address-book fa-fw"></i>
                     Discover Users
                     <small>Browse a profile directory and filter by interests</small>
                 </h4>
+                <div class="users-stack">
+                    {% for object in users_related %}
+                    <img class="avatar"
+                        src="{{ object.userprofile.avatar|thumbnail_url:'36x36'|default:'https://via.placeholder.com/36x36' }}"
+                        alt="{% if object.get_full_name %}{{ object.get_full_name }} - @{{ object.username }}{% else %}@{{ object.username }}{% endif %} avatar.
+                    ">
+                    {% endfor %}
+                </div>
             </a>
-            <a href="{% url 'explore_posts' %}">
+            <a href=" {% url 'explore_posts' %}">
                 <h4>
                     <i class="fas fa-globe-americas fa-fw"></i>
                     See what's happening
