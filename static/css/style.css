@@ -31,11 +31,12 @@ body {
 }
 
 /* Page: Containers (max-width) */
-#home, #feed, #userprofile, #explore, #footer .grid, .posts-list {
+#header, #header-public, #home, #feed, #userprofile, #explore, #footer .grid, .posts-list, #messages {
     display: grid;
     margin: 0 auto;
     max-width: 960px;
 }
+
 /* Page: Home */
 #home {
     grid-template-columns: repeat(2, 1fr);
@@ -348,11 +349,11 @@ body {
 .users-list .user .description {
     background: #282c37;
     border-bottom: 1px solid #393f4f;
-    font-size: 0.875rem;
+    color: #9baec8;
+    font-size: 1.077em;
     padding: 15px 10px;
 }
 .users-list .user .description p {
-    color: #9baec8;
     margin: 0;
 }
 .users-list .user .stats {
@@ -448,24 +449,20 @@ body {
 }
 
 /* Components */
-/* Component: Header (Internal) FIXED */
+/* Component: Header (Internal) EM */
 #header {
-    margin: 10px 0;
-}
-#header .inner {
     background: #393F4F;
     border-radius: 4px;
-    margin: 0 auto;
-    max-width: 960px;
+    margin: 10px auto;
 }
-#header .inner nav {
+#header nav {
     display: grid;
     grid-template-columns: auto 1fr;
 }
-#header .inner nav ul {
+#header nav ul {
     list-style: none;
 }
-#header .inner nav a {
+#header nav a {
     color: #9baec8;
     display: block;
     font-size: 0.923em;
@@ -474,27 +471,27 @@ body {
     text-align: center;
     white-space: nowrap;
 }
-#header .inner nav a:hover {
+#header nav a:hover {
     color: #fff;
 }
-#header .inner nav .disabled {
+#header nav .disabled {
     opacity: 0.5;
 }
-#header .inner nav .left, #header .inner nav .right {
+#header nav .left, #header nav .right {
     padding: 0;
     margin: 0;
 }
-#header .inner nav .left .brand:hover {
+#header nav .left .brand:hover {
     background: #42485a;
     border-radius: 4px 0 0 4px;
     text-decoration: none;
 }
-#header .inner nav .right {
+#header nav .right {
     display: inline-block;
     align-items: center;
     justify-self: end;
 }
-#header .inner nav .right .nav-button {
+#header nav .right .nav-button {
     background: #4a5266;
     border-radius: 4px;
     color: #9baec8;
@@ -507,15 +504,15 @@ body {
     white-space: nowrap;
 
 }
-#header .inner nav .right .nav-button:hover {
+#header nav .right .nav-button:hover {
     color: #fff;
     text-decoration: none;
     background: #535b72;
 }
-#header .inner nav ul li {
+#header nav ul li {
     display: inline-block;
 }
-/* Component: Page Header (Explore Users) FIXED */
+/* Component: Page Header (Explore: Users, Posts) EM */
 .page-header {
     background: #393f4f;
     border-radius: 4px;
@@ -534,7 +531,7 @@ body {
     color: #9baec8;
     margin: 0;
 }
-/* Component: Post (Welcome) (Index) FIXED */
+/* Component: Post Welcome (Index) EM */
 .post-welcome {
     display: grid;
     row-gap: 20px;
@@ -606,7 +603,7 @@ body {
     display: block;
     font-size: 14px;
 }
-/* Component: Features Block (Index) FIXED */
+/* Component: Features Block (Index) EM */
 .features-block {
     display: grid;
     align-items: center;
@@ -653,39 +650,34 @@ body {
 .features-block .explore-users .users-stack .avatar:last-child {
     margin-right: 0;
 }
-/* Component: Auth Block */
+/* Component: Auth Block (Index) EM */
 .auth-block {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 10px;
 }
-/* Component: Header (Index) */
+/* Component: Header (Index) EM */
 #header-public {
-    margin: 50px 0;
-}
-#header-public .inner {
-    display: grid;
     grid-template-columns: repeat(2, auto);
     column-gap: 15px;
-    margin: 0 auto;
-    max-width: 960px;
+    margin: 50px auto;
 }
-#header-public .inner .logo-container {
+#header-public .logo-container {
     justify-self: right;
 }
-#header-public .inner .title-container {
+#header-public .title-container {
     justify-self: left;
     position: relative;
 }
-#header-public .inner .title-container a:hover {
+#header-public .title-container a:hover {
     text-decoration: none;
 }
-#header-public .inner .title-container a h1 {
+#header-public .title-container a h1 {
     color: #fff;
     font-weight: 700;
     margin: 0;
 }
-#header-public .inner .title-container a span {
+#header-public .title-container a span {
     color: #9baec8;
     font-size: 1.077em;
 }
