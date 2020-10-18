@@ -36,7 +36,7 @@
                 {% endif %}
             </div>
             <div class="footer">
-                <a href="#">
+                <a href="{% url 'post_detail' object.id %}">
                     {{ object.date_created }}
                 </a>
             </div>

@@ -76,6 +76,7 @@ class UserProfileDetailView(DetailView):
     slug_field = "username"
     slug_url_kwarg = "username"
     context_object_name = "profile"
+    template_name = "core/userprofile.html"
 
     def get_context_data(self, **kwargs):
         context = super(UserProfileDetailView, self).get_context_data(**kwargs)

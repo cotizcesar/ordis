@@ -406,11 +406,13 @@ body {
 .post-thumb .header .name {
     color: #fff;
     display: block;
-    font-size: 1rem;
+    font-size: 1.231em;
+    line-height: 1.333em;
 }
 .post-thumb .header .username {
     color: #d9e1e8;
-    font-size: 0.875rem;
+    font-size: 1.077em;
+    line-height: 1.846em;
 }
 .post-thumb .header .username:hover {
     text-decoration: none;
