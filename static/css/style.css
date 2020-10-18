@@ -93,14 +93,14 @@ body {
 #userprofile .info .inner-info .userinfo {
     display: grid;
     grid-template-columns: auto 1fr;
-    column-gap: 16px;
+    column-gap: 10px;
     padding: 0 16px;
     position: absolute;
     bottom: -60px;
     left: 0;
 }
 #userprofile .info .inner-info .userinfo .avatar {
-    border: 3px solid #313543;
+    border: 4px solid #313543;
     border-radius: 50%;
 }
 #userprofile .info .inner-info .header {
@@ -112,22 +112,16 @@ body {
     padding: 20px 0 0 0;
 }
 #userprofile .info .inner-info .userinfo .userdata .name {
-    font-size: 20px;
+    font-size: 1.538em;
     line-height: 27px;
     color: #fff;
-    font-weight: 500;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    margin: 0 0 6px 0;
     text-shadow: 1px 1px 1px #000;
 }
 #userprofile .info .inner-info .userinfo .userdata .name small {
     display: block;
-    font-size: 14px;
     color: #fff;
-    font-weight: 400;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 0.700em;
 }
 #userprofile .info .inner-info .userinfo .userdata .usermenu ul {
     display: grid;
@@ -157,21 +151,26 @@ body {
     text-decoration: none;
 }
 #userprofile .info .inner-info .userinfo .userdata .usermenu ul li a .counter {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 20px;
     color: #fff;
     display: block;
+    font-weight: 700;
+    font-size: 1.385em;
+    line-height: 1.111em;
 }
 #userprofile .info .inner-info .userinfo .userdata .usermenu ul li a .label {
-    font-size: 12px;
+    font-size: 0.923em;
     display: block;
     color: #9baec8;
 }
 #userprofile .feed {
     display: grid;
-    grid-template-columns: 1fr 298px;
+    grid-template-columns: 652px 1fr;
     column-gap: 10px;
+}
+#userprofile .feed .aside {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    row-gap: 10px;
 }
 /* Color Scheme */
 /* Buttons */
@@ -375,15 +374,14 @@ body {
     display: block;
     color: #9baec8;
 }
-/* Component: Pagination Simple (Explore Users) */
+/* Component: Pagination Simple (Explore: Users, Posts) EM */
 .pagination-block {
     display: grid;
     justify-items: center;
     padding: 30px 0;
 }
 .pagination-block .page, .pagination-block .page a {
-    font-size: 0.875rem;
-    line-height: 1.125rem;
+    font-size: 1.077em;
     color: #fff;
     font-weight: 500;
     display: inline-block;
@@ -680,4 +678,16 @@ body {
 #header-public .title-container a span {
     color: #9baec8;
     font-size: 1.077em;
+}
+/* Component: Post Welcome Thumb (Userprofile) EM */
+.post-welcome-thumb .header {
+    border-radius: 4px 4px 0 0;
+}
+.post-welcome-thumb .content {
+    background: #282C37;
+    border-radius: 0 0 4px 4px;
+    color: #9baec8;
+    font-size: 1.154em;
+    line-height: 1.334em;
+    padding: 20px;
 }

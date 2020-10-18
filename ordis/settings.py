@@ -216,6 +216,7 @@ THUMBNAIL_ALIASES = {
         "475x125": {"size": (475, 125), "crop": "smart", "upscale": True},
         "48x48": {"size": (48, 48), "crop": "smart", "upscale": True},
         "283x": {"size": (283, 0), "crop": "smart", "upscale": True},
+        "298x167": {"size": (298, 167), "crop": "smart", "upscale": True},
         "avatar": {"size": (510, 510), "crop": "smart", "upscale": True},
         "post": {"size": (540, 0), "crop": "smart", "upscale": True},
         "order": {"size": (74, 74), "crop": "smart", "upscale": True},
