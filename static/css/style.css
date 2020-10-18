@@ -7,15 +7,27 @@ body {
     line-height: 18px;
     text-rendering: optimizelegibility;
 }
-
 /* Snippets */
-.container {
-    max-width: 990px;
+/* Snippets: Scrollbar */
+::-webkit-scrollbar-track {
+    border: 0 #fff;
+    border-radius: 0;
+    background: rgba(0,0,0,.1);
 }
-.form-group label {
-    font-size: 14px;
-    color: #fff;
-    font-weight: 500;
+::-webkit-scrollbar-thumb {
+    background: #313543;
+    border: 0 #fff;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
 }
 
 /* Page: Containers (max-width) */
@@ -310,7 +322,8 @@ body {
 .users-list .user .profile {
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-gap: 15px;
+    column-gap: 15px;
+    row-gap: 15px;
     align-items: center;
     padding: 10px;
     background: #313543;
@@ -321,14 +334,14 @@ body {
 .users-list .user .profile a:hover{
     text-decoration: none;
 }
-.users-list .user .profile strong {
-    font-size: 0.9375rem;
-    line-height: normal;
+.users-list .user .profile .name {
     color: #fff;
+    font-size: 1.154em;
     display: block;
 }
-.users-list .user .profile span {
+.users-list .user .profile .username {
     color: #9baec8;
+    font-size: 1.077em;
 }
 .users-list .user .description {
     background: #282c37;
