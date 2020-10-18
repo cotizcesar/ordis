@@ -1,11 +1,3 @@
-a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-}
 body {
     background: #191b22;
     color: #fff;
@@ -40,15 +32,16 @@ body {
 }
 /* Page: Auth (django-allauth) */
 #auth {
-    margin: 100px auto;
+    margin: 0px auto 50px auto;
     max-width: 400px;
 }
 #auth .title {
     color: #fff;
+    font-weight: 700;
     text-align: center;
 }
 #auth .subtitle {
-    font-size: 13px;
+    color: #9baec8;
     margin: 0 0 50px 0;
     text-align: center;
 }
@@ -72,7 +65,8 @@ body {
 /* Page: Userprofile (Internal and Public) */
 #userprofile {
     grid-template-rows: repeat(3, auto);
-    grid-gap: 10px;
+    column-gap: 10px;
+    row-gap: 10px;
     align-self: center;
 }
 #userprofile .info {
@@ -306,11 +300,12 @@ body {
 #footer .grid ul li a {
     color: #737d99;
 }
-/* Component: Users List (Explore Users) */
+/* Component: Users List (Explore Users) FIXED */
 .users-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
+    column-gap: 10px;
+    row-gap: 10px;
 }
 .users-list .user .profile {
     display: grid;
@@ -342,8 +337,8 @@ body {
     padding: 15px 10px;
 }
 .users-list .user .description p {
+    color: #9baec8;
     margin: 0;
-    min-height: 21px;
 }
 .users-list .user .stats {
     display: grid;
@@ -437,10 +432,13 @@ body {
 
 /* Components */
 /* Component: Header (Internal) FIXED */
+#header {
+    margin: 10px 0;
+}
 #header .inner {
     background: #393F4F;
     border-radius: 4px;
-    margin: 10px auto;
+    margin: 0 auto;
     max-width: 960px;
 }
 #header .inner nav {
@@ -464,6 +462,10 @@ body {
 }
 #header .inner nav .disabled {
     opacity: 0.5;
+}
+#header .inner nav .left, #header .inner nav .right {
+    padding: 0;
+    margin: 0;
 }
 #header .inner nav .left .brand:hover {
     background: #42485a;
@@ -513,6 +515,7 @@ body {
 .page-header p {
     font-size: 1.154em;
     color: #9baec8;
+    margin: 0;
 }
 /* Component: Post (Welcome) (Index) FIXED */
 .post-welcome {
@@ -622,4 +625,34 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 10px;
+}
+/* Component: Header (Index) */
+#header-public {
+    margin: 50px 0;
+}
+#header-public .inner {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 15px;
+    margin: 0 auto;
+    max-width: 960px;
+}
+#header-public .inner .logo-container {
+    justify-self: right;
+}
+#header-public .inner .title-container {
+    justify-self: left;
+    position: relative;
+}
+#header-public .inner .title-container a:hover {
+    text-decoration: none;
+}
+#header-public .inner .title-container a h1 {
+    color: #fff;
+    font-weight: 700;
+    margin: 0;
+}
+#header-public .inner .title-container a span {
+    color: #9baec8;
+    font-size: 1.077em;
 }

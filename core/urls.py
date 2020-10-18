@@ -34,7 +34,7 @@ urlpatterns = [
         name="post_comment_create",
     ),
     url(
-        r"^u/(?P<username>[a-zA-Z-_\d+\.]+)/$",
+        r"^user/(?P<username>[a-zA-Z-_\d+\.]+)/$",
         UserProfileDetailView.as_view(),
         name="userprofile",
     ),
@@ -44,9 +44,9 @@ urlpatterns = [
         UserProfileUpdateView.as_view(),
         name="userprofile_advanced",
     ),
-    url(r"^u/(?P<username>[a-zA-Z-_\d+\.]+)/follow/$", follow_view, name="follow"),
+    url(r"^user/(?P<username>[a-zA-Z-_\d+\.]+)/follow/$", follow_view, name="follow"),
     url(
-        r"^u/(?P<username>[a-zA-Z-_\d+\.]+)/unfollow/$",
+        r"^user/(?P<username>[a-zA-Z-_\d+\.]+)/unfollow/$",
         unfollow_view,
         name="unfollow",
     ),

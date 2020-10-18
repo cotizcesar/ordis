@@ -70,18 +70,12 @@ class FeedPublic(ListView):
     paginate_by = 10
     template_name = "core/feed/feed.html"
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(FeedPublic, self).get_context_data(**kwargs)
-        context["posts"] = Post.objects.all()
-        return context
 
-
-class UserProfileDetailView(DetailView, FormView):
+class UserProfileDetailView(DetailView):
     model = User
     slug_field = "username"
     slug_url_kwarg = "username"
     context_object_name = "profile"
-    form_class = PostForm
 
     def get_context_data(self, **kwargs):
         context = super(UserProfileDetailView, self).get_context_data(**kwargs)
@@ -106,13 +100,6 @@ class UserProfileDetailView(DetailView, FormView):
             ).filter(following__username=username)
             context["connected"] = True if result else False
         return context
-
-    def form_valid(self, form):
-        obj = form.save(commit=False)
-        obj.user = self.request.user
-        obj.date_created = timezone.now()
-        obj.save()
-        return redirect("feed")
 
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
