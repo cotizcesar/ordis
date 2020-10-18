@@ -36,12 +36,23 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "django.contrib.humanize",
+    # Django: django-allauth, apps required.
+    # https://django-allauth.readthedocs.io/en/latest/installation.html#django
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    # easy-thumbnails: Application Added.
+    # https://easy-thumbnails.readthedocs.io/en/latest/install/#configuring-your-project
     "easy_thumbnails",
+    # django-import-export: Application Added.
+    # https://django-import-export.readthedocs.io/en/latest/installation.html#installation-and-configuration
     "import_export",
+    # django-bootstrap4: Application Added.
+    # https://django-bootstrap4.readthedocs.io/en/latest/installation.html
     "bootstrap4",
+    # django-storages
+    # https://django-storages.readthedocs.io/en/latest/index.html#installation
+    "storages",
     "core",
 ]
 SITE_ID = 1
@@ -119,9 +130,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_URL = "/static/"
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
 MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+
+# Local-memory caching
+# https://docs.djangoproject.com/en/2.2/topics/cache/#local-memory-caching
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "ordis-cache",
+    }
+}
 
 # django-bootstrap4
 # https://django-bootstrap4.readthedocs.io/en/latest/settings.html#settings
@@ -190,11 +210,12 @@ THUMBNAIL_TRANSPARENCY_EXTENSION = "png"
 THUMBNAIL_ALIASES = {
     "": {
         "userprofile_header": {"size": (960, 300), "crop": "smart", "upscale": True},
-        "userprofile_avatar": {"size": (120, 120), "crop": "smart", "upscale": True},
-        "post_welcome": {"size": (465, 0), "crop": "smart", "upscale": True},
-        "post_welcome_avatar": {"size": (36, 36), "crop": "smart", "upscale": True},
-        "explore_header": {"size": (475, 125), "crop": "smart", "upscale": True},
-        "explore_avatar": {"size": (48, 48), "crop": "smart", "upscale": True},
+        "120x120": {"size": (120, 120), "crop": "smart", "upscale": True},
+        "465x": {"size": (465, 0), "crop": "smart", "upscale": True},
+        "36x36": {"size": (36, 36), "crop": "smart", "upscale": True},
+        "475x125": {"size": (475, 125), "crop": "smart", "upscale": True},
+        "48x48": {"size": (48, 48), "crop": "smart", "upscale": True},
+        "283x": {"size": (283, 0), "crop": "smart", "upscale": True},
         "avatar": {"size": (510, 510), "crop": "smart", "upscale": True},
         "post": {"size": (540, 0), "crop": "smart", "upscale": True},
         "order": {"size": (74, 74), "crop": "smart", "upscale": True},
@@ -213,6 +234,19 @@ THUMBNAIL_ALIASES = {
     },
 }
 THUMBNAIL_NAMER = "easy_thumbnails.namers.hashed"
+
+# django-storages
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+THUMBNAIL_DEFAULT_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
+AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
+AWS_S3_REGION_NAME = os.environ["AWS_S3_REGION_NAME"]
+AWS_S3_OBJECT_PARAMETERS = {
+    "CacheControl": "max-age=86400",
+}
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

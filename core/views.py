@@ -41,6 +41,9 @@ class Index(TemplateView):
             "-date_created"
         )[:1]
         context["users_count"] = User.objects.all().count()
+        context["users_related"] = User.objects.filter(is_active=True).order_by(
+            "-last_login"
+        )[:3]
         context["posts_count"] = Post.objects.all().count()
         # context['wts'] = Order.objects.filter(want='S').order_by('-date_created').exclude(is_active=False)[:5]
         # context['wtb'] = Order.objects.filter(want='B').order_by('-date_created').exclude(is_active=False)[:5]
@@ -68,20 +71,15 @@ class Feed(LoginRequiredMixin, ListView):
 class FeedPublic(ListView):
     model = Post
     paginate_by = 10
-    template_name = "core/feed/feed.html"
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(FeedPublic, self).get_context_data(**kwargs)
-        context["posts"] = Post.objects.all()
-        return context
+    template_name = "core/feed.html"
 
 
-class UserProfileDetailView(DetailView, FormView):
+class UserProfileDetailView(DetailView):
     model = User
     slug_field = "username"
     slug_url_kwarg = "username"
     context_object_name = "profile"
-    form_class = PostForm
+    template_name = "core/userprofile.html"
 
     def get_context_data(self, **kwargs):
         context = super(UserProfileDetailView, self).get_context_data(**kwargs)
@@ -107,18 +105,11 @@ class UserProfileDetailView(DetailView, FormView):
             context["connected"] = True if result else False
         return context
 
-    def form_valid(self, form):
-        obj = form.save(commit=False)
-        obj.user = self.request.user
-        obj.date_created = timezone.now()
-        obj.save()
-        return redirect("feed")
-
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserForm
-    template_name = "core/userprofile/userprofile_update.html"
+    template_name = "core/userprofile_update.html"
     success_url = reverse_lazy("feed")
 
     def get_object(self):
@@ -128,7 +119,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = UserProfile
     form_class = UserProfileForm
-    template_name = "core/userprofile/userprofile_update.html"
+    template_name = "core/userprofile_update.html"
     success_url = reverse_lazy("feed")
 
     def form_valid(self, form):
@@ -239,7 +230,7 @@ class FollowingListView(LoginRequiredMixin, ListView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     form_class = PostForm
-    template_name = "post/post_create.html"
+    template_name = "core/post_create.html"
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -252,7 +243,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 class PostDetailView(DetailView):
     model = Post
     slug_field = "post_id"
-    template_name = "post/post_detail.html"
+    template_name = "core/post_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super(PostDetailView, self).get_context_data(**kwargs)
@@ -265,7 +256,7 @@ class PostDetailView(DetailView):
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     form_class = PostForm
-    template_name = "post/post_delete.html"
+    template_name = "core/post_delete.html"
     success_url = reverse_lazy("feed")
 
     def user_passes_test(self, request):
@@ -294,18 +285,13 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         return redirect("post_detail", pk=obj.post.id)
 
 
-class Explore(LoginRequiredMixin, TemplateView):
-    def get_context_data(self, **kwargs):
-        context = super(Explore, self).get_context_data(**kwargs)
-        context["users"] = (
-            User.objects.all().exclude(last_login=None).order_by("-last_login")[:10]
-        )
-        context["posts"] = Post.objects.all().order_by("?")
-        context["mode"] = "explore"
-        return context
+class ExplorePosts(ListView):
+    model = Post
+    paginate_by = 20
+    template_name = "core/explore_posts.html"
 
 
 class ExploreUsers(ListView):
     model = User
     paginate_by = 20
-    template_name = "core/explore.html"
+    template_name = "core/explore_users.html"
