@@ -68,7 +68,7 @@ class Feed(LoginRequiredMixin, ListView):
 class FeedPublic(ListView):
     model = Post
     paginate_by = 10
-    template_name = "core/feed/feed.html"
+    template_name = "core/feed.html"
 
 
 class UserProfileDetailView(DetailView):
@@ -106,7 +106,7 @@ class UserProfileDetailView(DetailView):
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserForm
-    template_name = "core/userprofile/userprofile_update.html"
+    template_name = "core/userprofile_update.html"
     success_url = reverse_lazy("feed")
 
     def get_object(self):
@@ -116,7 +116,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = UserProfile
     form_class = UserProfileForm
-    template_name = "core/userprofile/userprofile_update.html"
+    template_name = "core/userprofile_update.html"
     success_url = reverse_lazy("feed")
 
     def form_valid(self, form):
@@ -227,7 +227,7 @@ class FollowingListView(LoginRequiredMixin, ListView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     form_class = PostForm
-    template_name = "post/post_create.html"
+    template_name = "core/post_create.html"
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -240,7 +240,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 class PostDetailView(DetailView):
     model = Post
     slug_field = "post_id"
-    template_name = "post/post_detail.html"
+    template_name = "core/post_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super(PostDetailView, self).get_context_data(**kwargs)
@@ -253,7 +253,7 @@ class PostDetailView(DetailView):
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     form_class = PostForm
-    template_name = "post/post_delete.html"
+    template_name = "core/post_delete.html"
     success_url = reverse_lazy("feed")
 
     def user_passes_test(self, request):
