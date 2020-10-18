@@ -336,12 +336,14 @@ body {
 }
 .users-list .user .profile .name {
     color: #fff;
-    font-size: 1.154em;
+    font-size: 1.231em;
+    line-height: 1.333em;
     display: block;
 }
 .users-list .user .profile .username {
     color: #9baec8;
     font-size: 1.077em;
+    line-height: 1.846em;
 }
 .users-list .user .description {
     background: #282c37;
