@@ -50,7 +50,7 @@
             </div>
             <img class="header"
                 src="{{ profile.userprofile.header|thumbnail_url:'userprofile_header'|default:'https://via.placeholder.com/960x300' }}"
-                alt="{% if profile.get_full_name %}{{profile.get_full_name}} - @{{profile.username}}{% else %}@{{profile.username}} header.{% endif %}
+                alt="{% if profile.get_full_name %}{{ profile.get_full_name }} - @{{ profile.username }}{% else %}@{{ profile.username }}{% endif %} header.
             ">
         </div>
     </div>
@@ -78,7 +78,10 @@
             <div class="post">
                 <div>
                     <a href="#">
-                        <img class="user-avatar" src="https://via.placeholder.com/49x49">
+                        <img class="user-avatar"
+                            src="{{ object.user.userprofile.avatar|thumbnail_url:'48x48'|default:'https://via.placeholder.com/48' }}"
+                            alt="{% if object.user.get_full_name %}{{ object.user.get_full_name }} (@{{ object.user.username }}){% else %}@{{ object.user.username }}{% endif %} avatar.
+                        ">
                     </a>
                 </div>
                 <div>
@@ -97,6 +100,10 @@
                         <img class="image"
                             src="{{ object.image|thumbnail_url:'559x'|default:'https://via.placeholder.com/559' }}" alt="{{ object.text }}
                         ">
+                        {% else %}
+                        {% if object.video %}
+                        {{ object.video|youtube_embed_url|safe }}
+                        {% endif %}
                         {% endif %}
                     </div>
                 </div>

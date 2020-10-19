@@ -88,7 +88,7 @@ class Connection(models.Model):
 #! Core: Post Model.
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.TextField(max_length=280)
+    text = models.TextField(max_length=500)
     image = models.ImageField(upload_to="user/post", blank=True)
     video = models.URLField(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)

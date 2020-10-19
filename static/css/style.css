@@ -29,14 +29,18 @@ body {
     width: 12px;
     height: 12px;
 }
+/* Snippets: Embed Responsive */
+.embed-responsive {
+    border-radius: 4px;
+}
 
-/* Page: Containers (max-width) */
+/* Containers (max-width) */
 #header, #header-public, #home, #feed, #userprofile, #explore, #footer .grid, .posts-list, #messages {
     display: grid;
     margin: 0 auto;
     max-width: 960px;
 }
-
+/* Pages */
 /* Page: Home */
 #home {
     grid-template-columns: repeat(2, 1fr);
@@ -63,16 +67,16 @@ body {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 20px;
 }
-/* Page: Feed (Internal and Public) */
+/* Page: Feed (Internal) */
 #feed {
     grid-template-columns: 1fr 570px 1fr;
     column-gap: 15px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin: 30px auto;
 }
 /* Page: Explore (Users) */
 #explore {
-    grid-gap: 10px;
+    column-gap: 15px;
+    row-gap: 15px;
     margin: 10px auto;
 }
 /* Page: Userprofile (Internal and Public) */
