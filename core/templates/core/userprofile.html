@@ -97,27 +97,35 @@
             {% endfor %}
         </div>
         <div class="aside">
-            {% if profile.userprofile.bio %}
-            <div class="omnibox">
-                {% if profile.is_superuser %}
-                <span class="badge-list"><a href="#" class="badge badge-danger-outline">Admin</a></span>
-                {% endif %}
-                <span class="bio">{{ profile.userprofile.bio|linebreaks }}</span>
-                <span class="joined">Joined {{ profile.date_joined|naturalday }}</span>
-            </div>
-            {% endif %}
-            {% if featured_post %}
-            {% for object in featured_post %}
-            <div class="post-welcome-thumb">
-                <img class="header"
-                    src="{{ object.image|thumbnail_url:'298x167'|default:'https://via.placeholder.com/298x167' }}"
-                    alt="{{ object.text }}">
-                <div class="content">
-                    {{ object.text }}
+            <div class="inner">
+                {% if profile.userprofile.bio %}
+                <div class="bio-block">
+                    <div class="content">
+                        {% if profile.is_superuser %}
+                        <span class="badge-admin">Admin</span>
+                        {% endif %}
+                        {% if profile.userprofile.bio %}
+                        {{ profile.userprofile.bio|linebreaks }}
+                        {% endif %}
+                        {% if profile.userprofile.bio %}
+                        <span class="date-joined">Joined {{ profile.date_joined|naturalday }}</span>
+                        {% endif %}
+                    </div>
                 </div>
+                {% endif %}
+                {% if featured_post %}
+                {% for object in featured_post %}
+                <div class="post-welcome-thumb">
+                    <img class="header"
+                        src="{{ object.image|thumbnail_url:'298x167'|default:'https://via.placeholder.com/298x167' }}"
+                        alt="{{ object.text }}">
+                    <div class="content">
+                        {{ object.text }}
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
             </div>
-            {% endfor %}
-            {% endif %}
         </div>
     </div>
 </div>

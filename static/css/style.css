@@ -167,9 +167,9 @@ body {
     grid-template-columns: 652px 1fr;
     column-gap: 10px;
 }
-#userprofile .feed .aside {
+#userprofile .feed .aside .inner {
     display: grid;
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: repeat(auto-fill, auto);
     row-gap: 10px;
 }
 /* Color Scheme */
@@ -242,23 +242,6 @@ body {
     color: #606984;
     font-size: 14px;
     justify-self: end;
-}
-/* Component: Omnibox */
-.omnibox {
-    display: grid;
-    row-gap: 16px;
-    background: #393F4F ;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 14px;
-    padding: 20px;
-}
-.omnibox .bio p {
-    margin: 0;
-}
-.omnibox .joined {
-    color: #9baec8;
-    margin: 0;
 }
 /* Component: Timenav */
 .timenav {
@@ -690,4 +673,34 @@ body {
     font-size: 1.154em;
     line-height: 1.334em;
     padding: 20px;
+}
+/* Component: Biography Block (Userprofile) EM */
+.bio-block {
+    background: #393F4F;
+    border-radius: 4px;
+}
+.bio-block .content {
+    padding: 20px;
+}
+.bio-block .content p {
+    font-size: 1.077em;
+}
+.bio-block .content p:last-child {
+    margin: 0;
+}
+.bio-block .content .date-joined {
+    color: #9baec8;
+    font-size: 1.077em;
+}
+/* Component: Badge Admin (Userprofile) EM */
+.badge-admin {
+    color: #e87487;
+    background: rgba(232,116,135,.1);
+    border: 1px solid rgba(232,116,135,.5);
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 0.923em;
+    line-height: 1em;
+    padding: 4px 6px;
+    margin: 0 0 20px 0;
 }
