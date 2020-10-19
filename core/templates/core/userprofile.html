@@ -91,7 +91,14 @@
                         </a>
                         <a class="date" href="#">{{ object.date_created|naturalday }}</a>
                     </h2>
-                    <div>{{ object.text|linebreaks }}</div>
+                    <div>
+                        {{ object.text|linebreaks }}
+                        {% if object.image %}
+                        <img class="image"
+                            src="{{ object.image|thumbnail_url:'559x'|default:'https://via.placeholder.com/559' }}" alt="{{ object.text }}
+                        ">
+                        {% endif %}
+                    </div>
                 </div>
             </div>
             {% endfor %}
