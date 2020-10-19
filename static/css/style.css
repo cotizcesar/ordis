@@ -282,7 +282,7 @@ body {
 }
 #footer .grid h4 {
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.923em;
     font-weight: 700;
     margin-bottom: 8px;
     color: #9baec8;
@@ -416,7 +416,7 @@ body {
 }
 .post-thumb .content {
     color: #fff;
-    font-size: 0.9375rem;
+    font-size: 1.154em;
 }
 .post-thumb .content .featured-image {
     border-radius: 4px;
@@ -426,7 +426,7 @@ body {
 }
 .post-thumb .footer a {
     color: #606984;
-    font-size: 0.875rem;
+    font-size: 1.077em;
 }
 
 /* Components */
