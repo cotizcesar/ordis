@@ -35,11 +35,11 @@
                 <p>{{ object.userprofile.bio|truncatechars:"65" }}</p>
             </div>
             <div class="stats">
-                <!-- WIP: Needs a research for better implementation
                 <div>
-                    <span class="counter">10</span>
+                    <span class="counter">{{object.post_set.count}}</span>
                     <span class="label">posts</span>
                 </div>
+                <!-- WIP: Needs a research for better implementation
                 <div>
                     <span class="counter">20</span>
                     <span class="label">followers</span>
