@@ -143,7 +143,11 @@
                 <div class="bio-block">
                     <div class="content">
                         {% if profile.is_superuser %}
-                        <span class="badge-admin">Admin</span>
+                        <span class="plate plate-admin">Admin</span>
+                        {% else %}
+                        {% if profile.is_staff %}
+                        <span class="plate plate-staff">Staff</span>
+                        {% endif %}
                         {% endif %}
                         {% if profile.userprofile.bio %}
                         {{ profile.userprofile.bio|linebreaks }}

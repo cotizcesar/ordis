@@ -713,16 +713,26 @@ body {
     font-size: 1.077em;
 }
 /* Component: Badge Admin (Userprofile) EM */
-.badge-admin {
-    color: #e87487;
-    background: rgba(232,116,135,.1);
-    border: 1px solid rgba(232,116,135,.5);
+.plate {
+    color: #999;
+    background: #333;
+    border: 1px solid #444;
     border-radius: 3px;
     display: inline-block;
     font-size: 0.923em;
     line-height: 1em;
     padding: 4px 6px;
     margin: 0 0 20px 0;
+}
+.plate-admin {
+    color: #e87487;
+    background: rgba(232,116,135,.1);
+    border: 1px solid rgba(232,116,135,.5);
+}
+.plate-staff {
+    color: #2b90d9;
+    background: rgba(43, 145, 218, 0.1);
+    border: 1px solid rgba(43, 145, 218, 0.5);
 }
 /* Component: Button Follow/Unfollow (Userprofile) EM */
 .button {
