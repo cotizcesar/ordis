@@ -33,7 +33,9 @@ body {
 .embed-responsive {
     border-radius: 4px;
 }
-
+.alert {
+    margin: 0 0 10px 0;
+}
 /* Containers (max-width) */
 #header, #header-public, #home, #feed, #userprofile, #explore, #footer .grid, .posts-list, #messages {
     display: grid;
@@ -98,10 +100,11 @@ body {
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 10px;
-    padding: 0 16px;
+    padding: 0 8px 0 16px;
     position: absolute;
     bottom: -60px;
     left: 0;
+    width: 100%;
 }
 #userprofile .info .inner-info .userinfo .avatar {
     border: 4px solid #313543;
@@ -112,7 +115,7 @@ body {
 }
 #userprofile .info .inner-info .userinfo .userdata {
     display: grid;
-    grid-template-rows: auto 60px;
+    grid-template-rows: auto 1fr;
     padding: 20px 0 0 0;
 }
 #userprofile .info .inner-info .userinfo .userdata .name {
@@ -127,41 +130,51 @@ body {
     color: #fff;
     font-size: 0.700em;
 }
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul {
+#userprofile .info .inner-info .userinfo .userdata .usermenu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+#userprofile .info .inner-info .userinfo .userdata .usermenu .statsmenu {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     list-style: none;
     padding: 0;
     margin: 0;
 }
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul .active{
+#userprofile .info .inner-info .userinfo .userdata .usermenu .settingsmenu {
+    justify-self: right;
+    list-style: none;
+    padding: 7px 0;
+    margin: 0;
+}
+#userprofile .info .inner-info .userinfo .userdata .usermenu .statsmenu .active{
     border-bottom: 4px solid #2b90d9;
 }
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li {
+#userprofile .info .inner-info .userinfo .userdata .usermenu .statsmenu li {
     text-align: center;
     border-bottom: 4px solid #9baec8;
     border-right: 1px solid #313543;
     padding: 10px 0 8px 0;
     transition: all .4s ease;
 }
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li:hover {
+#userprofile .info .inner-info .userinfo .userdata .usermenu .statsmenu li:hover {
     border-bottom: 4px solid #2b90d9;
     transition: all .4s ease;
 }
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a {
+#userprofile .info .inner-info .userinfo .userdata .usermenu .statsmenu li a {
     display: block;
 }
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a:hover {
+#userprofile .info .inner-info .userinfo .userdata .usermenu .statsmenu li a:hover {
     text-decoration: none;
 }
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a .counter {
+#userprofile .info .inner-info .userinfo .userdata .usermenu .statsmenu li a .counter {
     color: #fff;
     display: block;
     font-weight: 700;
     font-size: 1.385em;
     line-height: 1.111em;
 }
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a .label {
+#userprofile .info .inner-info .userinfo .userdata .usermenu .statsmenu li a .label {
     font-size: 0.923em;
     display: block;
     color: #9baec8;
@@ -710,4 +723,39 @@ body {
     line-height: 1em;
     padding: 4px 6px;
     margin: 0 0 20px 0;
+}
+/* Component: Button Follow/Unfollow (Userprofile) EM */
+.button {
+    background: #333;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 1.077em;
+    font-weight: 700;
+    height: auto;
+    line-height: 36px;
+    overflow: hidden;
+    padding: 5px 15px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transition: all .1s ease-in;
+    white-space: nowrap;
+}
+.button:hover {
+    background: #33a9ff;
+    color: #fff;
+    text-decoration: none;
+    transition: all .1s ease-in;
+}
+.button-follow {
+    background: #2b90d9;
+}
+.button-unfollow {
+    background: #2b90d9;
+}
+.button-unfollow:hover {
+    background: #df405a;
 }
