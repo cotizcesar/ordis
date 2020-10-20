@@ -9,16 +9,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{% block title %}Ordis - {% block head_title %}Home{% endblock %}{% endblock %}</title>
 
+  <!-- OpenGraph -->
   {% block meta_extra %}
   <meta property="og:url" content="{{ request.build_absolute_uri }}" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Ordis.app" />
   <meta property="og:description" content="The Open Source SocialMarket for Warframe" />
   <meta property="og:image" content="{% static 'img/opengraph-default.png' %}" />
-  <meta property="og:image:alt" content="The Open Source SocialMarket for Warframe" />
+  {% endblock %}
   <meta name="twitter:card" content="app" />
   <meta name="twitter:site" content="@cotizcesar" />
-  <meta name="twitter:creator" content="@cotizcesar" />{% endblock %}
+  <meta name="twitter:creator" content="@cotizcesar" />
 
   {% bootstrap_css %}
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
