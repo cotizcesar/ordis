@@ -10,7 +10,8 @@
   <title>{% block title %}Ordis - {% block head_title %}Home{% endblock %}{% endblock %}</title>
 
   {% block meta_extra %}
-  <meta property="og:url" content="{{request.build_absolute_uri}}" />
+  <meta property="og:url"
+    content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ object.get_absolute_url }}" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Ordis.app" />
   <meta property="og:description" content="The Open Source SocialMarket for Warframe" />
