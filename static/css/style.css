@@ -221,7 +221,7 @@ body {
     padding: 4px 6px;
 }
 /* Components */
-/* Component: Post */
+/* Component: Post (userprofile) EM */
 .post {
     background: #282C37;
     border-bottom: 1px solid #393f4f;
@@ -289,6 +289,17 @@ body {
     background-color: rgba(96,105,132,.15);
     transition: all .2s ease-out;
     transition-property: background-color, color;
+}
+.post .content .userinfo .actionbar .reply {
+    margin-right: 18px;
+}
+.post .content .userinfo .actionbar .reply a {
+    margin-right: 0;
+}
+.post .content .userinfo .actionbar .reply .counter {
+    color: #606984;
+    font-size: 0.923em;
+    padding: 3px;
 }
 /* Component: Timenav */
 .timenav {

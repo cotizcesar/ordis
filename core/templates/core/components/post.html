@@ -27,7 +27,12 @@
                 {% endif %}
             </div>
             <div class="actionbar">
-                <a href="#"><i class="fas fa-reply-all fa-fw"></i></a>
+                <span class="reply">
+                    <a href="#"><i class="fas fa-reply-all fa-fw"></i></a>
+                    {% if object.comment_set.count %}
+                        <span class="counter">{{ object.comment_set.count }}+</span>
+                    {% endif %}
+                </span>
                 <a href="#"><i class="fas fa-retweet fa-fw"></i></a>
                 <a href="#"><i class="fas fa-star fa-fw"></i></a>
             </div>
