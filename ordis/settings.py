@@ -50,9 +50,12 @@ INSTALLED_APPS = [
     # django-bootstrap4: Application Added.
     # https://django-bootstrap4.readthedocs.io/en/latest/installation.html
     "bootstrap4",
-    # django-storages
+    # django-storages: Application Added.
     # https://django-storages.readthedocs.io/en/latest/index.html#installation
     "storages",
+    # django-rest-framework: Application Added.
+    # https://www.django-rest-framework.org/#installation
+    "rest_framework",
     "core",
 ]
 SITE_ID = 1
