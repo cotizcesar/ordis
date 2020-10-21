@@ -77,9 +77,8 @@ body {
 }
 /* Page: Explore (Users) */
 #explore {
-    column-gap: 15px;
-    row-gap: 15px;
-    margin: 10px auto;
+    row-gap: 10px;
+    margin: 10px auto 0 auto;
 }
 /* Page: Userprofile (Internal and Public) */
 #userprofile {
@@ -224,44 +223,72 @@ body {
 /* Components */
 /* Component: Post */
 .post {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 15px;
-    padding: 15px;
     background: #282C37;
     border-bottom: 1px solid #393f4f;
     color: #fff;
-    font-size: 15px;
+    padding: 15px;
 }
-.post .user-avatar {
+.post .content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 15px;
+}
+.post .content .avatar img {
     border-radius: 4px;
-    max-width: 48px;
-    height: auto;
 }
-.post .title {
+.post .content .userinfo {
+    display: grid;
+    row-gap: 7px;
+}
+.post .content .userinfo .profile .title {
     display: grid;
     grid-template-columns: auto auto 1fr;
-    column-gap: 10px;
-    align-items: flex-end;
+    column-gap: 12px;
 }
-.post .title .name {
+.post .content .userinfo .profile .title .name {
     color: #fff;
-    font-size: 15px;
+    font-size: 1.154em;
+    font-weight: 700;
 }
-.post .title .username {
+.post .content .userinfo .profile .title .username {
     color: #606984;
-    font-size: 14px;
+    font-size: 1.077em;
 }
-.post .title .username:hover {
+.post .content .userinfo .profile .title .username:hover {
     text-decoration: none;
 }
-.post .title .date {
+.post .content .userinfo .profile .title .date {
     color: #606984;
-    font-size: 14px;
-    justify-self: end;
+    font-size: 1.077em;
+    justify-self: right;
 }
-.post .image {
+.post .content .userinfo .body {
+    font-size: 1.154em;
+    line-height: 1.333em;
+}
+.post .content .userinfo .body p:last-child {
+    margin: 0;
+}
+.post .content .userinfo .actionbar {
+    margin-top: 3px;
+}
+.post .content .userinfo .actionbar a {
     border-radius: 4px;
+    color: #606984;
+    display: inline-block;
+    font-size: 1.385em;
+    height: 24px;
+    line-height: 23.15px;
+    margin-right: 18px;
+    transition: all .1s ease-in;
+    transition-property: background-color, color;
+    width: 24px;
+}
+.post .content .userinfo .actionbar a:hover {
+    color: #707b97;
+    background-color: rgba(96,105,132,.15);
+    transition: all .2s ease-out;
+    transition-property: background-color, color;
 }
 /* Component: Timenav */
 .timenav {
@@ -517,6 +544,7 @@ body {
 .page-header {
     background: #393f4f;
     border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0,0,0,.2);
     padding: 60px 15px;
     text-align: center;
 }
@@ -538,6 +566,7 @@ body {
     row-gap: 20px;
     background: #282c37;
     border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0,0,0,.2);
 }
 .post-welcome .header {
     border-radius: 4px 4px 0 0;
@@ -613,6 +642,7 @@ body {
 .features-block a {
     background: #282c37;
     border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0,0,0,.2);
     padding: 15px;
 }
 .features-block a:hover {
@@ -698,6 +728,7 @@ body {
 .bio-block {
     background: #393F4F;
     border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0,0,0,.2);
 }
 .bio-block .content {
     padding: 20px;
