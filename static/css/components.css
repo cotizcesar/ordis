@@ -311,6 +311,89 @@
     color: #606984;
     font-size: 1.077em;
 }
+/* Component: Comment (Post Detail) EM */
+.comment {
+    background: #282C37;
+    border-bottom: 1px solid #393f4f;
+    color: #fff;
+    padding: 15px;
+}
+.comment .content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 15px;
+}
+.comment .content .avatar img {
+    border-radius: 4px;
+}
+.comment .content .userinfo {
+    display: grid;
+    row-gap: 7px;
+}
+.comment .content .userinfo .profile .title {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    column-gap: 12px;
+}
+.comment .content .userinfo .profile .title .name {
+    color: #fff;
+    font-size: 1.154em;
+    font-weight: 700;
+}
+.comment .content .userinfo .profile .title .username {
+    color: #606984;
+    font-size: 1.077em;
+}
+.comment .content .userinfo .profile .title .username:hover {
+    text-decoration: none;
+}
+.comment .content .userinfo .profile .title .date {
+    color: #606984;
+    font-size: 1.077em;
+    justify-self: right;
+}
+.comment .content .userinfo .body {
+    font-size: 1.154em;
+    line-height: 1.333em;
+}
+.comment .content .userinfo .body p:last-child {
+    margin: 0;
+}
+.comment .content .userinfo .body .image {
+    border-radius: 4px;
+}
+.comment .content .userinfo .actionbar {
+    margin-top: 3px;
+}
+.comment .content .userinfo .actionbar a {
+    border-radius: 4px;
+    color: #606984;
+    display: inline-block;
+    font-size: 1.385em;
+    height: 24px;
+    line-height: 23.15px;
+    margin-right: 18px;
+    transition: all .1s ease-in;
+    transition-property: background-color, color;
+    width: 24px;
+}
+.comment .content .userinfo .actionbar a:hover {
+    color: #707b97;
+    background-color: rgba(96,105,132,.15);
+    transition: all .2s ease-out;
+    transition-property: background-color, color;
+}
+.comment .content .userinfo .actionbar .reply {
+    margin-right: 18px;
+}
+.comment .content .userinfo .actionbar .reply a {
+    margin-right: 0;
+}
+.comment .content .userinfo .actionbar .reply .counter {
+    color: #606984;
+    font-size: 0.923em;
+    padding: 3px;
+}
 /* Component: Page Header (Explore: Users, Posts) EM */
 .page-header {
     background: #393f4f;

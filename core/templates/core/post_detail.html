@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/components.css' %}">
+{% endblock %}
+{% block content %}
+<div id="post-detail">
+    <div>
+        {% include 'core/components/post.html' %}
+        {% if comments %}
+            {% for object in comments %}
+                {% include 'core/components/comment.html' %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>
+        {% if featured_post %}
+            {% for object in featured_post %}
+                {% include 'core/components/post_welcome_thumb.html' %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

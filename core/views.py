@@ -250,6 +250,9 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(PostDetailView, self).get_context_data(**kwargs)
+        context["featured_post"] = Post.objects.filter(featured=True).order_by(
+            "-date_created"
+        )[:1]
         context["comments"] = Comment.objects.filter(
             post=self.object.id
         ).select_related()
@@ -278,7 +281,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
     slug_field = "post_id"
     form_class = CommentForm
-    template_name = "post/post_comment_create.html"
+    template_name = "core/post_comment_create.html"
 
     def form_valid(self, form):
         obj = form.save(commit=False)

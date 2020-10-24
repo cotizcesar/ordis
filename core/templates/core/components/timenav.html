@@ -1,0 +1,18 @@
+<nav class="timenav">
+    <ul>
+        <li>
+            <a class="{% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}" href="#">
+                Posts
+            </a>
+        </li>
+        <li>
+            <a href="#">Replies</a>
+        </li>
+        <li>
+            <a href="#">Media</a>
+        </li>
+        <li>
+            <a href="#">Market</a>
+        </li>
+    </ul>
+</nav>

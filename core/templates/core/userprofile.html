@@ -57,27 +57,15 @@
                         <ul class="settingsmenu">
                             <li>
                                 {% if user.is_authenticated %}
-                                {% if user.username == profile.username %}
-                                <a class="btn button-follow" href="{% url 'userprofile_basic' %}">
-                                    <i class="fas fa-user-edit fa-fw mr-1"></i>
-                                    Edit Profile
-                                </a>
-                                {% elif connected %}
-                                <a class="btn button-unfollow" href="{% url 'unfollow' profile.username %}">
-                                    <i class="fas fa-user-minus fa-fw mr-1"></i>
-                                    Unfollow
-                                </a>
-                                {% elif user.username != profile.username %}
-                                <a class="btn button-follow" href="{% url 'follow' profile.username %}">
-                                    <i class="fas fa-user-plus fa-fw mr-1"></i>
-                                    Follow
-                                </a>
-                                {% else %}
-                                <a class="btn button-follow" href="#">
-                                    <i class="fas fa-envelope fa-fw mr-1"></i>
-                                    Message
-                                </a>
-                                {% endif %}
+                                    {% if user.username == profile.username %}
+                                        <a class="btn button-follow" href="{% url 'userprofile_basic' %}"><i class="fas fa-user-edit fa-fw mr-1"></i>Edit Profile</a>
+                                    {% elif connected %}
+                                        <a class="btn button-unfollow" href="{% url 'unfollow' profile.username %}"><i class="fas fa-user-minus fa-fw mr-1"></i> Unfollow</a>
+                                    {% elif user.username != profile.username %}
+                                        <a class="btn button-follow" href="{% url 'follow' profile.username %}"><i class="fas fa-user-plus fa-fw mr-1"></i> Follow</a>
+                                    {% else %}
+                                        <a class="btn button-follow" href="#"><i class="fas fa-envelope fa-fw mr-1"></i>Message</a>
+                                    {% endif %}
                                 {% endif %}
                             </li>
                         </ul>
@@ -92,28 +80,11 @@
     </div>
     <div class="feed">
         <div class="timeline">
-            <nav class="timenav">
-                <ul>
-                    <li>
-                        <a class="{% if request.resolver_match.url_name == 'userprofile' %}active{% endif %}" href="#">
-                            Posts
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Posts and replies</a>
-                    </li>
-                    <li>
-                        <a href="#">Media</a>
-                    </li>
-                    <li>
-                        <a href="#">Market</a>
-                    </li>
-                </ul>
-            </nav>
+            {% include 'core/components/timenav.html' %}
             {% if posts %}
-            {% for object in posts %}
-            {% include 'core/components/post.html' %}
-            {% endfor %}
+                {% for object in posts %}
+                    {% include 'core/components/post.html' %}
+                {% endfor %}
             {% else %}
             Nothing to show
             {% endif %}
@@ -141,14 +112,7 @@
                 {% endif %}
                 {% if featured_post %}
                 {% for object in featured_post %}
-                <div class="post-welcome-thumb">
-                    <img class="header"
-                        src="{{ object.image|thumbnail_url:'298x167'|default:'https://via.placeholder.com/298x167' }}"
-                        alt="{{ object.text }}">
-                    <div class="content">
-                        {{ object.text }}
-                    </div>
-                </div>
+                {% include 'core/components/post_welcome_thumb.html' %}
                 {% endfor %}
                 {% endif %}
             </div>
