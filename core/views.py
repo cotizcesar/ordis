@@ -253,9 +253,11 @@ class PostDetailView(DetailView):
         context["featured_post"] = Post.objects.filter(featured=True).order_by(
             "-date_created"
         )[:1]
-        context["comments"] = Comment.objects.filter(
-            post=self.object.id
-        ).select_related()
+        context["comments"] = (
+            Comment.objects.filter(post=self.object.id)
+            .order_by("-date_created")
+            .select_related()
+        )
         return context
 
 
