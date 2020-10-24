@@ -1,14 +1,18 @@
 {% extends "account/base.html" %}
 {% load i18n %}
 {% load bootstrap4 %}
+{% load static %}
 {% load account socialaccount %}
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
-{% block header %}{% include 'header_public.html' %}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+{% block header %}{% endblock %}
 {% block content %}
 {% get_providers as socialaccount_providers %}
 <div id="auth">
-  <div>
-    <h1 class="title">{% trans "Sign In" %}</h1>
+  <div class="inner">
+    {% include 'header_public.html' %}
     {% if socialaccount_providers %}
     <p class="subtitle">
       {% blocktrans with site.name as site_name %}Please sign in with one
@@ -22,11 +26,6 @@
       <div class="login-or">{% trans 'or' %}</div>
     </div>
     {% include "socialaccount/snippets/login_extra.html" %}
-    {% else %}
-    <p class="subtitle">
-      {% blocktrans %}If you have not created an account yet, then please
-      <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
-    </p>
     {% endif %}
     <form class="login" method="POST" action="{% url 'account_login' %}">
       {% csrf_token %}
@@ -34,11 +33,15 @@
       {% if redirect_field_value %}
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
-      <div class="button-list">
-        <a class="btn btn-link" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-        <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
-      </div>
+        <button class="btn btn-primary btn-block" type="submit">{% trans "Sign In" %}</button>
     </form>
+    <nav class="auth-nav">
+      <ul>
+        <li><a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
+        <li><a href="{% url 'account_reset_password' %}">{% trans "Forgot your password?" %}</a></li>
+      </ul>
+    </nav>
   </div>
 </div>
 {% endblock %}
+{% block footer %}{% endblock %}

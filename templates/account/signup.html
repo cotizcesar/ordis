@@ -1,23 +1,31 @@
 {% extends "account/base.html" %}
 {% load i18n %}
 {% load bootstrap4 %}
+{% load static %}
 {% block head_title %}{% trans "Signup" %}{% endblock %}
-{% block header %}{% include 'header_public.html' %}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+{% block header %}{% endblock %}
 {% block content %}
 <div id="auth">
-  <div>
-    <h1 class="title">{% trans "Sign Up" %}</h1>
-    <p class="subtitle">
-      {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-    </p>
+  <div class="inner">
+    {% include 'header_public.html' %}
     <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
       {% csrf_token %}
       {% bootstrap_form form %}
       {% if redirect_field_value %}
-      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
       <button class="btn btn-primary btn-block" type="submit">{% trans "Sign Up" %}</button>
     </form>
+    <nav class="auth-nav">
+      <ul>
+        <li><a href="{% url 'account_login' %}">{% trans "Sign In" %}</a></li>
+        <li><a href="{% url 'account_reset_password' %}">{% trans "Forgot your password?" %}</a></li>
+      </ul>
+    </nav>
   </div>
 </div>
 {% endblock %}
+{% block footer %}{% endblock %}
