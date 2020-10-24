@@ -28,9 +28,9 @@
             </div>
             <div class="actionbar">
                 <span class="reply">
-                    <a href="{% url 'post_comment_create' object.id %}"><i class="fas fa-reply-all fa-fw"></i></a>
-                    {% if object.comment_set.count %}
-                        <span class="counter">{{ object.comment_set.count }}+</span>
+                    <a href="#"><i class="fas fa-reply-all fa-fw"></i></a>
+                    {% if object.comments_set.count %}
+                        <span class="counter">{{ object.comments_set.count }}+</span>
                     {% endif %}
                 </span>
                 <a href="#"><i class="fas fa-retweet fa-fw"></i></a>
