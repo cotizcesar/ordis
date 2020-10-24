@@ -219,6 +219,34 @@ body {
     font-size: 1.077em;
 }
 /* Component: Button Follow/Unfollow (Userprofile) EM */
+.btn {
+    background: #333;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 1.077em;
+    font-weight: 700;
+    height: auto;
+    line-height: 36px;
+    overflow: hidden;
+    padding: 3px 15px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transition: all .1s ease-in;
+    white-space: nowrap;
+}
+.btn:hover {
+    background: #33a9ff;
+    color: #fff;
+    text-decoration: none;
+    transition: all .1s ease-in;
+}
+.btn-primary {
+    background: #2b90d9;
+}
 .button {
     background: #333;
     border: 0;
