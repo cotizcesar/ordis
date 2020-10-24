@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load static %}
 {% load custom_filters %}
 {% load humanize %}
 {% block title %}
@@ -9,12 +10,13 @@
 {% block meta_extra %}
 <meta property="og:url" content="{{ request.build_absolute_uri }}" />
 <meta property="og:type" content="website" />
-<meta property="og:title"
-    content="{% if profile.get_full_name %}{{ profile.get_full_name }}{% else %}{{ profile.username }}{% endif %} (@{{ profile.username }}) - Ordis" />
-<meta property="og:description"
-    content="{% if profile.userprofile.bio %}{{ profile.userprofile.bio }}{% else %}The Open Source SocialMarket for Warframe{% endif %}" />
-<meta property="og:image"
-    content="{{ profile.userprofile.header|thumbnail_url:'1200x630'|default:'https://via.placeholder.com/1200x630' }}" />
+<meta property="og:title" content="{% if profile.get_full_name %}{{ profile.get_full_name }}{% else %}{{ profile.username }}{% endif %} (@{{ profile.username }}) - Ordis" />
+<meta property="og:description" content="{% if profile.userprofile.bio %}{{ profile.userprofile.bio }}{% else %}The Open Source SocialMarket for Warframe{% endif %}" />
+<meta property="og:image" content="{{ profile.userprofile.header|thumbnail_url:'1200x630'|default:'https://via.placeholder.com/1200x630' }}" />
+{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/userprofile.css' %}">
+<link rel="stylesheet" href="{% static 'css/components.css' %}">
 {% endblock %}
 {% block content %}
 <div id="userprofile">
@@ -22,10 +24,7 @@
         <div class="inner-info">
             <div class="userinfo">
                 <div class="avatar-container">
-                    <img class="avatar"
-                        src="{{ profile.userprofile.avatar|thumbnail_url:'120x120'|default:'https://via.placeholder.com/120x120' }}"
-                        alt="{% if profile.get_full_name %}{{ profile.get_full_name }} - @{{ profile.username }}{% else %}@{{ profile.username }}{% endif %} avatar.
-                    ">
+                    <img class="avatar" src="{{ profile.userprofile.avatar|thumbnail_url:'120x120'|default:'https://via.placeholder.com/120x120' }}" alt="{% if profile.get_full_name %}{{ profile.get_full_name }} - @{{ profile.username }}{% else %}@{{ profile.username }}{% endif %} avatar.">
                 </div>
                 <div class="userdata">
                     <h1 class="name">

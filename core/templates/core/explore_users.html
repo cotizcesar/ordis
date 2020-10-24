@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% load thumbnail %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/explore.css' %}">
+<link rel="stylesheet" href="{% static 'css/components.css' %}">
+{% endblock %}
 {% block content %}
 <div id="explore">
     <div class="page-header">
