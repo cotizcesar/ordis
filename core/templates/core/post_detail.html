@@ -12,6 +12,9 @@
             {% for object in comments %}
                 {% include 'core/components/comment.html' %}
             {% endfor %}
+            {% if not user.is_authenticated %}
+                <a class="sign-in-comment" href="{% url 'account_login' %}"><i class="fas fa-comments fa-fw"></i> Sign in to participate in the conversation</a>
+            {% endif %}
         {% endif %}
     </div>
     <div>

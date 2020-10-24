@@ -524,3 +524,17 @@
 .timenav ul li .active {
     color: #fff;
 }
+/* Component: Timenav (Post Detail) */
+.sign-in-comment {
+    background: #282C37;
+    border-radius: 0 0 4px 4px;
+    color: #606984;
+    display: block;
+    padding: 15px;
+    text-align: center;
+}
+.sign-in-comment:hover {
+    background: #2c313d;
+    color: #606984;
+    text-decoration: none;
+}
