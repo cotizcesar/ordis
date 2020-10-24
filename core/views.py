@@ -21,10 +21,10 @@ from django.db.models import Count
 from django.contrib.auth.models import User
 
 #! Core: Importing Models
-from .models import UserProfile, Connection, Post, Comment
+from .models import UserProfile, Connection, Post
 
 #! Core: Importing forms
-from .forms import UserForm, UserProfileForm, PostForm, CommentForm
+from .forms import UserForm, UserProfileForm, PostForm
 
 
 class Index(TemplateView):
@@ -253,11 +253,6 @@ class PostDetailView(DetailView):
         context["featured_post"] = Post.objects.filter(featured=True).order_by(
             "-date_created"
         )[:1]
-        context["comments"] = (
-            Comment.objects.filter(post=self.object.id)
-            .order_by("-date_created")
-            .select_related()
-        )
         return context
 
 
@@ -277,20 +272,6 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
         if not self.user_passes_test(request):
             return redirect("feed")
         return super(PostDeleteView, self).dispatch(request, *args, **kwargs)
-
-
-class CommentCreateView(LoginRequiredMixin, CreateView):
-    model = Comment
-    slug_field = "post_id"
-    form_class = CommentForm
-    template_name = "core/post_comment_create.html"
-
-    def form_valid(self, form):
-        obj = form.save(commit=False)
-        obj.post = Post.objects.get(id=self.kwargs["pk"])
-        obj.user = self.request.user
-        obj.save()
-        return redirect("post_detail", pk=obj.post.id)
 
 
 class ExplorePosts(ListView):
