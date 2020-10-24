@@ -61,9 +61,11 @@
     margin: 0;
 }
 #userprofile .info .inner-info .userinfo .userdata .usermenu .settingsmenu {
+    display: grid;
+    align-items: center;
     justify-self: right;
     list-style: none;
-    padding: 7px 0;
+    padding: 7px 0 8px 0;
     margin: 0;
 }
 #userprofile .info .inner-info .userinfo .userdata .usermenu .statsmenu .active{
@@ -73,7 +75,7 @@
     text-align: center;
     border-bottom: 4px solid #9baec8;
     border-right: 1px solid #313543;
-    padding: 10px 0 8px 0;
+    padding: 12px 0 6px 0;
     transition: all .4s ease;
 }
 #userprofile .info .inner-info .userinfo .userdata .usermenu .statsmenu li:hover {
@@ -91,7 +93,7 @@
     display: block;
     font-weight: 700;
     font-size: 1.385em;
-    line-height: 1.111em;
+    margin-bottom: 1px;
 }
 #userprofile .info .inner-info .userinfo .userdata .usermenu .statsmenu li a .label {
     font-size: 0.923em;

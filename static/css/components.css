@@ -226,6 +226,9 @@
 .post .content .userinfo .body p:last-child {
     margin: 0;
 }
+.post .content .userinfo .body .image {
+    border-radius: 4px;
+}
 .post .content .userinfo .actionbar {
     margin-top: 3px;
 }
@@ -414,7 +417,8 @@
 /* Component: Timenav (Userprofile) */
 .timenav {
     background: #1f232b;
-    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid #393f4f;
+    border-radius: 4px 4px 0 0;    
 }
 .timenav ul {
     display: grid;
@@ -426,10 +430,10 @@
 }
 .timenav ul li a {
     color: #9baec8;
-    font-size: 14px;
+    display: block;
+    font-size: 1.077em;
     font-weight: 700;
     padding: 15px 0;
-    display: block;
 }
 .timenav ul li a:hover {
     text-decoration: none;

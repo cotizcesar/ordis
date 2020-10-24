@@ -13,7 +13,7 @@
                 <span class="title">
                     <a class="name" href="{% url 'userprofile' object.user.username %}">{% if profile.get_full_name %}{{ profile.get_full_name }}{% else %}{{ profile.username }}{% endif %}</a>
                     <a class="username" href="{% url 'userprofile' object.user.username %}">@{{ profile.username }}</a>
-                    <a class="date" href="{% url 'userprofile' object.user.username %}">{{ object.date_created|naturalday }}</a>
+                    <a class="date" href="{% url 'post_detail' object.id %}">{{ object.date_created|naturalday }}</a>
                 </span>
             </div>
             <div class="body">
