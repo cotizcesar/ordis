@@ -29,148 +29,47 @@ body {
     width: 12px;
     height: 12px;
 }
-
-/* Page: Containers (max-width) */
-#home, #feed, #userprofile, #explore, #footer .grid, .posts-list {
+/* Snippets: Embed Responsive */
+.embed-responsive {
+    border-radius: 4px;
+}
+.alert {
+    margin: 0 0 10px 0;
+}
+/* Snippets: Forms */
+.form-group {
+    margin-bottom: 25px;
+}
+.form-group label {
+    font-size: 1.077em;
+    font-weight: bold;
+}
+.form-group .form-control {
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #fff;
+    display: block;
+    width: 100%;
+    outline: 0;
+    font-family: inherit;
+    resize: vertical;
+    background: #131419;
+    border: 1px solid #0a0b0e;
+    border-radius: 4px;
+    padding: 10px;
+}
+/* Containers (max-width) */
+#header, #header-public, #feed, #footer .grid, .posts-list, #messages {
     display: grid;
     margin: 0 auto;
     max-width: 960px;
 }
-/* Page: Home */
-#home {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 30px;
-    margin: 0 auto 100px auto;
-}
-/* Page: Auth (django-allauth) */
-#auth {
-    margin: 0px auto 50px auto;
-    max-width: 400px;
-}
-#auth .title {
-    color: #fff;
-    font-weight: 700;
-    text-align: center;
-}
-#auth .subtitle {
-    color: #9baec8;
-    margin: 0 0 50px 0;
-    text-align: center;
-}
-#auth .login .button-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
-}
-/* Page: Feed (Internal and Public) */
+/* Pages */
+/* Page: Feed (Internal) */
 #feed {
     grid-template-columns: 1fr 570px 1fr;
     column-gap: 15px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-/* Page: Explore (Users) */
-#explore {
-    grid-gap: 10px;
-    margin: 10px auto;
-}
-/* Page: Userprofile (Internal and Public) */
-#userprofile {
-    grid-template-rows: repeat(3, auto);
-    column-gap: 10px;
-    row-gap: 10px;
-    align-self: center;
-}
-#userprofile .info {
-    background: #313543;
-    border-radius: 4px;
-    min-height: 360px;
-}
-#userprofile .info .inner-info {
-    position: relative;
-}
-#userprofile .info .inner-info .userinfo {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 16px;
-    padding: 0 16px;
-    position: absolute;
-    bottom: -60px;
-    left: 0;
-}
-#userprofile .info .inner-info .userinfo .avatar {
-    border: 3px solid #313543;
-    border-radius: 50%;
-}
-#userprofile .info .inner-info .header {
-    border-radius: 4px 4px 0 0;
-}
-#userprofile .info .inner-info .userinfo .userdata {
-    display: grid;
-    grid-template-rows: auto 60px;
-    padding: 20px 0 0 0;
-}
-#userprofile .info .inner-info .userinfo .userdata .name {
-    font-size: 20px;
-    line-height: 27px;
-    color: #fff;
-    font-weight: 500;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-shadow: 1px 1px 1px #000;
-}
-#userprofile .info .inner-info .userinfo .userdata .name small {
-    display: block;
-    font-size: 14px;
-    color: #fff;
-    font-weight: 400;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul .active{
-    border-bottom: 4px solid #2b90d9;
-}
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li {
-    text-align: center;
-    border-bottom: 4px solid #9baec8;
-    border-right: 1px solid #313543;
-    padding: 10px 0 8px 0;
-    transition: all .4s ease;
-}
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li:hover {
-    border-bottom: 4px solid #2b90d9;
-    transition: all .4s ease;
-}
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a {
-    display: block;
-}
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a:hover {
-    text-decoration: none;
-}
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a .counter {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 20px;
-    color: #fff;
-    display: block;
-}
-#userprofile .info .inner-info .userinfo .userdata .usermenu ul li a .label {
-    font-size: 12px;
-    display: block;
-    color: #9baec8;
-}
-#userprofile .feed {
-    display: grid;
-    grid-template-columns: 1fr 298px;
-    column-gap: 10px;
+    margin: 30px auto;
 }
 /* Color Scheme */
 /* Buttons */
@@ -204,88 +103,6 @@ body {
     font-weight: 500;
     padding: 4px 6px;
 }
-/* Components */
-/* Component: Post */
-.post {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 15px;
-    padding: 15px;
-    background: #282C37;
-    border-bottom: 1px solid #393f4f;
-    color: #fff;
-    font-size: 15px;
-}
-.post .user-avatar {
-    border-radius: 4px;
-    max-width: 48px;
-    height: auto;
-}
-.post .title {
-    display: grid;
-    grid-template-columns: auto auto 1fr;
-    column-gap: 10px;
-    align-items: flex-end;
-}
-.post .title .name {
-    color: #fff;
-    font-size: 15px;
-}
-.post .title .username {
-    color: #606984;
-    font-size: 14px;
-}
-.post .title .username:hover {
-    text-decoration: none;
-}
-.post .title .date {
-    color: #606984;
-    font-size: 14px;
-    justify-self: end;
-}
-/* Component: Omnibox */
-.omnibox {
-    display: grid;
-    row-gap: 16px;
-    background: #393F4F ;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 14px;
-    padding: 20px;
-}
-.omnibox .bio p {
-    margin: 0;
-}
-.omnibox .joined {
-    color: #9baec8;
-    margin: 0;
-}
-/* Component: Timenav */
-.timenav {
-    background: #1f232b;
-    border-radius: 4px 4px 0 0;
-}
-.timenav ul {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.timenav ul li a {
-    color: #9baec8;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 15px 0;
-    display: block;
-}
-.timenav ul li a:hover {
-    text-decoration: none;
-}
-.timenav ul li .active {
-    color: #fff;
-}
 /* Component: Footer */
 #footer {
     padding-top: 20px;
@@ -299,7 +116,7 @@ body {
 }
 #footer .grid h4 {
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.923em;
     font-weight: 700;
     margin-bottom: 8px;
     color: #9baec8;
@@ -312,158 +129,21 @@ body {
 #footer .grid ul li a {
     color: #737d99;
 }
-/* Component: Users List (Explore Users) FIXED */
-.users-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 10px;
-    row-gap: 10px;
-}
-.users-list .user .profile {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 15px;
-    row-gap: 15px;
-    align-items: center;
-    padding: 10px;
-    background: #313543;
-}
-.users-list .user .profile .avatar {
-    border-radius: 4px;
-}
-.users-list .user .profile a:hover{
-    text-decoration: none;
-}
-.users-list .user .profile .name {
-    color: #fff;
-    font-size: 1.154em;
-    display: block;
-}
-.users-list .user .profile .username {
-    color: #9baec8;
-    font-size: 1.077em;
-}
-.users-list .user .description {
-    background: #282c37;
-    border-bottom: 1px solid #393f4f;
-    font-size: 0.875rem;
-    padding: 15px 10px;
-}
-.users-list .user .description p {
-    color: #9baec8;
-    margin: 0;
-}
-.users-list .user .stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    background: #282c37;
-    padding: 15px 0;
-    text-align: center;
-}
-.users-list .user .stats .counter {
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 20px;
-    color: #fff;
-    display: block;
-}
-.users-list .user .stats .label {
-    font-size: 14px;
-    display: block;
-    color: #9baec8;
-}
-/* Component: Pagination Simple (Explore Users) */
-.pagination-block {
-    display: grid;
-    justify-items: center;
-    padding: 30px 0;
-}
-.pagination-block .page, .pagination-block .page a {
-    font-size: 0.875rem;
-    line-height: 1.125rem;
-    color: #fff;
-    font-weight: 500;
-    display: inline-block;
-    padding: 6px 10px;
-    text-decoration: none;
-}
-.pagination-block .current {
-    background: #fff;
-    border-radius: 100px;
-    color: #282c37;
-    cursor: default;
-    margin: 0 10px;
-}
-/* Component: Post (Thumbnail) (Explore Posts) */
-.posts-list {
-    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-    grid-gap: 10px;
-}
-.post-thumb {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    row-gap: 15px;
-    background: #313543;
-    border-radius: 4px;
-    padding: 15px;
-}
-.post-thumb .header {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 10px;
-    align-items: center;
-}
-.post-thumb .header .avatar {
-    border-radius: 4px;
-}
-.post-thumb .header .name {
-    color: #fff;
-    display: block;
-    font-size: 1.231em;
-    line-height: 1.333em;
-}
-.post-thumb .header .username {
-    color: #d9e1e8;
-    font-size: 1.077em;
-    line-height: 1.846em;
-}
-.post-thumb .header .username:hover {
-    text-decoration: none;
-}
-.post-thumb .content {
-    color: #fff;
-    font-size: 0.9375rem;
-}
-.post-thumb .content .featured-image {
-    border-radius: 4px;
-}
-.post-thumb .content p:last-child {
-    margin: 0;
-}
-.post-thumb .footer a {
-    color: #606984;
-    font-size: 0.875rem;
-}
-
 /* Components */
-/* Component: Header (Internal) FIXED */
+/* Component: Header (Internal) EM */
 #header {
-    margin: 10px 0;
-}
-#header .inner {
     background: #393F4F;
     border-radius: 4px;
-    margin: 0 auto;
-    max-width: 960px;
+    margin: 10px auto;
 }
-#header .inner nav {
+#header nav {
     display: grid;
     grid-template-columns: auto 1fr;
 }
-#header .inner nav ul {
+#header nav ul {
     list-style: none;
 }
-#header .inner nav a {
+#header nav a {
     color: #9baec8;
     display: block;
     font-size: 0.923em;
@@ -472,27 +152,27 @@ body {
     text-align: center;
     white-space: nowrap;
 }
-#header .inner nav a:hover {
+#header nav a:hover {
     color: #fff;
 }
-#header .inner nav .disabled {
+#header nav .disabled {
     opacity: 0.5;
 }
-#header .inner nav .left, #header .inner nav .right {
+#header nav .left, #header nav .right {
     padding: 0;
     margin: 0;
 }
-#header .inner nav .left .brand:hover {
+#header nav .left .brand:hover {
     background: #42485a;
     border-radius: 4px 0 0 4px;
     text-decoration: none;
 }
-#header .inner nav .right {
+#header nav .right {
     display: inline-block;
     align-items: center;
     justify-self: end;
 }
-#header .inner nav .right .nav-button {
+#header nav .right .nav-button {
     background: #4a5266;
     border-radius: 4px;
     color: #9baec8;
@@ -505,185 +185,99 @@ body {
     white-space: nowrap;
 
 }
-#header .inner nav .right .nav-button:hover {
+#header nav .right .nav-button:hover {
     color: #fff;
     text-decoration: none;
     background: #535b72;
 }
-#header .inner nav ul li {
+#header nav ul li {
     display: inline-block;
 }
-/* Component: Page Header (Explore Users) FIXED */
-.page-header {
-    background: #393f4f;
-    border-radius: 4px;
-    padding: 60px 15px;
-    text-align: center;
-}
-.page-header h1 {
-    color: #fff;
-    font-size: 2.769em;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 10px;
-}
-.page-header p {
-    font-size: 1.154em;
-    color: #9baec8;
-    margin: 0;
-}
-/* Component: Post (Welcome) (Index) FIXED */
-.post-welcome {
-    display: grid;
-    row-gap: 20px;
-    background: #282c37;
-    border-radius: 4px;
-}
-.post-welcome .header {
-    border-radius: 4px 4px 0 0;
-}
-.post-welcome .content {
-    color: #9baec8;
-    font-size: 1.154em;
-    line-height: 20px;
-    padding: 0 20px;
-}
-.post-welcome .content p:last-child {
-    margin: 0;
-}
-.post-welcome .footer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
-    padding: 0 20px 20px 20px;
-}
-.post-welcome .footer h4 {
-    color: #9baec8;
-    font-size: 1em;
-    font-weight: 700;
-    margin: 0;
-    padding: 0 0 10px 0;
-    text-transform: uppercase;
-}
-.post-welcome .footer .info {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 10px;
-    padding: 10px 0 0 0;
-}
-.post-welcome .footer .info .avatar {
-    border-radius: 4px;
-}
-.post-welcome .footer .info .name {
-    color: #fff;
-    display: block;
-    font-size: 1.077em;
-    font-weight: 700;
-}
-.post-welcome .footer .info .username {
-    color: #9baec8;
-    display: block;
-    font-size: 1.077em;
-}
-.post-welcome .footer .info .username:hover {
-    text-decoration: none;
-}
-.post-welcome .footer .server-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    padding: 10px 0 0 0;
-}
-.post-welcome .footer .server-stats .count {
-    display: block;
-    font-size: 1.154em;
-    font-weight: 700;
-} 
-.post-welcome .footer .server-stats .label {
-    color: #9baec8;
-    display: block;
-    font-size: 14px;
-}
-/* Component: Features Block (Index) FIXED */
-.features-block {
-    display: grid;
-    align-items: center;
-    grid-gap: 10px;
-}
-.features-block a {
-    background: #282c37;
-    border-radius: 4px;
-    padding: 15px;
-}
-.features-block a:hover {
-    background: #393f4f;
-    text-decoration: none;
-}
-.features-block a h4 {
-    font-size: 1.385em;
-    font-weight: 700;
-    color: #fff;
-    margin: 0;
-}
-.features-block a h4 small {
-    color: #9baec8;
-    display: block;
-    font-size: 0.833em;
-    font-weight: 400;
-    margin-top: 8px;
-}
-.features-block a h4 .fas, .features-block a h4 .fa, .features-block a h4 .fab {
-    color: #9baec8;
-}
-.features-block .explore-users {
-    display: grid;
-    grid-template-columns: auto 1fr;
-}
-.features-block .explore-users .users-stack {
-    align-self: center;
-    justify-self: right;
-}
-.features-block .explore-users .users-stack .avatar {
-    border: 2px solid #282c37;
-    border-radius: 50%;
-    margin-right: -15px;
-}
-.features-block .explore-users .users-stack .avatar:last-child {
-    margin-right: 0;
-}
-/* Component: Auth Block */
-.auth-block {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 10px;
-}
-/* Component: Header (Index) */
+/* Component: Header (Index) EM */
 #header-public {
-    margin: 50px 0;
-}
-#header-public .inner {
-    display: grid;
     grid-template-columns: repeat(2, auto);
     column-gap: 15px;
-    margin: 0 auto;
-    max-width: 960px;
+    margin: 50px auto;
 }
-#header-public .inner .logo-container {
+#header-public .logo-container {
     justify-self: right;
 }
-#header-public .inner .title-container {
+#header-public .title-container {
     justify-self: left;
     position: relative;
 }
-#header-public .inner .title-container a:hover {
+#header-public .title-container a:hover {
     text-decoration: none;
 }
-#header-public .inner .title-container a h1 {
+#header-public .title-container a h1 {
     color: #fff;
     font-weight: 700;
     margin: 0;
 }
-#header-public .inner .title-container a span {
+#header-public .title-container a span {
     color: #9baec8;
     font-size: 1.077em;
+}
+/* Component: Button Follow/Unfollow (Userprofile) EM */
+.btn {
+    background: #333;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 1.077em;
+    font-weight: 700;
+    height: auto;
+    line-height: 36px;
+    overflow: hidden;
+    padding: 3px 15px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transition: all .1s ease-in;
+    white-space: nowrap;
+}
+.btn:hover {
+    background: #33a9ff;
+    color: #fff;
+    text-decoration: none;
+    transition: all .1s ease-in;
+}
+.btn-primary {
+    background: #2b90d9;
+}
+.button {
+    background: #333;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 1.077em;
+    font-weight: 700;
+    height: auto;
+    line-height: 36px;
+    overflow: hidden;
+    padding: 3px 15px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transition: all .1s ease-in;
+    white-space: nowrap;
+}
+.button:hover {
+    background: #33a9ff;
+    color: #fff;
+    text-decoration: none;
+    transition: all .1s ease-in;
+}
+.button-follow {
+    background: #2b90d9;
+}
+.button-unfollow {
+    background: #2b90d9;
+}
+.button-unfollow:hover {
+    background: #df405a;
 }

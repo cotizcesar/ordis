@@ -50,9 +50,12 @@ INSTALLED_APPS = [
     # django-bootstrap4: Application Added.
     # https://django-bootstrap4.readthedocs.io/en/latest/installation.html
     "bootstrap4",
-    # django-storages
+    # django-storages: Application Added.
     # https://django-storages.readthedocs.io/en/latest/index.html#installation
     "storages",
+    # django-rest-framework: Application Added.
+    # https://www.django-rest-framework.org/#installation
+    "rest_framework",
     "core",
 ]
 SITE_ID = 1
@@ -216,6 +219,9 @@ THUMBNAIL_ALIASES = {
         "475x125": {"size": (475, 125), "crop": "smart", "upscale": True},
         "48x48": {"size": (48, 48), "crop": "smart", "upscale": True},
         "283x": {"size": (283, 0), "crop": "smart", "upscale": True},
+        "298x167": {"size": (298, 167), "crop": "smart", "upscale": True},
+        "559x": {"size": (559, 0), "crop": "smart", "upscale": True},
+        "1200x630": {"size": (1200, 630), "crop": "smart", "upscale": True},
         "avatar": {"size": (510, 510), "crop": "smart", "upscale": True},
         "post": {"size": (540, 0), "crop": "smart", "upscale": True},
         "order": {"size": (74, 74), "crop": "smart", "upscale": True},

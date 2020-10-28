@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/components.css' %}">
+{% endblock %}
+{% block content %}
+<div id="post-detail">
+    <div>
+        {% include 'core/components/post.html' %}
+        {% if object.comments.all %}
+            {% for object in object.comments.all %}
+                {% include 'core/components/comment.html' %}
+            {% endfor %}
+            {% if not user.is_authenticated %}
+                <a class="sign-in-comment" href="{% url 'account_login' %}"><i class="fas fa-comments fa-fw"></i> Sign in to participate in the conversation</a>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div>
+        {% if featured_post %}
+            {% for object in featured_post %}
+                {% include 'core/components/post_welcome_thumb.html' %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

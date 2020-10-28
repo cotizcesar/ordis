@@ -85,35 +85,12 @@ class Connection(models.Model):
         return "{} : {}".format(self.follower.username, self.following.username)
 
 
-#! Core: Post Model.
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.TextField(max_length=280)
+    text = models.TextField(max_length=500)
     image = models.ImageField(upload_to="user/post", blank=True)
     video = models.URLField(blank=True)
+    comment = models.ForeignKey("self", on_delete=models.CASCADE, default=None, blank=True, null=True, related_name='comments')
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     featured = models.BooleanField(default=False)
-
-    class Meta:
-        ordering = ["-date_created"]
-
-    def __str__(self):
-        return "{} {} (@{}) : {}".format(
-            self.user.first_name, self.user.last_name, self.user.username, self.text
-        )
-
-
-#! Core: Comment Model.
-class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    text = models.CharField(max_length=280)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        ordering = ["date_created"]
-
-    def __str__(self):
-        return self.text

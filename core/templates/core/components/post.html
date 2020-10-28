@@ -1,0 +1,41 @@
+{% load thumbnail %}
+{% load custom_filters %}
+{% load humanize %}
+<div class="post">
+    <div class="content">
+        <div class="avatar">
+            <a href="{% url 'userprofile' object.user.username %}">
+                <img class="img-fluid" src="{{ object.user.userprofile.avatar|thumbnail_url:'48x48'|default:'https://via.placeholder.com/48' }}" alt="{% if object.user.get_full_name %}{{ object.user.get_full_name }} (@{{ object.user.username }}){% else %}@{{ object.user.username }}{% endif %} avatar.">
+            </a>
+        </div>
+        <div class="userinfo">
+            <div class="profile">
+                <span class="title">
+                    <a class="name" href="{% url 'userprofile' object.user.username %}">{% if object.user.get_full_name %}{{ object.user.get_full_name }}{% else %}{{ object.user.username }}{% endif %}</a>
+                    <a class="username" href="{% url 'userprofile' object.user.username %}">@{{ object.user.username }}</a>
+                    <a class="date" href="{% url 'post_detail' object.id %}">{{ object.date_created|naturalday }}</a>
+                </span>
+            </div>
+            <div class="body">
+                {{ object.text|linebreaks }}
+                {% if object.image %}
+                    <img class="image" src="{{ object.image|thumbnail_url:'559x'|default:'https://via.placeholder.com/559' }}" alt="{{ object.text }}">
+                {% else %}
+                    {% if object.video %}
+                        {{ object.video|youtube_embed_url|safe }}
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="actionbar">
+                <span class="reply">
+                    <a href="#"><i class="fas fa-reply-all fa-fw"></i></a>
+                    {% if object.comments_set.count %}
+                        <span class="counter">{{ object.comments_set.count }}+</span>
+                    {% endif %}
+                </span>
+                <a href="#"><i class="fas fa-retweet fa-fw"></i></a>
+                <a href="#"><i class="fas fa-star fa-fw"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

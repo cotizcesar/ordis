@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head_title %}{% trans "Settings" %}{% endblock %}
+{% block header %}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+<link rel="stylesheet" href="{% static 'css/components.css' %}">
+{% endblock %}
+{% block content %}
+<div id="settings">
+    <div>
+        <div class="settings-logo">
+            <i class="fas fa-robot fa-fw fa-6x text-info"></i>
+        </div>
+        <nav class="settings-menu">
+            <ul>
+                <li><a href="{% url 'feed' %}"><i class="fas fa-chevron-left fa-fw mr-1"></i> {% trans "Back to Ordis" %}</a></li>
+            </ul>
+            <ul class="{% if request.resolver_match.url_name == 'userprofile_basic' or request.resolver_match.url_name == 'userprofile_advanced' %}active{% endif %}">
+                <li><a class="{% if request.resolver_match.url_name == 'userprofile_basic' %}active{% endif %}" href="{% url 'userprofile_basic' %}"><i class="fas fa-cog fa-fw mr-1"></i> {% trans "Profile" %}</a>
+                    <ul>
+                        <li>
+                            <a class="{% if request.resolver_match.url_name == 'userprofile_basic' %}active{% endif %}" href="{% url 'userprofile_basic' %}"><i class="fas fa-pencil-alt fa-fw mr-1"></i> {% trans "Name" %}</a>
+                        </li>
+                        <li>
+                            <a class="{% if request.resolver_match.url_name == 'userprofile_advanced' %}active{% endif %}" href="{% url 'userprofile_advanced' %}"><i class="fas fa-pencil-alt fa-fw mr-1"></i> {% trans "Avatar & Header" %}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="{% if request.resolver_match.url_name == 'account_email' or request.resolver_match.url_name == 'account_change_password' %}active{% endif %}">
+                <li><a class="{% if request.resolver_match.url_name == 'account_email' %}active{% endif %}" href="{% url 'account_email' %}"><i class="fas fa-lock fa-fw mr-1"></i> {% trans "Account" %}</a>
+                    <ul>
+                        <li>
+                            <a class="{% if request.resolver_match.url_name == 'account_email' %}active{% endif %}" href="{% url 'account_email' %}"><i class="fas fa-pencil-alt fa-fw mr-1"></i> {% trans "Email" %}</a>
+                        </li>
+                        <li>
+                            <a class="{% if request.resolver_match.url_name == 'account_change_password' %}active{% endif %}" href="{% url 'account_change_password' %}"><i class="fas fa-pencil-alt fa-fw mr-1"></i> {% trans "Password" %}</a>
+                        </li>
+                        <li>
+                            <a class="{% if request.resolver_match.url_name == 'socialaccount_connections' %}active{% endif %}" href="{% url 'socialaccount_connections' %}"><i class="fas fa-pencil-alt fa-fw mr-1"></i> {% trans "Social" %}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div>
+        {% if request.resolver_match.url_name == 'userprofile_basic' %}
+        <h1 class="h3"><i class="fas fa-cogs fa-fw text-info mr-1"></i> Basic Settings</h1>
+        <p class="text-muted m-0">Feel free to change what you want here. It's your account, it's your data. <strong>Remember, the data entered here will be public, the only private data will be your password and email.</strong></p>
+        <hr>
+        {% elif request.resolver_match.url_name == 'userprofile_advanced' %}
+        <h1 class="h3"><i class="fas fa-user-circle text-info fa-fw mr-1"></i> Advanced Settings</h1>
+        <p class="text-muted m-0">Here you can change the extra data of your profile, such as avatar, biography and more. Please try not to break the rules of the site. <strong>Remember, the data entered here will be public, the only private data will be your password and email.</strong></p>
+        <hr>
+        {% endif %}
+        {% include 'core/components/form.html'%}
+    </div>
+</div>
+{% endblock %}
+{% block footer %}{% endblock %}

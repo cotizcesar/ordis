@@ -1,0 +1,37 @@
+body {
+    background: #282C37;
+}
+#auth {
+    align-items: center;
+    display: grid;
+    height: 100vh;
+    margin: 0 auto;
+    max-width: 400px;
+}
+#auth #header-public {
+    margin: 0 auto 50px auto;
+}
+#auth .subtitle {
+    color: #9baec8;
+    margin: 0 0 50px 0;
+    text-align: center;
+}
+#auth .auth-nav {
+    margin: 30px 0;
+}
+#auth .auth-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#auth .auth-nav ul {
+    column-gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+}
+#auth .auth-nav ul li:first-child {
+    justify-self: right;
+}
+#auth .auth-nav a {
+    color: #9baec8;
+}

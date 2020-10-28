@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load static %}
 {% load custom_filters %}
 {% block header %}{% include 'header_public.html' %}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/components.css' %}">
+{% endblock %}
 {% block content %}
 <div id="home">
     <div>

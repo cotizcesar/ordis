@@ -1,0 +1,6 @@
+#explore {
+    display: grid;
+    margin: 10px auto 0 auto;
+    max-width: 960px;
+    row-gap: 10px;
+}

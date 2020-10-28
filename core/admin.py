@@ -3,7 +3,7 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 # Core: Importing Models
-from .models import UserProfile, Connection, Post, Comment
+from .models import UserProfile, Connection, Post
 
 
 class UserProfileResource(resources.ModelResource):
@@ -33,14 +33,4 @@ class PostResource(resources.ModelResource):
 
 @admin.register(Post)
 class PostAdmin(ImportExportModelAdmin):
-    pass
-
-
-class CommentResource(resources.ModelResource):
-    class Meta:
-        model = Comment
-
-
-@admin.register(Comment)
-class CommentAdmin(ImportExportModelAdmin):
     pass
