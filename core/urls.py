@@ -16,7 +16,6 @@ from .views import (
     PostCreateView,
     PostDetailView,
     PostDeleteView,
-    CommentCreateView,
 )
 
 urlpatterns = [
@@ -28,11 +27,6 @@ urlpatterns = [
     path("post/create/", PostCreateView.as_view(), name="post_create"),
     url(r"^post/(?P<pk>\d+)/$", PostDetailView.as_view(), name="post_detail"),
     url(r"^post/(?P<pk>\d+)/delete/$", PostDeleteView.as_view(), name="post_delete"),
-    url(
-        r"^post/(?P<pk>\d+)/comment/$",
-        CommentCreateView.as_view(),
-        name="post_comment_create",
-    ),
     url(
         r"^user/(?P<username>[a-zA-Z-_\d+\.]+)/$",
         UserProfileDetailView.as_view(),

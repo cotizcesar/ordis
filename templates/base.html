@@ -3,42 +3,47 @@
 {% load account socialaccount %}
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Ordis - {% block head_title %}Home{% endblock %}{% endblock %}</title>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>{% block title %}Ordis - {% block head_title %}Home{% endblock %}{% endblock %}</title>
-  {% bootstrap_css %}
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  {% block extra_head %}{% endblock %}
-</head>
+    <!-- OpenGraph -->
+    {% block meta_extra %}
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ordis.app" />
+    <meta property="og:description" content="The Open Source SocialMarket for Warframe" />
+    <meta property="og:image" content="{% static 'img/opengraph-default.png' %}" />
+    {% endblock %}
+    <meta name="twitter:card" content="app" />
+    <meta name="twitter:site" content="@cotizcesar" />
+    <meta name="twitter:creator" content="@cotizcesar" />
 
-<body>
-  {% block body %}
+    {% bootstrap_css %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body>
+    {% block body %}
+      {% block header %}{% include 'header.html' %}{% endblock %}
 
-  {% block header %}
-  {% include 'header.html' %}
-  {% endblock %}
+      {% if messages %}
+      <div id="messages">
+        {% for message in messages %}
+        {% bootstrap_messages %}
+        {% endfor %}
+      </div>
+      {% endif %}
 
-  {% if messages %}
-  <div class="container">
-    {% for message in messages %}
-    {% bootstrap_messages %}
-    {% endfor %}
-  </div>
-  {% endif %}
+      {% block content %}{% endblock %}
 
-  {% block content %}{% endblock %}
+      {% block footer %}{% include 'footer.html' %}{% endblock %}
 
-  {% block footer %}
-  {% include 'footer.html' %}
-  {% endblock %}
-
-  {% endblock %}
-  {% block extra_body %}{% endblock %}
-  {% bootstrap_javascript jquery='full' %}
-  <script src="https://kit.fontawesome.com/7567f7a152.js" crossorigin="anonymous"></script>
-</body>
-
+    {% endblock %}
+    {% block extra_body %}{% endblock %}
+    {% bootstrap_javascript jquery='full' %}
+    <script src="https://kit.fontawesome.com/7567f7a152.js" crossorigin="anonymous"></script>
+  </body>
 </html>

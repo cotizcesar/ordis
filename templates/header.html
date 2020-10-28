@@ -1,68 +1,67 @@
 <header id="header">
-    <div class="inner">
-        <nav>
-            {% if not user.is_authenticated %}
-            <ul class="left">
-                <li>
-                    <a class="brand" href="{% url 'home' %}">
-                        <i class="fas fa-robot fa-fw text-info mr-1"></i> Ordis
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'explore_users' %}">Profile directory</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Mobile apps</a>
-                </li>
-            </ul>
-            <ul class="right">
-                <li>
-                    <a class="nav-button" href="{% url 'account_login' %}">Sign in</a>
-                </li>
-                <li>
-                    <a class="nav-button" href="{% url 'account_signup' %}">Sign up</a>
-                </li>
-            </ul>
-            {% else %}
-            <ul class="left">
-                <li>
-                    <a class="brand" href="{% url 'feed' %}">
-                        <i class="fas fa-robot fa-fw text-info mr-1"></i> Ordis
-                    </a>
-                </li>
-            </ul>
-            <ul class="right">
-                <li>
-                    <a href="{% url 'feed' %}">Timeline</a>
-                </li>
-                <li>
-                    <a class="disabled" href="#">Explore</a>
-                </li>
-                <li>
-                    <a class="disabled" href="#">Market</a>
-                </li>
-                <li>
-                    <a class="disabled" href="#">Alerts</a>
-                </li>
-                <li>
-                    <a class="disabled" href="#">Builder</a>
-                </li>
-                <li>
-                    <a class="disabled" href="#">Codex</a>
-                </li>
-                <li>
-                    <a href="{% url 'userprofile' user.username %}">@{{ user.username }}</a>
-                </li>
-                <li>
-                    <a class="text-danger" href="{% url 'account_logout' %}">
-                        Sign out <i class="fas fa-sign-out-alt fa-fw"></i>
-                    </a>
-                </li>
-            </ul>
-            {% endif %}
-        </nav>
-    </div>
+
+    <nav>
+        {% if not user.is_authenticated %}
+        <ul class="left">
+            <li>
+                <a class="brand" href="{% url 'home' %}">
+                    <i class="fas fa-robot fa-fw text-info mr-1"></i> Ordis
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'explore_users' %}">Profile directory</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#">Mobile apps</a>
+            </li>
+        </ul>
+        <ul class="right">
+            <li>
+                <a class="nav-button" href="{% url 'account_login' %}">Sign in</a>
+            </li>
+            <li>
+                <a class="nav-button" href="{% url 'account_signup' %}">Sign up</a>
+            </li>
+        </ul>
+        {% else %}
+        <ul class="left">
+            <li>
+                <a class="brand" href="{% url 'feed' %}">
+                    <i class="fas fa-robot fa-fw text-info mr-1"></i> Ordis
+                </a>
+            </li>
+        </ul>
+        <ul class="right">
+            <li>
+                <a href="{% url 'feed' %}">Timeline</a>
+            </li>
+            <li>
+                <a class="disabled" href="#">Explore</a>
+            </li>
+            <li>
+                <a class="disabled" href="#">Market</a>
+            </li>
+            <li>
+                <a class="disabled" href="#">Alerts</a>
+            </li>
+            <li>
+                <a class="disabled" href="#">Builder</a>
+            </li>
+            <li>
+                <a class="disabled" href="#">Codex</a>
+            </li>
+            <li>
+                <a href="{% url 'userprofile' user.username %}">@{{ user.username }}</a>
+            </li>
+            <li>
+                <a class="text-danger" href="{% url 'account_logout' %}">
+                    Sign out <i class="fas fa-sign-out-alt fa-fw"></i>
+                </a>
+            </li>
+        </ul>
+        {% endif %}
+    </nav>
 </header>

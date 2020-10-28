@@ -1,0 +1,9 @@
+{% load thumbnail %}
+<div class="post-welcome-thumb">
+    <img class="header"
+        src="{{ object.image|thumbnail_url:'298x167'|default:'https://via.placeholder.com/298x167' }}"
+        alt="{{ object.text }}">
+    <div class="content">
+        {{ object.text }}
+    </div>
+</div>
